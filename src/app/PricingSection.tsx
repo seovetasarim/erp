@@ -105,7 +105,9 @@ export default function PricingSection() {
           <div className="pr-table-header-row">
             <span className="pr-kicker">Karşılaştırma</span>
             <h3 className="pr-table-title">Hangi pakette ne var?</h3>
+            <p className="pr-table-scroll-hint" aria-hidden="true">← Kaydırarak tüm sütunları görün →</p>
           </div>
+          <div className="pr-table-scroll">
           <div className="pr-table">
             <div className="pr-table-head">
               <div className="pr-table-cell pr-table-cell-feature">Özellik</div>
@@ -133,6 +135,7 @@ export default function PricingSection() {
                 </div>
               </div>
             ))}
+          </div>
           </div>
         </div>
 

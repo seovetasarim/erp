@@ -3,6 +3,7 @@
 import { Menu, X, PhoneCall, ChevronDown, ChevronRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import { createPortal } from 'react-dom';
 
 const navItems = [
   { href: '/', label: 'Ana Sayfa', title: 'DijitalERP Ana Sayfa' },
@@ -37,7 +38,11 @@ export default function Header() {
   const [accordionOpen, setAccordionOpen] = useState<'menu' | 'urun' | 'moduller' | null>(null);
 
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -111,7 +116,8 @@ export default function Header() {
           {menuOpen ? <X size={24} aria-hidden /> : <Menu size={24} aria-hidden />}
         </button>
       </div>
-      <div className={`site-nav-mobile ${menuOpen ? 'open' : ''}`} role="dialog" aria-label="Mobil menü" aria-modal="true" hidden={!menuOpen}>
+      {mounted && createPortal(
+        <div className={`site-nav-mobile ${menuOpen ? 'open' : ''}`} role="dialog" aria-label="Mobil menü" aria-modal="true" aria-hidden={!menuOpen}>
         <div className="site-nav-mobile-header">
           <a href="/" className="site-logo" onClick={closeMenu}>
             <img src="/logo.png" alt="DijitalERP" className="site-logo-img" />
@@ -180,7 +186,9 @@ export default function Header() {
             </a>
           </div>
         </div>
-      </div>
+        </div>,
+        document.body
+      )}
     </header>
   );
 }

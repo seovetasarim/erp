@@ -71,9 +71,9 @@ export const metadata: Metadata = {
     canonical: BASE_URL,
   },
   icons: {
-    icon: "/icon",
-    shortcut: "/icon",
-    apple: "/icon",
+    icon: "/sembol.png",
+    shortcut: "/sembol.png",
+    apple: "/sembol.png",
   },
 };
 
@@ -179,8 +179,8 @@ export default function RootLayout({
           .site-nav-toggle{display:flex;align-items:center;justify-content:center;background:transparent;border:none;color:#e2e8f0;cursor:pointer;padding:.5rem;transition:color .2s}
           .site-nav-toggle:hover{color:#fff}
           @media(min-width:768px){.site-nav-toggle{display:none}}
-          .site-nav-mobile{position:fixed;inset:0;background:linear-gradient(180deg,#0f172a 0%,#050816 100%);z-index:10000;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;overflow-y:auto}
-          .site-nav-mobile.open{opacity:1;visibility:visible}
+          .site-nav-mobile{position:fixed;inset:0;top:0;left:0;right:0;bottom:0;background:linear-gradient(180deg,#0f172a 0%,#050816 100%);z-index:99999;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s,visibility .3s;overflow-y:auto}
+          .site-nav-mobile.open{opacity:1;visibility:visible;pointer-events:auto}
           .site-nav-mobile-overlay{display:none}
           .site-nav-mobile-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.08)}
           .site-nav-mobile-close{display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;background:rgba(255,255,255,.08);border:none;border-radius:10px;color:#fff;cursor:pointer;transition:background .2s}
@@ -243,9 +243,10 @@ export default function RootLayout({
           .hero-desc{font-size:1rem;color:#64748b;max-width:28rem;margin-bottom:1.75rem;line-height:1.75}
           @media(min-width:768px){.hero-desc{font-size:1.0625rem}}
           /* Butonlar */
-          .hero-btns{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin-bottom:1rem}
+          .hero-btns{display:flex;flex-wrap:wrap;gap:.75rem;align-items:stretch;margin-bottom:1rem}
           .hero-btns .btn-primary,.hero-btns .btn-secondary{display:flex;align-items:center;justify-content:center;gap:.5rem;min-width:0;text-align:center;transition:transform .2s,box-shadow .2s}
           .hero-btns .btn-primary:hover,.hero-btns .btn-secondary:hover{transform:translateY(-2px)}
+          @media(max-width:767px){.hero-btns{flex-wrap:nowrap;gap:.5rem}.hero-btns .btn-primary,.hero-btns .btn-secondary{flex:1;min-width:0;padding:.75rem 1rem;font-size:.875rem}}
           /* Rozet listesi */
           .hero-badges{display:flex;flex-wrap:wrap;gap:.5rem .75rem;margin-top:.75rem;margin-bottom:1.5rem}
           .hero-badge-item{display:inline-flex;align-items:center;gap:.35rem;font-size:.75rem;font-weight:500;color:#475569;opacity:1}
@@ -393,16 +394,23 @@ export default function RootLayout({
           .pr-btn-ghost{background:transparent;border:1px solid #e2e8f0;color:#374151}
           .pr-btn-ghost:hover{border-color:#2563eb;color:#2563eb}
           .pr-table-wrap{border:1px solid #e2e8f0;border-radius:12px;overflow:hidden}
+          .pr-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+          @media(min-width:768px){.pr-table-scroll{overflow-x:visible}}
           .pr-table-header-row{padding:1.75rem 1.75rem 1.5rem}
+          @media(max-width:767px){.pr-table-header-row{padding:1.25rem 1rem 1rem}}
+          .pr-table-scroll-hint{display:none;font-size:.75rem;color:#64748b;margin:.5rem 0 0;font-weight:500}
+          @media(max-width:767px){.pr-table-scroll-hint{display:block}}
           .pr-table-title{font-size:1.875rem;font-weight:800;color:#0f172a;margin:.35rem 0 0;letter-spacing:-.03em}
           @media(min-width:768px){.pr-table-title{font-size:2.5rem}}
           .pr-table{display:grid;border-top:1px solid #e2e8f0}
+          @media(max-width:767px){.pr-table{min-width:480px}}
           .pr-table-head,.pr-table-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr}
           .pr-table-head{background:transparent;padding:0;border-bottom:1px solid #e2e8f0}
           .pr-table-head .pr-table-cell{font-size:.8rem;font-weight:700;color:#0f172a;text-transform:uppercase;letter-spacing:.06em;padding:.85rem 1rem}
           .pr-table-row{border-top:1px solid #f1f5f9}
           .pr-table-row-alt{background:#fafafa}
           .pr-table-cell{padding:.75rem 1rem;font-size:.875rem;color:#475569;display:flex;align-items:center}
+          @media(max-width:767px){.pr-table-cell{padding:.6rem .75rem;font-size:.8125rem;white-space:nowrap}}
           .pr-table-cell-feature{font-weight:500;color:#1e293b}
           .pr-table-val{font-size:.875rem;color:#374151;font-weight:500}
           .pr-dash{color:#cbd5e1;font-size:1rem}
@@ -492,7 +500,7 @@ export default function RootLayout({
           .footer-mobile-inner{padding:1.5rem 1rem}
           .footer-mobile-brand{display:flex;flex-direction:column;align-items:center;margin-bottom:1.25rem}
           .footer-mobile-logo{display:flex;align-items:center;text-decoration:none}
-          .footer-mobile-logo-img{display:block;object-fit:contain;height:2.25rem;width:auto;filter:brightness(0) invert(1)}
+          .footer-mobile-logo-img{display:block;object-fit:contain;height:2.25rem;width:auto}
           .footer-mobile-phone{display:block;font-size:1rem;font-weight:600;color:#2563eb;text-decoration:none;margin-top:.5rem}
           .footer-mobile-hide{display:none!important}
           .footer-mobile-phone:hover{text-decoration:underline}
@@ -509,6 +517,7 @@ export default function RootLayout({
           .footer-mobile-accordion-list li{margin-bottom:.35rem}
           .footer-mobile-accordion-link{font-size:.875rem;color:rgba(255,255,255,.4);text-decoration:none;display:block}
           .footer-mobile-accordion-link:hover{color:#2563eb}
+          .footer-mobile-accordion-list button.footer-mobile-accordion-link{width:100%;text-align:left}
           .footer-mobile-app{border-top:1px solid rgba(255,255,255,.06);padding:.75rem 0;text-align:center}
           .footer-mobile-app-title{font-size:.75rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.75rem}
           .footer-mobile-app-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem}

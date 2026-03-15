@@ -31,8 +31,15 @@ const modulLinks = [
   { label: 'Dashboard', href: '/cozumler/dashboard' },
 ];
 
+const policyLinks = [
+  { label: 'Gizlilik Politikası', href: '/gizlilik-politikasi' },
+  { label: 'Kullanım Şartları', href: '/kullanim-sartlari' },
+  { label: 'Çerez Politikası', href: '/cerez-politikasi' },
+  { label: 'KVKK', href: '/kvkk' },
+];
+
 export default function Footer() {
-  const [mobileOpen, setMobileOpen] = useState<'menu' | 'urun' | 'moduller' | null>(null);
+  const [mobileOpen, setMobileOpen] = useState<'menu' | 'urun' | 'moduller' | 'yasal' | null>(null);
 
   return (
     <footer id="iletisim" className="site-footer" role="contentinfo">
@@ -93,6 +100,22 @@ export default function Footer() {
             )}
           </div>
 
+          {/* Accordion: Yasal / Politikalar */}
+          <div className="footer-mobile-accordion">
+            <button type="button" onClick={() => setMobileOpen(mobileOpen === 'yasal' ? null : 'yasal')} className="footer-mobile-accordion-btn">
+              <span>Yasal & Politikalar</span>
+              <ChevronDown className={`footer-mobile-chevron ${mobileOpen === 'yasal' ? 'open' : ''}`} size={16} />
+            </button>
+            {mobileOpen === 'yasal' && (
+              <ul className="footer-mobile-accordion-list">
+                {policyLinks.map((l) => (
+                  <li key={l.href}><a href={l.href} className="footer-mobile-accordion-link">{l.label}</a></li>
+                ))}
+                <li><CookieConsentLink className="footer-mobile-accordion-link">Çerez Tercihleri</CookieConsentLink></li>
+              </ul>
+            )}
+          </div>
+
           {/* Mobil Uygulama */}
           <div className="footer-mobile-app">
             <h4 className="footer-mobile-app-title">Mobil Uygulama İndir</h4>
@@ -114,16 +137,9 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Copyright & Policy Links */}
+          {/* Copyright */}
           <div className="footer-mobile-bottom">
             <p className="footer-mobile-copy">© 2026 DijitalERP. Tüm hakları saklıdır. Stok takip, cari yönetim, E-Fatura, KOBİ ERP, ERP yazılımı.</p>
-            <div className="footer-mobile-policy">
-              <a href="/gizlilik-politikasi" className="footer-mobile-policy-link">Gizlilik Politikası</a>
-              <a href="/kullanim-sartlari" className="footer-mobile-policy-link">Kullanım Şartları</a>
-              <a href="/cerez-politikasi" className="footer-mobile-policy-link">Çerez Politikası</a>
-              <a href="/kvkk" className="footer-mobile-policy-link">KVKK</a>
-              <CookieConsentLink className="footer-mobile-policy-link">Çerez Tercihleri</CookieConsentLink>
-            </div>
           </div>
         </div>
       </div>
