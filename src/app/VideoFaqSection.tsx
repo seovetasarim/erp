@@ -4,6 +4,8 @@ import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 
 const faqItems = [
+  { q: 'DijitalERP ücretsiz indirilebilir mi?', a: 'Evet. Windows için ücretsiz masaüstü sürümünü sitedeki dijitalerp.rar paketiyle bilgisayarınıza indirip kullanabilirsiniz — veriler cihazınızda kalır, günlük kullanımda sürekli internet zorunluluğu olmadan ana modülleri deneyebilirsiniz. Ticari lisans gerektiren garantiler için Başlangıç, Profesyonel veya Kurumsal paketler sunulur; abonelik modeli kullanılmaz.' },
+  { q: 'Ücretsiz sürüm ile lisanslı sürüm farkı nedir?', a: 'Ücretsiz sürüm, yazılımı tanımanız ve offline süreçlerinizi görmeniz içindir. Lisanslı paketler çok kullanıcı, daha uzun güncelleme dönemi, E-Fatura kurulumunda öncelikli destek ve sözleşmeli garantiler içerir. Önce ücretsiz indirin; uygun paket için 0532 166 76 97.' },
   { q: 'ERP Programı Nedir?', a: 'ERP (Kurumsal Kaynak Planlama), işletmelerin stok, cari, fatura, kasa ve raporlama gibi tüm süreçlerini tek yazılımda yönetmesini sağlayan entegre bir yazılım sistemidir.' },
   { q: 'ERP Programı Kimler İçindir?', a: 'KOBİ\'ler, perakende mağazalar, toptancılar, üreticiler ve stok takibi yapan tüm işletmeler için uygundur.' },
   { q: 'ERP Programı Faydaları Nelerdir?', a: 'Stok kontrolü, cari takibi, hızlı fatura kesimi, raporlama, zaman tasarrufu ve veri güvenliği sağlar.' },
@@ -15,7 +17,7 @@ const faqItems = [
   { q: 'ERP Sistemleri İş Süreçlerini Nasıl İyileştirir?', a: 'Otomasyon, merkezi veri yönetimi ve anlık raporlama ile süreçleri hızlandırır ve hataları minimize eder.' },
   { q: 'ERP Sistemi Kurulumu Nasıl Gerçekleşir?', a: 'Demo talebi sonrası kurulum desteği verilir. E-Fatura kurulum sihirbazı ile kolay entegrasyon sağlanır.' },
   { q: 'ERP Sistemi Güvenlik Önlemleri Nelerdir?', a: 'Yerel veritabanı (SQLite), tamamen offline çalışma, veritabanı yedekleme ve yetki bazlı kullanıcı erişimi.' },
-  { q: 'ERP Sistemi ile İlgili Maliyetler Nelerdir?', a: 'Tek seferlik lisans ödemesi. Başlangıç 25.000 TL, Profesyonel 35.000 TL. Abonelik yoktur.' },
+  { q: 'ERP Sistemi ile İlgili Maliyetler Nelerdir?', a: 'Temel olarak ücretsiz indirilebilir bir masaüstü sürümü vardır. Ticari paketlerde Başlangıç 25.000 TL ve Profesyonel 35.000 TL ile tek seferlik lisans ödemesi uygulanır; aylık abonelik yoktur. Kurumsal kullanımda özelleştirme ve sınırsız bilgisayar için teklif alınır.' },
 ];
 
 function FaqItem({ q, a, isOpen, onToggle }: { q: string; a: string; isOpen: boolean; onToggle: () => void }) {
@@ -47,7 +49,7 @@ export default function VideoFaqSection() {
         <div className="faq2-header">
           <span className="faq2-kicker">SSS</span>
           <h2 className="faq2-title">Sık Sorulan Sorular</h2>
-          <p className="faq2-subtitle">DijitalERP hakkında merak ettiğiniz her şey.</p>
+          <p className="faq2-subtitle">Ücretsiz indirin, offline deneyin; SSS ile DijitalERP ve ERP hakkında sık sorulan soruların yanıtları.</p>
         </div>
 
         <div className="faq2-grid">

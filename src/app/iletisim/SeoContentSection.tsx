@@ -1,3 +1,5 @@
+import { SITE_HOST } from '../../site-url';
+
 export default function SeoContentSection() {
   return (
     <section className="section section-seo" aria-labelledby="seo-contact-heading">
@@ -22,7 +24,7 @@ export default function SeoContentSection() {
           <article className="seo-col">
             <h3>İletişim Kanalları</h3>
             <p>
-              <strong>Telefon:</strong> 0532 166 76 97 numarasından hemen arayabilirsiniz. <strong>E-posta:</strong> info@dijitalerp.com.tr adresine yazın. <strong>Web:</strong> dijitalerp.com.tr üzerinden bilgi alabilirsiniz. <strong>WhatsApp</strong> ile de iletişime geçebilirsiniz.
+              <strong>Telefon:</strong> 0532 166 76 97 numarasından hemen arayabilirsiniz. <strong>E-posta:</strong> info@dijitalerp.com.tr adresine yazın. <strong>Web:</strong> {SITE_HOST} üzerinden bilgi alabilirsiniz. <strong>WhatsApp</strong> ile de iletişime geçebilirsiniz.
             </p>
             <p>
               <strong>Çalışma saatleri</strong> Pazartesi - Cuma 09:00 - 18:00 arasındadır. Acil durumlar için mesaj bırakabilirsiniz. <strong>ERP sistemi</strong> kurulumu ve E-Fatura entegrasyonu için randevu alabilirsiniz.

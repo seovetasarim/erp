@@ -4,20 +4,30 @@ import AnimateSection from '../AnimateSection';
 import FeaturesSection from '../FeaturesSection';
 import SeoContentSection from './SeoContentSection';
 import Footer from '../Footer';
+import { SITE_URL } from '../../site-url';
+
+const canon = `${SITE_URL}/ozellikler`;
 
 export const metadata: Metadata = {
-  title: 'Özellikler | DijitalERP Stok Takip ve ERP Yazılımı Modülleri',
+  title: 'Özellikler — Ücretsiz İndirilebilir Offline ERP Modülleri',
   description:
-    "DijitalERP'nin tüm modülleri: Stok takip, cari yönetim, fatura, E-Fatura, kasa, kargo etiketi, raporlar ve Excel export. KOBİ'ler için offline çalışan profesyonel ERP yazılımı.",
+    "DijitalERP modülleri: stok takip, cari, fatura, E-Fatura, kasa, kargo etiketi, raporlar, Excel export. Ücretsiz Windows sürümünü indirerek offline deneyin; KOBİ ERP.",
   keywords: [
-    'ERP modülleri', 'stok takip özellikleri', 'cari yönetim yazılımı',
-    'E-Fatura programı', 'kasa yönetimi', 'KOBİ ERP özellikleri', 'DijitalERP özellikleri',
+    'ücretsiz ERP indir',
+    'ERP modülleri',
+    'stok takip özellikleri',
+    'cari yönetim yazılımı',
+    'offline ERP',
+    'E-Fatura programı',
+    'KOBİ ERP özellikleri',
+    'DijitalERP özellikleri',
   ],
-  alternates: { canonical: 'https://www.dijitalerp.com.tr/ozellikler' },
+  alternates: { canonical: canon },
   openGraph: {
-    title: 'DijitalERP Özellikleri — 11 Modül, Tek Yazılım',
-    description: 'Stok, cari, fatura, E-Fatura, kasa, kargo ve raporlama — hepsi tek offline ERP yazılımında.',
-    url: 'https://www.dijitalerp.com.tr/ozellikler',
+    title: 'DijitalERP Özellikleri — ücretsiz deneyin, tek yazılımda modüller',
+    description:
+      'Ücretsiz indirerek stok, cari, fatura, E-Fatura, kasa ve raporları bilgisayarınızda, internet zorunluluğu olmadan kullanın.',
+    url: canon,
   },
 };
 

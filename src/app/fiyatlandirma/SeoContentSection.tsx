@@ -9,14 +9,18 @@ export default function SeoContentSection() {
           <article className="seo-col">
             <h3>ERP Yazılımı Fiyatları ve Lisans Modelleri</h3>
             <p>
-              <strong>DijitalERP</strong> <strong>tek seferlik ödeme</strong> modeli ile KOBİ&apos;lere uygun fiyatlı <strong>ERP yazılımı</strong> sunar. <strong>Abonelik yok</strong>, lisansınız süresiz kullanım hakkı içerir. <strong>Başlangıç paketi</strong> 25.000 TL ile 1 bilgisayarda tüm modülleri kullanabilirsiniz. <strong>Profesyonel paket</strong> 35.000 TL ile 3 bilgisayar, 2 yıl güncelleme ve E-Fatura kurulum desteği sunar.
+              <strong>DijitalERP</strong> için önce ana sayfadaki{' '}
+              <strong>dijitalerp.rar</strong> paketi ile <strong>ücretsiz Windows sürümünü indirip</strong> stok takip ve cariyi bilgisayarınızda deneyebilirsiniz.
+              Ticari kullanımda paket seçenekleri <strong>tek seferlik ödeme</strong> ile sunulur — <strong>abonelik yok</strong>.
+              <strong> Başlangıç paketi</strong> 25.000 TL ile 1 bilgisayarda tüm modülleri kullanabilirsiniz. <strong>Profesyonel paket</strong> 35.000 TL ile 3 bilgisayar, 2 yıl güncelleme ve E-Fatura kurulum desteği sunar.
             </p>
             <p>
               <strong>Kurumsal paket</strong> sınırsız bilgisayar, süresiz güncelleme ve 7/24 destek ile büyük işletmeler için özelleştirilir. <strong>ERP maliyetleri</strong> tek seferlik ödeme ile sınırlı kalır; aylık veya yıllık abonelik ödemezsiniz. <strong>E-Fatura kurulum</strong> Profesyonel ve Kurumsal paketlerde dahildir.
             </p>
             <h3>ERP Sistemi Maliyetleri ve Karşılaştırma</h3>
             <p>
-              <strong>ERP programı fiyatları</strong> sektörde rekabetçidir. Stok takip, cari yönetim, fatura, kasa ve raporlama modülleri tüm paketlerde mevcuttur. <strong>KOBİ ERP</strong> çözümü olarak tek seferlik 25.000 TL&apos;den başlayan fiyatlarla işletmenizi dijitalleştirin. Demo talebi ile ücretsiz deneme yapabilirsiniz.
+              <strong>ERP programı fiyatları</strong> rekabetçi tutulur; stok takip, cari, fatura, kasa ve raporlama tüm ticari paketlerde yer alır.
+              <strong>KOBİ ERP</strong> arayan işletmeler önce ücretsiz indirilebilir sürümü deneyebilir; ardından 25.000 TL&apos;den başlayan tek seferlik paketlerle yayına geçebilir.
             </p>
           </article>
           <article className="seo-col">
@@ -29,7 +33,7 @@ export default function SeoContentSection() {
             </p>
             <h3>Demo ve İletişim</h3>
             <p>
-              <strong>Ücretsiz demo</strong> talebi ile DijitalERP&apos;yi deneyebilir, işletmenize uygun paketi birlikte belirleyebilirsiniz. <strong>0532 166 76 97</strong> numarasından hemen arayarak fiyat bilgisi ve kurulum desteği alabilirsiniz. <strong>ERP yazılımı fiyatları</strong> 2025 itibarıyla günceldir.
+              <strong>Güncel fiyat ve demo</strong> için <strong>0532 166 76 97</strong> numarasından arayabilir veya ücretsiz indirdiğiniz sürümü kullanırken destek talep edebilirsiniz.
             </p>
           </article>
         </div>

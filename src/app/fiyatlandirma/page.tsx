@@ -4,20 +4,27 @@ import AnimateSection from '../AnimateSection';
 import PricingSection from '../PricingSection';
 import SeoContentSection from './SeoContentSection';
 import Footer from '../Footer';
+import { SITE_URL } from '../../site-url';
+
+const canon = `${SITE_URL}/fiyatlandirma`;
 
 export const metadata: Metadata = {
-  title: 'Fiyatlandırma | DijitalERP ERP Yazılımı — Tek Seferlik Lisans',
+  title: 'Fiyatlandırma — Ücretsiz Deneme ve ERP Lisans Paketleri',
   description:
-    "DijitalERP fiyatları: Başlangıç 25.000 TL, Profesyonel 35.000 TL. Tek seferlik ödeme, aylık abonelik yok. KOBİ'ler için süresiz ERP lisansı ve özellik karşılaştırması.",
+    "Önce DijitalERP'yi ücretsiz indirip deneyin (Windows). Lisans paketleri: Başlangıç 25.000 TL, Profesyonel 35.000 TL — tek seferlik ödeme, abonelik yok. Karşılaştırma ve teklif: 0532 166 76 97.",
   keywords: [
-    'ERP yazılımı fiyatı', 'stok programı fiyatı', 'KOBİ ERP lisans',
-    'tek seferlik ERP', 'DijitalERP fiyat', 'ERP yazılımı satın al',
+    'ücretsiz ERP indir',
+    'ERP yazılımı fiyatı',
+    'stok programı fiyatı',
+    'KOBİ ERP lisans',
+    'tek seferlik ERP',
+    'DijitalERP fiyat',
   ],
-  alternates: { canonical: 'https://www.dijitalerp.com.tr/fiyatlandirma' },
+  alternates: { canonical: canon },
   openGraph: {
-    title: 'DijitalERP Fiyatlandırma — 25.000 TL\'den Başlayan ERP Lisansı',
-    description: 'Tek seferlik ödeme. Abonelik yok. Başlangıç 25.000 TL, Profesyonel 35.000 TL.',
-    url: 'https://www.dijitalerp.com.tr/fiyatlandirma',
+    title: 'DijitalERP Fiyatlandırma — Ücretsiz sürüm + lisans paketleri',
+    description: 'Ücretsiz indir, offline dene. Başlangıç 25.000 TL, Profesyonel 35.000 TL — abonelik yok.',
+    url: canon,
   },
 };
 

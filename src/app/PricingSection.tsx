@@ -61,7 +61,9 @@ export default function PricingSection() {
         <div className="pr-header">
           <span className="pr-kicker">Fiyatlandırma</span>
           <h2 className="pr-title">Tek seferlik ödeme, ömür boyu kullanım</h2>
-          <p className="pr-subtitle">Abonelik yok. Aylık ücret yok. Lisansınız süresiz kullanım hakkı sunar.</p>
+          <p className="pr-subtitle">
+            Önce ücretsiz Windows sürümünü indirip deneyin. Lisans paketleri tek seferlik ödemelidir — abonelik veya aylık ücret yok; güncelleme süresi ve destek seçenekleri pakete göre değişir.
+          </p>
         </div>
 
         {/* Kartlar */}

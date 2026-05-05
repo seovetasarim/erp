@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { SITE_URL } from '../site-url';
 import Hero from './Hero';
 import AnimateSection from './AnimateSection';
 import FeaturesSection from './FeaturesSection';
@@ -7,18 +8,26 @@ import VideoFaqSection from './VideoFaqSection';
 import Footer from './Footer';
 
 export const metadata: Metadata = {
-  title: 'DijitalERP | Stok Takip, Cari Yönetim ve ERP Yazılımı',
+  title: 'Ücretsiz ERP İndir — Offline Stok Takip ve Cari',
   description:
-    "Türkiye'nin offline ERP yazılımı. Stok takip, cari yönetim, fatura, E-Fatura ve kasa yönetimi tek yazılımda. KOBİ'ler için tek seferlik ödeme. 0532 166 76 97",
+    "Ücretsiz Windows masaüstü ERP: dijitalerp.rar ile indirin — stok takip, cari yönetim, fatura, kasa offline. Veriler bilgisayarınızda. Lisans paketleri tek seferlik fiyatlı. Demo: 0532 166 76 97.",
   keywords: [
-    'ERP yazılımı', 'stok takip yazılımı', 'KOBİ ERP', 'offline ERP',
-    'cari yönetim', 'fatura yazılımı', 'stok programı', 'DijitalERP',
+    'ücretsiz ERP indir',
+    'ücretsiz stok takip yazılımı',
+    'offline ERP',
+    'Windows ERP ücretsiz',
+    'ERP yazılımı',
+    'KOBİ ERP',
+    'cari program',
+    'fatura yazılımı',
+    'DijitalERP',
   ],
-  alternates: { canonical: 'https://www.dijitalerp.com.tr' },
+  alternates: { canonical: SITE_URL },
   openGraph: {
-    title: 'DijitalERP | Stok Takip, Cari Yönetim ve ERP Yazılımı',
-    description: "Türkiye'nin offline ERP yazılımı. KOBİ'ler için tek seferlik ödeme, abonelik yok.",
-    url: 'https://www.dijitalerp.com.tr',
+    title: 'DijitalERP — Ücretsiz ERP İndir',
+    description:
+      'Offline stok takip ve cari yönetim: ücretsiz Windows sürümünü indirin; lisanslı paket seçenekleri tek seferlik ödeme.',
+    url: SITE_URL,
   },
 };
 
@@ -26,12 +35,12 @@ const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'DijitalERP',
-  url: 'https://www.dijitalerp.com.tr',
+  url: SITE_URL,
   potentialAction: {
     '@type': 'SearchAction',
     target: {
       '@type': 'EntryPoint',
-      urlTemplate: 'https://www.dijitalerp.com.tr/?q={search_term_string}',
+      urlTemplate: `${SITE_URL}/?q={search_term_string}`,
     },
     'query-input': 'required name=search_term_string',
   },
@@ -59,15 +68,29 @@ const faqSchema = {
     },
     {
       '@type': 'Question',
-      name: 'DijitalERP fiyatları ne kadar?',
+      name: 'DijitalERP ücretsiz indirilebilir mi?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Başlangıç paketi 25.000 TL, Profesyonel paket 35.000 TL. Tek seferlik ödeme, abonelik yoktur. Kurumsal paket için iletişime geçin.',
+        text: 'Evet. Windows için ücretsiz masaüstü sürümümüzü sitedeki dijitalerp.rar arşiviyle indirebilirsiniz; Electron tabanlı uygulamayı kurup ana modülleri offline kullanarak deneyebilirsiniz — veriler sadece bilgisayarınızda kalır. Çok kullanıcı, daha uzun güncelleme ve öncelikli destek gibi gereksinimler için Başlangıç, Profesyonel veya Kurumsal lisans paketleri satın alınır; abonelik modeli kullanılmaz.',
       },
     },
     {
       '@type': 'Question',
-      name: 'DijitalERP kimler için uygundur?',
+      name: 'Ücretsiz sürüm ile lisanslı sürüm farkı nedir?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ücretsiz dağıtılan sürüm, yazılımı tanımanız ve offline iş süreçlerini denemeniz içindir. Lisanslı paketler; kullanıcı ve bilgisayar sayısı, güncelleme süresi, E-Fatura kurulumunda öncelik ve destek seviyesi gibi ticari garantiler içerir. Önce ücretsiz indirip kullanın; sonra 0532 166 76 97 ile size uygun paketi seçin.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'DijitalERP lisans fiyatları ne kadar?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ücretsiz indirilebilir sürümün yanı sıra ticari lisans paketleri bulunur: Başlangıç 25.000 TL (1 bilgisayar), Profesyonel 35.000 TL (3 bilgisayar); ikisi de tek seferlik ödemedir, abonelik yoktur. Kurumsal paket teklifle belirlenir. Güncelleme süresi ve destek seçenekleri pakete göre değişir.',
+      },
+    },
+    {
       acceptedAnswer: {
         '@type': 'Answer',
         text: "KOBİ'ler, perakende mağazalar, toptancılar, üreticiler ve stok takibi yapan tüm işletmeler için uygundur.",
@@ -86,7 +109,7 @@ const faqSchema = {
       name: 'DijitalERP kurulumu nasıl yapılır?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: '0532 166 76 97 numarasından demo talep ettikten sonra kurulum desteği sağlanır. Tek seferlik kurulum, güncelleme zorunluluğu yoktur.',
+        text: 'Windows bilgisayarınıza dijitalerp.rar arşivini indirip klasöre çıkarın; içindeki kurulum dosyasını çalıştırarak uygulamayı yükleyin. Ek yardım için 0532 166 76 97 üzerinden destek veya ticari kullanımda paket seçimi için iletişim alabilirsiniz.',
       },
     },
   ],

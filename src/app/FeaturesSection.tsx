@@ -184,7 +184,11 @@ export default function FeaturesSection() {
           <span className="ft-kicker">Modüller</span>
           <h2 className="ft-title">DijitalERP Özellikler</h2>
           <p className="ft-subtitle">
-            KOBİ&apos;ler için tasarlanmış, kurumsal destek sunan eksiksiz stok ve cari yönetim yazılımı.
+            Önce{' '}
+            <a href="/dijitalerp.rar" download="dijitalerp.rar" className="text-blue-600 underline decoration-blue-600/40 underline-offset-2 hover:text-blue-700 font-semibold">
+              ücretsiz Windows sürümünü indirin
+            </a>
+            ; sonra stok takip ve cariyi tamamen offline yönetin. KOBİ&apos;ler için kurumsal lisans seçenekleri mevcuttur.
           </p>
         </div>
 

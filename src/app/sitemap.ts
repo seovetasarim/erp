@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const BASE = 'https://www.dijitalerp.com.tr';
+import { SITE_URL as BASE } from '../site-url';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import CookieConsentLink from './CookieConsentLink';
+import { SITE_HOST, SITE_URL } from '../site-url';
 
 const quickLinks = [
   { label: 'Ana Sayfa', href: '/' },
@@ -13,6 +14,7 @@ const quickLinks = [
 ];
 
 const urunLinks = [
+  { label: 'Ücretsiz İndir (Windows)', href: '/dijitalerp.rar' },
   { label: 'Özellikler', href: '/ozellikler' },
   { label: 'Fiyatlandırma', href: '/fiyatlandirma' },
   { label: 'SSS', href: '/sss' },
@@ -52,7 +54,7 @@ export default function Footer() {
               <img src="/logo.png" alt="DijitalERP" className="footer-mobile-logo-img" />
             </a>
             <a href="tel:+905321667697" className="footer-mobile-phone footer-mobile-hide">0532 166 76 97</a>
-            <a href="https://dijitalerp.com.tr" target="_blank" rel="noopener noreferrer" className="footer-mobile-web footer-mobile-hide">dijitalerp.com.tr</a>
+            <a href={SITE_URL} target="_blank" rel="noopener noreferrer" className="footer-mobile-web footer-mobile-hide">{SITE_HOST}</a>
           </div>
 
           {/* Accordion: Menü (5 link) */}
@@ -148,7 +150,7 @@ export default function Footer() {
       <div className="footer-desktop">
         <div className="footer-wave" aria-hidden>
           <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-            <path d="M0 40 C180 0 360 80 540 40 C720 0 900 80 1080 40 C1260 0 1380 40 1440 40 L1440 80 L0 80 Z" fill="#f8fafc"/>
+            <path d="M0 40 C180 0 360 80 540 40 C720 0 900 80 1080 40 C1260 0 1380 40 1440 40 L1440 80 L0 80 Z" fill="#f7f7f4"/>
           </svg>
         </div>
         <div className="footer-inner">
@@ -157,7 +159,9 @@ export default function Footer() {
               <a href="/" className="footer-logo">
                 <img src="/logo.png" alt="DijitalERP - Stok ve Cari Yönetim Yazılımı" className="footer-logo-img" />
               </a>
-              <p className="footer-desc">KOBİ&apos;ler için stok takibi, cari yönetimi ve E-Fatura destekli profesyonel ERP yazılımı. Tamamen offline çalışır.</p>
+              <p className="footer-desc">
+                KOBİ&apos;ler için önce <strong>ücretsiz indirilebilir Windows sürümü</strong>, ticari kullanımda lisanslı ERP: stok takibi, cari yönetimi ve E-Fatura; veriler bilgisayarınızda — offline.
+              </p>
               <div className="footer-social">
                 <a href="https://instagram.com/dijitalerp" target="_blank" rel="noopener noreferrer" className="footer-social-link" title="Instagram" aria-label="DijitalERP Instagram">
                   <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -176,6 +180,7 @@ export default function Footer() {
             <nav className="footer-nav" aria-label="Ürün">
               <h4 className="footer-nav-title">Ürün</h4>
               <ul className="footer-nav-list">
+                <li><a href="/dijitalerp.rar" download="dijitalerp.rar" title="DijitalERP — ücretsiz Windows sürümünü indir">Ücretsiz İndir</a></li>
                 <li><a href="/ozellikler" title="DijitalERP Özellikler">Özellikler</a></li>
                 <li><a href="/fiyatlandirma" title="DijitalERP Fiyatlandırma">Fiyatlandırma</a></li>
                 <li><a href="/sss" title="Sık Sorulan Sorular">SSS</a></li>
