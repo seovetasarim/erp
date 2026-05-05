@@ -265,11 +265,9 @@ export default function RootLayout({
           .hero-btns{display:flex;flex-wrap:wrap;gap:.75rem;align-items:stretch;margin-bottom:1rem}
           .hero-btns .btn-primary,.hero-btns .btn-secondary{display:flex;align-items:center;justify-content:center;gap:.5rem;min-width:0;text-align:center;transition:transform .2s,box-shadow .2s}
           .hero-btns .btn-primary:hover,.hero-btns .btn-secondary:hover{transform:translateY(-2px)}
-          @media(max-width:767px){.hero-btns{flex-wrap:wrap;gap:.5rem}.hero-btns .btn-primary,.hero-btns .btn-secondary{flex:1 1 calc(50% - .25rem);min-width:min(100%,10rem);padding:.75rem .85rem;font-size:.8125rem}}
           .hero-sub-cta{margin-top:.35rem;margin-bottom:0;text-align:inherit}
           .hero-inline-link{display:inline-flex;align-items:center;gap:.35rem;font-size:.9rem;font-weight:600;color:#2563eb;text-decoration:none}
           .hero-inline-link:hover{text-decoration:underline;color:#1d4ed8}
-          @media(max-width:767px){.hero-sub-cta{text-align:center;margin-top:.45rem}.hero-inline-link{justify-content:center}}
           /* Rozet listesi */
           .hero-badges{display:flex;flex-wrap:wrap;gap:.5rem .75rem;margin-top:.75rem;margin-bottom:1.5rem}
           .hero-badge-item{display:inline-flex;align-items:center;gap:.35rem;font-size:.75rem;font-weight:500;color:#475569;opacity:1}
@@ -296,13 +294,15 @@ export default function RootLayout({
             .hero-bg{background:var(--page-bg)}
             .hero-bg::before{opacity:1;background-size:40px 40px}
             .hero-bg::after{display:none}
-            .hero-inner{padding:0 1.125rem;gap:1.25rem;text-align:center}
-            .hero-content{display:flex;flex-direction:column;align-items:center}
-            .hero h1{white-space:normal;font-size:clamp(1.75rem,6.75vw,2.35rem);margin-bottom:.85rem;line-height:1.2;letter-spacing:.015em;font-family:'IBM Plex Sans','Inter','Segoe UI',system-ui,sans-serif}
-            .hero-accent{letter-spacing:.015em}
-            .hero-desc{font-size:.9375rem;color:#64748b;margin-bottom:1.125rem;line-height:1.65;max-width:22rem;letter-spacing:.01em}
-            .hero-btns{width:100%;max-width:20rem;flex-direction:column;gap:.6rem;margin-bottom:0}
-            .hero-btns .btn-primary,.hero-btns .btn-secondary{flex:none!important;width:100%;padding:.8rem 1rem;font-size:.875rem}
+            .hero-inner{padding:0 1.5rem;gap:1.25rem;text-align:left}
+            .hero-content{display:flex;flex-direction:column;align-items:stretch;width:100%}
+            .hero h1{white-space:normal;text-align:left;text-wrap:wrap;font-size:clamp(1.75rem,6.75vw,2.35rem);margin-bottom:.85rem;line-height:1.22;letter-spacing:.02em;font-family:'IBM Plex Sans','Inter','Segoe UI',system-ui,sans-serif}
+            .hero-line,.hero-accent{letter-spacing:.02em}
+            .hero-desc{font-size:.9375rem;color:#64748b;margin-bottom:1.125rem;line-height:1.65;max-width:none;width:100%;letter-spacing:.01em;text-align:left}
+            .hero-btns{width:100%;max-width:none;flex-direction:row;flex-wrap:nowrap;align-items:stretch;gap:.45rem;margin-bottom:.25rem}
+            .hero-btns .btn-primary,.hero-btns .btn-secondary{flex:1 1 0;min-width:0;width:auto;padding:.72rem .45rem;font-size:.78rem;line-height:1.2}
+            .hero-sub-cta{text-align:left;margin-top:.4rem}
+            .hero-inline-link{justify-content:flex-start}
             .hero-badges{display:none}
             .hero-content>.hero-anim-4{display:none}
             .hero-wave{height:2.75rem;animation-duration:.6s;animation-delay:.5s}
