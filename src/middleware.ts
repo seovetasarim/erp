@@ -1,19 +1,16 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
+import { INSTALLER_GITHUB_LATEST_DOWNLOAD_URL } from './installer-remote';
+
 /**
- * Büyük paketleri repoda/Vercel build’inde tutmak zorsa kurulum dosyasını (örn. GitHub Release) yükle ve bu env’yi doldur.
- * Ziyaretçi `/kurulum.rar` isterken sunucu 302 ile gerçek indirme adresine yönlendirir (adres çubuğu CDN/GitHub’a dönebilir).
- * Vercel: Project → Settings → Environment Variables → `KURULUM_ZIP_REDIRECT_URL`.
+ * Eski/kitaplık URL: `/kurulum.rar` → varsayılan GitHub latest indir (env ile üzerine yazılabilir).
  */
 export function middleware(request: NextRequest) {
-  const raw = process.env.KURULUM_ZIP_REDIRECT_URL?.trim();
-  if (!raw) return NextResponse.next();
+  if (request.nextUrl.pathname !== '/kurulum.rar') return NextResponse.next();
+  const raw = process.env.KURULUM_ZIP_REDIRECT_URL?.trim() || INSTALLER_GITHUB_LATEST_DOWNLOAD_URL;
   if (!isHttpsOrHttp(raw)) return NextResponse.next();
-  if (request.nextUrl.pathname === '/kurulum.rar') {
-    return NextResponse.redirect(raw, 302);
-  }
-  return NextResponse.next();
+  return NextResponse.redirect(raw, 302);
 }
 
 function isHttpsOrHttp(value: string): boolean {

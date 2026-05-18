@@ -1,19 +1,17 @@
+import { INSTALLER_ASSET_FILENAME, INSTALLER_GITHUB_LATEST_DOWNLOAD_URL } from './installer-remote';
 import { SITE_URL } from './site-url';
 
 /**
- * Varsayılan: `public/kurulum.rar` → `/kurulum.rar` (WinRAR arşivi).
- * Büyük paket için: Vercel’de `KURULUM_ZIP_REDIRECT_URL` = GitHub Release vb. doğrudan indir (+ middleware yönlendirir).
- * Ya da `NEXT_PUBLIC_DESKTOP_ARCHIVE_URL` ile tam adres.
- *
- * Sunucuda büyük/küçük harf duyarlıdır; dosya adı URL ile birebir eşleşmeli (`kurulum.rar`).
+ * Varsayılan: GitHub `latest` release’taki `kurulum.rar` — tıklayınca doğrudan indirme (Vercel env şart değil).
+ * İstersen `NEXT_PUBLIC_DESKTOP_ARCHIVE_URL` ile başka bir URL’ye geç.
  */
 function resolveDesktopArchive() {
   const raw = process.env.NEXT_PUBLIC_DESKTOP_ARCHIVE_URL?.trim();
   if (!raw) {
     return {
-      href: '/kurulum.rar' as const,
-      filename: 'kurulum.rar' as const,
-      absolute: `${SITE_URL}/kurulum.rar` as const,
+      href: INSTALLER_GITHUB_LATEST_DOWNLOAD_URL,
+      filename: INSTALLER_ASSET_FILENAME,
+      absolute: INSTALLER_GITHUB_LATEST_DOWNLOAD_URL,
     };
   }
   const href =
@@ -24,7 +22,7 @@ function resolveDesktopArchive() {
         : `/${raw}`;
   const absolute = href.startsWith('http') ? href : `${SITE_URL}${href}`;
   const segment = href.split(/[/\\]/).filter(Boolean).pop() ?? '';
-  const filename = (segment.includes('?') ? segment.split('?')[0] : segment) || 'kurulum.rar';
+  const filename = (segment.includes('?') ? segment.split('?')[0] : segment) || INSTALLER_ASSET_FILENAME;
 
   return { href, filename, absolute };
 }
