@@ -11,7 +11,7 @@ const canon = `${SITE_URL}/fiyatlandirma`;
 export const metadata: Metadata = {
   title: 'Fiyatlandırma — Ücretsiz Deneme ve ERP Lisans Paketleri',
   description:
-    "Önce DijitalERP'yi ücretsiz indirip deneyin (Windows). Lisans paketleri: Başlangıç 25.000 TL, Profesyonel 35.000 TL — tek seferlik ödeme, abonelik yok. Karşılaştırma ve teklif: 0532 166 76 97.",
+    "Önce DijitalERP'yi ücretsiz indirip deneyin (Windows). Lisans paketleri: Başlangıç 49.900 TL, Profesyonel 79.900 TL — tek seferlik ödeme, abonelik yok. Karşılaştırma ve teklif: 0532 166 76 97.",
   keywords: [
     'ücretsiz ERP indir',
     'ERP yazılımı fiyatı',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   alternates: { canonical: canon },
   openGraph: {
     title: 'DijitalERP Fiyatlandırma — Ücretsiz sürüm + lisans paketleri',
-    description: 'Ücretsiz indir, offline dene. Başlangıç 25.000 TL, Profesyonel 35.000 TL — abonelik yok.',
+    description: 'Ücretsiz indir, offline dene. Başlangıç 49.900 TL, Profesyonel 79.900 TL — abonelik yok.',
     url: canon,
   },
 };

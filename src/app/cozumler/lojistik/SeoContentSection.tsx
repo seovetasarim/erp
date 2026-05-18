@@ -12,7 +12,7 @@ export default function SeoContentSection() {
               <strong>Lojistik yazılımı</strong>, lojistik firmalarının depo, stok, kargo etiketi ve fatura yönetimini yapmasını sağlayan <strong>lojistik ERP</strong>dir. <strong>DijitalERP</strong> lojistik sektörü için: kargo etiketi (CODE128), depo takip, E-Fatura tek yazılımda. <strong>Lojistik programı</strong> ile depo ve kargo süreçleri.
             </p>
             <p>
-              <strong>Kargo etiketi</strong>, <strong>depo stok</strong>, <strong>barkod</strong>, <strong>E-Fatura</strong>. <strong>Lojistik yazılımı</strong> fiyatları 25.000 TL&apos;den başlar. Tamamen offline.
+              <strong>Kargo etiketi</strong>, <strong>depo stok</strong>, <strong>barkod</strong>, <strong>E-Fatura</strong>. <strong>Lojistik yazılımı</strong> fiyatları 49.900 TL&apos;den başlar. Tamamen offline.
             </p>
             <h3>Kimler İçin Uygundur?</h3>
             <p>

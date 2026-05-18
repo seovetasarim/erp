@@ -25,11 +25,11 @@ export default function SeoContentSection() {
               <strong>Kargo etiketi</strong> özelliği ile fatura bilgilerinizi 100×150 mm termal etikete yazdırın. <strong>CODE128 barkod</strong> ile kargo firmalarının okuma sistemlerine uyumlu. Fatura oluşturduktan sonra tek tıkla E-Fatura gönderin. <strong>Test faturası</strong> ile kurulum sonrası deneme yapın.
             </p>
             <p>
-              <strong>Tamamen offline</strong> çalışan ERP ile verileriniz bilgisayarınızda. E-Fatura gönderimi için internet gerekir, ancak fatura oluşturma ve arşivleme offline. <strong>DijitalERP</strong> KOBİ&apos;ler için profesyonel <strong>E-Fatura yazılımı</strong> çözümüdür. Fiyatlar 25.000 TL&apos;den başlar.
+              <strong>Tamamen offline</strong> çalışan ERP ile verileriniz bilgisayarınızda. E-Fatura gönderimi için internet gerekir, ancak fatura oluşturma ve arşivleme offline. <strong>DijitalERP</strong> KOBİ&apos;ler için profesyonel <strong>E-Fatura yazılımı</strong> çözümüdür. Fiyatlar 49.900 TL&apos;den başlar.
             </p>
             <h3>Demo ve Fiyat</h3>
             <p>
-              <strong>Ücretsiz demo</strong> talebi ile DijitalERP E-Fatura modülünü deneyebilirsiniz. <strong>0532 166 76 97</strong> numarasından arayın veya <strong>/demo-iste</strong> sayfasından formu doldurun. Başlangıç paketi 25.000 TL, Profesyonel 35.000 TL. Abonelik yok, süresiz kullanım.
+              <strong>Ücretsiz demo</strong> talebi ile DijitalERP E-Fatura modülünü deneyebilirsiniz. <strong>0532 166 76 97</strong> numarasından arayın veya <strong>/demo-iste</strong> sayfasından formu doldurun. Başlangıç paketi 49.900 TL, Profesyonel 79.900 TL. Abonelik yok, süresiz kullanım.
             </p>
           </article>
         </div>

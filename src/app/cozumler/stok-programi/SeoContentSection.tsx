@@ -12,7 +12,7 @@ export default function SeoContentSection() {
               <strong>Stok programı</strong>, işletmelerin ürün envanterini dijital ortamda takip etmesini sağlayan <strong>stok takip yazılımı</strong>dır. <strong>DijitalERP</strong> stok modülü ile ürün giriş-çıkış, barkod okutma, stok sayımı ve düşük stok uyarılarını tek programda yapabilirsiniz. <strong>Envanter yönetimi</strong> Excel veya kağıt yerine profesyonel <strong>stok takip programı</strong> ile.
             </p>
             <p>
-              <strong>Barkod okuyucu</strong> desteği ile hızlı ürün giriş-çıkış. <strong>Stok sayım</strong> özelliği ile periyodik envanter. <strong>Minimum stok seviyesi</strong> ile düşük stok uyarısı. <strong>Çoklu firma</strong> ile birden fazla şirketin stokunu tek programdan yönetin. <strong>Stok programı</strong> fiyatları 25.000 TL&apos;den başlar.
+              <strong>Barkod okuyucu</strong> desteği ile hızlı ürün giriş-çıkış. <strong>Stok sayım</strong> özelliği ile periyodik envanter. <strong>Minimum stok seviyesi</strong> ile düşük stok uyarısı. <strong>Çoklu firma</strong> ile birden fazla şirketin stokunu tek programdan yönetin. <strong>Stok programı</strong> fiyatları 49.900 TL&apos;den başlar.
             </p>
             <h3>Kimler İçin Uygundur?</h3>
             <p>

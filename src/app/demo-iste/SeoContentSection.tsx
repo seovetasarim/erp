@@ -25,7 +25,7 @@ export default function SeoContentSection() {
               <strong>ERP yazılımı</strong> seçmeden önce demo ile yazılımı test etmek önemlidir. DijitalERP <strong>tamamen offline</strong> çalışır, verileriniz kendi bilgisayarınızda kalır. <strong>Stok programı</strong>, <strong>fatura yazılımı</strong> ve <strong>E-Fatura</strong> entegrasyonunu demo sırasında inceleyebilirsiniz.
             </p>
             <p>
-              <strong>Ücretsiz demo</strong> ile risk almadan karar verebilirsiniz. Başlangıç 25.000 TL, Profesyonel 35.000 TL fiyatlarıyla <strong>KOBİ ERP</strong> çözümü sunuyoruz. <strong>7/24 destek</strong> Kurumsal pakette mevcuttur. Hemen formu doldurun veya arayın.
+              <strong>Ücretsiz demo</strong> ile risk almadan karar verebilirsiniz. Başlangıç 49.900 TL, Profesyonel 79.900 TL fiyatlarıyla <strong>KOBİ ERP</strong> çözümü sunuyoruz. <strong>7/24 destek</strong> Kurumsal pakette mevcuttur. Hemen formu doldurun veya arayın.
             </p>
             <h3>İletişim ve Destek</h3>
             <p>

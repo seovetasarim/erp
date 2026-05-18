@@ -12,7 +12,7 @@ export default function SeoContentSection() {
               <strong>Excel export</strong>, ERP yazılımlarından verilerin Excel formatına dışa aktarılmasıdır. <strong>DijitalERP</strong> tüm raporlarda Excel export özelliği sunar. Stok hareket raporu, cari bakiye, fatura listesi ve kategori dağılımı gibi raporları tek tıkla <strong>Excel&apos;e aktar</strong>abilirsiniz. <strong>Excel dışa aktarma</strong> ile muhasebe yazılımlarına veri aktarımı veya Excel&apos;de analiz yapabilirsiniz.
             </p>
             <p>
-              <strong>XLSX formatı</strong> ile Excel uyumlu dosyalar. <strong>Tarih aralığı</strong> ve <strong>firma bazlı</strong> filtreleme ile istediğiniz veriyi dışa aktarın. <strong>Excel export</strong> özelliği tüm DijitalERP paketlerinde dahildir. Fiyatlar 25.000 TL&apos;den başlar.
+              <strong>XLSX formatı</strong> ile Excel uyumlu dosyalar. <strong>Tarih aralığı</strong> ve <strong>firma bazlı</strong> filtreleme ile istediğiniz veriyi dışa aktarın. <strong>Excel export</strong> özelliği tüm DijitalERP paketlerinde dahildir. Fiyatlar 49.900 TL&apos;den başlar.
             </p>
             <h3>Kimler İçin Uygundur?</h3>
             <p>

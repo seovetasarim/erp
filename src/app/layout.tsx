@@ -4,6 +4,11 @@ import Header from "./Header";
 import CookieConsent from "./CookieConsent";
 import WhatsAppButton from "./WhatsAppButton";
 import { SITE_URL } from "../site-url";
+import { DESKTOP_ARCHIVE_ABSOLUTE_URL } from "../download";
+import {
+  LIST_PRICE_BASLANGIC_SCHEMA,
+  LIST_PRICE_PROFESYONEL_SCHEMA,
+} from "../pricing";
 
 const BASE_URL = SITE_URL;
 
@@ -129,24 +134,24 @@ export default function RootLayout({
               "operatingSystem": "Windows",
               "url": SITE_URL,
               "description": "Ücretsiz indirilebilir Windows masaüstü ERP sürümü ve lisanslı KOBİ paketleri. Stok takip, cari, fatura, E-Fatura, kasa — tamamen offline.",
-              "downloadUrl": `${SITE_URL}/dijitalerp.rar`,
+              "downloadUrl": DESKTOP_ARCHIVE_ABSOLUTE_URL,
               "offers": [
                 {
                   "@type": "Offer",
                   "price": "0",
                   "priceCurrency": "TRY",
                   "name": "Ücretsiz Windows masaüstü sürümü — indir",
-                  "url": `${SITE_URL}/dijitalerp.rar`
+                  "url": DESKTOP_ARCHIVE_ABSOLUTE_URL
                 },
                 {
                   "@type": "Offer",
-                  "price": "25000",
+                  "price": LIST_PRICE_BASLANGIC_SCHEMA,
                   "priceCurrency": "TRY",
                   "name": "Başlangıç Paketi — lisans"
                 },
                 {
                   "@type": "Offer",
-                  "price": "35000",
+                  "price": LIST_PRICE_PROFESYONEL_SCHEMA,
                   "priceCurrency": "TRY",
                   "name": "Profesyonel Paketi — lisans"
                 }
@@ -244,8 +249,8 @@ export default function RootLayout({
           .hero-anim{opacity:0}
           .hero-anim-1{clip-path:inset(0 100% 0 0);animation:heroTitleIn 1s cubic-bezier(.22,1,.36,1) .2s forwards}
           @keyframes heroTitleIn{to{opacity:1;clip-path:inset(0 0% 0 0)}}
-          .hero-anim-2{transform:translateY(24px);filter:blur(4px);animation:heroDescIn .9s ease-out .5s forwards}
-          @keyframes heroDescIn{to{opacity:1;transform:translateY(0);filter:blur(0)}}
+          .hero-anim-2{transform:translateY(12px);filter:none;animation:heroDescIn .9s ease-out .5s forwards}
+          @keyframes heroDescIn{to{opacity:1;transform:translateY(0)}}
           .hero-anim-3{transform:translateY(16px);animation:heroBtnsIn .8s ease-out .7s forwards}
           @keyframes heroBtnsIn{to{opacity:1;transform:translateY(0)}}
           .hero-anim-4{transform:translateY(20px);animation:heroStatsIn .8s ease-out .9s forwards}
@@ -255,12 +260,11 @@ export default function RootLayout({
           @keyframes kickerPop{from{opacity:0;transform:translateY(-8px) scale(.95)}to{opacity:1;transform:none}}
           .hero-kicker-dot{width:7px;height:7px;border-radius:50%;background:#3b82f6;box-shadow:0 0 8px #3b82f6;animation:dotPulse 1.8s ease-in-out infinite}
           @keyframes dotPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.8)}}
-          /* Başlık — IBM Plex Sans (kurumsal) */
-          .hero h1{font-family:'IBM Plex Sans','Inter','Segoe UI',system-ui,sans-serif;font-size:clamp(1.65rem,5.35vw,3.85rem);font-weight:600;margin-bottom:1.25rem;line-height:1.2;letter-spacing:.015em;white-space:normal;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;font-feature-settings:'kern' 1,'liga' 1;font-variant-ligatures:common-ligatures;text-wrap:balance}
-          .hero-line{display:inline;color:#475569;font-weight:500;letter-spacing:.015em}
-          .hero-accent{display:inline;color:#0f172a;font-weight:700;letter-spacing:.015em}
-          .hero-desc{font-size:1.0625rem;color:#64748b;max-width:28rem;margin-bottom:1.75rem;line-height:1.75;letter-spacing:.01em;font-family:'IBM Plex Sans','Inter','Segoe UI',system-ui,sans-serif}
-          @media(min-width:768px){.hero-desc{font-size:1.125rem}}
+          /* Hero tipografi — tek aile / tek renk düzeni (kurumsal) */
+          .hero-title,.hero h1{font-family:'IBM Plex Sans','Inter','Segoe UI',system-ui,sans-serif;font-size:clamp(1.65rem,5.35vw,3.35rem);font-weight:500;margin-bottom:1.125rem;line-height:1.22;letter-spacing:-.022em;color:#18181b;white-space:normal;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;font-feature-settings:'kern' 1,'liga' 1;font-variant-ligatures:common-ligatures;text-wrap:balance}
+          .hero-title-strong{font-weight:600;color:inherit;letter-spacing:inherit}
+          .hero-desc{font-size:1rem;color:#52525b;max-width:30rem;margin-bottom:1.75rem;line-height:1.72;letter-spacing:-.011em;font-weight:400;font-family:'IBM Plex Sans','Inter','Segoe UI',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+          @media(min-width:768px){.hero-desc{font-size:1.0625rem;line-height:1.7}}
           /* Butonlar */
           .hero-btns{display:flex;flex-wrap:wrap;gap:.75rem;align-items:stretch;margin-bottom:1rem}
           .hero-btns .btn-primary,.hero-btns .btn-secondary{display:flex;align-items:center;justify-content:center;gap:.5rem;min-width:0;text-align:center;transition:transform .2s,box-shadow .2s}
@@ -270,8 +274,8 @@ export default function RootLayout({
           .hero-inline-link:hover{text-decoration:underline;color:#1d4ed8}
           /* Rozet listesi */
           .hero-badges{display:flex;flex-wrap:wrap;gap:.5rem .75rem;margin-top:.75rem;margin-bottom:1.5rem}
-          .hero-badge-item{display:inline-flex;align-items:center;gap:.35rem;font-size:.75rem;font-weight:500;color:#475569;opacity:1}
-          .hero-badge-item svg{color:#475569;flex-shrink:0}
+          .hero-badge-item{display:inline-flex;align-items:center;gap:.35rem;font-size:.75rem;font-weight:500;color:#52525b;opacity:1}
+          .hero-badge-item svg{color:#52525b;flex-shrink:0}
           .btn-primary{display:inline-flex;align-items:center;gap:.5rem}
           .hero-stats{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;gap:.5rem;padding-top:1.5rem;border-top:1px solid rgba(15,23,42,.08)}
           @media(min-width:480px){.hero-stats{grid-template-columns:1fr auto 1fr auto 1fr;gap:1rem}}
@@ -290,22 +294,22 @@ export default function RootLayout({
           @keyframes heroWaveIn{to{opacity:1;transform:translateY(0)}}
           .hero-wave svg{width:100%;height:100%;display:block;vertical-align:middle}
           @media(max-width:767px){
-            .hero{padding-top:clamp(5.75rem,14vw,6.75rem);padding-bottom:2.75rem}
+            .hero{padding-top:clamp(7rem,28vw,8.75rem);padding-bottom:1.75rem}
             .hero-bg{background:var(--page-bg)}
             .hero-bg::before{opacity:1;background-size:40px 40px}
             .hero-bg::after{display:none}
             .hero-inner{padding:0 1.5rem;gap:1.25rem;text-align:left}
             .hero-content{display:flex;flex-direction:column;align-items:stretch;width:100%}
-            .hero h1{white-space:normal;text-align:left;text-wrap:wrap;font-size:clamp(1.75rem,6.75vw,2.35rem);margin-bottom:.85rem;line-height:1.22;letter-spacing:.02em;font-family:'IBM Plex Sans','Inter','Segoe UI',system-ui,sans-serif}
-            .hero-line,.hero-accent{letter-spacing:.02em}
-            .hero-desc{font-size:.9375rem;color:#64748b;margin-bottom:1.125rem;line-height:1.65;max-width:none;width:100%;letter-spacing:.01em;text-align:left}
+            .hero-title,.hero h1{white-space:normal;text-align:left;text-wrap:wrap;font-size:clamp(1.65rem,6vw,2.25rem);margin-bottom:.75rem;line-height:1.2;letter-spacing:-.02em;color:#18181b;font-weight:500}
+            .hero-title-strong{font-weight:600}
+            .hero-desc{font-size:.9375rem;color:#52525b;margin-bottom:1.125rem;line-height:1.68;max-width:none;width:100%;letter-spacing:-.01em;font-weight:400;text-align:left}
             .hero-btns{width:100%;max-width:none;flex-direction:row;flex-wrap:nowrap;align-items:stretch;gap:.45rem;margin-bottom:.25rem}
             .hero-btns .btn-primary,.hero-btns .btn-secondary{flex:1 1 0;min-width:0;width:auto;padding:.72rem .45rem;font-size:.78rem;line-height:1.2}
             .hero-sub-cta{text-align:left;margin-top:.4rem}
             .hero-inline-link{justify-content:flex-start}
             .hero-badges{display:none}
             .hero-content>.hero-anim-4{display:none}
-            .hero-wave{height:2.75rem;animation-duration:.6s;animation-delay:.5s}
+            .hero-wave{height:2rem;animation-duration:.6s;animation-delay:.5s}
             .hero-anim-1{clip-path:none;animation:heroMobileFade .5s ease-out .1s forwards}
             .hero-anim-2,.hero-anim-3,.hero-anim-4{animation:heroMobileFade .45s ease-out forwards}
             .hero-anim-2{animation-delay:.2s;filter:none}
@@ -329,6 +333,7 @@ export default function RootLayout({
           .section-features .section-inner{background:var(--page-bg)}
           .ft-section{background:var(--page-bg);margin-top:-1px;padding:5rem 1.5rem 6rem;border-top:1px solid rgba(15,23,42,.06)}
           @media(min-width:768px){.ft-section{padding:6rem 1.5rem 7rem}}
+          @media(max-width:767px){.ft-section{padding:2.25rem 1.5rem 4.5rem}.ft-section .ft-header{margin-bottom:2rem}}
           .ft-inner{max-width:80rem;margin:0 auto}
           .ft-header{text-align:left;margin-bottom:3rem}
           .ft-kicker{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#3b82f6;margin-bottom:.75rem}
@@ -393,7 +398,10 @@ export default function RootLayout({
           .pr-kicker{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#3b82f6;margin-bottom:.75rem}
           .pr-title{font-size:1.875rem;font-weight:800;color:#0f172a;margin:0 0 .75rem;letter-spacing:-.03em}
           @media(min-width:768px){.pr-title{font-size:2.5rem}}
-          .pr-subtitle{font-size:1rem;color:#64748b;max-width:38rem;margin:0;line-height:1.65}
+          .pr-subtitle{font-size:1rem;color:#64748b;max-width:44rem;margin:0;line-height:1.65}
+          .pr-value-note{margin:0 0 2rem;padding:1.1rem 1.25rem;background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.18);border-radius:12px;max-width:44rem}
+          .pr-value-note p{margin:0;font-size:.9rem;line-height:1.65;color:#475569}
+          .pr-value-note strong{color:#1e40af;font-weight:600}
           .pr-cards{display:grid;grid-template-columns:1fr;gap:0;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;margin-bottom:4rem}
           @media(min-width:768px){.pr-cards{grid-template-columns:repeat(3,1fr)}}
           .pr-card{position:relative;padding:2rem 1.75rem;display:flex;flex-direction:column;border-right:1px solid #e2e8f0;background:var(--page-bg)}
@@ -630,10 +638,12 @@ export default function RootLayout({
           .anim-features.animate-visible .feature-card{opacity:1;transform:translateY(0)}
           .anim-pricing{opacity:1}
           .anim-pricing .pr-header{opacity:0;transform:translateY(30px) scale(.97);transition:opacity .85s cubic-bezier(.22,1,.36,1),transform .85s cubic-bezier(.22,1,.36,1)}
+          .anim-pricing .pr-value-note{opacity:0;transform:translateY(16px);transition:opacity .75s cubic-bezier(.22,1,.36,1) .08s,transform .75s cubic-bezier(.22,1,.36,1) .08s}
           .anim-pricing .pr-cards{opacity:0;transform:translateY(0) scaleY(.92);transform-origin:top center;transition:opacity .9s cubic-bezier(.22,1,.36,1) .2s,transform .9s cubic-bezier(.22,1,.36,1) .2s}
           .anim-pricing .pr-table-wrap{opacity:0;transform:translateX(50px);transition:opacity .9s cubic-bezier(.22,1,.36,1) .35s,transform .9s cubic-bezier(.22,1,.36,1) .35s}
           .anim-pricing .section-header{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
           .anim-pricing.animate-visible .pr-header{opacity:1;transform:translateY(0) scale(1)}
+          .anim-pricing.animate-visible .pr-value-note{opacity:1;transform:translateY(0)}
           .anim-pricing.animate-visible .pr-cards{opacity:1;transform:translateY(0) scaleY(1)}
           .anim-pricing.animate-visible .pr-table-wrap{opacity:1;transform:translateX(0)}
           .anim-pricing.animate-visible .section-header{opacity:1;transform:translateY(0)}

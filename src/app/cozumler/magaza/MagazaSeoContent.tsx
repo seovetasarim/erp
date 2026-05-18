@@ -12,7 +12,7 @@ export default function MagazaSeoContent() {
               <strong>Mağaza yazılımı</strong>, mağazaların stok takip, satış, kasa ve fatura işlemlerini yönetmesini sağlayan <strong>mağaza stok takip</strong> programıdır. <strong>DijitalERP</strong> mağazalar için: barkod okuyucu, stok sayımı, kasa modülü ve E-Fatura tek yazılımda. <strong>Mağaza ERP</strong> ile satış noktası yönetimi.
             </p>
             <p>
-              <strong>Mağaza stok takip</strong>, <strong>barkod</strong>, <strong>kasa</strong>, <strong>E-Fatura</strong>. <strong>Mağaza yazılımı</strong> fiyatları 25.000 TL&apos;den başlar. Tamamen offline.
+              <strong>Mağaza stok takip</strong>, <strong>barkod</strong>, <strong>kasa</strong>, <strong>E-Fatura</strong>. <strong>Mağaza yazılımı</strong> fiyatları 49.900 TL&apos;den başlar. Tamamen offline.
             </p>
             <h3>Kimler İçin Uygundur?</h3>
             <p>

@@ -12,7 +12,7 @@ export default function SeoContentSection() {
               <strong>Raporlar modülü</strong>, ERP yazılımlarındaki stok, cari ve fatura verilerini raporlayan <strong>raporlama yazılımı</strong>dır. <strong>DijitalERP</strong> raporlar modülü ile aylık hareket, kategori dağılımı, günlük hareket ve en çok hareket eden ürünler gibi raporları tek tıkla alabilirsiniz. <strong>Excel export</strong> ile tüm raporları Excel&apos;e aktarın.
             </p>
             <p>
-              <strong>Dashboard</strong> ile özet istatistikler tek ekranda. <strong>Grafikler</strong> ile görsel analiz. <strong>Firma bazlı</strong> raporlama – çoklu firma desteği. <strong>Raporlar modülü</strong> fiyatları 25.000 TL&apos;den başlar.
+              <strong>Dashboard</strong> ile özet istatistikler tek ekranda. <strong>Grafikler</strong> ile görsel analiz. <strong>Firma bazlı</strong> raporlama – çoklu firma desteği. <strong>Raporlar modülü</strong> fiyatları 49.900 TL&apos;den başlar.
             </p>
             <h3>Kimler İçin Uygundur?</h3>
             <p>

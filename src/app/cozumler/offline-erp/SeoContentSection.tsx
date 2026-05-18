@@ -25,11 +25,11 @@ export default function SeoContentSection() {
               <strong>Veri gizliliği</strong> – Müşteri, stok ve fatura bilgileriniz üçüncü tarafla paylaşılmaz. <strong>Abonelik yok</strong> – Tek seferlik ödeme ile süresiz kullanım. <strong>Kesintisiz çalışma</strong> – İnternet kopması işinizi durdurmaz. <strong>Hızlı erişim</strong> – Yerel veritabanı buluttan daha hızlı.
             </p>
             <p>
-              <strong>DijitalERP</strong> KOBİ&apos;ler için profesyonel <strong>offline ERP</strong> çözümüdür. Stok takip, cari yönetim, E-Fatura tek yazılımda. Fiyatlar 25.000 TL&apos;den başlar. <strong>Veritabanı yedekleme</strong> ile verilerinizi güvende tutun.
+              <strong>DijitalERP</strong> KOBİ&apos;ler için profesyonel <strong>offline ERP</strong> çözümüdür. Stok takip, cari yönetim, E-Fatura tek yazılımda. Fiyatlar 49.900 TL&apos;den başlar. <strong>Veritabanı yedekleme</strong> ile verilerinizi güvende tutun.
             </p>
             <h3>Demo ve Fiyat</h3>
             <p>
-              <strong>Ücretsiz demo</strong> talebi ile DijitalERP offline modülünü deneyebilirsiniz. <strong>0532 166 76 97</strong> numarasından arayın veya <strong>/demo-iste</strong> sayfasından formu doldurun. Başlangıç paketi 25.000 TL, Profesyonel 35.000 TL. Abonelik yok, süresiz kullanım.
+              <strong>Ücretsiz demo</strong> talebi ile DijitalERP offline modülünü deneyebilirsiniz. <strong>0532 166 76 97</strong> numarasından arayın veya <strong>/demo-iste</strong> sayfasından formu doldurun. Başlangıç paketi 49.900 TL, Profesyonel 79.900 TL. Abonelik yok, süresiz kullanım.
             </p>
           </article>
         </div>

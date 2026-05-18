@@ -1,7 +1,6 @@
-import { Phone, Download, ArrowRight, CheckCircle2, Zap, Shield, BarChart3 } from 'lucide-react';
+import { ShoppingCart, Download, ArrowRight, CheckCircle2, Zap, Shield, BarChart3 } from 'lucide-react';
 import HeroStats from './HeroStats';
-
-const DESKTOP_ARCHIVE_HREF = '/dijitalerp.rar';
+import { DESKTOP_ARCHIVE_FILENAME, DESKTOP_ARCHIVE_HREF } from '../download';
 
 const badges = [
   { icon: CheckCircle2, text: 'Ücretsiz masaüstü sürümü' },
@@ -21,27 +20,26 @@ export default function Hero() {
         <div className="hero-content">
 
           {/* Başlık */}
-          <h1 className="hero-anim hero-anim-1">
-            <span className="hero-line">İşletmenizi </span><span className="hero-accent">Dijitalleştirin</span>
+          <h1 className="hero-anim hero-anim-1 hero-title">
+            İşletmenizi <span className="hero-title-strong">Dijitalleştirin</span>
           </h1>
 
           {/* Açıklama */}
           <p className="hero-desc hero-anim hero-anim-2">
-            <strong>Ücretsiz Windows sürümünü indirerek</strong> stok takibi, cari yönetimi, fatura ve
-            raporlamayı tek yazılımda deneyin.
-            Verileriniz <strong>bilgisayarınızda</strong> kalır; sunucu için internet gerekmez.
+            Ücretsiz Windows sürümünü indirerek stok takibi, cari yönetimi, fatura ve raporlamayı tek
+            yazılımda deneyin. Verileriniz bilgisayarınızda kalır; sunucu için internet gerekmez.
           </p>
 
           {/* CTA butonları */}
           <div className="hero-btns hero-anim hero-anim-3">
-            <a href={DESKTOP_ARCHIVE_HREF} className="btn-primary" download="dijitalerp.rar">
+            <a href={DESKTOP_ARCHIVE_HREF} className="btn-primary" download={DESKTOP_ARCHIVE_FILENAME}>
               <Download size={18} strokeWidth={2.5} />
               <span className="sm:hidden">Ücretsiz İndir</span>
               <span className="hidden sm:inline">Ücretsiz İndir (Windows)</span>
             </a>
-            <a href="tel:+905321667697" className="btn-secondary">
-              <Phone size={18} strokeWidth={2.5} />
-              Demo İste
+            <a href="/fiyatlandirma" className="btn-secondary">
+              <ShoppingCart size={18} strokeWidth={2.5} />
+              Satın Al
             </a>
           </div>
           <p className="hero-anim hero-anim-3 hero-sub-cta">

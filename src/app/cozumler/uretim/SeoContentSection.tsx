@@ -12,7 +12,7 @@ export default function SeoContentSection() {
               <strong>Üretim ERP</strong>, üreticilerin hammadde stok, mamul stok, cari ve fatura yönetimini yapmasını sağlayan <strong>üretici yazılımı</strong>dır. <strong>DijitalERP</strong> üretim sektörü için: stok takip, tedarikçi yönetimi, E-Fatura tek yazılımda. <strong>Üretim yazılımı</strong> ile hammadde ve mamul takibi.
             </p>
             <p>
-              <strong>Stok takip</strong>, <strong>cari yönetim</strong>, <strong>fatura</strong>, <strong>E-Fatura</strong>. <strong>Üretim ERP</strong> fiyatları 25.000 TL&apos;den başlar. Tamamen offline.
+              <strong>Stok takip</strong>, <strong>cari yönetim</strong>, <strong>fatura</strong>, <strong>E-Fatura</strong>. <strong>Üretim ERP</strong> fiyatları 49.900 TL&apos;den başlar. Tamamen offline.
             </p>
             <h3>Kimler İçin Uygundur?</h3>
             <p>

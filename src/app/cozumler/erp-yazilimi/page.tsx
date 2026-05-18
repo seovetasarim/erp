@@ -7,12 +7,12 @@ import Footer from '../../Footer';
 
 export const metadata: Metadata = {
   title: 'ERP Yazılımı | DijitalERP — Offline KOBİ ERP Programı',
-  description: 'DijitalERP ERP yazılımı: Stok, cari, fatura, E-Fatura, kasa, raporlar tek yazılımda. KOBİ\'ler için offline ERP programı. 25.000 TL\'den başlayan fiyatlar.',
+  description: 'DijitalERP ERP yazılımı: Stok, cari, fatura, E-Fatura, kasa, raporlar tek yazılımda. KOBİ\'ler için offline ERP programı. 49.900 TL\'den başlayan fiyatlar.',
   keywords: ['ERP yazılımı', 'KOBİ ERP', 'offline ERP', 'ERP programı', 'kurumsal kaynak planlama', 'stok cari fatura'],
   alternates: { canonical: 'https://www.dijitalerp.com.tr/cozumler/erp-yazilimi' },
   openGraph: {
     title: 'ERP Yazılımı | DijitalERP — Offline KOBİ ERP Programı',
-    description: 'DijitalERP ERP yazılımı: Stok, cari, fatura, E-Fatura, kasa, raporlar tek yazılımda. KOBİ\'ler için offline ERP programı. 25.000 TL\'den başlayan fiyatlar.',
+    description: 'DijitalERP ERP yazılımı: Stok, cari, fatura, E-Fatura, kasa, raporlar tek yazılımda. KOBİ\'ler için offline ERP programı. 49.900 TL\'den başlayan fiyatlar.',
     url: 'https://www.dijitalerp.com.tr/cozumler/erp-yazilimi',
   },
 };

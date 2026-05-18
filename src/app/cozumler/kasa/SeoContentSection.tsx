@@ -12,7 +12,7 @@ export default function SeoContentSection() {
               <strong>Kasa modülü</strong>, işletmelerin nakit giriş-çıkış işlemlerini dijital ortamda takip etmesini sağlayan <strong>kasa programı</strong>dır. <strong>DijitalERP</strong> kasa modülü ile nakit hareketleri, bakiye takibi ve kasa raporlarını tek yazılımda yapabilirsiniz. <strong>Kasa yönetimi</strong> defter veya Excel yerine profesyonel <strong>kasa modülü</strong> ile.
             </p>
             <p>
-              <strong>Kasa giriş/çıkış</strong> ile nakit hareketlerini kaydedin. <strong>Bakiye takibi</strong> ile anlık kasa durumunu görün. <strong>Cari entegrasyonu</strong> ile tahsilat ve ödemeler otomatik kasa hareketi oluşturur. <strong>Kasa modülü</strong> fiyatları 25.000 TL&apos;den başlar.
+              <strong>Kasa giriş/çıkış</strong> ile nakit hareketlerini kaydedin. <strong>Bakiye takibi</strong> ile anlık kasa durumunu görün. <strong>Cari entegrasyonu</strong> ile tahsilat ve ödemeler otomatik kasa hareketi oluşturur. <strong>Kasa modülü</strong> fiyatları 49.900 TL&apos;den başlar.
             </p>
             <h3>Kimler İçin Uygundur?</h3>
             <p>

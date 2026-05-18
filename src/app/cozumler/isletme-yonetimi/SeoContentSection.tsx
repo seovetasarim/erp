@@ -12,7 +12,7 @@ export default function SeoContentSection() {
               <strong>İşletme yönetim sistemi</strong>, KOBİ&apos;lerin günlük operasyonlarını (stok, cari, fatura, kasa, raporlar) tek yazılımda yönetmesini sağlayan <strong>işletme yönetim programı</strong>dır. <strong>DijitalERP</strong> KOBİ&apos;ler için tasarlanmış, bütçe dostu bir <strong>işletme yazılımı</strong>dır. Büyük ERP sistemlerinin karmaşıklığı yerine, KOBİ ihtiyaçlarına odaklı modüller sunar.
             </p>
             <p>
-              <strong>İşletme yönetim sistemi</strong> ile stok takip, cari yönetim, fatura kesimi, E-Fatura ve raporlama tek programda. <strong>Çoklu firma</strong> desteği ile birden fazla şirketi yönetin. <strong>Barkod</strong> okuyucu, <strong>stok sayımı</strong>, <strong>düşük stok uyarısı</strong> ve <strong>Excel export</strong> dahil. <strong>İşletme yönetim programı</strong> fiyatları 25.000 TL&apos;den başlar.
+              <strong>İşletme yönetim sistemi</strong> ile stok takip, cari yönetim, fatura kesimi, E-Fatura ve raporlama tek programda. <strong>Çoklu firma</strong> desteği ile birden fazla şirketi yönetin. <strong>Barkod</strong> okuyucu, <strong>stok sayımı</strong>, <strong>düşük stok uyarısı</strong> ve <strong>Excel export</strong> dahil. <strong>İşletme yönetim programı</strong> fiyatları 49.900 TL&apos;den başlar.
             </p>
             <h3>Kimler İçin Uygundur?</h3>
             <p>
@@ -22,7 +22,7 @@ export default function SeoContentSection() {
           <article className="seo-col">
             <h3>Offline ve Tek Seferlik Ödeme</h3>
             <p>
-              <strong>Tamamen offline</strong> çalışan <strong>işletme yönetim sistemi</strong> ile verileriniz bilgisayarınızda. İnternet gerektirmez (E-Fatura hariç). <strong>Abonelik yok</strong>, tek seferlik ödeme ile süresiz kullanım. Başlangıç 25.000 TL, Profesyonel 35.000 TL.
+              <strong>Tamamen offline</strong> çalışan <strong>işletme yönetim sistemi</strong> ile verileriniz bilgisayarınızda. İnternet gerektirmez (E-Fatura hariç). <strong>Abonelik yok</strong>, tek seferlik ödeme ile süresiz kullanım. Başlangıç 49.900 TL, Profesyonel 79.900 TL.
             </p>
             <p>
               <strong>Kurumsal destek</strong> ile kurulum ve eğitim. <strong>DijitalERP</strong> profesyonel <strong>işletme yönetim sistemi</strong> çözümüdür. Stok takip, cari yönetim, E-Fatura tek yazılımda. <strong>0532 166 76 97</strong> numarasından arayın veya <strong>/demo-iste</strong> sayfasından ücretsiz demo talep edin.

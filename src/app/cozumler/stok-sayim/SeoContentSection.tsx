@@ -12,7 +12,7 @@ export default function SeoContentSection() {
               <strong>Stok sayım</strong>, işletmelerin depodaki veya mağazadaki ürün miktarlarını fiziksel olarak sayıp sistemdeki stok bilgisiyle karşılaştırmasıdır. <strong>DijitalERP</strong> stok sayım özelliği ile sayım yapın, farkları görün ve sisteme uygulayın. <strong>Stok sayım programı</strong> Excel veya kağıt yerine profesyonel <strong>envanter sayım yazılımı</strong> ile.
             </p>
             <p>
-              <strong>Barkod okuyucu</strong> ile hızlı sayım – barkod okutun, miktar girin. <strong>Fark uygulama</strong> ile sayım sonuçlarını stoka yansıtın. <strong>Firma bazlı</strong> sayım – çoklu firma desteği. <strong>Stok sayım programı</strong> fiyatları 25.000 TL&apos;den başlar.
+              <strong>Barkod okuyucu</strong> ile hızlı sayım – barkod okutun, miktar girin. <strong>Fark uygulama</strong> ile sayım sonuçlarını stoka yansıtın. <strong>Firma bazlı</strong> sayım – çoklu firma desteği. <strong>Stok sayım programı</strong> fiyatları 49.900 TL&apos;den başlar.
             </p>
             <h3>Kimler İçin Uygundur?</h3>
             <p>

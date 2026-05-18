@@ -25,11 +25,11 @@ export default function SeoContentSection() {
               <strong>Kasa modülü</strong> ile nakit giriş-çıkış işlemlerini kaydedin. <strong>Tahsilat</strong> ve ödeme kayıtları cari hesaplarla otomatik eşleşir. <strong>Bakiye raporları</strong> ile hangi müşteriden ne kadar alacak, hangi tedarikçiye ne kadar borç olduğunu görün. <strong>Excel export</strong> ile raporları dışa aktarın.
             </p>
             <p>
-              <strong>Tamamen offline</strong> çalışan <strong>cari yazılımı</strong> ile verileriniz bilgisayarınızda güvende kalır. İnternet bağlantısı gerektirmez. <strong>DijitalERP</strong> KOBİ&apos;ler için profesyonel <strong>cari hesap yazılımı</strong> çözümüdür. <strong>Cari program</strong> fiyatları 25.000 TL&apos;den başlar, tek seferlik ödeme.
+              <strong>Tamamen offline</strong> çalışan <strong>cari yazılımı</strong> ile verileriniz bilgisayarınızda güvende kalır. İnternet bağlantısı gerektirmez. <strong>DijitalERP</strong> KOBİ&apos;ler için profesyonel <strong>cari hesap yazılımı</strong> çözümüdür. <strong>Cari program</strong> fiyatları 49.900 TL&apos;den başlar, tek seferlik ödeme.
             </p>
             <h3>Demo ve Fiyat</h3>
             <p>
-              <strong>Ücretsiz demo</strong> talebi ile DijitalERP cari modülünü deneyebilirsiniz. <strong>0532 166 76 97</strong> numarasından arayın veya <strong>/demo-iste</strong> sayfasından formu doldurun. Başlangıç paketi 25.000 TL, Profesyonel 35.000 TL. Abonelik yok, süresiz kullanım.
+              <strong>Ücretsiz demo</strong> talebi ile DijitalERP cari modülünü deneyebilirsiniz. <strong>0532 166 76 97</strong> numarasından arayın veya <strong>/demo-iste</strong> sayfasından formu doldurun. Başlangıç paketi 49.900 TL, Profesyonel 79.900 TL. Abonelik yok, süresiz kullanım.
             </p>
           </article>
         </div>

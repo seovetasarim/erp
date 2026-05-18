@@ -25,11 +25,11 @@ export default function SeoContentSection() {
               <strong>Kargo etiketi</strong> özelliği ile fatura bilgilerinizi 100×150 mm termal etikete yazdırın. <strong>CODE128 barkod</strong> ile kargo firmalarına uyumlu. <strong>Cari entegrasyonu</strong> ile her fatura alacak/borç bakiyesini günceller. <strong>Stok entegrasyonu</strong> ile satış faturası stoktan düşer.
             </p>
             <p>
-              <strong>Tamamen offline</strong> fatura oluşturma – internet gerektirmez. E-Fatura gönderimi için internet gerekir. <strong>Fatura arşivi</strong> ile geçmiş faturaları görüntüleyin. <strong>DijitalERP</strong> <strong>fatura programı</strong> fiyatları 25.000 TL&apos;den başlar, tek seferlik ödeme.
+              <strong>Tamamen offline</strong> fatura oluşturma – internet gerektirmez. E-Fatura gönderimi için internet gerekir. <strong>Fatura arşivi</strong> ile geçmiş faturaları görüntüleyin. <strong>DijitalERP</strong> <strong>fatura programı</strong> fiyatları 49.900 TL&apos;den başlar, tek seferlik ödeme.
             </p>
             <h3>Demo ve Fiyat</h3>
             <p>
-              <strong>Ücretsiz demo</strong> talebi ile DijitalERP fatura modülünü deneyebilirsiniz. <strong>0532 166 76 97</strong> numarasından arayın veya <strong>/demo-iste</strong> sayfasından formu doldurun. Başlangıç paketi 25.000 TL, Profesyonel 35.000 TL. Abonelik yok, süresiz kullanım.
+              <strong>Ücretsiz demo</strong> talebi ile DijitalERP fatura modülünü deneyebilirsiniz. <strong>0532 166 76 97</strong> numarasından arayın veya <strong>/demo-iste</strong> sayfasından formu doldurun. Başlangıç paketi 49.900 TL, Profesyonel 79.900 TL. Abonelik yok, süresiz kullanım.
             </p>
           </article>
         </div>

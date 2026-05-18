@@ -3,9 +3,7 @@
 import { Menu, X, PhoneCall, ChevronDown, ChevronRight, Download } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-
-/** Masaüstü paket: `public/dijitalerp.rar` — değiştirirsen burayı güncelle. */
-const DESKTOP_SETUP_HREF = '/dijitalerp.rar';
+import { DESKTOP_ARCHIVE_FILENAME, DESKTOP_ARCHIVE_HREF } from '../download';
 
 const navItems = [
   { href: '/', label: 'Ana Sayfa', title: 'DijitalERP Ana Sayfa' },
@@ -16,11 +14,11 @@ const navItems = [
 ];
 
 const urunLinks = [
-  { label: 'Ücretsiz İndir (Windows)', href: DESKTOP_SETUP_HREF },
+  { label: 'Ücretsiz İndir (Windows)', href: DESKTOP_ARCHIVE_HREF },
   { label: 'Özellikler', href: '/#ozellikler' },
   { label: 'Fiyatlandırma', href: '/fiyatlandirma' },
   { label: 'SSS', href: '/sss' },
-  { label: 'Demo İste', href: '/demo-iste' },
+  { label: 'Satın Al', href: '/fiyatlandirma' },
 ];
 
 const modulLinks = [
@@ -94,10 +92,10 @@ export default function Header() {
               <span className="xl:hidden">Ara</span>
             </a>
             <a
-              href={DESKTOP_SETUP_HREF}
+              href={DESKTOP_ARCHIVE_HREF}
               className="hidden items-center gap-2 rounded-[10px] bg-gradient-to-br from-blue-600 to-blue-700 px-3 py-2.5 text-sm font-black text-white shadow-[0_4px_14px_rgba(37,99,235,0.38)] transition-all hover:shadow-[0_6px_20px_rgba(37,99,235,0.48)] sm:px-4 md:inline-flex"
               title="DijitalERP paketini ücretsiz indir (RAR — açıp içindeki kurulumu çalıştırın)"
-              download="dijitalerp.rar"
+              download={DESKTOP_ARCHIVE_FILENAME}
             >
               <Download size={17} strokeWidth={2.5} aria-hidden />
               <span className="max-sm:hidden">Ücretsiz İndir</span>
@@ -222,14 +220,14 @@ export default function Header() {
                 </div>
               </div>
               <div className="site-nav-mobile-cta">
-                <a href="tel:+905321667697" className="site-nav-mobile-cta-btn" onClick={closeMenu}>
-                  Ücretsiz Demo İste
+                <a href="/fiyatlandirma" className="site-nav-mobile-cta-btn" onClick={closeMenu}>
+                  Satın Al
                   <ChevronRight size={18} />
                 </a>
                 <a
-                  href={DESKTOP_SETUP_HREF}
+                  href={DESKTOP_ARCHIVE_HREF}
                   className="site-nav-mobile-download-btn"
-                  download="dijitalerp.rar"
+                  download={DESKTOP_ARCHIVE_FILENAME}
                   onClick={closeMenu}
                 >
                   <Download size={18} strokeWidth={2} aria-hidden />

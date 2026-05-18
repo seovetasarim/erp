@@ -31,7 +31,7 @@ export default function SeoContentSection() {
             </p>
             <h3>Neden DijitalERP?</h3>
             <p>
-              <strong>Tek seferlik ödeme</strong>, abonelik yok, <strong>tamamen offline</strong> çalışan ERP yazılımı. Stok takip, cari yönetim, fatura, kasa ve raporlama tek yazılımda. <strong>25.000 TL</strong> ve <strong>35.000 TL</strong> paket seçenekleri ile KOBİ&apos;lere uygun fiyatlı çözüm.
+              <strong>Tek seferlik ödeme</strong>, abonelik yok, <strong>tamamen offline</strong> çalışan ERP yazılımı. Stok takip, cari yönetim, fatura, kasa ve raporlama tek yazılımda. <strong>49.900 TL</strong> ve <strong>79.900 TL</strong> paket seçenekleri ile KOBİ&apos;lere uygun fiyatlı çözüm.
             </p>
           </article>
         </div>

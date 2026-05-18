@@ -1,25 +1,29 @@
 import { Check, Phone, Zap } from 'lucide-react';
+import {
+  LIST_PRICE_BASLANGIC_DISPLAY,
+  LIST_PRICE_PROFESYONEL_DISPLAY,
+} from '../pricing';
 
 const plans = [
   {
     name: 'Başlangıç',
-    amount: '25.000',
+    amount: LIST_PRICE_BASLANGIC_DISPLAY,
     currency: 'TL',
     note: 'Tek seferlik ödeme',
     desc: '1 bilgisayar için lisans',
     features: ['Tüm modüller dahil', '1 yıl güncelleme', 'E-posta destek'],
     popular: false,
-    cta: 'Demo İste',
+    cta: 'Satın Al',
   },
   {
     name: 'Profesyonel',
-    amount: '35.000',
+    amount: LIST_PRICE_PROFESYONEL_DISPLAY,
     currency: 'TL',
     note: 'Tek seferlik ödeme',
     desc: '3 bilgisayar için lisans',
     features: ['Tüm modüller dahil', '2 yıl güncelleme', 'Öncelikli destek', 'E-Fatura kurulum'],
     popular: true,
-    cta: 'Demo İste',
+    cta: 'Satın Al',
   },
   {
     name: 'Kurumsal',
@@ -62,7 +66,13 @@ export default function PricingSection() {
           <span className="pr-kicker">Fiyatlandırma</span>
           <h2 className="pr-title">Tek seferlik ödeme, ömür boyu kullanım</h2>
           <p className="pr-subtitle">
-            Önce ücretsiz Windows sürümünü indirip deneyin. Lisans paketleri tek seferlik ödemelidir — abonelik veya aylık ücret yok; güncelleme süresi ve destek seçenekleri pakete göre değişir.
+            Önce ücretsiz Windows sürümünü indirip deneyin. DijitalERP’i Türkiye’de doğrudan geliştiriyoruz; yazılım kendi bilgisayarınızda çalıştığı için bulut sunucu veya abonelik maliyeti yansıtarak fiyat yükseltmiyoruz. Lisans ücreti tek seferliktir; pakette yer alan güncelleme ve öncelikli destek süresi pakete göredir — bu süre bittiğinde mevcut sürümle kullanımınız sürebilir; yeni sürümler için dönem uzatımını satış hattımızdan netleştirebilirsiniz.
+          </p>
+        </div>
+
+        <div className="pr-value-note" role="note">
+          <p>
+            <strong>Şeffaf model:</strong> Düşük fiyat, modül eksiltmekten değil — sunucusuz, aboneliksiz mimariden gelir. Profesyonel destek ve güncelleme süresi paketle garanti altına alınır; uzun vadede ihtiyaçınıza göre dönemi uzatmak mümkündür.
           </p>
         </div>
 

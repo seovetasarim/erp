@@ -12,7 +12,7 @@ export default function DagitimSeoContent() {
               <strong>Dağıtım yazılımı</strong>, dağıtım firmalarının bayi yönetimi, stok, kargo ve fatura işlemlerini yapmasını sağlayan <strong>dağıtım ERP</strong>dir. <strong>DijitalERP</strong> dağıtım sektörü için: çoklu firma, cari bakiye, kargo etiketi, E-Fatura tek yazılımda. <strong>Dağıtım programı</strong> ile bayi ağı yönetimi.
             </p>
             <p>
-              <strong>Bayi kartları</strong>, <strong>stok takip</strong>, <strong>kargo etiketi</strong>, <strong>E-Fatura</strong>. <strong>Dağıtım yazılımı</strong> fiyatları 25.000 TL&apos;den başlar. Tamamen offline.
+              <strong>Bayi kartları</strong>, <strong>stok takip</strong>, <strong>kargo etiketi</strong>, <strong>E-Fatura</strong>. <strong>Dağıtım yazılımı</strong> fiyatları 49.900 TL&apos;den başlar. Tamamen offline.
             </p>
             <h3>Kimler İçin Uygundur?</h3>
             <p>

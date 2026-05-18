@@ -10,7 +10,7 @@ import Footer from './Footer';
 export const metadata: Metadata = {
   title: 'Ücretsiz ERP İndir — Offline Stok Takip ve Cari',
   description:
-    "Ücretsiz Windows masaüstü ERP: dijitalerp.rar ile indirin — stok takip, cari yönetim, fatura, kasa offline. Veriler bilgisayarınızda. Lisans paketleri tek seferlik fiyatlı. Demo: 0532 166 76 97.",
+    "Ücretsiz Windows masaüstü ERP: Kurulum.rar ile indirin — stok takip, cari yönetim, fatura, kasa offline. Veriler bilgisayarınızda. Lisans paketleri tek seferlik fiyatlı. Demo: 0532 166 76 97.",
   keywords: [
     'ücretsiz ERP indir',
     'ücretsiz stok takip yazılımı',
@@ -71,7 +71,7 @@ const faqSchema = {
       name: 'DijitalERP ücretsiz indirilebilir mi?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Evet. Windows için ücretsiz masaüstü sürümümüzü sitedeki dijitalerp.rar arşiviyle indirebilirsiniz; Electron tabanlı uygulamayı kurup ana modülleri offline kullanarak deneyebilirsiniz — veriler sadece bilgisayarınızda kalır. Çok kullanıcı, daha uzun güncelleme ve öncelikli destek gibi gereksinimler için Başlangıç, Profesyonel veya Kurumsal lisans paketleri satın alınır; abonelik modeli kullanılmaz.',
+        text: 'Evet. Windows için ücretsiz masaüstü sürümümüzü sitedeki Kurulum.rar arşiviyle indirebilirsiniz; Electron tabanlı uygulamayı kurup ana modülleri offline kullanarak deneyebilirsiniz — veriler sadece bilgisayarınızda kalır. Çok kullanıcı, daha uzun güncelleme ve öncelikli destek gibi gereksinimler için Başlangıç, Profesyonel veya Kurumsal lisans paketleri satın alınır; abonelik modeli kullanılmaz.',
       },
     },
     {
@@ -87,13 +87,31 @@ const faqSchema = {
       name: 'DijitalERP lisans fiyatları ne kadar?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Ücretsiz indirilebilir sürümün yanı sıra ticari lisans paketleri bulunur: Başlangıç 25.000 TL (1 bilgisayar), Profesyonel 35.000 TL (3 bilgisayar); ikisi de tek seferlik ödemedir, abonelik yoktur. Kurumsal paket teklifle belirlenir. Güncelleme süresi ve destek seçenekleri pakete göre değişir.',
+        text: 'Ücretsiz indirilebilir sürümün yanı sıra ticari lisans paketleri bulunur: Başlangıç 49.900 TL (1 bilgisayar), Profesyonel 79.900 TL (3 bilgisayar); ikisi de tek seferlik ödemedir, abonelik yoktur. Kurumsal paket teklifle belirlenir. Güncelleme ve destek süresi pakete göredir; süre sonunda mevcut sürümle kullanım sürebilir, yeni sürümler için dönem uzatımı satıştan netleştirilir.',
       },
     },
     {
+      '@type': 'Question',
+      name: 'ERP Programı Kimler İçindir?',
       acceptedAnswer: {
         '@type': 'Answer',
         text: "KOBİ'ler, perakende mağazalar, toptancılar, üreticiler ve stok takibi yapan tüm işletmeler için uygundur.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Güncelleme süresi bitince DijitalERP kullanılamaz mı?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Hayır. Lisansla kazandığınız kullanım süresizdir; abonelik yoktur. Paketteki süre, yeni sürüm dağıtımı ve paket kapsamındaki destek içindir. Süre sonunda mevcut yüklü sürümünüzü kullanmaya devam edebilirsiniz; yeni özellikler veya genişletilmiş destek için dönem uzatımı hakkında 0532 166 76 97 ile iletişime geçebilirsiniz.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'DijitalERP fiyatları neden aboneliksiz ve erişilebilir?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yazılım yerel bilgisayarda çalışır; veriler sizde kalır ve sürekli bulut barındırma veya kullanıcı başı aylık ücret müşteriye yansıtılmaz. Bu sayede tek seferlik şeffaf fiyat sunulur. Destek ve güncelleme kapsamı paketlere göre ayrışır.',
       },
     },
     {
@@ -109,7 +127,7 @@ const faqSchema = {
       name: 'DijitalERP kurulumu nasıl yapılır?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Windows bilgisayarınıza dijitalerp.rar arşivini indirip klasöre çıkarın; içindeki kurulum dosyasını çalıştırarak uygulamayı yükleyin. Ek yardım için 0532 166 76 97 üzerinden destek veya ticari kullanımda paket seçimi için iletişim alabilirsiniz.',
+        text: 'Windows bilgisayarınıza Kurulum.rar arşivini indirip klasöre çıkarın; içindeki kurulum dosyasını çalıştırarak uygulamayı yükleyin. Ek yardım için 0532 166 76 97 üzerinden destek veya ticari kullanımda paket seçimi için iletişim alabilirsiniz.',
       },
     },
   ],

@@ -12,7 +12,7 @@ export default function SeoContentSection() {
               <strong>Çoklu firma yazılımı</strong>, işletmelerin birden fazla firma veya şirketini tek programda yönetmesini sağlayan <strong>firma yönetim programı</strong>dır. <strong>DijitalERP</strong> çoklu firma desteği ile her firma için ayrı stok, cari ve fatura hesaplarını tek yazılımda yönetebilirsiniz. Ayrı programlar yerine tek <strong>çoklu firma programı</strong> ile tüm işletmelerinizi yönetin.
             </p>
             <p>
-              <strong>Çoklu firma</strong> desteği ile bayi ağları, şubeler veya farklı vergi kimlikli işletmeleri yönetin. Her firma için <strong>stok</strong>, <strong>cari</strong> ve <strong>fatura</strong> ayrı tutulur. <strong>E-Fatura</strong> entegrasyonu firma bazlı. <strong>Çoklu firma yazılımı</strong> fiyatları 25.000 TL&apos;den başlar.
+              <strong>Çoklu firma</strong> desteği ile bayi ağları, şubeler veya farklı vergi kimlikli işletmeleri yönetin. Her firma için <strong>stok</strong>, <strong>cari</strong> ve <strong>fatura</strong> ayrı tutulur. <strong>E-Fatura</strong> entegrasyonu firma bazlı. <strong>Çoklu firma yazılımı</strong> fiyatları 49.900 TL&apos;den başlar.
             </p>
             <h3>Kimler İçin Uygundur?</h3>
             <p>

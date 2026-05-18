@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import CookieConsentLink from './CookieConsentLink';
 import { SITE_HOST, SITE_URL } from '../site-url';
+import { DESKTOP_ARCHIVE_FILENAME, DESKTOP_ARCHIVE_HREF } from '../download';
 
 const quickLinks = [
   { label: 'Ana Sayfa', href: '/' },
@@ -14,11 +15,11 @@ const quickLinks = [
 ];
 
 const urunLinks = [
-  { label: 'Ücretsiz İndir (Windows)', href: '/dijitalerp.rar' },
+  { label: 'Ücretsiz İndir (Windows)', href: DESKTOP_ARCHIVE_HREF },
   { label: 'Özellikler', href: '/ozellikler' },
   { label: 'Fiyatlandırma', href: '/fiyatlandirma' },
   { label: 'SSS', href: '/sss' },
-  { label: 'Demo İste', href: '/demo-iste' },
+  { label: 'Satın Al', href: '/fiyatlandirma' },
 ];
 
 const modulLinks = [
@@ -133,8 +134,8 @@ export default function Footer() {
 
           {/* CTA Butonu */}
           <div className="footer-mobile-cta">
-            <a href="/demo-iste" className="footer-mobile-cta-btn">
-              Ücretsiz Demo İste
+            <a href="/fiyatlandirma" className="footer-mobile-cta-btn">
+              Satın Al
               <ChevronRight size={16} />
             </a>
           </div>
@@ -180,11 +181,11 @@ export default function Footer() {
             <nav className="footer-nav" aria-label="Ürün">
               <h4 className="footer-nav-title">Ürün</h4>
               <ul className="footer-nav-list">
-                <li><a href="/dijitalerp.rar" download="dijitalerp.rar" title="DijitalERP — ücretsiz Windows sürümünü indir">Ücretsiz İndir</a></li>
+                <li><a href={DESKTOP_ARCHIVE_HREF} download={DESKTOP_ARCHIVE_FILENAME} title="DijitalERP — ücretsiz Windows sürümünü indir (Kurulum.rar)">Ücretsiz İndir</a></li>
                 <li><a href="/ozellikler" title="DijitalERP Özellikler">Özellikler</a></li>
                 <li><a href="/fiyatlandirma" title="DijitalERP Fiyatlandırma">Fiyatlandırma</a></li>
                 <li><a href="/sss" title="Sık Sorulan Sorular">SSS</a></li>
-                <li><a href="/demo-iste" title="Ücretsiz Demo İste">Demo İste</a></li>
+                <li><a href="/fiyatlandirma" title="DijitalERP Satın Al — Fiyatlandırma">Satın Al</a></li>
                 <li><a href="/" title="Ana Sayfa">Ana Sayfa</a></li>
                 <li><a href="/iletisim" title="İletişim">İletişim</a></li>
               </ul>

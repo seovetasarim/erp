@@ -12,7 +12,7 @@ export default function SeoContentSection() {
               <strong>Perakende yazılımı</strong>, mağazaların stok takip, satış, kasa ve fatura işlemlerini yönetmesini sağlayan <strong>mağaza yazılımı</strong>dır. <strong>DijitalERP</strong> perakende sektörü için tasarlanmış: barkod okuyucu, stok sayımı, kasa modülü ve E-Fatura tek yazılımda. <strong>Perakende ERP</strong> ile mağaza yönetimini kolaylaştırın.
             </p>
             <p>
-              <strong>Barkod</strong> ile hızlı satış, <strong>stok takip</strong> ile envanter kontrolü, <strong>kasa</strong> ile nakit yönetimi. <strong>Perakende yazılımı</strong> fiyatları 25.000 TL&apos;den başlar. Tamamen offline, abonelik yok.
+              <strong>Barkod</strong> ile hızlı satış, <strong>stok takip</strong> ile envanter kontrolü, <strong>kasa</strong> ile nakit yönetimi. <strong>Perakende yazılımı</strong> fiyatları 49.900 TL&apos;den başlar. Tamamen offline, abonelik yok.
             </p>
             <h3>Kimler İçin Uygundur?</h3>
             <p>

@@ -12,7 +12,7 @@ export default function SeoContentSection() {
               <strong>Kargo etiketi yazılımı</strong>, işletmelerin fatura bilgilerini termal etiket formatında yazdırmasını sağlayan yazılımdır. <strong>DijitalERP</strong> kargo etiketi özelliği ile 100×150 mm termal etiket üzerine alıcı adresi, gönderici bilgileri ve <strong>CODE128 barkod</strong> yazdırabilirsiniz. <strong>Kargo etiketi</strong> kargo firmalarının okuma sistemlerine uyumludur.
             </p>
             <p>
-              <strong>Fatura ile entegre</strong> – Fatura oluşturduktan sonra tek tıkla kargo etiketi yazdırın. <strong>Termal yazıcı</strong> desteği ile 100×150 mm etiket. <strong>Kargo etiketi yazılımı</strong> lojistik ve e-ticaret firmaları için vazgeçilmezdir. Fiyatlar 25.000 TL&apos;den başlar.
+              <strong>Fatura ile entegre</strong> – Fatura oluşturduktan sonra tek tıkla kargo etiketi yazdırın. <strong>Termal yazıcı</strong> desteği ile 100×150 mm etiket. <strong>Kargo etiketi yazılımı</strong> lojistik ve e-ticaret firmaları için vazgeçilmezdir. Fiyatlar 49.900 TL&apos;den başlar.
             </p>
             <h3>Kimler İçin Uygundur?</h3>
             <p>

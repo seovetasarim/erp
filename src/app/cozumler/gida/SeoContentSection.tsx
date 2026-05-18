@@ -12,7 +12,7 @@ export default function SeoContentSection() {
               <strong>Gıda sektörü ERP</strong>, gıda firmalarının stok takip, cari, fatura ve raporlama işlemlerini yönetmesini sağlayan <strong>gıda yazılımı</strong>dır. <strong>DijitalERP</strong> gıda sektörü için: barkod, stok sayımı, E-Fatura tek yazılımda. <strong>Gıda ERP</strong> ile gıda ticareti yönetimi.
             </p>
             <p>
-              <strong>Stok takip</strong>, <strong>barkod</strong>, <strong>cari yönetim</strong>, <strong>E-Fatura</strong>. <strong>Gıda yazılımı</strong> fiyatları 25.000 TL&apos;den başlar. Tamamen offline.
+              <strong>Stok takip</strong>, <strong>barkod</strong>, <strong>cari yönetim</strong>, <strong>E-Fatura</strong>. <strong>Gıda yazılımı</strong> fiyatları 49.900 TL&apos;den başlar. Tamamen offline.
             </p>
             <h3>Kimler İçin Uygundur?</h3>
             <p>

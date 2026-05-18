@@ -12,7 +12,7 @@ export default function SeoContentSection() {
               <strong>Barkod yazılımı</strong>, işletmelerin ürün giriş-çıkış ve stok sayımını hızlandırmak için <strong>barkod okuyucu</strong> desteği sunan yazılımdır. <strong>DijitalERP</strong> USB barkod okuyucu ile uyumludur. Barkod okuttuğunuzda ürün otomatik bulunur, stok girişi veya fatura kalemi ekleme işlemi hızlanır. <strong>Barkod okuyucu yazılımı</strong> perakende mağazalar, depo ve lojistik firmaları için vazgeçilmezdir.
             </p>
             <p>
-              <strong>Barkod modal</strong> özelliği ile her ekrandan barkod okutarak ürün arayabilirsiniz. <strong>Stok sayımı</strong> sırasında barkod ile hızlı sayım. <strong>Kargo etiketi</strong> yazdırma CODE128 barkod formatında. <strong>Barkod yazılımı</strong> fiyatları 25.000 TL&apos;den başlar.
+              <strong>Barkod modal</strong> özelliği ile her ekrandan barkod okutarak ürün arayabilirsiniz. <strong>Stok sayımı</strong> sırasında barkod ile hızlı sayım. <strong>Kargo etiketi</strong> yazdırma CODE128 barkod formatında. <strong>Barkod yazılımı</strong> fiyatları 49.900 TL&apos;den başlar.
             </p>
             <h3>Kimler İçin Uygundur?</h3>
             <p>

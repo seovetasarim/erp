@@ -22,14 +22,14 @@ export default function SeoContentSection() {
           <article className="seo-col">
             <h3>Stok Raporları ve Excel Export</h3>
             <p>
-              Aylık hareket, günlük hareket, kategori dağılımı ve en çok hareket eden ürünler gibi <strong>stok raporları</strong> ile işletmenizi veri odaklı yönetin. <strong>Excel export</strong> ile raporları dışa aktarın, muhasebe yazılımlarıyla entegre edin. <strong>Stok takip programı</strong> fiyatları 25.000 TL&apos;den başlar, tek seferlik ödeme.
+              Aylık hareket, günlük hareket, kategori dağılımı ve en çok hareket eden ürünler gibi <strong>stok raporları</strong> ile işletmenizi veri odaklı yönetin. <strong>Excel export</strong> ile raporları dışa aktarın, muhasebe yazılımlarıyla entegre edin. <strong>Stok takip programı</strong> fiyatları 49.900 TL&apos;den başlar, tek seferlik ödeme.
             </p>
             <p>
               <strong>Tamamen offline</strong> çalışan <strong>stok yazılımı</strong> ile verileriniz bilgisayarınızda güvende kalır. İnternet bağlantısı gerektirmez. <strong>Veritabanı yedekleme</strong> ile verilerinizi yedekleyin. <strong>DijitalERP</strong> KOBİ&apos;ler için profesyonel <strong>stok takip yazılımı</strong> çözümüdür.
             </p>
             <h3>Demo ve Fiyat</h3>
             <p>
-              <strong>Ücretsiz demo</strong> talebi ile DijitalERP stok takip modülünü deneyebilirsiniz. <strong>0532 166 76 97</strong> numarasından arayın veya <strong>/demo-iste</strong> sayfasından formu doldurun. Başlangıç paketi 25.000 TL, Profesyonel 35.000 TL. Abonelik yok, süresiz kullanım.
+              <strong>Ücretsiz demo</strong> talebi ile DijitalERP stok takip modülünü deneyebilirsiniz. <strong>0532 166 76 97</strong> numarasından arayın veya <strong>/demo-iste</strong> sayfasından formu doldurun. Başlangıç paketi 49.900 TL, Profesyonel 79.900 TL. Abonelik yok, süresiz kullanım.
             </p>
           </article>
         </div>

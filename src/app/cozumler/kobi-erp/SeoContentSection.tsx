@@ -22,14 +22,14 @@ export default function SeoContentSection() {
           <article className="seo-col">
             <h3>Offline ve Tek Seferlik Ödeme</h3>
             <p>
-              <strong>Tamamen offline</strong> çalışan <strong>KOBİ ERP</strong> ile verileriniz bilgisayarınızda. İnternet gerektirmez (E-Fatura gönderimi hariç). <strong>Abonelik yok</strong>, tek seferlik ödeme ile süresiz kullanım. Başlangıç 25.000 TL, Profesyonel 35.000 TL.
+              <strong>Tamamen offline</strong> çalışan <strong>KOBİ ERP</strong> ile verileriniz bilgisayarınızda. İnternet gerektirmez (E-Fatura gönderimi hariç). <strong>Abonelik yok</strong>, tek seferlik ödeme ile süresiz kullanım. Başlangıç 49.900 TL, Profesyonel 79.900 TL.
             </p>
             <p>
               <strong>Kurumsal destek</strong> ile kurulum ve eğitim alın. <strong>Veritabanı yedekleme</strong> ile verilerinizi güvende tutun. <strong>DijitalERP</strong> KOBİ&apos;ler için profesyonel <strong>ERP yazılımı</strong> çözümüdür. Stok takip, cari yönetim, E-Fatura tek yazılımda.
             </p>
             <h3>Demo ve Fiyat</h3>
             <p>
-              <strong>Ücretsiz demo</strong> talebi ile DijitalERP&apos;i deneyebilirsiniz. <strong>0532 166 76 97</strong> numarasından arayın veya <strong>/demo-iste</strong> sayfasından formu doldurun. Başlangıç paketi 25.000 TL, Profesyonel 35.000 TL. Abonelik yok, süresiz kullanım.
+              <strong>Ücretsiz demo</strong> talebi ile DijitalERP&apos;i deneyebilirsiniz. <strong>0532 166 76 97</strong> numarasından arayın veya <strong>/demo-iste</strong> sayfasından formu doldurun. Başlangıç paketi 49.900 TL, Profesyonel 79.900 TL. Abonelik yok, süresiz kullanım.
             </p>
           </article>
         </div>

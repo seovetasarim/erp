@@ -12,7 +12,7 @@ export default function SeoContentSection() {
               <strong>Toptan satış yazılımı</strong>, toptancıların stok, cari, fatura ve bayi yönetimini yapmasını sağlayan <strong>toptancı yazılımı</strong>dır. <strong>DijitalERP</strong> toptan satış sektörü için: çoklu firma, cari bakiye, E-Fatura ve kargo etiketi tek yazılımda. <strong>Toptan satış ERP</strong> ile bayi ağınızı yönetin.
             </p>
             <p>
-              <strong>Bayi kartları</strong>, <strong>cari takip</strong>, <strong>toplu fatura</strong>, <strong>kargo etiketi</strong>. <strong>Toptan satış yazılımı</strong> fiyatları 25.000 TL&apos;den başlar. Tamamen offline.
+              <strong>Bayi kartları</strong>, <strong>cari takip</strong>, <strong>toplu fatura</strong>, <strong>kargo etiketi</strong>. <strong>Toptan satış yazılımı</strong> fiyatları 49.900 TL&apos;den başlar. Tamamen offline.
             </p>
             <h3>Kimler İçin Uygundur?</h3>
             <p>

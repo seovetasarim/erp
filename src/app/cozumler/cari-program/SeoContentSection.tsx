@@ -12,7 +12,7 @@ export default function SeoContentSection() {
               <strong>Cari program</strong>, işletmelerin müşteri ve tedarikçi hesaplarını dijital ortamda yönetmesini sağlayan <strong>cari hesap yazılımı</strong>dır. <strong>DijitalERP</strong> cari modülü ile firma kartları, cari bakiyeler, alacak-borç takibi ve fatura entegrasyonunu tek programda yapabilirsiniz. <strong>Cari yönetim</strong> Excel veya defter yerine profesyonel <strong>cari hesap programı</strong> ile.
             </p>
             <p>
-              <strong>Müşteri kartları</strong> ile iletişim, adres ve vergi bilgilerini tek yerde tutun. <strong>Tedarikçi yönetimi</strong> ile satın alma tarafını takip edin. <strong>Çoklu firma</strong> ile birden fazla şirketin cari hesaplarını yönetin. <strong>Fatura entegrasyonu</strong> ile her fatura otomatik cari bakiyeyi günceller. <strong>Cari program</strong> fiyatları 25.000 TL&apos;den başlar.
+              <strong>Müşteri kartları</strong> ile iletişim, adres ve vergi bilgilerini tek yerde tutun. <strong>Tedarikçi yönetimi</strong> ile satın alma tarafını takip edin. <strong>Çoklu firma</strong> ile birden fazla şirketin cari hesaplarını yönetin. <strong>Fatura entegrasyonu</strong> ile her fatura otomatik cari bakiyeyi günceller. <strong>Cari program</strong> fiyatları 49.900 TL&apos;den başlar.
             </p>
             <h3>Kimler İçin Uygundur?</h3>
             <p>

@@ -22,7 +22,7 @@ export default function SeoContentSection() {
           <article className="seo-col">
             <h3>ERP Güvenlik ve Maliyetler</h3>
             <p>
-              <strong>ERP sistemi güvenlik önlemleri</strong> yerel veritabanı (SQLite), <strong>tamamen offline</strong> çalışma, veritabanı yedekleme ve yetki bazlı kullanıcı erişimini kapsar. Verileriniz bilgisayarınızda güvende kalır, internet gerektirmez. <strong>ERP sistemi maliyetleri</strong> tek seferlik lisans ödemesi ile sınırlıdır; Başlangıç 25.000 TL, Profesyonel 35.000 TL. Abonelik yoktur.
+              <strong>ERP sistemi güvenlik önlemleri</strong> yerel veritabanı (SQLite), <strong>tamamen offline</strong> çalışma, veritabanı yedekleme ve yetki bazlı kullanıcı erişimini kapsar. Verileriniz bilgisayarınızda güvende kalır, internet gerektirmez. <strong>ERP sistemi maliyetleri</strong> tek seferlik lisans ödemesi ile sınırlıdır; Başlangıç 49.900 TL, Profesyonel 79.900 TL. Abonelik yoktur; güncelleme dönemi pakete göredir ve sonrasında mevcut sürümü kullanmaya devam edebilirsiniz.
             </p>
             <p>
               <strong>Stok takip yazılımı</strong> ve <strong>cari hesap programı</strong> olarak DijitalERP, barkod desteği, E-Fatura entegrasyonu ve Excel export ile KOBİ&apos;lere profesyonel çözüm sunar. <strong>Demo talebi</strong> ile ücretsiz deneme yapabilir, 0532 166 76 97 numarasından destek alabilirsiniz.
