@@ -10,7 +10,7 @@ export default function SeoContentSection() {
             <h3>ERP Yazılımı Fiyatları ve Lisans Modelleri</h3>
             <p>
               <strong>DijitalERP</strong> için önce ana sayfadaki{' '}
-              <strong>kurulum.zip</strong> arşivi ile <strong>ücretsiz Windows sürümünü indirip</strong> stok takip ve cariyi bilgisayarınızda deneyebilirsiniz.
+              <strong>kurulum.rar</strong> arşivi (WinRAR) ile <strong>ücretsiz Windows sürümünü indirip</strong> çıkararak stok takip ve cariyi bilgisayarınızda deneyebilirsiniz.
               Ticari kullanımda paket seçenekleri <strong>tek seferlik ödeme</strong> ile sunulur — <strong>abonelik yok</strong>.
               <strong> Başlangıç paketi</strong> 49.900 TL ile 1 bilgisayarda tüm modülleri kullanabilirsiniz. <strong>Profesyonel paket</strong> 79.900 TL ile 3 bilgisayar, 2 yıl güncelleme ve E-Fatura kurulum desteği sunar.
               Paketteki güncelleme süresi sonrası da mevcut sürümünüzü kullanmaya devam edebilirsiniz; yeni sürümler için dönem uzatımını satış ile netleştirebilirsiniz.

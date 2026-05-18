@@ -4,7 +4,7 @@ import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 
 const faqItems = [
-  { q: 'DijitalERP ücretsiz indirilebilir mi?', a: 'Evet. Windows için ücretsiz masaüstü sürümünü sitedeki kurulum.zip arşiviyle bilgisayarınıza indirip klasöre çıkararak kullanabilirsiniz — veriler cihazınızda kalır, günlük kullanımda sürekli internet zorunluluğu olmadan ana modülleri deneyebilirsiniz. Ticari lisans gerektiren garantiler için Başlangıç, Profesyonel veya Kurumsal paketler sunulur; abonelik modeli kullanılmaz.' },
+  { q: 'DijitalERP ücretsiz indirilebilir mi?', a: 'Evet. Windows için ücretsiz masaüstü sürümünü sitedeki kurulum.rar arşiviyle bilgisayarınıza indirip WinRAR ile çıkararak kullanabilirsiniz — veriler cihazınızda kalır, günlük kullanımda sürekli internet zorunluluğu olmadan ana modülleri deneyebilirsiniz. Ticari lisans gerektiren garantiler için Başlangıç, Profesyonel veya Kurumsal paketler sunulur; abonelik modeli kullanılmaz.' },
   { q: 'Ücretsiz sürüm ile lisanslı sürüm farkı nedir?', a: 'Ücretsiz sürüm, yazılımı tanımanız ve offline süreçlerinizi görmeniz içindir. Lisanslı paketler çok kullanıcı, daha uzun güncelleme dönemi, E-Fatura kurulumunda öncelikli destek ve sözleşmeli garantiler içerir. Önce ücretsiz indirin; uygun paket için 0532 166 76 97.' },
   { q: 'ERP Programı Nedir?', a: 'ERP (Kurumsal Kaynak Planlama), işletmelerin stok, cari, fatura, kasa ve raporlama gibi tüm süreçlerini tek yazılımda yönetmesini sağlayan entegre bir yazılım sistemidir.' },
   { q: 'ERP Programı Kimler İçindir?', a: 'KOBİ\'ler, perakende mağazalar, toptancılar, üreticiler ve stok takibi yapan tüm işletmeler için uygundur.' },

@@ -10,7 +10,7 @@ import Footer from './Footer';
 export const metadata: Metadata = {
   title: 'Ücretsiz ERP İndir — Offline Stok Takip ve Cari',
   description:
-    "Ücretsiz Windows masaüstü ERP: kurulum.zip ile indirin — stok takip, cari yönetim, fatura, kasa offline. Veriler bilgisayarınızda. Lisans paketleri tek seferlik fiyatlı. Demo: 0532 166 76 97.",
+    "Ücretsiz Windows masaüstü ERP: kurulum.rar ile indirin — WinRAR ile çıkarın; stok takip, cari yönetim, fatura, kasa offline. Veriler bilgisayarınızda. Lisans paketleri tek seferlik fiyatlı. Demo: 0532 166 76 97.",
   keywords: [
     'ücretsiz ERP indir',
     'ücretsiz stok takip yazılımı',
@@ -71,7 +71,7 @@ const faqSchema = {
       name: 'DijitalERP ücretsiz indirilebilir mi?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Evet. Windows için ücretsiz masaüstü sürümümüzü sitedeki kurulum.zip arşiviyle indirebilirsiniz; klasöre çıkarıp Electron tabanlı uygulamayı kurarak ana modülleri offline kullanabilirsiniz — veriler sadece bilgisayarınızda kalır. Çok kullanıcı, daha uzun güncelleme ve öncelikli destek gibi gereksinimler için Başlangıç, Profesyonel veya Kurumsal lisans paketleri satın alınır; abonelik modeli kullanılmaz.',
+        text: 'Evet. Windows için ücretsiz masaüstü sürümümüzü sitedeki kurulum.rar arşiviyle indirebilirsiniz; WinRAR ile klasöre çıkarıp Electron tabanlı uygulamayı kurarak ana modülleri offline kullanabilirsiniz — veriler sadece bilgisayarınızda kalır. Çok kullanıcı, daha uzun güncelleme ve öncelikli destek gibi gereksinimler için Başlangıç, Profesyonel veya Kurumsal lisans paketleri satın alınır; abonelik modeli kullanılmaz.',
       },
     },
     {
@@ -127,7 +127,7 @@ const faqSchema = {
       name: 'DijitalERP kurulumu nasıl yapılır?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Windows bilgisayarınıza kurulum.zip dosyasını indirip klasöre çıkarın; içindeki kurulum dosyasını çalıştırarak uygulamayı yükleyin. Ek yardım için 0532 166 76 97 üzerinden destek veya ticari kullanımda paket seçimi için iletişim alabilirsiniz.',
+        text: 'Windows bilgisayarınıza kurulum.rar dosyasını indirip WinRAR ile klasöre çıkarın; içindeki kurulum dosyasını çalıştırarak uygulamayı yükleyin. Ek yardım için 0532 166 76 97 üzerinden destek veya ticari kullanımda paket seçimi için iletişim alabilirsiniz.',
       },
     },
   ],

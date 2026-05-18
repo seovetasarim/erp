@@ -1,18 +1,19 @@
 import { SITE_URL } from './site-url';
 
 /**
- * Varsayılan: `public/kurulum.zip` → `/kurulum.zip`. Zip’i repoda tutmak istemiyorsan (GitHub boyut/LFS);
- * build’de `NEXT_PUBLIC_DESKTOP_ARCHIVE_URL` ile tam veya kök-yol URL ver (örn. Hostinger’da yüklediğin dosya).
+ * Varsayılan: `public/kurulum.rar` → `/kurulum.rar` (WinRAR arşivi).
+ * Büyük paket için: Vercel’de `KURULUM_ZIP_REDIRECT_URL` = GitHub Release vb. doğrudan indir (+ middleware yönlendirir).
+ * Ya da `NEXT_PUBLIC_DESKTOP_ARCHIVE_URL` ile tam adres.
  *
- * Sunucuda büyük/küçük harf duyarlıdır; dosya adı URL ile birebir eşleşmeli (`kurulum.zip`).
+ * Sunucuda büyük/küçük harf duyarlıdır; dosya adı URL ile birebir eşleşmeli (`kurulum.rar`).
  */
 function resolveDesktopArchive() {
   const raw = process.env.NEXT_PUBLIC_DESKTOP_ARCHIVE_URL?.trim();
   if (!raw) {
     return {
-      href: '/kurulum.zip' as const,
-      filename: 'kurulum.zip' as const,
-      absolute: `${SITE_URL}/kurulum.zip` as const,
+      href: '/kurulum.rar' as const,
+      filename: 'kurulum.rar' as const,
+      absolute: `${SITE_URL}/kurulum.rar` as const,
     };
   }
   const href =
@@ -23,7 +24,7 @@ function resolveDesktopArchive() {
         : `/${raw}`;
   const absolute = href.startsWith('http') ? href : `${SITE_URL}${href}`;
   const segment = href.split(/[/\\]/).filter(Boolean).pop() ?? '';
-  const filename = (segment.includes('?') ? segment.split('?')[0] : segment) || 'kurulum.zip';
+  const filename = (segment.includes('?') ? segment.split('?')[0] : segment) || 'kurulum.rar';
 
   return { href, filename, absolute };
 }

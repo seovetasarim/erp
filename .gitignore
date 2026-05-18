@@ -31,6 +31,6 @@ yarn-error.log*
 # vercel
 .vercel
 
-# Büyük kurulum paketi (> GitHub tek dosya sınırı). Sunucuya FTP/File Manager ile koy veya NEXT_PUBLIC_DESKTOP_ARCHIVE_URL kullan.
-/public/kurulum.zip
+# Büyük kurulum arşivi (> GitHub ~100MB sınırı). Gerekirse GitHub Release + KURULUM_ZIP_REDIRECT_URL veya NEXT_PUBLIC_DESKTOP_ARCHIVE_URL.
+/public/kurulum.rar
 
