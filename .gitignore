@@ -31,6 +31,6 @@ yarn-error.log*
 # vercel
 .vercel
 
-# Büyük yerel kurulum paketi — depoda tutulmaz (GitHub 100 MB sınırı; dağıtım CDN/hosting ile)
+# Büyük kurulum paketi (> GitHub tek dosya sınırı). Sunucuya FTP/File Manager ile koy veya NEXT_PUBLIC_DESKTOP_ARCHIVE_URL kullan.
 /public/kurulum.zip
 
