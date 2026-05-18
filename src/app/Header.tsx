@@ -94,7 +94,7 @@ export default function Header() {
             <a
               href={DESKTOP_ARCHIVE_HREF}
               className="hidden items-center gap-2 rounded-[10px] bg-gradient-to-br from-blue-600 to-blue-700 px-3 py-2.5 text-sm font-black text-white shadow-[0_4px_14px_rgba(37,99,235,0.38)] transition-all hover:shadow-[0_6px_20px_rgba(37,99,235,0.48)] sm:px-4 md:inline-flex"
-              title="DijitalERP paketini ücretsiz indir (RAR — açıp içindeki kurulumu çalıştırın)"
+              title="DijitalERP paketini ücretsiz indir (ZIP — çıkarıp içindeki kurulumu çalıştırın)"
               download={DESKTOP_ARCHIVE_FILENAME}
             >
               <Download size={17} strokeWidth={2.5} aria-hidden />

@@ -181,7 +181,7 @@ export default function Footer() {
             <nav className="footer-nav" aria-label="Ürün">
               <h4 className="footer-nav-title">Ürün</h4>
               <ul className="footer-nav-list">
-                <li><a href={DESKTOP_ARCHIVE_HREF} download={DESKTOP_ARCHIVE_FILENAME} title="DijitalERP — ücretsiz Windows sürümünü indir (Kurulum.rar)">Ücretsiz İndir</a></li>
+                <li><a href={DESKTOP_ARCHIVE_HREF} download={DESKTOP_ARCHIVE_FILENAME} title="DijitalERP — ücretsiz Windows sürümünü indir (kurulum.zip)">Ücretsiz İndir</a></li>
                 <li><a href="/ozellikler" title="DijitalERP Özellikler">Özellikler</a></li>
                 <li><a href="/fiyatlandirma" title="DijitalERP Fiyatlandırma">Fiyatlandırma</a></li>
                 <li><a href="/sss" title="Sık Sorulan Sorular">SSS</a></li>
