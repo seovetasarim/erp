@@ -182,7 +182,6 @@ export default function FeaturesSection() {
 
         {/* Başlık */}
         <div className="ft-header">
-          <span className="ft-kicker">Modüller</span>
           <h2 className="ft-title">DijitalERP Özellikler</h2>
           <p className="ft-subtitle">
             Önce{' '}

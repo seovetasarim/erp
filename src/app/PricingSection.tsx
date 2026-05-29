@@ -1,10 +1,23 @@
-import { Check, Phone, Zap } from 'lucide-react';
+import { Check, Phone, ShoppingCart, Download } from 'lucide-react';
 import {
   LIST_PRICE_BASLANGIC_DISPLAY,
   LIST_PRICE_PROFESYONEL_DISPLAY,
 } from '../pricing';
+import { DESKTOP_ARCHIVE_FILENAME, DESKTOP_ARCHIVE_HREF } from '../download';
 
 const plans = [
+  {
+    name: 'Ücretsiz',
+    amount: '0',
+    currency: 'TL',
+    note: 'Süresiz kullanım',
+    desc: 'Tek bilgisayar, temel modüller',
+    features: ['Ana modüller dahil', 'Tamamen offline', 'Veriler bilgisayarınızda', 'Topluluk desteği'],
+    popular: false,
+    cta: 'Ücretsiz İndir',
+    href: DESKTOP_ARCHIVE_HREF,
+    free: true,
+  },
   {
     name: 'Başlangıç',
     amount: LIST_PRICE_BASLANGIC_DISPLAY,
@@ -14,6 +27,8 @@ const plans = [
     features: ['Tüm modüller dahil', '1 yıl güncelleme', 'E-posta destek'],
     popular: false,
     cta: 'Satın Al',
+    href: 'tel:+905321667697',
+    free: false,
   },
   {
     name: 'Profesyonel',
@@ -24,6 +39,8 @@ const plans = [
     features: ['Tüm modüller dahil', '2 yıl güncelleme', 'Öncelikli destek', 'E-Fatura kurulum'],
     popular: true,
     cta: 'Satın Al',
+    href: 'tel:+905321667697',
+    free: false,
   },
   {
     name: 'Kurumsal',
@@ -34,6 +51,8 @@ const plans = [
     features: ['Tüm modüller dahil', 'Süresiz güncelleme', '7/24 destek', 'E-Fatura + API', 'Özel eğitim'],
     popular: false,
     cta: 'İletişime Geç',
+    href: 'tel:+905321667697',
+    free: false,
   },
 ];
 
@@ -63,7 +82,6 @@ export default function PricingSection() {
 
         {/* Başlık */}
         <div className="pr-header">
-          <span className="pr-kicker">Fiyatlandırma</span>
           <h2 className="pr-title">Tek seferlik ödeme, ömür boyu kullanım</h2>
           <p className="pr-subtitle">
             Önce ücretsiz Windows sürümünü indirip deneyin. DijitalERP’i Türkiye’de doğrudan geliştiriyoruz; yazılım kendi bilgisayarınızda çalıştığı için bulut sunucu veya abonelik maliyeti yansıtarak fiyat yükseltmiyoruz. Lisans ücreti tek seferliktir; pakette yer alan güncelleme ve öncelikli destek süresi pakete göredir — bu süre bittiğinde mevcut sürümle kullanımınız sürebilir; yeni sürümler için dönem uzatımını satış hattımızdan netleştirebilirsiniz.
@@ -79,18 +97,17 @@ export default function PricingSection() {
         {/* Kartlar */}
         <div className="pr-cards">
           {plans.map((plan) => (
-            <div key={plan.name} className={`pr-card${plan.popular ? ' pr-card-popular' : ''}`}>
-              {plan.popular && <div className="pr-card-badge">Önerilen</div>}
+            <div key={plan.name} className="pr-card">
               <div className="pr-card-header">
                 <h3 className="pr-card-name">{plan.name}</h3>
                 <p className="pr-card-desc">{plan.desc}</p>
               </div>
               <div className="pr-card-price">
                 {plan.amount ? (
-                  <>
+                  <span className="pr-amount-row">
                     <span className="pr-amount">{plan.amount}</span>
                     <span className="pr-currency">{plan.currency}</span>
-                  </>
+                  </span>
                 ) : (
                   <span className="pr-amount-custom">Teklif alın</span>
                 )}
@@ -104,8 +121,18 @@ export default function PricingSection() {
                   </li>
                 ))}
               </ul>
-              <a href="tel:+905321667697" className={`pr-btn${plan.popular ? ' pr-btn-primary' : ' pr-btn-ghost'}`}>
-                {plan.popular ? <Zap size={16} strokeWidth={2} /> : <Phone size={16} strokeWidth={2} />}
+              <a
+                href={plan.href}
+                {...(plan.free ? { download: DESKTOP_ARCHIVE_FILENAME } : {})}
+                className={`pr-btn ${plan.free ? 'pr-btn-primary' : plan.amount ? 'pr-btn-dark' : 'pr-btn-ghost'}`}
+              >
+                {plan.free ? (
+                  <Download size={16} strokeWidth={2.5} />
+                ) : plan.amount ? (
+                  <ShoppingCart size={16} strokeWidth={2} />
+                ) : (
+                  <Phone size={16} strokeWidth={2} />
+                )}
                 {plan.cta}
               </a>
             </div>
@@ -115,7 +142,6 @@ export default function PricingSection() {
         {/* Karşılaştırma tablosu */}
         <div className="pr-table-wrap">
           <div className="pr-table-header-row">
-            <span className="pr-kicker">Karşılaştırma</span>
             <h3 className="pr-table-title">Hangi pakette ne var?</h3>
             <p className="pr-table-scroll-hint" aria-hidden="true">← Kaydırarak tüm sütunları görün →</p>
           </div>

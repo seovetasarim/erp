@@ -8,9 +8,9 @@ import VideoFaqSection from './VideoFaqSection';
 import Footer from './Footer';
 
 export const metadata: Metadata = {
-  title: 'Ücretsiz ERP İndir — Offline Stok Takip ve Cari',
+  title: 'Ücretsiz ERP Programı İndir — Offline Stok Takip & Cari Yönetim',
   description:
-    "Ücretsiz Windows masaüstü ERP: kurulum.rar ile indirin — WinRAR ile çıkarın; stok takip, cari yönetim, fatura, kasa offline. Veriler bilgisayarınızda. Lisans paketleri tek seferlik fiyatlı. Demo: 0532 166 76 97.",
+    "Ücretsiz Windows ERP'yi hemen indirin: stok takip, cari yönetim, fatura, kasa ve raporlar — %100 offline, veriler bilgisayarınızda. Aboneliksiz, tek seferlik lisans. KOBİ'ler için Türkiye'de geliştirilen pratik ERP. Ücretsiz demo: 0532 166 76 97.",
   keywords: [
     'ücretsiz ERP indir',
     'ücretsiz stok takip yazılımı',

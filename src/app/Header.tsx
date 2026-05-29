@@ -3,6 +3,7 @@
 import { Menu, X, PhoneCall, ChevronDown, ChevronRight, Download } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { usePathname } from 'next/navigation';
 import { DESKTOP_ARCHIVE_FILENAME, DESKTOP_ARCHIVE_HREF } from '../download';
 
 const navItems = [
@@ -34,9 +35,15 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [accordionOpen, setAccordionOpen] = useState<'menu' | 'urun' | 'moduller' | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     setMounted(true);
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   const closeMenu = () => {
@@ -48,8 +55,17 @@ export default function Header() {
     setAccordionOpen((prev) => (prev === key ? null : key));
   };
 
-  const navLinkClass =
-    'text-sm font-extrabold tracking-wide text-slate-600 underline decoration-2 underline-offset-8 decoration-transparent transition-colors hover:text-slate-900 hover:decoration-blue-600';
+  const isActive = (href: string) => {
+    const base = href.split('#')[0];
+    if (base === '/') return pathname === '/';
+    return pathname === base || pathname.startsWith(base + '/');
+  };
+
+  const navLinkClass = (active: boolean) =>
+    [
+      'text-sm font-extrabold tracking-wide transition-colors',
+      active ? 'text-blue-700' : 'text-slate-600 hover:text-slate-900',
+    ].join(' ');
 
   return (
     <header
@@ -57,23 +73,43 @@ export default function Header() {
       role="banner"
       style={{ background: 'transparent', borderBottom: 'none', backdropFilter: 'none' }}
     >
-      <div className="pointer-events-auto mx-auto max-w-7xl">
-        {/* Menü POS tarzı yüzen kart — renkler DijitalERP (mavi vurgu, koyu slate) */}
-        <div className="flex items-center justify-between gap-2 rounded-2xl border border-slate-200/90 bg-[#f7f7f4]/[0.97] px-4 py-3 text-slate-900 shadow-[0_8px_24px_rgba(15,23,42,0.08)] backdrop-blur-xl sm:gap-3 sm:px-6 sm:py-3.5">
+      <div
+        className={`pointer-events-auto mx-auto transition-all duration-300 ease-out ${
+          scrolled ? 'max-w-6xl' : 'max-w-7xl'
+        }`}
+      >
+        {/* Menü POS tarzı yüzen kart — scroll'a duyarlı premium cam */}
+        <div
+          className={`flex items-center justify-between gap-2 rounded-full border border-slate-300 bg-white text-slate-900 transition-all duration-300 ease-out sm:gap-3 ${
+            scrolled ? 'px-6 py-4 sm:px-8 sm:py-5' : 'px-6 py-5 sm:px-8 sm:py-6'
+          }`}
+        >
           <a
             href="/"
             className="flex min-w-0 shrink-0 items-center gap-2"
             onClick={closeMenu}
             aria-label="DijitalERP - Ana Sayfaya git"
           >
-            <img src="/logo.png" alt="DijitalERP" className="h-7 w-auto object-contain md:h-8 lg:h-9" />
+            <img
+              src="/logo.png"
+              alt="DijitalERP"
+              className={`w-auto object-contain transition-all duration-300 ease-out ${
+                scrolled ? 'h-9 md:h-10 lg:h-10' : 'h-10 md:h-11 lg:h-12'
+              }`}
+            />
           </a>
 
           <nav className="hidden flex-1 justify-center lg:flex" aria-label="Ana navigasyon">
             <ul className="flex list-none flex-wrap items-center justify-center gap-6 xl:gap-9">
               {navItems.map((item) => (
                 <li key={item.href}>
-                  <a href={item.href} title={item.title} onClick={closeMenu} className={navLinkClass}>
+                  <a
+                    href={item.href}
+                    title={item.title}
+                    onClick={closeMenu}
+                    aria-current={isActive(item.href) ? 'page' : undefined}
+                    className={navLinkClass(isActive(item.href))}
+                  >
                     {item.label}
                   </a>
                 </li>

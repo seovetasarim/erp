@@ -49,7 +49,6 @@ export default function VideoFaqSection() {
       <div className="faq2-inner">
 
         <div className="faq2-header">
-          <span className="faq2-kicker">SSS</span>
           <h2 className="faq2-title">Sık Sorulan Sorular</h2>
           <p className="faq2-subtitle">Ücretsiz indirin, offline deneyin; SSS ile DijitalERP ve ERP hakkında sık sorulan soruların yanıtları.</p>
         </div>
