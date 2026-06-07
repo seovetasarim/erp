@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
-import Hero from '../../Hero';
 import AnimateSection from '../../AnimateSection';
-import KargoEtiketiContent from '../kargo-etiketi/KargoEtiketiContent';
-import SeoContentSection from '../kargo-etiketi/SeoContentSection';
+import PricingSection from '../../PricingSection';
+import VideoFaqSection from '../../VideoFaqSection';
 import Footer from '../../Footer';
+import SolutionHero from '../_shared/SolutionHero';
+import KargoEtiketiContent from '../kargo-etiketi/KargoEtiketiContent';
 
 export const metadata: Metadata = {
   title: 'Kargo Yönetimi | DijitalERP — Kargo Takip ve Etiket Yazılımı',
@@ -17,17 +18,29 @@ export const metadata: Metadata = {
   },
 };
 
+const hero = {
+  eyebrow: 'DijitalERP — Kargo Yönetimi Modülü',
+  title: 'Kargo Yönetimi',
+  description: 'Kargo yönetimi yazılımı: Kargo etiketi yazdırma (100×150mm, CODE128 barkod), cari takibi, stok yönetimi. Offline kargo yönetim ve etiket yazılımı.',
+  linkText: 'Kargo Yönetimi modüllerini inceleyin',
+};
+
 export default function KargoPage() {
-  return ( <div className="site-wrap">
-        <Hero />
-        <AnimateSection sectionType="features">
-          <KargoEtiketiContent />
-        </AnimateSection>
-        <AnimateSection sectionType="seo" delay={80}>
-          <SeoContentSection />
-        </AnimateSection>
-        <AnimateSection sectionType="footer" delay={100}>
-          <Footer />
-        </AnimateSection>
-      </div>);
+  return (
+    <div className="site-wrap">
+      <SolutionHero {...hero} />
+      <AnimateSection sectionType="features">
+        <KargoEtiketiContent />
+      </AnimateSection>
+      <AnimateSection sectionType="pricing" delay={80}>
+        <PricingSection />
+      </AnimateSection>
+      <AnimateSection sectionType="faq" delay={80}>
+        <VideoFaqSection />
+      </AnimateSection>
+      <AnimateSection sectionType="footer" delay={100}>
+        <Footer />
+      </AnimateSection>
+    </div>
+  );
 }

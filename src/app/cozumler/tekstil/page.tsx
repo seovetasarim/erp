@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
-import Hero from '../../Hero';
 import AnimateSection from '../../AnimateSection';
-import TekstilContent from './TekstilContent';
-import SeoContentSection from './SeoContentSection';
+import PricingSection from '../../PricingSection';
+import VideoFaqSection from '../../VideoFaqSection';
 import Footer from '../../Footer';
+import SolutionHero from '../_shared/SolutionHero';
+import TekstilContent from './TekstilContent';
 
 export const metadata: Metadata = {
   title: 'Tekstil ERP Yazılımı | DijitalERP — Tekstil Stok Yönetim Programı',
@@ -17,17 +18,29 @@ export const metadata: Metadata = {
   },
 };
 
+const hero = {
+  eyebrow: 'DijitalERP — Tekstil ERP Modülü',
+  title: 'Tekstil ERP Yazılımı',
+  description: 'Tekstil sektörü için ERP yazılımı: Ürün ve stok takibi, beden-renk varyant, cari yönetim, fatura. Offline çalışan tekstil stok yönetim programı.',
+  linkText: 'Tekstil ERP modüllerini inceleyin',
+};
+
 export default function TekstilPage() {
-  return ( <div className="site-wrap">
-        <Hero />
-        <AnimateSection sectionType="features">
-          <TekstilContent />
-        </AnimateSection>
-        <AnimateSection sectionType="seo" delay={80}>
-          <SeoContentSection />
-        </AnimateSection>
-        <AnimateSection sectionType="footer" delay={100}>
-          <Footer />
-        </AnimateSection>
-      </div>);
+  return (
+    <div className="site-wrap">
+      <SolutionHero {...hero} />
+      <AnimateSection sectionType="features">
+        <TekstilContent />
+      </AnimateSection>
+      <AnimateSection sectionType="pricing" delay={80}>
+        <PricingSection />
+      </AnimateSection>
+      <AnimateSection sectionType="faq" delay={80}>
+        <VideoFaqSection />
+      </AnimateSection>
+      <AnimateSection sectionType="footer" delay={100}>
+        <Footer />
+      </AnimateSection>
+    </div>
+  );
 }

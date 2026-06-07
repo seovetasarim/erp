@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
-import Hero from '../../Hero';
 import AnimateSection from '../../AnimateSection';
-import RaporlarContent from './RaporlarContent';
-import SeoContentSection from './SeoContentSection';
+import PricingSection from '../../PricingSection';
+import VideoFaqSection from '../../VideoFaqSection';
 import Footer from '../../Footer';
+import SolutionHero from '../_shared/SolutionHero';
+import RaporlarContent from './RaporlarContent';
 
 export const metadata: Metadata = {
   title: 'ERP Raporlama | DijitalERP — Stok ve Satış Raporları',
@@ -17,17 +18,29 @@ export const metadata: Metadata = {
   },
 };
 
+const hero = {
+  eyebrow: 'DijitalERP — ERP Raporlama Modülü',
+  title: 'ERP Raporlama',
+  description: 'DijitalERP raporları: 12 aylık stok grafik, günlük trend, kategori dağılımı, en çok hareket eden ürünler. KPI kartları ve Excel export. Offline raporlama.',
+  linkText: 'ERP Raporlama modüllerini inceleyin',
+};
+
 export default function RaporlarPage() {
-  return ( <div className="site-wrap">
-        <Hero />
-        <AnimateSection sectionType="features">
-          <RaporlarContent />
-        </AnimateSection>
-        <AnimateSection sectionType="seo" delay={80}>
-          <SeoContentSection />
-        </AnimateSection>
-        <AnimateSection sectionType="footer" delay={100}>
-          <Footer />
-        </AnimateSection>
-      </div>);
+  return (
+    <div className="site-wrap">
+      <SolutionHero {...hero} />
+      <AnimateSection sectionType="features">
+        <RaporlarContent />
+      </AnimateSection>
+      <AnimateSection sectionType="pricing" delay={80}>
+        <PricingSection />
+      </AnimateSection>
+      <AnimateSection sectionType="faq" delay={80}>
+        <VideoFaqSection />
+      </AnimateSection>
+      <AnimateSection sectionType="footer" delay={100}>
+        <Footer />
+      </AnimateSection>
+    </div>
+  );
 }

@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
-import Hero from '../../Hero';
 import AnimateSection from '../../AnimateSection';
-import CariHesapContent from '../cari-hesap-yazilimi/CariHesapContent';
-import SeoContentSection from '../cari-hesap-yazilimi/SeoContentSection';
+import PricingSection from '../../PricingSection';
+import VideoFaqSection from '../../VideoFaqSection';
 import Footer from '../../Footer';
+import SolutionHero from '../_shared/SolutionHero';
+import CariHesapContent from '../cari-hesap-yazilimi/CariHesapContent';
 
 export const metadata: Metadata = {
   title: 'Cari Yönetim Yazılımı | DijitalERP — Müşteri Tedarikçi Takibi',
@@ -17,17 +18,29 @@ export const metadata: Metadata = {
   },
 };
 
+const hero = {
+  eyebrow: 'DijitalERP — Cari Yönetim Modülü',
+  title: 'Cari Yönetim Yazılımı',
+  description: 'Cari yönetim yazılımı: Müşteri ve tedarikçi kartları, borç-alacak takibi, otomatik cari kodu. Offline çalışan profesyonel cari yönetim programı.',
+  linkText: 'Cari Yönetim modüllerini inceleyin',
+};
+
 export default function CariYonetimPage() {
-  return ( <div className="site-wrap">
-        <Hero />
-        <AnimateSection sectionType="features">
-          <CariHesapContent />
-        </AnimateSection>
-        <AnimateSection sectionType="seo" delay={80}>
-          <SeoContentSection />
-        </AnimateSection>
-        <AnimateSection sectionType="footer" delay={100}>
-          <Footer />
-        </AnimateSection>
-      </div>);
+  return (
+    <div className="site-wrap">
+      <SolutionHero {...hero} />
+      <AnimateSection sectionType="features">
+        <CariHesapContent />
+      </AnimateSection>
+      <AnimateSection sectionType="pricing" delay={80}>
+        <PricingSection />
+      </AnimateSection>
+      <AnimateSection sectionType="faq" delay={80}>
+        <VideoFaqSection />
+      </AnimateSection>
+      <AnimateSection sectionType="footer" delay={100}>
+        <Footer />
+      </AnimateSection>
+    </div>
+  );
 }

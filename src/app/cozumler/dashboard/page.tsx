@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
-import Hero from '../../Hero';
 import AnimateSection from '../../AnimateSection';
-import DashboardContent from './DashboardContent';
-import SeoContentSection from './SeoContentSection';
+import PricingSection from '../../PricingSection';
+import VideoFaqSection from '../../VideoFaqSection';
 import Footer from '../../Footer';
+import SolutionHero from '../_shared/SolutionHero';
+import DashboardContent from './DashboardContent';
 
 export const metadata: Metadata = {
   title: 'ERP Dashboard | DijitalERP — İşletme Analitik Paneli',
@@ -17,17 +18,29 @@ export const metadata: Metadata = {
   },
 };
 
+const hero = {
+  eyebrow: 'DijitalERP — ERP Dashboard Modülü',
+  title: 'ERP Dashboard',
+  description: 'DijitalERP dashboard: KPI kartları, 12 aylık trend grafiği, son işlemler, düşük stok uyarıları. İşletmenizi anlık takip edin. Offline çalışan ERP paneli.',
+  linkText: 'ERP Dashboard modüllerini inceleyin',
+};
+
 export default function DashboardPage() {
-  return ( <div className="site-wrap">
-        <Hero />
-        <AnimateSection sectionType="features">
-          <DashboardContent />
-        </AnimateSection>
-        <AnimateSection sectionType="seo" delay={80}>
-          <SeoContentSection />
-        </AnimateSection>
-        <AnimateSection sectionType="footer" delay={100}>
-          <Footer />
-        </AnimateSection>
-      </div>);
+  return (
+    <div className="site-wrap">
+      <SolutionHero {...hero} />
+      <AnimateSection sectionType="features">
+        <DashboardContent />
+      </AnimateSection>
+      <AnimateSection sectionType="pricing" delay={80}>
+        <PricingSection />
+      </AnimateSection>
+      <AnimateSection sectionType="faq" delay={80}>
+        <VideoFaqSection />
+      </AnimateSection>
+      <AnimateSection sectionType="footer" delay={100}>
+        <Footer />
+      </AnimateSection>
+    </div>
+  );
 }

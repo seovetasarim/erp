@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
-import Hero from '../../Hero';
 import AnimateSection from '../../AnimateSection';
-import StokTakipContent from './StokTakipContent';
-import SeoContentSection from './SeoContentSection';
+import PricingSection from '../../PricingSection';
+import VideoFaqSection from '../../VideoFaqSection';
 import Footer from '../../Footer';
+import SolutionHero from '../_shared/SolutionHero';
+import StokTakipContent from './StokTakipContent';
 
 export const metadata: Metadata = {
   title: 'Stok Takip Yazılımı | DijitalERP — Profesyonel Stok Programı',
@@ -17,17 +18,29 @@ export const metadata: Metadata = {
   },
 };
 
+const hero = {
+  eyebrow: 'DijitalERP — Stok Takip Modülü',
+  title: 'Stok Takip Yazılımı',
+  description: 'Profesyonel stok takip yazılımı. Barkod okuyucu, stok sayım, minimum stok uyarısı, Excel export. Offline çalışan stok takip programı. 49.900 TL\'den başlar.',
+  linkText: 'Stok Takip modüllerini inceleyin',
+};
+
 export default function StokTakipYazilimiPage() {
-  return ( <div className="site-wrap">
-        <Hero />
-        <AnimateSection sectionType="features">
-          <StokTakipContent />
-        </AnimateSection>
-        <AnimateSection sectionType="seo" delay={80}>
-          <SeoContentSection />
-        </AnimateSection>
-        <AnimateSection sectionType="footer" delay={100}>
-          <Footer />
-        </AnimateSection>
-      </div>);
+  return (
+    <div className="site-wrap">
+      <SolutionHero {...hero} />
+      <AnimateSection sectionType="features">
+        <StokTakipContent />
+      </AnimateSection>
+      <AnimateSection sectionType="pricing" delay={80}>
+        <PricingSection />
+      </AnimateSection>
+      <AnimateSection sectionType="faq" delay={80}>
+        <VideoFaqSection />
+      </AnimateSection>
+      <AnimateSection sectionType="footer" delay={100}>
+        <Footer />
+      </AnimateSection>
+    </div>
+  );
 }

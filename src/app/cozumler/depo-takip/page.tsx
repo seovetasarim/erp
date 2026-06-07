@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
-import Hero from '../../Hero';
 import AnimateSection from '../../AnimateSection';
-import DepoTakipContent from './DepoTakipContent';
-import SeoContentSection from './SeoContentSection';
+import PricingSection from '../../PricingSection';
+import VideoFaqSection from '../../VideoFaqSection';
 import Footer from '../../Footer';
+import SolutionHero from '../_shared/SolutionHero';
+import DepoTakipContent from './DepoTakipContent';
 
 export const metadata: Metadata = {
   title: 'Depo Takip Yazılımı | DijitalERP — Anlık Depo Takip Sistemi',
@@ -17,17 +18,29 @@ export const metadata: Metadata = {
   },
 };
 
+const hero = {
+  eyebrow: 'DijitalERP — Depo Takip Modülü',
+  title: 'Depo Takip Yazılımı',
+  description: 'Anlık depo takip yazılımı. Stok hareketleri, tarih aralığı filtreleme, hareket fişi yazdırma. Offline çalışan profesyonel depo takip sistemi.',
+  linkText: 'Depo Takip modüllerini inceleyin',
+};
+
 export default function DepoTakipPage() {
-  return ( <div className="site-wrap">
-        <Hero />
-        <AnimateSection sectionType="features">
-          <DepoTakipContent />
-        </AnimateSection>
-        <AnimateSection sectionType="seo" delay={80}>
-          <SeoContentSection />
-        </AnimateSection>
-        <AnimateSection sectionType="footer" delay={100}>
-          <Footer />
-        </AnimateSection>
-      </div>);
+  return (
+    <div className="site-wrap">
+      <SolutionHero {...hero} />
+      <AnimateSection sectionType="features">
+        <DepoTakipContent />
+      </AnimateSection>
+      <AnimateSection sectionType="pricing" delay={80}>
+        <PricingSection />
+      </AnimateSection>
+      <AnimateSection sectionType="faq" delay={80}>
+        <VideoFaqSection />
+      </AnimateSection>
+      <AnimateSection sectionType="footer" delay={100}>
+        <Footer />
+      </AnimateSection>
+    </div>
+  );
 }

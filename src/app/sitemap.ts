@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 
+import { getAllCitySeoSlugs } from '../data/city-seo-slugs';
 import { SITE_URL as BASE } from '../site-url';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -84,5 +85,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.3,
     },
+    ...getAllCitySeoSlugs().map((slug) => ({
+      url: `${BASE}/sehirler/${slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
   ];
 }

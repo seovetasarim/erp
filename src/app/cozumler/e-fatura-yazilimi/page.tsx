@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
-import Hero from '../../Hero';
 import AnimateSection from '../../AnimateSection';
-import EFaturaContent from './EFaturaContent';
-import SeoContentSection from './SeoContentSection';
+import PricingSection from '../../PricingSection';
+import VideoFaqSection from '../../VideoFaqSection';
 import Footer from '../../Footer';
+import SolutionHero from '../_shared/SolutionHero';
+import EFaturaContent from './EFaturaContent';
 
 export const metadata: Metadata = {
   title: 'E-Fatura Yazılımı | DijitalERP — Kolay E-Fatura Programı',
@@ -17,17 +18,29 @@ export const metadata: Metadata = {
   },
 };
 
+const hero = {
+  eyebrow: 'DijitalERP — E-Fatura Modülü',
+  title: 'E-Fatura Yazılımı',
+  description: 'Kolay E-Fatura yazılımı. Paraşüt, İşbaşı entegrasyonu ve özel API desteği. ERP ile entegre E-Fatura gönderimi, kurulum sihirbazı. 0532 166 76 97',
+  linkText: 'E-Fatura modüllerini inceleyin',
+};
+
 export default function EFaturaYazilimiPage() {
-  return ( <div className="site-wrap">
-        <Hero />
-        <AnimateSection sectionType="features">
-          <EFaturaContent />
-        </AnimateSection>
-        <AnimateSection sectionType="seo" delay={80}>
-          <SeoContentSection />
-        </AnimateSection>
-        <AnimateSection sectionType="footer" delay={100}>
-          <Footer />
-        </AnimateSection>
-      </div>);
+  return (
+    <div className="site-wrap">
+      <SolutionHero {...hero} />
+      <AnimateSection sectionType="features">
+        <EFaturaContent />
+      </AnimateSection>
+      <AnimateSection sectionType="pricing" delay={80}>
+        <PricingSection />
+      </AnimateSection>
+      <AnimateSection sectionType="faq" delay={80}>
+        <VideoFaqSection />
+      </AnimateSection>
+      <AnimateSection sectionType="footer" delay={100}>
+        <Footer />
+      </AnimateSection>
+    </div>
+  );
 }

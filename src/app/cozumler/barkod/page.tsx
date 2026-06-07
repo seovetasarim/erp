@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
-import Hero from '../../Hero';
 import AnimateSection from '../../AnimateSection';
-import BarkodContent from './BarkodContent';
-import SeoContentSection from './SeoContentSection';
+import PricingSection from '../../PricingSection';
+import VideoFaqSection from '../../VideoFaqSection';
 import Footer from '../../Footer';
+import SolutionHero from '../_shared/SolutionHero';
+import BarkodContent from './BarkodContent';
 
 export const metadata: Metadata = {
   title: 'Barkod Yazılımı | DijitalERP — Barkodlu Stok Takip Programı',
@@ -17,19 +18,29 @@ export const metadata: Metadata = {
   },
 };
 
+const hero = {
+  eyebrow: 'DijitalERP — Barkod Modülü',
+  title: 'Barkod Yazılımı',
+  description: 'Barkodlu stok takip programı. Barkod okuyucu desteği, kargo etiketi yazdırma (100×150mm), CODE128 barkod. Offline çalışan barkod yazılımı.',
+  linkText: 'Barkod modüllerini inceleyin',
+};
+
 export default function BarkodPage() {
   return (
     <div className="site-wrap">
-        <Hero />
-        <AnimateSection sectionType="features">
-          <BarkodContent />
-        </AnimateSection>
-        <AnimateSection sectionType="seo" delay={80}>
-          <SeoContentSection />
-        </AnimateSection>
-        <AnimateSection sectionType="footer" delay={100}>
-          <Footer />
-        </AnimateSection>
-      </div>
+      <SolutionHero {...hero} />
+      <AnimateSection sectionType="features">
+        <BarkodContent />
+      </AnimateSection>
+      <AnimateSection sectionType="pricing" delay={80}>
+        <PricingSection />
+      </AnimateSection>
+      <AnimateSection sectionType="faq" delay={80}>
+        <VideoFaqSection />
+      </AnimateSection>
+      <AnimateSection sectionType="footer" delay={100}>
+        <Footer />
+      </AnimateSection>
+    </div>
   );
 }

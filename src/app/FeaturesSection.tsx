@@ -13,7 +13,6 @@ import {
   LayoutDashboard,
   Shield,
   Cpu,
-  Check,
 } from 'lucide-react';
 import { DESKTOP_ARCHIVE_FILENAME, DESKTOP_ARCHIVE_HREF } from '../download';
 
@@ -179,27 +178,19 @@ export default function FeaturesSection() {
   return (
     <section id="ozellikler" className="ft-section">
       <div className="ft-inner">
-
-        {/* Başlık */}
         <div className="ft-header">
+          <p className="ft-eyebrow">Modüller</p>
           <h2 className="ft-title">DijitalERP Özellikler</h2>
           <p className="ft-subtitle">
             Önce{' '}
-            <a
-              href={DESKTOP_ARCHIVE_HREF}
-              download={DESKTOP_ARCHIVE_FILENAME}
-              className="text-blue-600 underline decoration-blue-600/40 underline-offset-2 hover:text-blue-700 font-semibold"
-            >
+            <a href={DESKTOP_ARCHIVE_HREF} download={DESKTOP_ARCHIVE_FILENAME} className="ft-subtitle-link">
               ücretsiz Windows sürümünü indirin
             </a>
             ; sonra stok takip ve cariyi tamamen offline yönetin. KOBİ&apos;ler için kurumsal lisans seçenekleri mevcuttur.
           </p>
         </div>
 
-        {/* Layout */}
         <div className="ft-layout">
-
-          {/* Sol: Tab listesi */}
           <nav className="ft-tabs" aria-label="Özellik kategorileri">
             {categories.map((c, i) => (
               <button
@@ -209,43 +200,36 @@ export default function FeaturesSection() {
                 className={`ft-tab${active === i ? ' ft-tab-active' : ''}`}
                 aria-pressed={active === i}
               >
-                <c.icon size={16} strokeWidth={2} className="ft-tab-icon" />
+                <span className="ft-tab-index">{String(i + 1).padStart(2, '0')}</span>
                 <span className="ft-tab-label">{c.label}</span>
-                <span className="ft-tab-underline" />
               </button>
             ))}
           </nav>
 
-          {/* Sağ: İçerik paneli */}
           <div className="ft-panel" key={active}>
-            <div className="ft-panel-top">
-              <div className="ft-panel-icon-wrap">
-                <cat.icon size={26} strokeWidth={1.75} />
-              </div>
-              <div>
+            <div className="ft-panel-head">
+              <div className="ft-panel-head-main">
+                <p className="ft-panel-eyebrow">{cat.label}</p>
                 <h3 className="ft-panel-title">{cat.title}</h3>
                 <p className="ft-panel-desc">{cat.desc}</p>
               </div>
+              <div className="ft-panel-head-icon" aria-hidden="true">
+                <cat.icon size={22} strokeWidth={1.75} />
+              </div>
             </div>
 
-            <ul className="ft-panel-list">
-              {cat.items.map((item, idx) => (
-                <li
-                  key={item}
-                  className="ft-panel-item"
-                  style={{ animationDelay: `${idx * 0.05}s` }}
-                >
-                  <Check size={14} strokeWidth={2.5} className="ft-item-check" />
-                  <span className="ft-item-text">{item}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="ft-panel-count">
-              <span>{active + 1} / {categories.length}</span>
+            <div className="ft-panel-body">
+              <p className="ft-panel-list-title">Modül kapsamı</p>
+              <ul className="ft-panel-list">
+                {cat.items.map((item) => (
+                  <li key={item} className="ft-panel-item">
+                    <span className="ft-item-marker" aria-hidden="true" />
+                    <span className="ft-item-text">{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-
         </div>
       </div>
     </section>

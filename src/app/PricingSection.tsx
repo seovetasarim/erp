@@ -1,4 +1,3 @@
-import { Check, Phone, ShoppingCart, Download } from 'lucide-react';
 import {
   LIST_PRICE_BASLANGIC_DISPLAY,
   LIST_PRICE_PROFESYONEL_DISPLAY,
@@ -13,9 +12,10 @@ const plans = [
     note: 'Süresiz kullanım',
     desc: 'Tek bilgisayar, temel modüller',
     features: ['Ana modüller dahil', 'Tamamen offline', 'Veriler bilgisayarınızda', 'Topluluk desteği'],
-    popular: false,
+    featured: false,
     cta: 'Ücretsiz İndir',
     href: DESKTOP_ARCHIVE_HREF,
+    variant: 'primary' as const,
     free: true,
   },
   {
@@ -25,9 +25,10 @@ const plans = [
     note: 'Tek seferlik ödeme',
     desc: '1 bilgisayar için lisans',
     features: ['Tüm modüller dahil', '1 yıl güncelleme', 'E-posta destek'],
-    popular: false,
+    featured: false,
     cta: 'Satın Al',
     href: 'tel:+905321667697',
+    variant: 'outline' as const,
     free: false,
   },
   {
@@ -37,9 +38,10 @@ const plans = [
     note: 'Tek seferlik ödeme',
     desc: '3 bilgisayar için lisans',
     features: ['Tüm modüller dahil', '2 yıl güncelleme', 'Öncelikli destek', 'E-Fatura kurulum'],
-    popular: true,
+    featured: true,
     cta: 'Satın Al',
     href: 'tel:+905321667697',
+    variant: 'outline' as const,
     free: false,
   },
   {
@@ -49,9 +51,10 @@ const plans = [
     note: 'Fiyat için iletişime geçin',
     desc: 'Sınırsız bilgisayar',
     features: ['Tüm modüller dahil', 'Süresiz güncelleme', '7/24 destek', 'E-Fatura + API', 'Özel eğitim'],
-    popular: false,
+    featured: false,
     cta: 'İletişime Geç',
     href: 'tel:+905321667697',
+    variant: 'ghost' as const,
     free: false,
   },
 ];
@@ -75,108 +78,133 @@ const comparisonRows = [
   { feature: 'Veritabanı yedekleme', start: true, pro: true, corp: true },
 ];
 
+function renderCell(value: boolean | string) {
+  if (typeof value === 'boolean') {
+    return value ? <span className="pr-table-yes">Dahil</span> : <span className="pr-dash">—</span>;
+  }
+  return <span className="pr-table-val">{value}</span>;
+}
+
+function PriceAmount({ amount }: { amount: string }) {
+  const parts = amount.split('.');
+  if (parts.length !== 2) {
+    return (
+      <span className="pr-amount">
+        <span className="pr-amount-part">{amount}</span>
+      </span>
+    );
+  }
+
+  return (
+    <span className="pr-amount">
+      <span className="pr-amount-part">{parts[0]}</span>
+      <span className="pr-amount-sep" aria-hidden="true">
+        .
+      </span>
+      <span className="pr-amount-part">{parts[1]}</span>
+    </span>
+  );
+}
+
 export default function PricingSection() {
   return (
     <section id="fiyatlandirma" className="pr-section">
       <div className="pr-inner">
-
-        {/* Başlık */}
         <div className="pr-header">
+          <p className="pr-eyebrow">Fiyatlandırma</p>
           <h2 className="pr-title">Tek seferlik ödeme, ömür boyu kullanım</h2>
           <p className="pr-subtitle">
-            Önce ücretsiz Windows sürümünü indirip deneyin. DijitalERP’i Türkiye’de doğrudan geliştiriyoruz; yazılım kendi bilgisayarınızda çalıştığı için bulut sunucu veya abonelik maliyeti yansıtarak fiyat yükseltmiyoruz. Lisans ücreti tek seferliktir; pakette yer alan güncelleme ve öncelikli destek süresi pakete göredir — bu süre bittiğinde mevcut sürümle kullanımınız sürebilir; yeni sürümler için dönem uzatımını satış hattımızdan netleştirebilirsiniz.
+            Önce ücretsiz Windows sürümünü indirip deneyin. DijitalERP yerel bilgisayarınızda çalışır; bulut
+            aboneliği veya kullanıcı başı ücret yoktur. Lisans tek seferliktir, güncelleme ve destek süresi pakete
+            göre belirlenir.
           </p>
         </div>
 
         <div className="pr-value-note" role="note">
           <p>
-            <strong>Şeffaf model:</strong> Düşük fiyat, modül eksiltmekten değil — sunucusuz, aboneliksiz mimariden gelir. Profesyonel destek ve güncelleme süresi paketle garanti altına alınır; uzun vadede ihtiyaçınıza göre dönemi uzatmak mümkündür.
+            <strong>Şeffaf model:</strong> Fiyat avantajı modül kısıtlamasından değil; sunucusuz ve aboneliksiz
+            mimariden gelir. Destek ve güncelleme kapsamı paketle netleştirilir.
           </p>
         </div>
 
-        {/* Kartlar */}
         <div className="pr-cards">
           {plans.map((plan) => (
-            <div key={plan.name} className="pr-card">
-              <div className="pr-card-header">
+            <article
+              key={plan.name}
+              className={`pr-card${plan.featured ? ' pr-card-featured' : ''}`}
+            >
+              <div className="pr-card-badge-slot" aria-hidden={!plan.featured}>
+                {plan.featured ? (
+                  <p className="pr-card-tag">Önerilen paket</p>
+                ) : (
+                  <span className="pr-card-tag-placeholder" />
+                )}
+              </div>
+              <div className="pr-card-top">
                 <h3 className="pr-card-name">{plan.name}</h3>
                 <p className="pr-card-desc">{plan.desc}</p>
               </div>
+
               <div className="pr-card-price">
                 {plan.amount ? (
-                  <span className="pr-amount-row">
-                    <span className="pr-amount">{plan.amount}</span>
+                  <p className="pr-amount-row">
+                    <PriceAmount amount={plan.amount} />
                     <span className="pr-currency">{plan.currency}</span>
-                  </span>
+                  </p>
                 ) : (
-                  <span className="pr-amount-custom">Teklif alın</span>
+                  <p className="pr-amount-custom">Teklif alın</p>
                 )}
-                <span className="pr-note">{plan.note}</span>
+                <p className="pr-note">{plan.note}</p>
               </div>
+
               <ul className="pr-features">
-                {plan.features.map((f) => (
-                  <li key={f} className="pr-feature-item">
-                    <Check size={14} strokeWidth={2.5} className="pr-check" />
-                    <span>{f}</span>
+                {plan.features.map((feature) => (
+                  <li key={feature} className="pr-feature-item">
+                    <span className="pr-item-marker" aria-hidden="true" />
+                    <span>{feature}</span>
                   </li>
                 ))}
               </ul>
+
               <a
                 href={plan.href}
                 {...(plan.free ? { download: DESKTOP_ARCHIVE_FILENAME } : {})}
-                className={`pr-btn ${plan.free ? 'pr-btn-primary' : plan.amount ? 'pr-btn-dark' : 'pr-btn-ghost'}`}
+                className={`pr-btn pr-btn-${plan.variant}`}
               >
-                {plan.free ? (
-                  <Download size={16} strokeWidth={2.5} />
-                ) : plan.amount ? (
-                  <ShoppingCart size={16} strokeWidth={2} />
-                ) : (
-                  <Phone size={16} strokeWidth={2} />
-                )}
                 {plan.cta}
               </a>
-            </div>
+            </article>
           ))}
         </div>
 
-        {/* Karşılaştırma tablosu */}
         <div className="pr-table-wrap">
           <div className="pr-table-header-row">
+            <p className="pr-table-eyebrow">Karşılaştırma</p>
             <h3 className="pr-table-title">Hangi pakette ne var?</h3>
-            <p className="pr-table-scroll-hint" aria-hidden="true">← Kaydırarak tüm sütunları görün →</p>
+            <p className="pr-table-scroll-hint">
+              Mobilde tabloyu parmağınızla sola-sağa kaydırarak tüm paketleri görebilirsiniz.
+            </p>
           </div>
-          <div className="pr-table-scroll">
-          <div className="pr-table">
-            <div className="pr-table-head">
-              <div className="pr-table-cell pr-table-cell-feature">Özellik</div>
-              <div className="pr-table-cell">Başlangıç</div>
-              <div className="pr-table-cell">Profesyonel</div>
-              <div className="pr-table-cell">Kurumsal</div>
-            </div>
-            {comparisonRows.map((row, i) => (
-              <div key={row.feature} className={`pr-table-row${i % 2 === 0 ? ' pr-table-row-alt' : ''}`}>
-                <div className="pr-table-cell pr-table-cell-feature">{row.feature}</div>
-                <div className="pr-table-cell">
-                  {typeof row.start === 'boolean'
-                    ? (row.start ? <Check size={16} strokeWidth={2.5} className="pr-check" /> : <span className="pr-dash">—</span>)
-                    : <span className="pr-table-val">{row.start}</span>}
-                </div>
-                <div className="pr-table-cell">
-                  {typeof row.pro === 'boolean'
-                    ? (row.pro ? <Check size={16} strokeWidth={2.5} className="pr-check" /> : <span className="pr-dash">—</span>)
-                    : <span className="pr-table-val">{row.pro}</span>}
-                </div>
-                <div className="pr-table-cell">
-                  {typeof row.corp === 'boolean'
-                    ? (row.corp ? <Check size={16} strokeWidth={2.5} className="pr-check" /> : <span className="pr-dash">—</span>)
-                    : <span className="pr-table-val">{row.corp}</span>}
-                </div>
+
+          <div className="pr-table-scroll" tabIndex={0} aria-label="Paket karşılaştırma tablosu, yatay kaydırılabilir">
+            <div className="pr-table">
+              <div className="pr-table-head">
+                <div className="pr-table-cell pr-table-cell-feature">Özellik</div>
+                <div className="pr-table-cell">Başlangıç</div>
+                <div className="pr-table-cell">Profesyonel</div>
+                <div className="pr-table-cell">Kurumsal</div>
               </div>
-            ))}
-          </div>
+              {comparisonRows.map((row, i) => (
+                <div key={row.feature} className={`pr-table-row${i % 2 === 1 ? ' pr-table-row-alt' : ''}`}>
+                  <div className="pr-table-cell pr-table-cell-feature">{row.feature}</div>
+                  <div className="pr-table-cell">{renderCell(row.start)}</div>
+                  <div className="pr-table-cell">{renderCell(row.pro)}</div>
+                  <div className="pr-table-cell">{renderCell(row.corp)}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-
       </div>
     </section>
   );

@@ -22,10 +22,23 @@ const faqItems = [
   { q: 'Fiyatlar neden aboneliksiz ve daha erişilebilir?', a: 'DijitalERP yerel bilgisayarda çalışır; veriler sizde kalır ve sürekli bulut sunucu veya kullanıcı başı aylık lisans maliyeti müşteriye yansıtılmaz. Bu model, KOBİ\'ler için tek seferlik şeffaf fiyat sunmamızı sağlar. Destek süresi ve güncelleme kapsamı paketler arasında ayrışır; güven ve hizmet kalitesi düşük fiyattan ödün vermek anlamına gelmez.' },
 ];
 
-function FaqItem({ q, a, isOpen, onToggle }: { q: string; a: string; isOpen: boolean; onToggle: () => void }) {
+function FaqItem({
+  index,
+  q,
+  a,
+  isOpen,
+  onToggle,
+}: {
+  index: number;
+  q: string;
+  a: string;
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
   return (
     <div className={`faq2-item${isOpen ? ' faq2-item-open' : ''}`}>
       <button type="button" className="faq2-btn" onClick={onToggle} aria-expanded={isOpen}>
+        <span className="faq2-index">{String(index + 1).padStart(2, '0')}</span>
         <span className="faq2-q">{q}</span>
         <ChevronDown size={18} className="faq2-icon" aria-hidden />
       </button>
@@ -47,10 +60,13 @@ export default function VideoFaqSection() {
   return (
     <section id="sss" className="faq2-section">
       <div className="faq2-inner">
-
         <div className="faq2-header">
+          <p className="faq2-eyebrow">Destek</p>
           <h2 className="faq2-title">Sık Sorulan Sorular</h2>
-          <p className="faq2-subtitle">Ücretsiz indirin, offline deneyin; SSS ile DijitalERP ve ERP hakkında sık sorulan soruların yanıtları.</p>
+          <p className="faq2-subtitle">
+            Ücretsiz indirin, offline deneyin; DijitalERP ve ERP süreçleri hakkında sık sorulan soruların
+            yanıtları.
+          </p>
         </div>
 
         <div className="faq2-grid">
@@ -58,6 +74,7 @@ export default function VideoFaqSection() {
             {leftItems.map((item, i) => (
               <FaqItem
                 key={item.q}
+                index={i}
                 q={item.q}
                 a={item.a}
                 isOpen={openIndex === i}
@@ -69,6 +86,7 @@ export default function VideoFaqSection() {
             {rightItems.map((item, i) => (
               <FaqItem
                 key={item.q}
+                index={mid + i}
                 q={item.q}
                 a={item.a}
                 isOpen={openIndex === mid + i}
@@ -77,7 +95,6 @@ export default function VideoFaqSection() {
             ))}
           </div>
         </div>
-
       </div>
     </section>
   );

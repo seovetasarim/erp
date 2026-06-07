@@ -12,16 +12,18 @@ const badges = [
 export default function Hero() {
   return (
     <section className="hero">
-      {/* Arka plan - giriş ekranı ile aynı koyu kurumsal ton */}
-      <div className="hero-bg" />
+      <div className="hero-bg" aria-hidden="true">
+        <img src="/hero-banner.jpg" alt="" className="hero-bg-img" />
+        <div className="hero-bg-overlay" />
+      </div>
 
       <div className="hero-inner">
         {/* Sol: İçerik */}
         <div className="hero-content">
 
-          {/* Başlık */}
-          <h1 className="hero-anim hero-anim-1 hero-title">
-            İşletmenizi <span className="hero-title-strong">Dijitalleştirin</span>
+          <p className="hero-eyebrow hero-anim hero-anim-1">DijitalERP — Offline ERP Yazılımı</p>
+          <h1 className="hero-title hero-anim hero-anim-1">
+            İşletmenizi Dijitalleştirin
           </h1>
 
           {/* Açıklama */}
@@ -66,12 +68,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Alt dalga */}
-      <div className="hero-wave">
-        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <path d="M0 40 C180 0 360 80 540 40 C720 0 900 80 1080 40 C1260 0 1380 40 1440 40 L1440 80 L0 80 Z" fill="#ffffff"/>
-        </svg>
-      </div>
     </section>
   );
 }
