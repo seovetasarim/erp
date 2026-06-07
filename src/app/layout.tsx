@@ -699,6 +699,12 @@ export default function RootLayout({
           .footer-bottom-policy{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.5rem}
           .footer-bottom-policy a,.footer-bottom-policy button{color:#64748b;text-decoration:none;font-size:inherit}
           .footer-bottom-policy a:hover,.footer-bottom-policy button:hover{color:#2563eb}
+          .footer-partner{text-align:center;padding:.875rem 1.5rem 1.125rem;border-top:1px solid #e4e4e7;background:#fafafa}
+          .footer-partner-link{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:'IBM Plex Sans','Inter','Segoe UI',system-ui,sans-serif;font-size:.6875rem;font-weight:500;letter-spacing:.03em;color:#a1a1aa;text-decoration:none;transition:color .15s}
+          .footer-partner-label{color:#a1a1aa}
+          .footer-partner-sep{color:#d4d4d8;font-weight:400}
+          .footer-partner-site{color:#71717a}
+          .footer-partner-link:hover .footer-partner-label,.footer-partner-link:hover .footer-partner-site{color:#52525b}
           .mobile-app-section{position:relative;padding:5rem 1.5rem;overflow:hidden}
           @media(min-width:768px){.mobile-app-section{padding:6rem 1.5rem}}
           .mobile-app-bg{position:absolute;inset:0;background:var(--page-bg);pointer-events:none}

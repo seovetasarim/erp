@@ -277,6 +277,22 @@ export default function Footer() {
           </div>
         </div>
       </div>
+
+      <div className="footer-partner">
+        <a
+          href="https://dijitalwebsite.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="footer-partner-link"
+          title="Dijital Website — Dijital Altyapı Partneri"
+        >
+          <span className="footer-partner-label">Dijital Altyapı Partneri</span>
+          <span className="footer-partner-sep" aria-hidden>
+            |
+          </span>
+          <span className="footer-partner-site">dijitalwebsite.com</span>
+        </a>
+      </div>
     </footer>
   );
 }
