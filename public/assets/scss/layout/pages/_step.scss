@@ -308,14 +308,17 @@
     }
     &-thumb{
         margin-left: -115px;
+        overflow-x: clip;
+        max-width: 100%;
         @media #{$xxl,$xl,$lg,$md,$xs}{
             margin-left: 0;
         }
         & img{
             border-radius: 30px;
             max-width: inherit;
-            @media #{$xs} {
+            @media #{$md,$xs} {
                 width: 100%;
+                max-width: 100%;
             }
         }
         & .it-step-login-shot{
@@ -325,6 +328,10 @@
             max-width: inherit !important;
             object-fit: cover;
             display: block;
+            @media #{$md,$xs} {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
         }
         &-shape{
             &-1{

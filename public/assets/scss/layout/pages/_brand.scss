@@ -244,6 +244,8 @@
 .it-brand{
     &-style{
         margin-top: -2px;
+        overflow-x: clip;
+        max-width: 100%;
         & .creative-brand{
             &-shape{
                 position: absolute;
@@ -262,11 +264,18 @@
             z-index: 0;
             padding: 35px 0 32px 0;
             transform: rotate(3deg);
+            @media #{$md,$xs} {
+                transform: none;
+            }
         } 
         & .tp-brand-style-2 {
             position: relative;
             z-index: 0;
             transform: rotate(-5deg);
+            @media #{$md,$xs} {
+                transform: none;
+                margin-top: 0;
+            }
         }
         & .tp-brand-style-2 .tp-brand-title {
             color: var(--tp-common-black);
@@ -295,6 +304,8 @@
     }
     &-tr {
         overflow: hidden;
+        overflow-x: clip;
+        max-width: 100%;
         isolation: isolate;
         & .tp-brand-title,
         & .tp-brand-item,

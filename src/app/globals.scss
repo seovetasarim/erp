@@ -6,6 +6,20 @@
 @import 'slick-carousel/slick/slick.css';
 @import 'slick-carousel/slick/slick-theme.css';
 
+/* Yatay kaymayı engelle — tüm sayfalar */
+html,
+body {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+#smooth-wrapper,
+#smooth-content,
+main {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
 /* Video modal style */
 .video-modal-overlay {
   position: fixed;

@@ -6,8 +6,14 @@
 
 .it-footer{
     &-style{
+        overflow-x: clip;
+        max-width: 100%;
         &.crp-footer-bg {
             background-color: #0C5752;
+        }
+        & .crp-footer-big-text-wrap {
+            overflow-x: clip;
+            max-width: 100%;
         }
         & .crp-footer-big-text.it-footer-cta {
             background-color: #0C4642;
@@ -15,13 +21,20 @@
             text-transform: none !important;
             font-family: var(--font-space-grotesk), "Space Grotesk", var(--tp-ff-platform), sans-serif !important;
             letter-spacing: -0.03em;
-            font-size: clamp(42px, 7.5vw, 100px);
+            font-size: clamp(28px, 6.5vw, 100px);
             line-height: 1.2;
             padding: 28px 40px 24px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 28px;
+            max-width: 100%;
+            box-sizing: border-box;
+            @media #{$md,$xs} {
+                padding: 20px 16px 18px;
+                gap: 14px;
+                width: 100%;
+            }
 
             & > span {
                 position: relative;
@@ -31,6 +44,7 @@
                 line-height: 1.2;
                 height: 1.2em;
                 vertical-align: middle;
+                max-width: 100%;
 
                 & > span {
                     padding-top: 0 !important;

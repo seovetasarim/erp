@@ -1207,6 +1207,9 @@
             color: #61616a;
             margin-bottom: 45px;
             padding-right: 40px;
+            @media #{$md,$xs} {
+                padding-right: 0;
+            }
         }
     }
     &-thumb{
