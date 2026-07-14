@@ -1,0 +1,76 @@
+import contactShape from '../../../public/assets/img/contact/contact-us/contact-us-shape.png';
+import Link from 'next/link';
+
+const channels = [
+    {
+        title: 'Telefon',
+        value: '0216 606 17 46',
+        href: 'tel:+902166061746',
+        note: 'Hafta içi hızlı dönüş',
+        cta: 'Ara',
+    },
+    {
+        title: 'WhatsApp',
+        value: '0216 606 17 46',
+        href: 'https://wa.me/902166061746',
+        note: 'Anlık mesaj desteği',
+        cta: 'Yaz',
+    },
+    {
+        title: 'E-posta',
+        value: 'info@dijitalerp.com.tr',
+        href: 'mailto:info@dijitalerp.com.tr',
+        note: 'Lisans ve kurumsal talepler',
+        cta: 'Mail At',
+    },
+];
+
+const ITSolutionContactChannels = () => {
+    return (
+        <>
+            <div className="cn-contactform-support-area mb-100">
+                <div className="container">
+                    <div className="row justify-content-center">
+                        <div className="col-xl-10">
+                            <div
+                                className="cn-contactform-support-bg d-flex align-items-center justify-content-center"
+                                style={{ backgroundImage: `url(${contactShape.src})` }}
+                            >
+                                <div className="cn-contactform-support-text text-center">
+                                    <span>
+                                        İstersen formu atla — aşağıdaki kanallardan
+                                        doğrudan bize ulaş. Genelde 24 saat içinde dönüş yapıyoruz.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="it-contact-channels-area pb-140" style={{ backgroundColor: '#FFFFFF' }}>
+                <div className="container container-1230">
+                    <div className="row">
+                        {channels.map((item) => (
+                            <div key={item.title} className="col-lg-4 mb-30">
+                                <div className="it-contact-channel tp_fade_anim">
+                                    <span className="it-contact-channel-label">{item.title}</span>
+                                    <h4 className="it-contact-channel-title">{item.value}</h4>
+                                    <p>{item.note}</p>
+                                    <Link className="tp-btn-yellow-green w-100" href={item.href}>
+                                        <span>
+                                            <span className="text-1">{item.cta}</span>
+                                            <span className="text-2">{item.cta}</span>
+                                        </span>
+                                    </Link>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+};
+
+export default ITSolutionContactChannels;

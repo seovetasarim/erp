@@ -1,95 +1,22 @@
-import type { MetadataRoute } from 'next';
-
-import { getAllCitySeoSlugs } from '../data/city-seo-slugs';
-import { SITE_URL as BASE } from '../site-url';
+import type { MetadataRoute } from "next";
+import { SITE } from "@/constants/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  const lastModified = new Date();
 
-  const cozumler = [
-    'erp-yazilimi', 'kobi-erp', 'offline-erp', 'isletme-yonetimi',
-    'firma-yonetimi', 'coklu-firma', 'dashboard',
-    'stok-takip', 'stok-takip-yazilimi', 'stok-programi', 'stok-sayim',
-    'depo', 'depo-takip', 'barkod',
-    'e-fatura', 'e-fatura-yazilimi', 'fatura-yazilimi', 'faturalar',
-    'cari-yonetim', 'cari-hesap-yazilimi', 'cari-program',
-    'kasa', 'raporlar', 'excel-export', 'yedekleme',
-    'toptan-satis', 'perakende', 'magaza', 'gida', 'tekstil',
-    'uretim', 'dagitim', 'lojistik', 'kargo', 'kargo-etiketi',
+  const routes: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[0]["changeFrequency"] }[] = [
+    { path: "/", priority: 1, changeFrequency: "weekly" },
+    { path: "/ozellikler", priority: 0.9, changeFrequency: "weekly" },
+    { path: "/moduller", priority: 0.9, changeFrequency: "weekly" },
+    { path: "/fiyatlandirma", priority: 0.85, changeFrequency: "weekly" },
+    { path: "/sss", priority: 0.8, changeFrequency: "monthly" },
+    { path: "/iletisim", priority: 0.75, changeFrequency: "monthly" },
   ];
 
-  return [
-    {
-      url: BASE,
-      lastModified: now,
-      changeFrequency: 'weekly',
-      priority: 1.0,
-    },
-    {
-      url: `${BASE}/ozellikler`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${BASE}/fiyatlandirma`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${BASE}/sss`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${BASE}/iletisim`,
-      lastModified: now,
-      changeFrequency: 'yearly',
-      priority: 0.9,
-    },
-    {
-      url: `${BASE}/demo-iste`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    ...cozumler.map((slug) => ({
-      url: `${BASE}/cozumler/${slug}`,
-      lastModified: now,
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    })),
-    {
-      url: `${BASE}/gizlilik-politikasi`,
-      lastModified: now,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${BASE}/kullanim-sartlari`,
-      lastModified: now,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${BASE}/cerez-politikasi`,
-      lastModified: now,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${BASE}/kvkk`,
-      lastModified: now,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    ...getAllCitySeoSlugs().map((slug) => ({
-      url: `${BASE}/sehirler/${slug}`,
-      lastModified: now,
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    })),
-  ];
+  return routes.map(({ path, priority, changeFrequency }) => ({
+    url: path === "/" ? SITE.url : `${SITE.url}${path}`,
+    lastModified,
+    changeFrequency,
+    priority,
+  }));
 }

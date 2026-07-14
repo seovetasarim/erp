@@ -1,164 +1,23 @@
-import type { Metadata } from 'next';
-import { SITE_URL } from '../site-url';
-import Hero from './Hero';
-import AnimateSection from './AnimateSection';
-import FeaturesSection from './FeaturesSection';
-import PricingSection from './PricingSection';
-import VideoFaqSection from './VideoFaqSection';
-import Footer from './Footer';
+import ITSolutionMain from '@/pages/homes/it-solution/ITSolutionMain';
+import { buildPageMetadata } from '@/constants/seo';
 
-export const metadata: Metadata = {
-  title: 'Ücretsiz ERP Programı İndir — Offline Stok Takip & Cari Yönetim',
-  description:
-    "Ücretsiz Windows ERP'yi hemen indirin: stok takip, cari yönetim, fatura, kasa ve raporlar — %100 offline, veriler bilgisayarınızda. Aboneliksiz, tek seferlik lisans. KOBİ'ler için Türkiye'de geliştirilen pratik ERP. Ücretsiz demo: 0532 166 76 97.",
-  keywords: [
-    'ücretsiz ERP indir',
-    'ücretsiz stok takip yazılımı',
-    'offline ERP',
-    'Windows ERP ücretsiz',
-    'ERP yazılımı',
-    'KOBİ ERP',
-    'cari program',
-    'fatura yazılımı',
-    'DijitalERP',
-  ],
-  alternates: { canonical: SITE_URL },
-  openGraph: {
-    title: 'DijitalERP — Ücretsiz ERP İndir',
+export const metadata = buildPageMetadata({
+    title: 'Ücretsiz Offline ERP Programı | Stok Takip ve Cari Yönetim — DijitalERP',
     description:
-      'Offline stok takip ve cari yönetim: ücretsiz Windows sürümünü indirin; lisanslı paket seçenekleri tek seferlik ödeme.',
-    url: SITE_URL,
-  },
+        'DijitalERP ile ücretsiz offline ERP indirin. Windows masaüstü stok takip, cari yönetim, fatura yazılımı, kasa ve barkod tek panelde. İnternet zorunlu değil — veriler bilgisayarınızda.',
+    path: '/',
+    absoluteTitle: true,
+    keywords: [
+        'ücretsiz ERP indir',
+        'offline ERP programı',
+        'Windows stok takip',
+        'masaüstü ERP',
+        'barkod stok programı',
+    ],
+});
+
+const page = () => {
+    return <ITSolutionMain />;
 };
 
-const websiteSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'DijitalERP',
-  url: SITE_URL,
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: {
-      '@type': 'EntryPoint',
-      urlTemplate: `${SITE_URL}/?q={search_term_string}`,
-    },
-    'query-input': 'required name=search_term_string',
-  },
-};
-
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'ERP Programı Nedir?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'ERP (Kurumsal Kaynak Planlama), işletmelerin stok, cari, fatura, kasa ve raporlama gibi tüm süreçlerini tek yazılımda yönetmesini sağlayan entegre bir yazılım sistemidir.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'DijitalERP internet bağlantısı gerektiriyor mu?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Hayır. DijitalERP %100 offline çalışır. Verileriniz yalnızca bilgisayarınızda SQLite veritabanında saklanır, internet bağlantısı gerektirmez.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'DijitalERP ücretsiz indirilebilir mi?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Evet. Windows için ücretsiz masaüstü sürümümüzü sitedeki kurulum.rar arşiviyle indirebilirsiniz; WinRAR ile klasöre çıkarıp Electron tabanlı uygulamayı kurarak ana modülleri offline kullanabilirsiniz — veriler sadece bilgisayarınızda kalır. Çok kullanıcı, daha uzun güncelleme ve öncelikli destek gibi gereksinimler için Başlangıç, Profesyonel veya Kurumsal lisans paketleri satın alınır; abonelik modeli kullanılmaz.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Ücretsiz sürüm ile lisanslı sürüm farkı nedir?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Ücretsiz dağıtılan sürüm, yazılımı tanımanız ve offline iş süreçlerini denemeniz içindir. Lisanslı paketler; kullanıcı ve bilgisayar sayısı, güncelleme süresi, E-Fatura kurulumunda öncelik ve destek seviyesi gibi ticari garantiler içerir. Önce ücretsiz indirip kullanın; sonra 0532 166 76 97 ile size uygun paketi seçin.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'DijitalERP lisans fiyatları ne kadar?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Ücretsiz indirilebilir sürümün yanı sıra ticari lisans paketleri bulunur: Başlangıç 49.900 TL (1 bilgisayar), Profesyonel 79.900 TL (3 bilgisayar); ikisi de tek seferlik ödemedir, abonelik yoktur. Kurumsal paket teklifle belirlenir. Güncelleme ve destek süresi pakete göredir; süre sonunda mevcut sürümle kullanım sürebilir, yeni sürümler için dönem uzatımı satıştan netleştirilir.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'ERP Programı Kimler İçindir?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: "KOBİ'ler, perakende mağazalar, toptancılar, üreticiler ve stok takibi yapan tüm işletmeler için uygundur.",
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Güncelleme süresi bitince DijitalERP kullanılamaz mı?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Hayır. Lisansla kazandığınız kullanım süresizdir; abonelik yoktur. Paketteki süre, yeni sürüm dağıtımı ve paket kapsamındaki destek içindir. Süre sonunda mevcut yüklü sürümünüzü kullanmaya devam edebilirsiniz; yeni özellikler veya genişletilmiş destek için dönem uzatımı hakkında 0532 166 76 97 ile iletişime geçebilirsiniz.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'DijitalERP fiyatları neden aboneliksiz ve erişilebilir?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yazılım yerel bilgisayarda çalışır; veriler sizde kalır ve sürekli bulut barındırma veya kullanıcı başı aylık ücret müşteriye yansıtılmaz. Bu sayede tek seferlik şeffaf fiyat sunulur. Destek ve güncelleme kapsamı paketlere göre ayrışır.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'E-Fatura gönderebiliyor muyum?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Evet. DijitalERP Paraşüt, İşbaşı ve özel API entegrasyonu ile E-Fatura gönderimi destekler.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'DijitalERP kurulumu nasıl yapılır?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Windows bilgisayarınıza kurulum.rar dosyasını indirip WinRAR ile klasöre çıkarın; içindeki kurulum dosyasını çalıştırarak uygulamayı yükleyin. Ek yardım için 0532 166 76 97 üzerinden destek veya ticari kullanımda paket seçimi için iletişim alabilirsiniz.',
-      },
-    },
-  ],
-};
-
-export default function Home() {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <div className="site-wrap">
-        <Hero />
-        <AnimateSection sectionType="features">
-          <FeaturesSection />
-        </AnimateSection>
-        <AnimateSection sectionType="pricing" delay={80}>
-          <PricingSection />
-        </AnimateSection>
-        <AnimateSection sectionType="faq" delay={80}>
-          <VideoFaqSection />
-        </AnimateSection>
-        <AnimateSection sectionType="footer" delay={100}>
-          <Footer />
-        </AnimateSection>
-      </div>
-    </>
-  );
-}
+export default page;

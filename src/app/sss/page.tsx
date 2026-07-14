@@ -1,39 +1,37 @@
-import type { Metadata } from 'next';
-import Hero from '../Hero';
-import AnimateSection from '../AnimateSection';
-import VideoFaqSection from '../VideoFaqSection';
-import SeoContentSection from './SeoContentSection';
-import Footer from '../Footer';
+import ITSolutionFaqMain from '@/pages/homes/it-solution/ITSolutionFaqMain';
+import JsonLd from '@/components/seo/JsonLd';
+import { faqPageJsonLd } from '@/data/faqData';
+import { breadcrumbJsonLd, buildPageMetadata } from '@/constants/seo';
 
-export const metadata: Metadata = {
-  title: 'Sık Sorulan Sorular | DijitalERP ERP Yazılımı SSS',
-  description:
-    "DijitalERP sık sorulan sorular: ERP nedir, kimler için uygun, fiyatları ne kadar, kurulum süreci nasıl, veri güvenliği nasıl sağlanıyor? Tüm cevaplar burada.",
-  keywords: [
-    'ERP SSS', 'ERP yazılımı soruları', 'stok programı SSS',
-    'DijitalERP SSS', 'ERP nedir', 'offline ERP güvenlik',
-  ],
-  alternates: { canonical: 'https://www.dijitalerp.com.tr/sss' },
-  openGraph: {
-    title: 'DijitalERP Sık Sorulan Sorular — ERP Yazılımı SSS',
-    description: 'ERP nedir? Kimler için uygun? Fiyatları ne kadar? Tüm sorularınızın cevabı.',
-    url: 'https://www.dijitalerp.com.tr/sss',
-  },
+export const metadata = buildPageMetadata({
+    title: 'SSS: Ücretsiz ERP, Offline Kullanım ve Lisans',
+    description:
+        'DijitalERP SSS: ücretsiz ERP gerçekten ücretsiz mi, internet gerekir mi, kurulum nasıl, veriler nerede, abonelik var mı? Offline Windows ERP hakkında sık sorulan sorular.',
+    path: '/sss',
+    keywords: [
+        'ERP SSS',
+        'ücretsiz ERP soruları',
+        'offline ERP kurulum',
+        'ERP lisans farkı',
+        'stok programı yardım',
+    ],
+});
+
+const page = () => {
+    return (
+        <>
+            <JsonLd
+                data={[
+                    faqPageJsonLd,
+                    breadcrumbJsonLd([
+                        { name: 'Ana Sayfa', path: '/' },
+                        { name: 'SSS', path: '/sss' },
+                    ]),
+                ]}
+            />
+            <ITSolutionFaqMain />
+        </>
+    );
 };
 
-export default function SssPage() {
-  return (
-    <div className="site-wrap">
-        <Hero />
-        <AnimateSection sectionType="faq">
-          <VideoFaqSection />
-        </AnimateSection>
-        <AnimateSection sectionType="seo" delay={80}>
-          <SeoContentSection />
-        </AnimateSection>
-        <AnimateSection sectionType="footer" delay={100}>
-          <Footer />
-        </AnimateSection>
-    </div>
-  );
-}
+export default page;

@@ -1,17 +1,16 @@
-import type { MetadataRoute } from 'next';
-
-import { SITE_URL } from '../site-url';
+import type { MetadataRoute } from "next";
+import { SITE } from "@/constants/seo";
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
-        userAgent: '*',
-        allow: '/',
-        disallow: ['/api/', '/_next/'],
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/downloads/"],
       },
     ],
-    sitemap: `${SITE_URL}/sitemap.xml`,
-    host: SITE_URL,
+    sitemap: `${SITE.url}/sitemap.xml`,
+    host: SITE.url,
   };
 }
