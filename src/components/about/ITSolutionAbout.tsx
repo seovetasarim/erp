@@ -11,9 +11,9 @@ import Link from 'next/link';
 const ITSolutionAbout = () => {
     return (
         <div className="it-about-area it-about-ptb pt-140 pb-90 p-relative">
-            <div className="it-about-shape-wrap">
-                <Image data-speed="1.1" className="it-about-shape-1 d-none d-xxl-block" src={aboutShape1} alt="about-shape" />
-                <Image data-speed=".9" className="it-about-shape-2" src={aboutShape2} alt="about-shape" />
+            <div className="it-about-shape-wrap d-none d-xl-block">
+                <Image data-speed="1.1" className="it-about-shape-1 d-none d-xxl-block" src={aboutShape1} alt="" aria-hidden="true" />
+                <Image data-speed=".9" className="it-about-shape-2" src={aboutShape2} alt="" aria-hidden="true" />
             </div>
             <div className="container container-1230">
                 <div className="row">
@@ -42,7 +42,7 @@ const ITSolutionAbout = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-xl-8">
+                    <div className="col-xl-8 d-none d-xl-block">
                         <div className="row align-items-end">
                             <div className="col-lg-6">
                                 <div className="it-about-thumb">

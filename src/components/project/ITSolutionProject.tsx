@@ -1,86 +1,149 @@
 "use client"
-import { LeftArrowIcon, RightArrowIcon } from '@/svg';
-import projectsData from '@/data/projectData';
-import Image from 'next/image';
+import project1 from '../../../public/assets/img/home-11/project/project-1.jpg';
+import project2 from '../../../public/assets/img/home-11/project/project-2.jpg';
+import project3 from '../../../public/assets/img/home-11/project/project-3.jpg';
+import project4 from '../../../public/assets/img/home-11/project/project-4.jpg';
+import project5 from '../../../public/assets/img/home-11/project/project-5.jpg';
+import { DIJITAL_ERP_DOWNLOAD_FILENAME, DIJITAL_ERP_DOWNLOAD_HREF } from '@/constants/download';
+import { ArrowNine } from '@/svg/ArrowIcons';
+import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 
-// Import Swiper components and modules
-import { project_swiper_params } from '@/constants/swiper';
-import { Swiper, SwiperSlide } from "swiper/react";
+type ModuleItem = {
+    id: string;
+    number: string;
+    title: string;
+    description: string;
+    image: StaticImageData;
+};
+
+const modules: ModuleItem[] = [
+    {
+        id: 'stok',
+        number: '01',
+        title: 'Offline Stok Takip',
+        description: 'Ürün, depo ve hareketler tek panelde. Düşük stok uyarısıyla envanter kontrolü.',
+        image: project1,
+    },
+    {
+        id: 'cari',
+        number: '02',
+        title: 'Cari Hesap Yönetimi',
+        description: 'Müşteri ve tedarikçi bakiyeleri, borç-alacak ve tahsilat özeti.',
+        image: project2,
+    },
+    {
+        id: 'fatura',
+        number: '03',
+        title: 'Hızlı Fatura Yazılımı',
+        description: 'Satış ve alış faturalarını hızlı kes, yazdır, kaydet.',
+        image: project3,
+    },
+    {
+        id: 'kasa',
+        number: '04',
+        title: 'Kasa ve Nakit Takibi',
+        description: 'Nakit giriş-çıkış ve günlük kasa özeti. Gün sonu netleşir.',
+        image: project4,
+    },
+    {
+        id: 'rapor',
+        number: '05',
+        title: 'Satış ve Stok Raporları',
+        description: 'Dashboard ve raporlarla satış, stok ve cari performansı.',
+        image: project5,
+    },
+];
 
 type ITSolutionProjectProps = {
     showTitle?: boolean;
     sectionId?: string;
 };
 
-const ITSolutionProject = ({ showTitle = true, sectionId = "moduller" }: ITSolutionProjectProps) => {
+const ITSolutionProject = ({ showTitle = true, sectionId = 'moduller' }: ITSolutionProjectProps) => {
+    const [active, setActive] = useState(0);
+    const current = modules[active];
+
     return (
-        <div className={`it-project-area it-project-ptb ${showTitle ? "pt-120" : "pt-100"}`} id={sectionId}>
+        <section className="it-modules-home paste-bg-2" id={sectionId}>
             <div className="container container-1230">
-                <div className="row justify-content-center">
-                    <div className="col-xl-11">
-                        <div className="it-project-title-box text-center mb-45">
-                            <span className="tp-section-subtitle-platform platform-text-black tp-split-text tp-split-right">
-                                KOBİ ERP modülleriyle öne çıkan çözümler
-                            </span>
-                            {showTitle ? (
-                                <h4 className="tp-section-title-platform platform-text-black fs-200 tp-split-text tp-split-right">
-                                    Modüller
-                                </h4>
-                            ) : (
-                                <h4 className="tp-section-title-platform platform-text-black fs-84 tp-split-text tp-split-right">
-                                    Slider ile göz atın
-                                </h4>
-                            )}
+                <div className="it-modules-home-head text-center">
+                    <span className="tp-section-subtitle-platform mb-20 d-inline-block">
+                        {showTitle ? 'Modüller' : 'Modül önizleme'}
+                    </span>
+                    <h2 className="tp-section-title-platform platform-text-black it-modules-home-title">
+                        {showTitle ? 'Tek programda tüm iş akışı' : 'Modüllere yakından bakın'}
+                    </h2>
+                    <p className="it-modules-home-lead">
+                        Soldan modül seçin — sağda gerçek DijitalERP ekranını görün.
+                    </p>
+                </div>
+
+                <div className="it-modules-home-panel">
+                    <div className="it-modules-home-nav" role="tablist" aria-label="ERP modülleri">
+                        {modules.map((mod, index) => {
+                            const isActive = index === active;
+                            return (
+                                <button
+                                    key={mod.id}
+                                    type="button"
+                                    role="tab"
+                                    aria-selected={isActive}
+                                    className={`it-modules-home-nav-item${isActive ? ' is-active' : ''}`}
+                                    onClick={() => setActive(index)}
+                                    onMouseEnter={() => setActive(index)}
+                                >
+                                    <span className="it-modules-home-nav-num">{mod.number}</span>
+                                    <span className="it-modules-home-nav-body">
+                                        <strong>{mod.title}</strong>
+                                        <em>{mod.description}</em>
+                                    </span>
+                                </button>
+                            );
+                        })}
+                    </div>
+
+                    <div className="it-modules-home-preview" role="tabpanel">
+                        <div className="it-modules-home-preview-frame">
+                            <Image
+                                key={current.id}
+                                src={current.image}
+                                alt={`${current.title} — DijitalERP ekranı`}
+                                sizes="(max-width: 991px) 100vw, 640px"
+                                priority
+                            />
+                        </div>
+                        <div className="it-modules-home-preview-meta">
+                            <span>{current.number}</span>
+                            <strong>{current.title}</strong>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="it-project-slider-wrap text-center">
-                <Swiper
-                    className='it-project-active'
-                    {...project_swiper_params}
-                >
-                    {projectsData.slice(37, 43).map((project) => (
-                        <SwiperSlide key={project.id}>
-                            <div className="it-project-item text-center">
-                                <div className="it-project-thumb fix">
-                                    <Link href={project.link}>
-                                        <Image
-                                            style={{ width: "100%", height: "auto" }}
-                                            className="w-100"
-                                            src={project.image}
-                                            alt={project.title}
-                                        />
-                                    </Link>
-                                </div>
-                                <div className="it-project-content">
-                                    <h4 className="it-project-title">
-                                        <Link className="tp-line-black" href={project.link}>
-                                            {project.title}
-                                        </Link>
-                                    </h4>
-                                    <span>{project.category}</span>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-                <div className="it-project-arrow">
-                    <button className="it-project-prev">
+
+                <div className="it-modules-home-cta">
+                    <Link className="it-modules-home-cta-secondary" href="/moduller">
+                        Tüm modülleri gör
+                    </Link>
+                    <Link
+                        className="tp-btn-black-radius btn-blue-bg d-inline-flex align-items-center justify-content-between it-modules-home-cta-btn"
+                        href={DIJITAL_ERP_DOWNLOAD_HREF}
+                        download={DIJITAL_ERP_DOWNLOAD_FILENAME}
+                    >
                         <span>
-                            <LeftArrowIcon width='14' height='14' viewBox='0 0 14 14' strokeWidth={2} pathValue='M13 7H1M1 7L7 1M1 7L7 13' />
+                            <span className="text-1">Ücretsiz İndir</span>
+                            <span className="text-2">Ücretsiz İndir</span>
                         </span>
-                    </button>
-                    <button className="it-project-next">
-                        <span>
-                            <RightArrowIcon width='14' height='14' viewBox='0 0 14 14' strokeWidth={2} pathValue='M1 7H13M13 7L7 1M13 7L7 13' />
-                        </span>
-                    </button>
+                        <i>
+                            <span>
+                                <ArrowNine />
+                                <ArrowNine />
+                            </span>
+                        </i>
+                    </Link>
                 </div>
-                <div className="it-project-dots"></div>
             </div>
-        </div>
+        </section>
     );
 };
 

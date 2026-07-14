@@ -1124,7 +1124,7 @@
 
     &-thumb {
         @media #{$md,$xs} {
-            margin-bottom: 30px;
+            display: none;
         }
 
         & img {
@@ -1139,9 +1139,15 @@
     &-content {
         margin-left: 30px;
         margin-top: 10px;
+        @media #{$md,$xs} {
+            margin-left: 0;
+        }
 
         & img {
             margin-bottom: 23px;
+            @media #{$md,$xs} {
+                display: none;
+            }
         }
 
         & p {

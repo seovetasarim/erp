@@ -47,7 +47,7 @@ const ITSolutionTestimonial = () => {
                                     <SwiperSlide key={testimonial.id}>
                                         <div className="it-testimonial-item">
                                             <div className="row">
-                                                <div className="col-lg-4">
+                                                <div className="col-lg-4 d-none d-lg-block">
                                                     <div className="it-testimonial-thumb">
                                                         {testimonial.avatar && (
                                                             <Image
@@ -64,7 +64,14 @@ const ITSolutionTestimonial = () => {
                                                 </div>
                                                 <div className="col-lg-8">
                                                     <div className="it-testimonial-content">
-                                                        {testimonial.brandLogo && <Image src={testimonial.brandLogo} alt="testi-brand" />}
+                                                        {testimonial.brandLogo && (
+                                                            <Image
+                                                                className="d-none d-lg-inline-block"
+                                                                src={testimonial.brandLogo}
+                                                                alt=""
+                                                                aria-hidden="true"
+                                                            />
+                                                        )}
                                                         <p>{`"${testimonial.quote}"`}</p>
                                                         <span>{testimonial.name}</span>
                                                     </div>
