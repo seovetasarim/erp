@@ -6,10 +6,6 @@ import { useAuthUser } from "@/hooks/useAuthUser";
 export default function HeaderAuthNav() {
   const { isLoggedIn, loading } = useAuthUser();
 
-  if (loading) {
-    return null;
-  }
-
   if (isLoggedIn) {
     return (
       <Link href="/hesabim" className="tp-header-auth-link">

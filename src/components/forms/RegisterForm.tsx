@@ -3,14 +3,15 @@
 import { CloseEyeIcon, OpenEyeIcon } from "@/svg/EyeIcons";
 import React, { useState } from "react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { redirectAfterAuth } from "@/lib/auth/redirectAfterAuth";
+import { setClientAuthUser } from "@/lib/auth/clientSession";
+import type { AuthUser } from "@/hooks/useAuthUser";
 
 const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
   const searchParams = useSearchParams();
   const nextParam = searchParams?.get("next");
   const loginHref = nextParam
@@ -35,11 +36,13 @@ const RegisterForm = () => {
         credentials: "include",
         body: JSON.stringify({ name, email, phone, password }),
       });
-      const data = (await res.json()) as { error?: string };
+      const data = (await res.json()) as { error?: string; user?: AuthUser };
       if (!res.ok) throw new Error(data.error || "Kayıt başarısız.");
 
+      if (data.user) setClientAuthUser(data.user);
+
       const next = searchParams?.get("next") || "/fiyatlandirma#paketler";
-      redirectAfterAuth(next, router);
+      redirectAfterAuth(next);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Kayıt başarısız.");
     } finally {

@@ -16,13 +16,19 @@ export type SessionPayload = {
   userId: number;
   email: string;
   customerCode: string;
+  name: string;
+  phone: string;
 };
 
-export async function createSession(user: Pick<UserRow, "id" | "email" | "customer_code">) {
+export async function createSession(
+  user: Pick<UserRow, "id" | "email" | "customer_code" | "name" | "phone">,
+) {
   const token = await new SignJWT({
     userId: user.id,
     email: user.email,
     customerCode: user.customer_code,
+    name: user.name,
+    phone: user.phone,
   } satisfies SessionPayload)
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
@@ -55,6 +61,8 @@ export async function getSession(): Promise<SessionPayload | null> {
       userId: Number(payload.userId),
       email: String(payload.email),
       customerCode: String(payload.customerCode),
+      name: String(payload.name || ""),
+      phone: String(payload.phone || ""),
     };
   } catch {
     return null;
