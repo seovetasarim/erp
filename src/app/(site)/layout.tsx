@@ -1,4 +1,5 @@
 import GlobalVideoModal from "@/components/Popup/GlobalVideoModal";
+import PromoOfferPopup from "@/components/Popup/PromoOfferPopup";
 import { VideoProvider } from "@/provider/VideoProvider";
 import AppProvider from "@/provider/AppProvider";
 import JsonLd from "@/components/seo/JsonLd";
@@ -22,6 +23,7 @@ export default function SiteLayout({ children }: PropsWithChildren) {
           <VideoProvider>
             {children}
             <GlobalVideoModal />
+            <PromoOfferPopup />
           </VideoProvider>
         </Wrapper>
       </AppProvider>

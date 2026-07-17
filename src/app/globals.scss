@@ -1020,3 +1020,206 @@ main {
   }
 }
 
+.it-promo-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: it-promo-fade-in 0.35s ease;
+}
+
+.it-promo-popup-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(12, 70, 66, 0.42);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+}
+
+.it-promo-popup-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 440px);
+  max-height: min(92vh, 720px);
+  overflow: auto;
+  padding: clamp(22px, 4vw, 32px);
+  border-radius: 22px;
+  background: #fff;
+  border: 1px solid rgba(12, 70, 66, 0.08);
+  box-shadow: 0 28px 80px rgba(12, 70, 66, 0.18);
+  text-align: center;
+  animation: it-promo-rise 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.it-promo-popup-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 999px;
+  background: #f4f0ea;
+  color: #21212d;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    background: #0c4642;
+    color: #fff;
+  }
+}
+
+.it-promo-popup-badge {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(12, 70, 66, 0.08);
+  color: #0c4642;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.it-promo-popup-kicker {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: rgba(33, 33, 45, 0.62);
+}
+
+.it-promo-popup-price {
+  margin: 0 0 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+
+.it-promo-popup-price-value {
+  font-size: clamp(2.4rem, 8vw, 3rem);
+  line-height: 1;
+  font-weight: 600;
+  color: #0c4642;
+  letter-spacing: -0.02em;
+}
+
+.it-promo-popup-price-suffix {
+  font-size: clamp(1rem, 3.5vw, 1.125rem);
+  font-weight: 500;
+  color: #21212d;
+}
+
+.it-promo-popup-lead {
+  margin: 0 0 16px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(33, 33, 45, 0.72);
+}
+
+.it-promo-popup-points {
+  list-style: none;
+  margin: 0 0 22px;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  text-align: left;
+
+  li {
+    position: relative;
+    padding-left: 22px;
+    font-size: 14px;
+    color: #21212d;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.45em;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #a0ff27;
+      box-shadow: 0 0 0 3px rgba(160, 255, 39, 0.25);
+    }
+  }
+}
+
+.it-promo-popup-actions {
+  display: grid;
+  gap: 12px;
+}
+
+.it-promo-popup-cta {
+  width: 100%;
+  justify-content: space-between !important;
+}
+
+.it-promo-popup-secondary {
+  font-size: 14px;
+  font-weight: 500;
+  color: #0c4642;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+
+  &:hover {
+    color: #21212d;
+  }
+}
+
+.it-promo-popup-dismiss {
+  margin-top: 16px;
+  border: 0;
+  background: transparent;
+  color: rgba(33, 33, 45, 0.48);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 4px 8px;
+
+  &:hover {
+    color: #21212d;
+  }
+}
+
+@keyframes it-promo-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes it-promo-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 575px) {
+  .it-promo-popup {
+    padding: 12px;
+    align-items: flex-end;
+  }
+
+  .it-promo-popup-dialog {
+    border-radius: 20px 20px 16px 16px;
+    max-height: 88vh;
+  }
+
+  .it-promo-popup-points li {
+    font-size: 13px;
+  }
+}
