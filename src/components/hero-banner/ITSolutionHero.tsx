@@ -3,6 +3,7 @@ import heroShapeTwo from '../../../public/assets/img/home-11/hero/hero-shape-4.p
 import heroShapeFour from '../../../public/assets/img/home-11/hero/hero-shape-3.png';
 import heroShape from '../../../public/assets/img/home-11/hero/hero-shape-1.png';
 import heroApp from '../../../public/assets/img/home-11/hero/hero-app.png';
+import DownloadCounter from '@/components/download/DownloadCounter';
 import { DIJITAL_ERP_DOWNLOAD_FILENAME, DIJITAL_ERP_DOWNLOAD_HREF } from '@/constants/download';
 import { EmailIconThree, HeroShape } from '@/svg';
 import { ArrowNine } from '@/svg/ArrowIcons';
@@ -63,6 +64,7 @@ const ITSolutionHero = () => {
                                     </Link>
                                 </div>
                             </div>
+                            <DownloadCounter />
                         </div>
                     </div>
                     <div className="col-xl-6">

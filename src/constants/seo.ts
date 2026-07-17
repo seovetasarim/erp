@@ -9,7 +9,7 @@ export const SITE = {
   email: "info@dijitalerp.com.tr",
   phone: "+902166061746",
   phoneDisplay: "0216 606 17 46",
-  downloadPath: "/downloads/dijitalerp.rar",
+  downloadPath: "/api/download",
   ogImage: "/og-image.png",
   twitterHandle: "@dijitalerp",
   tagline: "Offline Windows ERP — stok, cari, fatura ve kasa tek panelde",

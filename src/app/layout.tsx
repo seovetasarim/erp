@@ -3,6 +3,7 @@ import GlobalVideoModal from "@/components/Popup/GlobalVideoModal";
 import { VideoProvider } from "@/provider/VideoProvider";
 import AppProvider from "@/provider/AppProvider";
 import JsonLd from "@/components/seo/JsonLd";
+import GoogleAnalytics from "@/components/seo/GoogleAnalytics";
 import {
   organizationJsonLd,
   SITE,
@@ -173,6 +174,7 @@ export default function RootLayout({
       ${satisfy.variable} ${teko.variable} ${phudu.variable} ${poppins.variable}
        ${onest.variable}`}
       >
+        <GoogleAnalytics />
         <JsonLd data={[organizationJsonLd, softwareApplicationJsonLd]} />
         <AppProvider>
           <Wrapper>
