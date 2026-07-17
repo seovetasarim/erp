@@ -14,6 +14,27 @@ type SqlParams = SqlParam[];
 let pool: Pool | undefined;
 let schemaReady: Promise<void> | undefined;
 
+function isIgnorableMysqlSchemaError(error: unknown) {
+  const code = (error as { code?: string; errno?: number }).code;
+  const errno = (error as { errno?: number }).errno;
+  return (
+    code === "ER_DUP_KEYNAME" ||
+    code === "ER_TABLE_EXISTS_ERROR" ||
+    code === "ER_DUP_FIELDNAME" ||
+    errno === 1061 ||
+    errno === 1050
+  );
+}
+
+async function runMysqlSchemaStatement(pool: Pool, statement: string) {
+  try {
+    await pool.execute(statement);
+  } catch (error) {
+    if (isIgnorableMysqlSchemaError(error)) return;
+    throw error;
+  }
+}
+
 export function useMysql() {
   return useMysqlDriver();
 }
@@ -34,7 +55,7 @@ export async function ensureMysqlSchema() {
         .map((part) => part.trim())
         .filter(Boolean);
       for (const statement of statements) {
-        await pool.execute(statement);
+        await runMysqlSchemaStatement(pool, statement);
       }
     })();
   }
