@@ -67,6 +67,10 @@ function runMigrations(db: Database.Database) {
       FOREIGN KEY (user_id) REFERENCES users(id)
     )`,
     "CREATE INDEX IF NOT EXISTS idx_user_addresses_user ON user_addresses(user_id)",
+    `CREATE TABLE IF NOT EXISTS site_counters (
+      counter_key TEXT PRIMARY KEY,
+      value INTEGER NOT NULL DEFAULT 0
+    )`,
   ];
   for (const sql of migrations) {
     try {

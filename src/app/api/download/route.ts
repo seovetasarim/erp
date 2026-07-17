@@ -1,4 +1,5 @@
 import { getSession } from "@/lib/auth/session";
+import { incrementSiteDownloadCount } from "@/lib/downloads/repository";
 import { getGithubDownloadUrl } from "@/lib/githubRelease";
 import { NextResponse } from "next/server";
 
@@ -13,6 +14,7 @@ export async function GET(request: Request) {
   }
 
   try {
+    await incrementSiteDownloadCount();
     const downloadUrl = await getGithubDownloadUrl();
     return NextResponse.redirect(downloadUrl, 302);
   } catch {

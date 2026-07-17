@@ -1,3 +1,5 @@
+import { getSiteDownloadCount } from "@/lib/downloads/repository";
+
 const GITHUB_API = "https://api.github.com";
 
 export const GITHUB_REPO = "seovetasarim/erp";
@@ -14,6 +16,7 @@ export type GithubReleaseAsset = {
 export type DownloadStats = {
   total: number;
   githubTotal: number;
+  siteTotal: number;
   offset: number;
   updatedAt: string;
   releaseTag: string;
@@ -61,11 +64,13 @@ export async function getDownloadStats(): Promise<DownloadStats> {
   }
 
   const githubTotal = asset.download_count ?? 0;
+  const siteTotal = await getSiteDownloadCount();
 
   return {
     githubTotal,
+    siteTotal,
     offset,
-    total: githubTotal + offset,
+    total: githubTotal + siteTotal + offset,
     updatedAt: new Date().toISOString(),
     releaseTag: release.tag_name,
     assetName: asset.name,

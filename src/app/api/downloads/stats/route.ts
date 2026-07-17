@@ -15,6 +15,7 @@ export async function GET() {
       {
         total: offset,
         githubTotal: 0,
+        siteTotal: 0,
         offset,
         updatedAt: new Date().toISOString(),
         releaseTag: "",
