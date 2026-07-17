@@ -3,6 +3,9 @@ import { findUserByEmail } from "@/lib/commerce/repository";
 import { verifyPassword } from "@/lib/auth/password";
 import { createSession } from "@/lib/auth/session";
 
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 export async function POST(request: Request) {
   try {
     const body = (await request.json()) as { email?: string; password?: string };

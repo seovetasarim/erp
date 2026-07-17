@@ -5,7 +5,7 @@ import type {
   RowDataPacket,
 } from "mysql2/promise";
 import mysql from "mysql2/promise";
-import { getMissingMysqlEnvKeys, isServerlessHost } from "@/lib/db";
+import { resolveMysqlPoolConfig, useMysqlDriver } from "@/lib/db/env";
 import { MYSQL_SCHEMA_SQL } from "./mysql-schema";
 
 type SqlParam = string | number | boolean | null | Date | Buffer;
@@ -15,34 +15,7 @@ let pool: Pool | undefined;
 let schemaReady: Promise<void> | undefined;
 
 export function useMysql() {
-  const configured =
-    process.env.DB_DRIVER === "mysql" || Boolean(process.env.MYSQL_HOST?.trim());
-
-  if (isServerlessHost()) {
-    return configured;
-  }
-
-  return configured;
-}
-
-function getPoolConfig() {
-  const missing = getMissingMysqlEnvKeys();
-  if (missing.length > 0) {
-    throw new Error(
-      `MySQL yapılandırması eksik: ${missing.join(", ")}`,
-    );
-  }
-
-  return {
-    host: process.env.MYSQL_HOST!.trim(),
-    port: Number(process.env.MYSQL_PORT || 3306),
-    user: process.env.MYSQL_USER!.trim(),
-    password: process.env.MYSQL_PASSWORD!,
-    database: process.env.MYSQL_DATABASE!.trim(),
-    waitForConnections: true,
-    connectionLimit: 10,
-    charset: "utf8mb4",
-  };
+  return useMysqlDriver();
 }
 
 export async function ensureMysqlSchema() {
@@ -50,7 +23,12 @@ export async function ensureMysqlSchema() {
   if (!schemaReady) {
     schemaReady = (async () => {
       if (!pool) {
-        pool = mysql.createPool(getPoolConfig());
+        pool = mysql.createPool({
+          ...resolveMysqlPoolConfig(),
+          waitForConnections: true,
+          connectionLimit: 10,
+          charset: "utf8mb4",
+        });
       }
       const statements = MYSQL_SCHEMA_SQL.split(";")
         .map((part) => part.trim())
@@ -65,11 +43,16 @@ export async function ensureMysqlSchema() {
 
 export async function getMysqlPool() {
   if (!useMysql()) {
-    throw new Error("MySQL yapılandırması bulunamadı.");
+    throw new Error("MySQL yapilandirmasi bulunamadi.");
   }
   await ensureMysqlSchema();
   if (!pool) {
-    pool = mysql.createPool(getPoolConfig());
+    pool = mysql.createPool({
+      ...resolveMysqlPoolConfig(),
+      waitForConnections: true,
+      connectionLimit: 10,
+      charset: "utf8mb4",
+    });
   }
   return pool;
 }
@@ -126,6 +109,20 @@ export async function withMysqlTransaction<T>(
   } catch (error) {
     await connection.rollback();
     throw error;
+  } finally {
+    connection.release();
+  }
+}
+
+export async function testMysqlConnection() {
+  const db = await getMysqlPool();
+  const connection = await db.getConnection();
+  try {
+    await connection.ping();
+    const [rows] = await connection.execute<RowDataPacket[]>(
+      "SELECT COUNT(*) as c FROM users",
+    );
+    return { ok: true as const, users: Number(rows[0]?.c || 0) };
   } finally {
     connection.release();
   }

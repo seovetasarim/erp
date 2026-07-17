@@ -1,40 +1,21 @@
 import Database from "better-sqlite3";
 import fs from "fs";
 import path from "path";
+import { assertWritableSqlite } from "./env";
 import { SCHEMA_SQL } from "./schema";
+
+export {
+  assertWritableSqlite,
+  getMissingMysqlEnvKeys,
+  getMysqlEnvPresence,
+  hasMysqlEnvConfig,
+  isServerlessHost,
+  useMysqlDriver,
+} from "./env";
 
 declare global {
   // eslint-disable-next-line no-var
   var __dijitalerpDb: Database.Database | undefined;
-}
-
-export function isServerlessHost() {
-  return Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
-}
-
-export function getMissingMysqlEnvKeys() {
-  const required = [
-    "MYSQL_HOST",
-    "MYSQL_USER",
-    "MYSQL_PASSWORD",
-    "MYSQL_DATABASE",
-  ] as const;
-  return required.filter((key) => !process.env[key]?.trim());
-}
-
-export function assertWritableSqlite() {
-  if (!isServerlessHost()) return;
-
-  const missing = getMissingMysqlEnvKeys();
-  if (missing.length === 0) {
-    throw new Error(
-      "Vercel ortamında SQLite kullanılamaz. DB_DRIVER=mysql olarak ayarlayıp redeploy edin.",
-    );
-  }
-
-  throw new Error(
-    `Vercel ortamında MySQL zorunludur. Production ortam değişkenlerine ekleyin: ${missing.join(", ")}`,
-  );
 }
 
 function getDbPath() {
