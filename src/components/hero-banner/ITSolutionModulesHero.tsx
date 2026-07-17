@@ -1,7 +1,7 @@
 import heroShot1 from '../../../public/assets/img/home-11/project/hero-shot-1.jpg';
 import heroShot2 from '../../../public/assets/img/home-11/project/hero-shot-2.jpg';
 import heroShot3 from '../../../public/assets/img/home-11/project/hero-shot-3.jpg';
-import { DIJITAL_ERP_DOWNLOAD_FILENAME, DIJITAL_ERP_DOWNLOAD_HREF } from '@/constants/download';
+import ProtectedDownloadLink from '@/components/download/ProtectedDownloadLink';
 import { ArrowNine } from '@/svg/ArrowIcons';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -37,10 +37,8 @@ const ITSolutionModulesHero = () => {
                                     birlikte tam bir KOBİ ERP.
                                 </p>
                                 <div className="it-modules-hero-actions d-flex flex-wrap align-items-center">
-                                    <Link
+                                    <ProtectedDownloadLink
                                         className="tp-btn-black-radius it-modules-hero-btn d-inline-flex align-items-center justify-content-between"
-                                        href={DIJITAL_ERP_DOWNLOAD_HREF}
-                                        download={DIJITAL_ERP_DOWNLOAD_FILENAME}
                                     >
                                         <span>
                                             <span className="text-1">Ücretsiz İndir</span>
@@ -52,7 +50,7 @@ const ITSolutionModulesHero = () => {
                                                 <ArrowNine />
                                             </span>
                                         </i>
-                                    </Link>
+                                    </ProtectedDownloadLink>
                                     <Link className="it-modules-hero-link" href="/ozellikler">
                                         Özelliklere bak
                                     </Link>

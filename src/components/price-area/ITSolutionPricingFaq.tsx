@@ -10,24 +10,30 @@ const faqData: FAQItemDT[] = [
     },
     {
         id: 'priceFaq2',
-        question: 'Aylık abonelik var mı?',
+        question: 'Aylık kiralama var mı?',
         answer:
-            'Hayır. DijitalERP tek seferlik lisans modeliyle çalışır. Bulut aboneliği veya kullanıcı başı ücret yoktur.',
+            'Evet. Başlangıç paketi 1.990₺/ay, Profesyonel paket 2.990₺/ay kiralama ile kullanılabilir. Taahhüt yoktur; istediğiniz zaman iptal edebilirsiniz. Tek seferlik lisans seçeneği de mevcuttur.',
     },
     {
         id: 'priceFaq3',
+        question: 'Aylık kiralama mı, tek seferlik lisans mı daha mantıklı?',
+        answer:
+            'Başlangıç bütçeniz kısıtlıysa aylık kiralama daha erişilebilir. Uzun vadede kullanacaksanız tek seferlik lisans (Başlangıç 49.900₺, Profesyonel 79.900₺) toplam maliyeti düşürür. İstediğiniz zaman tek seferliğe geçiş için bize ulaşın.',
+    },
+    {
+        id: 'priceFaq4',
         question: 'Güncelleme süresi bitince yazılım kapanır mı?',
         answer:
             'Hayır. Yazılım çalışmaya devam eder. Güncelleme süresi, yeni sürüm ve destek kapsamını belirler; programı kullanamaz hale getirmez.',
     },
     {
-        id: 'priceFaq4',
-        question: 'Fiyatlar neden aboneliksiz ve daha erişilebilir?',
+        id: 'priceFaq5',
+        question: 'Fiyatlar neden erişilebilir tutuluyor?',
         answer:
-            'DijitalERP sunucusuz ve offline mimariyle çalıştığı için sürekli altyapı maliyeti yansıtılmaz. Fiyat avantajı modül kısıtından değil, bu mimariden gelir.',
+            'DijitalERP sunucusuz ve offline mimariyle çalıştığı için sürekli bulut altyapı maliyeti yansıtılmaz. Tek seferlik ve aylık kiralama seçenekleriyle farklı bütçelere uyum sağlanır.',
     },
     {
-        id: 'priceFaq5',
+        id: 'priceFaq6',
         question: 'Kurumsal paket için nasıl teklif alırım?',
         answer:
             'info@dijitalerp.com.tr adresine yazın veya 0216 606 17 46 numarasını arayın. İhtiyaçlarınıza göre kullanıcı sayısı, destek ve eğitim kapsamını netleştiririz.',

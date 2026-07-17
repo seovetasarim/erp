@@ -1,9 +1,8 @@
 import benifitsShape from '../../../public/assets/img/home-11/feature/benifits-shape.png';
 import { GrowthChartIcon, CostSavingsIcon, PerformanceIcon } from '@/svg/BenefitsIcons';
-import { DIJITAL_ERP_DOWNLOAD_HREF } from '@/constants/download';
+import ProtectedDownloadLink from '@/components/download/ProtectedDownloadLink';
 import { BenefitItemDT } from '@/types/custom-d-t';
 import Image from 'next/image';
-import Link from 'next/link';
 
 const ITSolutionBenifit = () => {
 
@@ -14,21 +13,21 @@ const ITSolutionBenifit = () => {
             icon: <GrowthChartIcon />,
             title: "İşinizi büyütün",
             description: "Offline stok takip ve cari yönetim ile satışlarınızı kontrol altında tutun.",
-            link: DIJITAL_ERP_DOWNLOAD_HREF
+            link: "#download"
         },
         {
             id: 2,
             icon: <CostSavingsIcon />,
             title: "Maliyetten tasarruf",
             description: "Ücretsiz ERP ile abonelik yükü olmadan fatura yazılımı kullanın.",
-            link: DIJITAL_ERP_DOWNLOAD_HREF
+            link: "#download"
         },
         {
             id: 3,
             icon: <PerformanceIcon />,
             title: "Performansı artırın",
             description: "KOBİ ERP raporlarıyla kasa, stok ve cari süreçlerinizi hızlandırın.",
-            link: DIJITAL_ERP_DOWNLOAD_HREF
+            link: "#download"
         }
     ];
 
@@ -56,7 +55,7 @@ const ITSolutionBenifit = () => {
                                     </div>
                                     <div className="it-benifit-content">
                                         <h4 className="it-benifit-title">
-                                            <Link href={benefit.link}>{benefit.title}</Link>
+                                            <ProtectedDownloadLink>{benefit.title}</ProtectedDownloadLink>
                                         </h4>
                                         <p>{benefit.description}</p>
                                     </div>

@@ -4,7 +4,7 @@ import heroShapeFour from '../../../public/assets/img/home-11/hero/hero-shape-3.
 import heroShape from '../../../public/assets/img/home-11/hero/hero-shape-1.png';
 import heroApp from '../../../public/assets/img/home-11/hero/hero-app.png';
 import DownloadCounter from '@/components/download/DownloadCounter';
-import { DIJITAL_ERP_DOWNLOAD_FILENAME, DIJITAL_ERP_DOWNLOAD_HREF } from '@/constants/download';
+import ProtectedDownloadLink from '@/components/download/ProtectedDownloadLink';
 import { EmailIconThree, HeroShape } from '@/svg';
 import { ArrowNine } from '@/svg/ArrowIcons';
 import Image from 'next/image';
@@ -36,7 +36,7 @@ const ITSolutionHero = () => {
                             </div>
                             <div className="it-hero-btn-box d-flex align-items-center flex-wrap">
                                 <div className="tp_fade_anim" data-delay=".5" data-fade-from="top" data-ease="bounce">
-                                    <Link className="tp-btn-black-radius btn-blue-bg  d-inline-flex align-items-center justify-content-between mr-15" href={DIJITAL_ERP_DOWNLOAD_HREF} download={DIJITAL_ERP_DOWNLOAD_FILENAME}>
+                                    <ProtectedDownloadLink className="tp-btn-black-radius btn-blue-bg  d-inline-flex align-items-center justify-content-between mr-15">
                                         <span>
                                             <span className="text-1">Ücretsiz İndir</span>
                                             <span className="text-2">Ücretsiz İndir</span>
@@ -47,7 +47,7 @@ const ITSolutionHero = () => {
                                                 <ArrowNine />
                                             </span>
                                         </i>
-                                    </Link>
+                                    </ProtectedDownloadLink>
                                 </div>
                                 <div className="tp_fade_anim" data-delay=".7" data-fade-from="top" data-ease="bounce">
                                     <Link className="tp-btn-black-radius btn-blue-bg btn-border d-inline-flex align-items-center justify-content-between" href="/fiyatlandirma">

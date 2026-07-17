@@ -1,4 +1,4 @@
-import { DIJITAL_ERP_DOWNLOAD_FILENAME, DIJITAL_ERP_DOWNLOAD_HREF } from '@/constants/download';
+import ProtectedDownloadLink from '@/components/download/ProtectedDownloadLink';
 import { ArrowNine } from '@/svg/ArrowIcons';
 import Link from 'next/link';
 
@@ -17,10 +17,8 @@ const ITSolutionModulesCta = () => {
                         Offline Windows ERP ile stok, cari, fatura ve kasayı tek programda yönetin.
                         Abonelik yok — indirin, kurun, kullanın.
                     </p>
-                    <Link
+                    <ProtectedDownloadLink
                         className="tp-btn-black-radius d-inline-flex align-items-center justify-content-between it-modules-cta-btn"
-                        href={DIJITAL_ERP_DOWNLOAD_HREF}
-                        download={DIJITAL_ERP_DOWNLOAD_FILENAME}
                     >
                         <span>
                             <span className="text-1">Ücretsiz İndir</span>
@@ -32,7 +30,7 @@ const ITSolutionModulesCta = () => {
                                 <ArrowNine />
                             </span>
                         </i>
-                    </Link>
+                    </ProtectedDownloadLink>
                 </div>
             </div>
         </div>

@@ -21,7 +21,7 @@ const ITSolutionContactForm = () => {
         );
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const form = e.currentTarget;
         const data = new FormData(form);
@@ -31,21 +31,22 @@ const ITSolutionContactForm = () => {
         const message = String(data.get('message') || '').trim();
         const subject = activeTopics.join(', ') || 'İletişim';
 
-        const body = [
-            `Ad Soyad: ${name}`,
-            `E-posta: ${email}`,
-            phone ? `Telefon: ${phone}` : '',
-            `Konu: ${subject}`,
-            '',
-            message,
-        ]
-            .filter(Boolean)
-            .join('\n');
-
-        window.location.href = `mailto:info@dijitalerp.com.tr?subject=${encodeURIComponent(
-            `DijitalERP — ${subject}`
-        )}&body=${encodeURIComponent(body)}`;
-        setSent(true);
+        try {
+            const res = await fetch('/api/support/tickets', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, phone, subject, message }),
+            });
+            const json = (await res.json()) as { error?: string; ticketCode?: string };
+            if (!res.ok) {
+                throw new Error(json.error || 'Mesaj gönderilemedi.');
+            }
+            setSent(true);
+            form.reset();
+            setActiveTopics(['Ücretsiz Demo']);
+        } catch (err: unknown) {
+            alert(err instanceof Error ? err.message : 'Mesaj gönderilemedi.');
+        }
     };
 
     return (
@@ -114,7 +115,7 @@ const ITSolutionContactForm = () => {
                                                 </button>
                                                 {sent && (
                                                     <p className="ajax-response mt-5">
-                                                        Mail uygulaman açılıyor — gönderimi oradan tamamla.
+                                                        Mesajın alındı. En kısa sürede dönüş yapacağız.
                                                     </p>
                                                 )}
                                             </div>

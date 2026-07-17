@@ -1,6 +1,6 @@
 import featureImg from '../../../public/assets/img/home-11/feature/img-1.png';
 import shape1 from '../../../public/assets/img/home-11/feature/shape-1.png';
-import { DIJITAL_ERP_DOWNLOAD_FILENAME, DIJITAL_ERP_DOWNLOAD_HREF } from '@/constants/download';
+import ProtectedDownloadLink from '@/components/download/ProtectedDownloadLink';
 import servicesData from '@/data/serviceData';
 import { ArrowTen } from '@/svg/ArrowIcons';
 import { HeroShapeTwo } from '@/svg';
@@ -88,7 +88,7 @@ const ITSolutionFeature = ({ showTitle = true, sectionId = "ozellikler", compact
                                 <h4 className="it-feature-title">Ücretsiz ERP <br /> İndirin, Hemen <br /> Kullanmaya Başlayın.</h4>
                             </div>
                             <div className="it-feature-btn-box">
-                                <Link className="tp-btn-black-radius btn-blur d-flex align-items-center justify-content-between" href={DIJITAL_ERP_DOWNLOAD_HREF} download={DIJITAL_ERP_DOWNLOAD_FILENAME}>
+                                <ProtectedDownloadLink className="tp-btn-black-radius btn-blur d-flex align-items-center justify-content-between">
                                     <span>
                                         <span className="text-1">Ücretsiz İndir</span>
                                         <span className="text-2">Ücretsiz İndir</span>
@@ -99,7 +99,7 @@ const ITSolutionFeature = ({ showTitle = true, sectionId = "ozellikler", compact
                                             <ArrowTen />
                                         </span>
                                     </i>
-                                </Link>
+                                </ProtectedDownloadLink>
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,6 @@
 import footerShape from '../../../public/assets/img/home-11/footer/footer-shape-1.png';
 import DijitalErpLogo from '@/components/brand/DijitalErpLogo';
-import { DIJITAL_ERP_DOWNLOAD_FILENAME, DIJITAL_ERP_DOWNLOAD_HREF } from '@/constants/download';
+import ProtectedDownloadLink from '@/components/download/ProtectedDownloadLink';
 import { FooterSocialIcons } from './subComponents/FooterSocialIcons';
 import { getCurrentYear } from '@/utils/getCurrentYear';
 import { ArrowSeven } from '@/svg/ArrowIcons';
@@ -36,13 +36,25 @@ const ITSolutionFooter = () => {
                                         <li><Link className="tp-line-white cream-2" href="/ozellikler">Özellikler</Link></li>
                                         <li><Link className="tp-line-white cream-2" href="/moduller">Modüller</Link></li>
                                         <li><Link className="tp-line-white cream-2" href="/fiyatlandirma">Fiyatlandırma</Link></li>
-                                        <li><Link className="tp-line-white cream-2" href="/sss">SSS</Link></li>
+                                        <li><Link className="tp-line-white cream-2" href="/blog">Blog</Link></li>
                                         <li><Link className="tp-line-white cream-2" href="/iletisim">İletişim</Link></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-xxl-3 col-xl-3 col-lg-3 col-md-3">
+                        <div className="col-xxl-2 col-xl-2 col-lg-3 col-md-3">
+                            <div className="crp-footer-widget crp-footer-col-legal mb-90 tp_fade_anim" data-delay=".55">
+                                <h4 className="crp-footer-widget-title">Yasal</h4>
+                                <div className="crp-footer-widget-menu">
+                                    <ul>
+                                        <li><Link className="tp-line-white cream-2" href="/hizmet-sartlari">Hizmet Şartları</Link></li>
+                                        <li><Link className="tp-line-white cream-2" href="/gizlilik-politikasi">Gizlilik Politikası</Link></li>
+                                        <li><Link className="tp-line-white cream-2" href="/sss">SSS</Link></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-xxl-2 col-xl-2 col-lg-3 col-md-3">
                             <div className="crp-footer-widget crp-footer-col-3 mb-90 tp_fade_anim" data-delay=".5">
                                 <h4 className="crp-footer-widget-title">ERP Modülleri</h4>
                                 <div className="crp-footer-widget-menu">
@@ -56,14 +68,14 @@ const ITSolutionFooter = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-4">
+                        <div className="col-xxl-2 col-xl-2 col-lg-3 col-md-3">
                             <div className="crp-footer-widget crp-footer-col-4 mb-90 tp_fade_anim" data-delay=".7">
                                 <div className="crp-footer-widget-info mb-40">
                                     <h4 className="crp-footer-widget-title">Demo</h4>
-                                    <Link className="tp-line-white cream-2" href={DIJITAL_ERP_DOWNLOAD_HREF} download={DIJITAL_ERP_DOWNLOAD_FILENAME}>
+                                    <ProtectedDownloadLink className="tp-line-white cream-2">
                                         Ücretsiz ERP indirme ve
                                         demo için bizi arayın
-                                    </Link>
+                                    </ProtectedDownloadLink>
                                 </div>
                                 <div className="crp-footer-widget-info">
                                     <h4 className="crp-footer-widget-title">Bizi Arayın</h4>
@@ -80,10 +92,8 @@ const ITSolutionFooter = () => {
                     <div className="row">
                         <div className="colx-l-12">
                             <div className="crp-footer-big-text-wrap tp_fade_anim" data-delay=".3">
-                                <Link
+                                <ProtectedDownloadLink
                                     className="crp-footer-big-text it-footer-cta text-center"
-                                    href={DIJITAL_ERP_DOWNLOAD_HREF}
-                                    download={DIJITAL_ERP_DOWNLOAD_FILENAME}
                                 >
                                     <span>
                                         <span className="text-1">ÜCRETSİZ İNDİR</span>
@@ -93,13 +103,13 @@ const ITSolutionFooter = () => {
                                         <ArrowSeven color="currentcolor" />
                                         <ArrowSeven color="currentcolor" />
                                     </i>
-                                </Link>
+                                </ProtectedDownloadLink>
                             </div>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-xl-12">
-                            <div className="crp-copyright-text text-center pt-40 pb-50">
+                            <div className="crp-copyright-text text-start pt-40 pb-50">
                                 <p>© {getCurrentYear()} | Tüm hakları saklıdır — <Link href="/"><span>DijitalERP</span></Link></p>
                             </div>
                         </div>

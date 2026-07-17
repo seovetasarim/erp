@@ -1,19 +1,19 @@
-import { Inter, Besley, Space_Grotesk, Playfair_Display, Satisfy, Teko, Phudu, Poppins, Onest } from "next/font/google";
-import GlobalVideoModal from "@/components/Popup/GlobalVideoModal";
-import { VideoProvider } from "@/provider/VideoProvider";
-import AppProvider from "@/provider/AppProvider";
-import JsonLd from "@/components/seo/JsonLd";
-import GoogleAnalytics from "@/components/seo/GoogleAnalytics";
+import type { Metadata, Viewport } from "next";
 import {
-  organizationJsonLd,
+  Inter,
+  Besley,
+  Space_Grotesk,
+  Playfair_Display,
+  Satisfy,
+  Teko,
+  Phudu,
+  Poppins,
+  Onest,
+} from "next/font/google";
+import {
   SITE,
   SITE_KEYWORDS,
-  softwareApplicationJsonLd,
 } from "@/constants/seo";
-import Wrapper from "@/layouts/wrapper";
-import type { Metadata, Viewport } from "next";
-import "swiper/css/bundle";
-import "./globals.scss";
 
 const inter = Inter({
   subsets: ["latin", "latin-ext"],
@@ -166,24 +166,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="tr" className="no-js agntix-light" suppressHydrationWarning={true}>
+    <html lang="tr" suppressHydrationWarning>
       <body
-        suppressHydrationWarning={true}
-        className={`tp-magic-cursor ${inter.variable}
-     ${besley.variable} ${spaceGrotesk.variable} ${playfairDisplay.variable}
-      ${satisfy.variable} ${teko.variable} ${phudu.variable} ${poppins.variable}
-       ${onest.variable}`}
+        suppressHydrationWarning
+        className={`${inter.variable} ${besley.variable} ${spaceGrotesk.variable} ${playfairDisplay.variable} ${satisfy.variable} ${teko.variable} ${phudu.variable} ${poppins.variable} ${onest.variable}`}
       >
-        <GoogleAnalytics />
-        <JsonLd data={[organizationJsonLd, softwareApplicationJsonLd]} />
-        <AppProvider>
-          <Wrapper>
-            <VideoProvider>
-              {children}
-            </VideoProvider>
-            <GlobalVideoModal />
-          </Wrapper>
-        </AppProvider>
+        {children}
       </body>
     </html>
   );

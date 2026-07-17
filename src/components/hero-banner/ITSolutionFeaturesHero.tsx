@@ -1,5 +1,5 @@
 import { CareerShape } from '@/svg/HeroShape';
-import { DIJITAL_ERP_DOWNLOAD_FILENAME, DIJITAL_ERP_DOWNLOAD_HREF } from '@/constants/download';
+import ProtectedDownloadLink from '@/components/download/ProtectedDownloadLink';
 import { ArrowNine } from '@/svg/ArrowIcons';
 import Link from 'next/link';
 
@@ -28,10 +28,8 @@ const ITSolutionFeaturesHero = () => {
                                     DijitalERP; offline stok takip, cari yönetim, fatura yazılımı,
                                     kasa ve raporlamayı bir araya getiren Windows tabanlı ücretsiz ERP çözümüdür.
                                 </p>
-                                <Link
+                                <ProtectedDownloadLink
                                     className="tp-btn-black-radius btn-blue-bg d-inline-flex align-items-center justify-content-between mt-30"
-                                    href={DIJITAL_ERP_DOWNLOAD_HREF}
-                                    download={DIJITAL_ERP_DOWNLOAD_FILENAME}
                                 >
                                     <span>
                                         <span className="text-1">Ücretsiz İndir</span>
@@ -43,7 +41,7 @@ const ITSolutionFeaturesHero = () => {
                                             <ArrowNine />
                                         </span>
                                     </i>
-                                </Link>
+                                </ProtectedDownloadLink>
                             </div>
                         </div>
                     </div>

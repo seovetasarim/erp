@@ -58,9 +58,9 @@ export const faqItems: FaqItem[] = [
   {
     id: "sss-8",
     category: "lisans",
-    question: "Aylık abonelik var mı?",
+    question: "Aylık kiralama var mı?",
     answer:
-      "Hayır. DijitalERP tek seferlik lisans modeliyle çalışır. Bulut aboneliği veya kullanıcı başı ücret yoktur.",
+      "Evet. Başlangıç paketi 1.990₺/ay, Profesyonel paket 2.990₺/ay kiralama ile kullanılabilir. Taahhüt yoktur. Tek seferlik lisans seçeneği de mevcuttur.",
   },
   {
     id: "sss-9",
@@ -72,9 +72,9 @@ export const faqItems: FaqItem[] = [
   {
     id: "sss-10",
     category: "lisans",
-    question: "Fiyatlar neden aboneliksiz?",
+    question: "Tek seferlik mi aylık mı tercih etmeliyim?",
     answer:
-      "DijitalERP sunucusuz ve offline mimariyle çalıştığı için sürekli altyapı maliyeti yansıtılmaz. Fiyat avantajı bu mimariden gelir.",
+      "Bütçeniz kısıtlıysa aylık kiralama (1.990₺/ay'dan) daha erişilebilir. Uzun vadede kullanacaksanız tek seferlik lisans (49.900₺ veya 79.900₺) toplam maliyeti düşürür.",
   },
   {
     id: "sss-11",

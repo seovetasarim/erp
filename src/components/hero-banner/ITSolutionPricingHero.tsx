@@ -1,5 +1,6 @@
 import { CareerShape } from '@/svg/HeroShape';
-import { DIJITAL_ERP_DOWNLOAD_FILENAME, DIJITAL_ERP_DOWNLOAD_HREF } from '@/constants/download';
+import ProtectedDownloadLink from '@/components/download/ProtectedDownloadLink';
+import PricingHeroHighlights from '@/components/price-area/PricingHeroHighlights';
 import { ArrowNine } from '@/svg/ArrowIcons';
 import Link from 'next/link';
 
@@ -23,22 +24,20 @@ const ITSolutionPricingHero = () => {
                                     Fiyatlandırma
                                 </span>
                                 <h1 className="tp-section-title-platform platform-text-black it-pricing-hero-title">
-                                    Tek seferlik ödeme.<br />
-                                    Abonelik yok.
+                                    Tek seferlik veya<br />
+                                    aylık kiralama.
                                 </h1>
                             </div>
                         </div>
                         <div className="col-lg-5">
                             <div className="it-pricing-hero-text tp_fade_anim z-index-1" data-delay=".5">
                                 <p>
-                                    Önce ücretsiz Windows sürümünü deneyin. Lisans tek seferliktir;
-                                    bulut aboneliği veya kullanıcı başı ücret yoktur.
+                                    Önce ücretsiz Windows sürümünü deneyin. Tek seferlik lisans
+                                    veya taahhütsüz aylık kiralama — bütçenize uygun modeli seçin.
                                 </p>
                                 <div className="it-pricing-hero-actions d-flex flex-wrap align-items-center">
-                                    <Link
+                                    <ProtectedDownloadLink
                                         className="tp-btn-black-radius btn-blue-bg d-inline-flex align-items-center justify-content-between"
-                                        href={DIJITAL_ERP_DOWNLOAD_HREF}
-                                        download={DIJITAL_ERP_DOWNLOAD_FILENAME}
                                     >
                                         <span>
                                             <span className="text-1">Ücretsiz İndir</span>
@@ -50,7 +49,7 @@ const ITSolutionPricingHero = () => {
                                                 <ArrowNine />
                                             </span>
                                         </i>
-                                    </Link>
+                                    </ProtectedDownloadLink>
                                     <Link className="it-pricing-hero-link" href="#paketler">
                                         Paketlere bak
                                     </Link>
@@ -61,36 +60,7 @@ const ITSolutionPricingHero = () => {
                 </div>
             </div>
 
-            <div className="container container-1230">
-                <div className="it-pricing-hero-strip tp_fade_anim" data-delay=".6">
-                    <div className="row gx-0">
-                        <div className="col-6 col-md-3">
-                            <div className="it-pricing-hero-strip-item">
-                                <strong>0₺</strong>
-                                <span>Başlangıç ücreti</span>
-                            </div>
-                        </div>
-                        <div className="col-6 col-md-3">
-                            <div className="it-pricing-hero-strip-item">
-                                <strong>Tek sefer</strong>
-                                <span>Ödeme modeli</span>
-                            </div>
-                        </div>
-                        <div className="col-6 col-md-3">
-                            <div className="it-pricing-hero-strip-item">
-                                <strong>Offline</strong>
-                                <span>Sunucu gerekmez</span>
-                            </div>
-                        </div>
-                        <div className="col-6 col-md-3">
-                            <div className="it-pricing-hero-strip-item">
-                                <strong>Ömür boyu</strong>
-                                <span>Kullanım hakkı</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <PricingHeroHighlights />
         </div>
     );
 };

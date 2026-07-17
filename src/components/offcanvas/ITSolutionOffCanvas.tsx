@@ -1,22 +1,24 @@
 "use client"
 import DijitalErpLogo from '@/components/brand/DijitalErpLogo';
-import { DIJITAL_ERP_DOWNLOAD_FILENAME, DIJITAL_ERP_DOWNLOAD_HREF } from '@/constants/download';
+import ProtectedDownloadLink from '@/components/download/ProtectedDownloadLink';
 import { ArrowNine } from '@/svg/ArrowIcons';
 import { CrossIcon, CrossIconTwo } from '@/svg';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import React from 'react';
+import React, { useMemo } from 'react';
+import { useAuthUser } from '@/hooks/useAuthUser';
 
 type IProps = {
     openOffcanvas: boolean;
     setOpenOffcanvas: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const navLinks = [
+const baseNavLinks = [
     { title: 'Ana Sayfa', href: '/' },
     { title: 'Özellikler', href: '/ozellikler' },
     { title: 'Modüller', href: '/moduller' },
     { title: 'Fiyatlandırma', href: '/fiyatlandirma' },
+    { title: 'Blog', href: '/blog' },
     { title: 'SSS', href: '/sss' },
     { title: 'İletişim', href: '/iletisim' },
 ];
@@ -30,7 +32,19 @@ const moduleLinks = [
 
 const ITSolutionOffCanvas: React.FC<IProps> = ({ openOffcanvas, setOpenOffcanvas }) => {
     const pathname = usePathname();
+    const { isLoggedIn } = useAuthUser();
     const close = () => setOpenOffcanvas(false);
+
+    const navLinks = useMemo(() => {
+        if (isLoggedIn) {
+            return [...baseNavLinks, { title: 'Hesabım', href: '/hesabim' }];
+        }
+        return [
+            ...baseNavLinks,
+            { title: 'Giriş Yap', href: '/giris' },
+            { title: 'Kayıt Ol', href: '/kayit' },
+        ];
+    }, [isLoggedIn]);
 
     return (
         <>
@@ -90,10 +104,8 @@ const ITSolutionOffCanvas: React.FC<IProps> = ({ openOffcanvas, setOpenOffcanvas
                         </div>
 
                         <div className="it-offcanvas-cta">
-                            <Link
+                            <ProtectedDownloadLink
                                 className="tp-btn-black-radius d-inline-flex align-items-center justify-content-between it-offcanvas-cta-btn"
-                                href={DIJITAL_ERP_DOWNLOAD_HREF}
-                                download={DIJITAL_ERP_DOWNLOAD_FILENAME}
                                 onClick={close}
                             >
                                 <span>
@@ -106,7 +118,7 @@ const ITSolutionOffCanvas: React.FC<IProps> = ({ openOffcanvas, setOpenOffcanvas
                                         <ArrowNine />
                                     </span>
                                 </i>
-                            </Link>
+                            </ProtectedDownloadLink>
                         </div>
 
                         <div className="it-offcanvas-mobile-info d-md-none">

@@ -7,6 +7,7 @@ type DijitalErpLogoProps = {
     className?: string;
     /** header | offcanvas | footer */
     size?: 'sm' | 'md' | 'lg';
+    onClick?: () => void;
 };
 
 /**
@@ -18,6 +19,7 @@ const DijitalErpLogo = ({
     variant = 'dark',
     className = '',
     size = 'md',
+    onClick,
 }: DijitalErpLogoProps) => {
     const fontSize = size === 'lg' ? '1.55rem' : size === 'sm' ? '1rem' : '1.2rem';
     const textColor = variant === 'light' ? '#FFFFFF' : '#141414';
@@ -25,6 +27,7 @@ const DijitalErpLogo = ({
     return (
         <Link
             href={href}
+            onClick={onClick}
             aria-label="DijitalERP"
             className={`dijitalerp-logo dijitalerp-logo--${variant} ${className}`.trim()}
             style={{

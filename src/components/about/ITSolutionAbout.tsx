@@ -3,7 +3,7 @@ import aboutShape2 from '../../../public/assets/img/home-11/about/about-shape-2.
 import aboutImg from '../../../public/assets/img/home-11/about/about-1.jpg';
 import aboutImg2 from '../../../public/assets/img/home-11/about/about-2.jpg';
 import aboutImg3 from '../../../public/assets/img/home-11/about/about-3.jpg';
-import { DIJITAL_ERP_DOWNLOAD_FILENAME, DIJITAL_ERP_DOWNLOAD_HREF } from '@/constants/download';
+import ProtectedDownloadLink from '@/components/download/ProtectedDownloadLink';
 import { ArrowNine } from '@/svg/ArrowIcons';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -27,7 +27,7 @@ const ITSolutionAbout = () => {
                                 </p>
                             </div>
                             <div className="tp_fade_anim" data-fade-from="top" data-ease="bounce">
-                                <Link className="tp-btn-black-radius btn-blue-bg  d-inline-flex align-items-center justify-content-between mr-15" href={DIJITAL_ERP_DOWNLOAD_HREF} download={DIJITAL_ERP_DOWNLOAD_FILENAME}>
+                                <ProtectedDownloadLink className="tp-btn-black-radius btn-blue-bg  d-inline-flex align-items-center justify-content-between mr-15">
                                     <span>
                                         <span className="text-1">Ücretsiz İndir</span>
                                         <span className="text-2">Ücretsiz İndir</span>
@@ -38,7 +38,7 @@ const ITSolutionAbout = () => {
                                             <ArrowNine />
                                         </span>
                                     </i>
-                                </Link>
+                                </ProtectedDownloadLink>
                             </div>
                         </div>
                     </div>

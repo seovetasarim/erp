@@ -1,9 +1,10 @@
 "use client"
 import ITSolutionOffCanvas from '@/components/offcanvas/ITSolutionOffCanvas';
 import DijitalErpLogo from '@/components/brand/DijitalErpLogo';
+import HeaderAuthNav from '@/components/header/HeaderAuthNav';
 import useStickyHeader from '@/hooks/useStickyHeader';
 import useGlobalContext from '@/hooks/useContext';
-import { DIJITAL_ERP_DOWNLOAD_FILENAME, DIJITAL_ERP_DOWNLOAD_HREF } from '@/constants/download';
+import ProtectedDownloadLink from '@/components/download/ProtectedDownloadLink';
 import { ArrowTen, SearchIcon } from '@/svg';
 import { useState } from 'react';
 import Link from 'next/link';
@@ -37,12 +38,16 @@ const ITSolutionHeader = () => {
                                                     <li><Link href="/ozellikler">Özellikler</Link></li>
                                                     <li><Link href="/moduller">Modüller</Link></li>
                                                     <li><Link href="/fiyatlandirma">Fiyatlandırma</Link></li>
+                                                    <li><Link href="/blog">Blog</Link></li>
                                                     <li><Link href="/sss">SSS</Link></li>
                                                     <li><Link href="/iletisim">İletişim</Link></li>
                                                 </ul>
                                             </nav>
                                         </div>
                                         <div className="tp-header-10-right d-flex align-items-center">
+                                            <div className="tp-header-11-auth d-none d-md-flex align-items-center mr-20">
+                                                <HeaderAuthNav />
+                                            </div>
                                             <div className="tp-header-11-search-box d-none d-md-block">
                                                 <button onClick={toggleSearch} className="tp-header-11-search tp-search-open-btn">
                                                     <span>
@@ -51,7 +56,7 @@ const ITSolutionHeader = () => {
                                                 </button>
                                             </div>
                                             <div className="tp-header-11-btn-box d-none d-md-block ml-20">
-                                                <Link className="tp-btn-black-radius d-flex align-items-center justify-content-between" href={DIJITAL_ERP_DOWNLOAD_HREF} download={DIJITAL_ERP_DOWNLOAD_FILENAME}>
+                                                <ProtectedDownloadLink className="tp-btn-black-radius d-flex align-items-center justify-content-between">
                                                     <span>
                                                         <span className="text-1">Ücretsiz İndir</span>
                                                         <span className="text-2">Ücretsiz İndir</span>
@@ -62,7 +67,7 @@ const ITSolutionHeader = () => {
                                                             <ArrowTen strokeColor="#21212D" />
                                                         </span>
                                                     </i>
-                                                </Link>
+                                                </ProtectedDownloadLink>
                                             </div>
                                             <div className="tp-header-10-offcanvas ml-15">
                                                 <div className="tp-header-bar">

@@ -25,6 +25,9 @@
     "paths": {
       "@/*": [
         "./src/*"
+      ],
+      "@na/*": [
+        "./src/admin-nextadmin/*"
       ]
     }
   },

@@ -2,7 +2,7 @@ import project1 from '../../../public/assets/img/home-11/project/project-1.jpg';
 import project2 from '../../../public/assets/img/home-11/project/project-2.jpg';
 import project3 from '../../../public/assets/img/home-11/project/project-3.jpg';
 import project4 from '../../../public/assets/img/home-11/project/project-4.jpg';
-import { DIJITAL_ERP_DOWNLOAD_FILENAME, DIJITAL_ERP_DOWNLOAD_HREF } from '@/constants/download';
+import ProtectedDownloadLink from '@/components/download/ProtectedDownloadLink';
 import { ArrowNine } from '@/svg/ArrowIcons';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
@@ -110,10 +110,8 @@ const ITSolutionModulesMetro = () => {
                                         <span key={tag}>{tag}</span>
                                     ))}
                                 </div>
-                                <Link
+                                <ProtectedDownloadLink
                                     className="tp-btn-black-radius btn-blue-bg d-inline-flex align-items-center justify-content-between mt-30"
-                                    href={DIJITAL_ERP_DOWNLOAD_HREF}
-                                    download={DIJITAL_ERP_DOWNLOAD_FILENAME}
                                 >
                                     <span>
                                         <span className="text-1">Detaylı İncele</span>
@@ -125,7 +123,7 @@ const ITSolutionModulesMetro = () => {
                                             <ArrowNine />
                                         </span>
                                     </i>
-                                </Link>
+                                </ProtectedDownloadLink>
                             </div>
                         </div>
                     </div>
