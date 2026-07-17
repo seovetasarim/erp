@@ -152,9 +152,9 @@ const ProfileMain = () => {
       </div>
 
       <p className="profile__empty-hint mt-30">
-        <Link href={DIJITAL_ERP_DOWNLOAD_HREF}>
+        <a href={DIJITAL_ERP_DOWNLOAD_HREF}>
           DijitalERP kurulum dosyasını indir
-        </Link>
+        </a>
         {licenseCount === 0 && (
           <>
             {" "}

@@ -10,7 +10,7 @@ export function useDownloadHref() {
   const { isLoggedIn, loading } = useAuthUser();
 
   if (loading) {
-    return DIJITAL_ERP_DOWNLOAD_HREF;
+    return getDownloadLoginHref();
   }
 
   return isLoggedIn ? DIJITAL_ERP_DOWNLOAD_HREF : getDownloadLoginHref();

@@ -1,10 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { useDownloadHref } from "@/hooks/useDownloadHref";
-import type { ComponentProps, ReactNode } from "react";
+import type { AnchorHTMLAttributes, ReactNode } from "react";
 
-type ProtectedDownloadLinkProps = Omit<ComponentProps<typeof Link>, "href"> & {
+type ProtectedDownloadLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> & {
   children: ReactNode;
 };
 
@@ -15,8 +14,8 @@ export default function ProtectedDownloadLink({
   const href = useDownloadHref();
 
   return (
-    <Link href={href} {...props}>
+    <a href={href} {...props}>
       {children}
-    </Link>
+    </a>
   );
 }

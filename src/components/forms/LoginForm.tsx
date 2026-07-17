@@ -4,6 +4,7 @@ import { CloseEyeIcon, OpenEyeIcon } from "@/svg/EyeIcons";
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
+import { redirectAfterAuth } from "@/lib/auth/redirectAfterAuth";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -33,14 +34,14 @@ const LoginForm = () => {
       const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify({ email, password }),
       });
       const data = (await res.json()) as { error?: string };
       if (!res.ok) throw new Error(data.error || "Giriş başarısız.");
 
       const next = searchParams?.get("next") || "/hesabim";
-      router.push(next);
-      router.refresh();
+      redirectAfterAuth(next, router);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Giriş başarısız.");
     } finally {

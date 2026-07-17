@@ -18,7 +18,10 @@ export function useAuthUser() {
 
   const refresh = useCallback(async () => {
     try {
-      const res = await fetch("/api/auth/me");
+      const res = await fetch("/api/auth/me", {
+        credentials: "include",
+        cache: "no-store",
+      });
       const data = (await res.json()) as { user: AuthUser | null };
       setUser(data.user ?? null);
     } catch {
