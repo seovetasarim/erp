@@ -60,7 +60,9 @@ const ITSolutionPricingHero = () => {
                 </div>
             </div>
 
-            <PricingHeroHighlights />
+            <div className="it-pricing-hero-highlights-slot pb-20">
+                <PricingHeroHighlights />
+            </div>
         </div>
     );
 };

@@ -1,11 +1,7 @@
 "use client";
 
-import facebook from "../../../public/assets/img/login/facebook.svg";
-import google from "../../../public/assets/img/login/google.svg";
-import apple from "../../../public/assets/img/login/apple.svg";
 import { CloseEyeIcon, OpenEyeIcon } from "@/svg/EyeIcons";
 import React, { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -66,30 +62,6 @@ const LoginForm = () => {
         </div>
 
         <div className="tp-login-option">
-          <div className="tp-login-social mb-10 d-flex flex-wrap align-items-center justify-content-center">
-            <div className="tp-login-option-item has-google">
-              <Link href="#">
-                <Image src={google} alt="Google" /> Google ile giriş yap
-              </Link>
-            </div>
-            <div className="tp-login-option-item">
-              <Link href="#">
-                <Image src={facebook} alt="Facebook" />
-              </Link>
-            </div>
-            <div className="tp-login-option-item">
-              <Link href="#">
-                <Image className="apple" src={apple} alt="Apple" />
-              </Link>
-            </div>
-          </div>
-
-          <div className="tp-login-mail text-center mb-40">
-            <p>
-              veya <Link href="#">E-posta</Link> ile giriş yapın
-            </p>
-          </div>
-
           <div className="tp-login-input-wrapper">
             <div className="tp-login-input-box">
               <div className="tp-login-input-title">

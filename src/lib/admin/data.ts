@@ -4,13 +4,22 @@ import { mysqlAll, mysqlGet, useMysql } from "@/lib/db/mysql";
 import { countOpenSupportTickets } from "@/lib/support/repository";
 
 export async function listAdminCustomers(limit = 100) {
-  const sql = `SELECT * FROM users ORDER BY created_at DESC LIMIT ?`;
+  const sql = `SELECT u.*,
+    (SELECT COUNT(*) FROM licenses l WHERE l.user_id = u.id) as license_count,
+    (SELECT COUNT(*) FROM orders o WHERE o.user_id = u.id) as order_count
+    FROM users u
+    ORDER BY u.created_at DESC
+    LIMIT ?`;
 
   if (useMysql()) {
-    return mysqlAll<UserRow>(sql, [limit]);
+    return mysqlAll<
+      UserRow & { license_count: number; order_count: number }
+    >(sql, [limit]);
   }
 
-  return getDb().prepare(sql).all(limit) as UserRow[];
+  return getDb().prepare(sql).all(limit) as Array<
+    UserRow & { license_count: number; order_count: number }
+  >;
 }
 
 export async function listAdminOrders(limit = 100) {

@@ -8,6 +8,7 @@ import {
   nowSql,
   useMysql,
   withMysqlTransaction,
+  type DbExecutor,
 } from "@/lib/db/mysql";
 import type { CheckoutPlan } from "@/lib/commerce/plans";
 import { createCustomerCode } from "@/lib/auth/session";
@@ -421,4 +422,185 @@ export async function expireDueLicenses() {
        AND datetime(expires_at) <= datetime(?)`,
     )
     .run(now);
+}
+
+export async function adminMarkOrderPaidById(orderId: number) {
+  const order = await getOrderById(orderId);
+  if (!order) throw new Error("Sipariş bulunamadı.");
+  if (order.status !== "pending") {
+    throw new Error("Yalnızca bekleyen sipariş manuel onaylanabilir.");
+  }
+
+  const sql = `UPDATE orders SET status = 'paid', paid_at = ${nowSql()} WHERE id = ?`;
+  if (useMysql()) {
+    await mysqlRun(sql, [orderId]);
+  } else {
+    getDb()
+      .prepare("UPDATE orders SET status = 'paid', paid_at = datetime('now') WHERE id = ?")
+      .run(orderId);
+  }
+
+  return getOrderById(orderId);
+}
+
+export async function adminCancelOrderById(orderId: number) {
+  const order = await getOrderById(orderId);
+  if (!order) throw new Error("Sipariş bulunamadı.");
+  if (order.status !== "pending") {
+    throw new Error("Yalnızca bekleyen sipariş iptal edilebilir.");
+  }
+
+  const sql = "UPDATE orders SET status = 'cancelled' WHERE id = ?";
+  if (useMysql()) {
+    await mysqlRun(sql, [orderId]);
+  } else {
+    getDb().prepare(sql).run(orderId);
+  }
+
+  return getOrderById(orderId);
+}
+
+async function deleteOrderRecords(orderId: number, exec?: DbExecutor) {
+  const run = async (sql: string, params: (string | number | null)[] = []) => {
+    if (exec) return exec.run(sql, params);
+    if (useMysql()) return mysqlRun(sql, params);
+    getDb().prepare(sql).run(...params);
+  };
+
+  await run("DELETE FROM email_logs WHERE order_id = ?", [orderId]);
+  await run("DELETE FROM licenses WHERE order_id = ?", [orderId]);
+  await run("DELETE FROM orders WHERE id = ?", [orderId]);
+}
+
+export async function adminDeleteOrderById(orderId: number) {
+  const order = await getOrderById(orderId);
+  if (!order) throw new Error("Sipariş bulunamadı.");
+
+  if (order.status === "paid") {
+    const licenseCount = useMysql()
+      ? Number(
+          (
+            await mysqlGet<{ c: number }>(
+              "SELECT COUNT(*) as c FROM licenses WHERE order_id = ?",
+              [orderId],
+            )
+          )?.c || 0,
+        )
+      : (
+          getDb()
+            .prepare("SELECT COUNT(*) as c FROM licenses WHERE order_id = ?")
+            .get(orderId) as { c: number }
+        ).c;
+
+    if (licenseCount > 0) {
+      throw new Error(
+        "Ödenmiş siparişte lisans var. Önce lisansları silmek için siparişi ve lisans kayıtlarını birlikte silebilirsiniz — onay kutusunu kullanın.",
+      );
+    }
+  }
+
+  if (useMysql()) {
+    await withMysqlTransaction(async (exec) => {
+      await deleteOrderRecords(orderId, exec);
+    });
+    return;
+  }
+
+  const db = getDb();
+  const tx = db.transaction(() => {
+    db.prepare("DELETE FROM email_logs WHERE order_id = ?").run(orderId);
+    db.prepare("DELETE FROM licenses WHERE order_id = ?").run(orderId);
+    db.prepare("DELETE FROM orders WHERE id = ?").run(orderId);
+  });
+  tx();
+}
+
+export async function adminDeleteOrderByIdForce(orderId: number) {
+  const order = await getOrderById(orderId);
+  if (!order) throw new Error("Sipariş bulunamadı.");
+
+  if (useMysql()) {
+    await withMysqlTransaction(async (exec) => {
+      await deleteOrderRecords(orderId, exec);
+    });
+    return;
+  }
+
+  const db = getDb();
+  const tx = db.transaction(() => {
+    db.prepare("DELETE FROM email_logs WHERE order_id = ?").run(orderId);
+    db.prepare("DELETE FROM licenses WHERE order_id = ?").run(orderId);
+    db.prepare("DELETE FROM orders WHERE id = ?").run(orderId);
+  });
+  tx();
+}
+
+export async function createAdminGrantOrder(userId: number, plan: CheckoutPlan) {
+  const user = await findUserById(userId);
+  if (!user) throw new Error("Kullanıcı bulunamadı.");
+
+  const merchantOid = `ADM${userId}${Date.now()}`.slice(0, 64);
+
+  if (useMysql()) {
+    const result = await mysqlRun(
+      `INSERT INTO orders (user_id, merchant_oid, plan_id, billing_mode, amount_kurus, status, is_renewal, paid_at)
+       VALUES (?, ?, ?, ?, ?, 'paid', 0, ${nowSql()})`,
+      [userId, merchantOid, plan.id, plan.billingMode, 0],
+    );
+    return (await mysqlGet<OrderRow>("SELECT * FROM orders WHERE id = ?", [
+      result.insertId,
+    ]))!;
+  }
+
+  const db = getDb();
+  const result = db
+    .prepare(
+      `INSERT INTO orders (user_id, merchant_oid, plan_id, billing_mode, amount_kurus, status, is_renewal, paid_at)
+       VALUES (?, ?, ?, ?, ?, 'paid', 0, datetime('now'))`,
+    )
+    .run(userId, merchantOid, plan.id, plan.billingMode, 0);
+
+  return db
+    .prepare("SELECT * FROM orders WHERE id = ?")
+    .get(Number(result.lastInsertRowid)) as OrderRow;
+}
+
+export async function adminDeleteUserById(userId: number) {
+  const user = await findUserById(userId);
+  if (!user) throw new Error("Kullanıcı bulunamadı.");
+
+  const deleteUserData = async (exec?: DbExecutor) => {
+    const run = async (sql: string, params: (string | number | null)[] = []) => {
+      if (exec) return exec.run(sql, params);
+      if (useMysql()) return mysqlRun(sql, params);
+      getDb().prepare(sql).run(...params);
+    };
+
+    await run("DELETE FROM licenses WHERE user_id = ?", [userId]);
+    await run("DELETE FROM subscriptions WHERE user_id = ?", [userId]);
+    await run("DELETE FROM email_logs WHERE user_id = ?", [userId]);
+    await run("DELETE FROM support_tickets WHERE user_id = ?", [userId]);
+    await run("DELETE FROM user_addresses WHERE user_id = ?", [userId]);
+    await run("DELETE FROM orders WHERE user_id = ?", [userId]);
+    await run("DELETE FROM users WHERE id = ?", [userId]);
+  };
+
+  if (useMysql()) {
+    await withMysqlTransaction(async (exec) => {
+      await deleteUserData(exec);
+    });
+    return;
+  }
+
+  const db = getDb();
+  const tx = db.transaction(() => {
+    db.prepare("DELETE FROM licenses WHERE user_id = ?").run(userId);
+    db.prepare("DELETE FROM subscriptions WHERE user_id = ?").run(userId);
+    db.prepare("DELETE FROM email_logs WHERE user_id = ?").run(userId);
+    db.prepare("DELETE FROM support_tickets WHERE user_id = ?").run(userId);
+    db.prepare("DELETE FROM user_addresses WHERE user_id = ?").run(userId);
+    db.prepare("DELETE FROM orders WHERE user_id = ?").run(userId);
+    db.prepare("DELETE FROM users WHERE id = ?").run(userId);
+  });
+  tx();
 }

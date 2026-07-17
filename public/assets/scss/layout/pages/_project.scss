@@ -1823,19 +1823,22 @@
             color: #0C4642;
         }
     }
+    &-highlights-slot {
+        position: relative;
+        z-index: 2;
+        padding-bottom: 8px;
+    }
 }
 
-.it-pricing-bento {
-    position: relative;
-    z-index: 1;
+.it-pricing-stats {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 14px;
-    margin-bottom: 28px;
-    padding-bottom: 8px;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding-bottom: 4px;
 
     @media #{$lg} {
-        grid-template-columns: repeat(6, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
     @media #{$md} {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1844,199 +1847,123 @@
         grid-template-columns: 1fr;
         gap: 12px;
     }
+}
 
-    &-glow {
-        position: absolute;
-        inset: 10% 8% auto;
-        height: 120px;
-        background: radial-gradient(circle, rgba(160, 255, 39, 0.22) 0%, rgba(160, 255, 39, 0) 72%);
-        filter: blur(18px);
-        pointer-events: none;
-        z-index: 0;
-        animation: it-pricing-bento-glow 5s ease-in-out infinite alternate;
+.it-pricing-stat {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-height: 176px;
+    padding: 24px 22px 22px;
+    border-radius: 18px;
+    border: 1px solid rgba(12, 70, 66, 0.1);
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(12, 70, 66, 0.05);
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.3s ease,
+        border-color 0.3s ease,
+        opacity 0.45s ease;
+    transition-delay: var(--stat-delay, 0s);
+
+    &:hover {
+        transform: translateY(-4px);
+        border-color: rgba(12, 70, 66, 0.18);
+        box-shadow: 0 12px 28px rgba(12, 70, 66, 0.08);
     }
 
-    &-card {
-        position: relative;
-        overflow: hidden;
-        min-height: 190px;
-        padding: 22px 20px 20px;
-        border-radius: 22px;
-        border: 1px solid rgba(12, 70, 66, 0.08);
-        background: rgba(255, 255, 255, 0.82);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 10px 30px rgba(12, 70, 66, 0.06);
-        transform: translateY(24px);
-        opacity: 0;
-        transition:
-            transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-            box-shadow 0.35s ease,
-            border-color 0.35s ease,
-            opacity 0.55s ease;
-        transition-delay: var(--bento-delay, 0s);
+    &.is-featured {
+        background: #0c4642;
+        border-color: #0c4642;
 
-        @media #{$lg} {
-            &:nth-child(1) { grid-column: span 2; }
-            &:nth-child(2) { grid-column: span 2; }
-            &:nth-child(3) { grid-column: span 2; }
-            &:nth-child(4) { grid-column: span 3; }
-            &:nth-child(5) { grid-column: span 3; }
+        .it-pricing-stat-icon {
+            background: rgba(160, 255, 39, 0.14);
+            color: #a0ff27;
+        }
+
+        .it-pricing-stat-value strong,
+        .it-pricing-stat-value span,
+        .it-pricing-stat-label {
+            color: #fff;
+        }
+
+        .it-pricing-stat-desc {
+            color: rgba(255, 255, 255, 0.72);
         }
 
         &:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 18px 40px rgba(12, 70, 66, 0.12);
-            border-color: rgba(12, 70, 66, 0.16);
-
-            .it-pricing-bento-icon {
-                transform: translateY(-2px) scale(1.04);
-            }
-
-            .it-pricing-bento-shine {
-                transform: translateX(120%);
-            }
+            box-shadow: 0 14px 32px rgba(12, 70, 66, 0.22);
         }
-
-        &--lime {
-            background: linear-gradient(145deg, #0c4642 0%, #0f5a54 100%);
-            border-color: rgba(160, 255, 39, 0.18);
-
-            .it-pricing-bento-icon {
-                background: rgba(160, 255, 39, 0.16);
-                color: #a0ff27;
-            }
-
-            .it-pricing-bento-index,
-            .it-pricing-bento-value strong,
-            .it-pricing-bento-value em,
-            .it-pricing-bento-label {
-                color: #fff;
-            }
-
-            .it-pricing-bento-label {
-                font-weight: 400;
-                color: rgba(255, 255, 255, 0.88);
-            }
-
-            .it-pricing-bento-desc {
-                color: rgba(255, 255, 255, 0.72);
-            }
-        }
-
-        &--mint {
-            background: linear-gradient(180deg, #eef9f3 0%, #ffffff 100%);
-            border-color: rgba(12, 70, 66, 0.12);
-
-            .it-pricing-bento-icon {
-                background: rgba(12, 70, 66, 0.08);
-                color: #0c4642;
-            }
-        }
-
-        &--white {
-            .it-pricing-bento-icon {
-                background: rgba(12, 70, 66, 0.06);
-                color: #0c4642;
-            }
-        }
-    }
-
-    &.is-visible .it-pricing-bento-card {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    &-card-top {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 18px;
-    }
-
-    &-icon {
-        width: 42px;
-        height: 42px;
-        border-radius: 14px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 16px;
-        transition: transform 0.35s ease;
-        animation: it-pricing-bento-float 4.5s ease-in-out infinite;
-    }
-
-    &-index {
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        color: rgba(33, 33, 45, 0.28);
-    }
-
-    &-value {
-        display: flex;
-        align-items: baseline;
-        gap: 4px;
-        margin-bottom: 8px;
-
-        strong {
-            font-size: clamp(1.45rem, 2vw, 1.85rem);
-            line-height: 1;
-            font-family: var(--tp-ff-platform);
-            font-weight: 500;
-            color: #0c4642;
-            letter-spacing: -0.02em;
-        }
-
-        em {
-            font-style: normal;
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: #a0ff27;
-        }
-    }
-
-    &-label {
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 1.4;
-        margin-bottom: 6px;
-        color: rgba(33, 33, 45, 0.82);
-    }
-
-    &-desc {
-        font-size: 13px;
-        line-height: 1.55;
-        margin-bottom: 0;
-        color: rgba(33, 33, 45, 0.58);
-    }
-
-    &-shine {
-        position: absolute;
-        top: 0;
-        left: -120%;
-        width: 60%;
-        height: 100%;
-        background: linear-gradient(
-            105deg,
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0.34) 50%,
-            rgba(255, 255, 255, 0) 100%
-        );
-        transform: translateX(0);
-        transition: transform 0.8s ease;
-        pointer-events: none;
     }
 }
 
-@keyframes it-pricing-bento-float {
-    0%,
-    100% { transform: translateY(0); }
-    50% { transform: translateY(-4px); }
+.it-pricing-stats.is-visible .it-pricing-stat {
+    opacity: 1;
+    transform: translateY(0);
+
+    &:hover {
+        transform: translateY(-4px);
+    }
 }
 
-@keyframes it-pricing-bento-glow {
-    0% { transform: translateX(-4%) scale(1); opacity: 0.75; }
-    100% { transform: translateX(6%) scale(1.08); opacity: 1; }
+.it-pricing-stat-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    color: #0c4642;
+    background: rgba(12, 70, 66, 0.07);
+    flex-shrink: 0;
+}
+
+.it-pricing-stat-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.it-pricing-stat-value {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-bottom: 10px;
+
+    strong {
+        font-size: clamp(1.5rem, 2.1vw, 1.9rem);
+        line-height: 1;
+        font-family: var(--tp-ff-platform);
+        font-weight: 600;
+        color: #0c4642;
+        letter-spacing: -0.03em;
+    }
+
+    span {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: rgba(12, 70, 66, 0.72);
+    }
+}
+
+.it-pricing-stat-label {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.35;
+    margin: 0 0 6px;
+    color: rgba(33, 33, 45, 0.9);
+    font-family: var(--tp-ff-platform);
+}
+
+.it-pricing-stat-desc {
+    font-size: 13px;
+    line-height: 1.55;
+    margin: 0;
+    color: rgba(33, 33, 45, 0.58);
 }
 
 .it-pricing-plans {

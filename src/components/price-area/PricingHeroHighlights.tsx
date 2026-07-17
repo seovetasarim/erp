@@ -9,7 +9,7 @@ type HighlightItem = {
   label: string;
   desc: string;
   icon: string;
-  accent?: "lime" | "white" | "mint";
+  featured?: boolean;
   animateValue?: number;
 };
 
@@ -21,7 +21,7 @@ const highlights: HighlightItem[] = [
     label: "Başlangıç ücreti",
     desc: "Ücretsiz sürümle hemen başlayın",
     icon: "fa-solid fa-gift",
-    accent: "lime",
+    featured: true,
   },
   {
     id: "monthly",
@@ -30,7 +30,6 @@ const highlights: HighlightItem[] = [
     label: "Aylık kiralama",
     desc: "Taahhütsüz · istediğiniz zaman iptal",
     icon: "fa-solid fa-calendar-days",
-    accent: "mint",
     animateValue: 1990,
   },
   {
@@ -39,7 +38,6 @@ const highlights: HighlightItem[] = [
     label: "Ödeme seçeneği",
     desc: "Tek seferlik veya aylık kiralama",
     icon: "fa-solid fa-sliders",
-    accent: "white",
   },
   {
     id: "offline",
@@ -47,7 +45,6 @@ const highlights: HighlightItem[] = [
     label: "Sunucu gerekmez",
     desc: "Veriler bilgisayarınızda kalır",
     icon: "fa-solid fa-wifi-slash",
-    accent: "white",
   },
   {
     id: "flex",
@@ -55,7 +52,6 @@ const highlights: HighlightItem[] = [
     label: "Taahhütsüz aylık",
     desc: "Bütçenize göre ödeme modeli seçin",
     icon: "fa-solid fa-arrows-rotate",
-    accent: "mint",
   },
 ];
 
@@ -88,7 +84,7 @@ function formatPrice(value: number) {
 
 const PricingHeroHighlights = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
+  const [inView, setInView] = useState(true);
   const monthlyCount = useCountUp(1990, inView);
 
   useEffect(() => {
@@ -102,7 +98,7 @@ const PricingHeroHighlights = () => {
           observer.disconnect();
         }
       },
-      { threshold: 0.25 },
+      { threshold: 0.15 },
     );
 
     observer.observe(node);
@@ -111,45 +107,35 @@ const PricingHeroHighlights = () => {
 
   return (
     <div className="container container-1230">
-      <div
-        ref={sectionRef}
-        className={`it-pricing-bento${inView ? " is-visible" : ""}`}
-      >
-        <div className="it-pricing-bento-glow" aria-hidden="true" />
+      <div ref={sectionRef} className="it-pricing-highlights">
+        <div className="it-pricing-highlights-panel">
+          {highlights.map((item) => {
+            const displayValue =
+              item.animateValue !== undefined
+                ? formatPrice(monthlyCount)
+                : item.value;
 
-        {highlights.map((item, index) => {
-          const displayValue =
-            item.animateValue !== undefined
-              ? formatPrice(monthlyCount)
-              : item.value;
-
-          return (
-            <article
-              key={item.id}
-              className={`it-pricing-bento-card it-pricing-bento-card--${item.accent ?? "white"}`}
-              style={{ "--bento-delay": `${index * 0.1}s` } as React.CSSProperties}
-            >
-              <div className="it-pricing-bento-card-top">
-                <span className="it-pricing-bento-icon">
-                  <i className={item.icon} aria-hidden="true" />
+            return (
+              <article
+                key={item.id}
+                className={`it-pricing-highlight${item.featured ? " is-featured" : ""}`}
+              >
+                <span className="it-pricing-highlight-icon" aria-hidden="true">
+                  <i className={item.icon} />
                 </span>
-                <span className="it-pricing-bento-index">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-              </div>
 
-              <div className="it-pricing-bento-value">
-                <strong>{displayValue}</strong>
-                {item.suffix && <em>{item.suffix}</em>}
-              </div>
-
-              <p className="it-pricing-bento-label">{item.label}</p>
-              <p className="it-pricing-bento-desc">{item.desc}</p>
-
-              <span className="it-pricing-bento-shine" aria-hidden="true" />
-            </article>
-          );
-        })}
+                <div className="it-pricing-highlight-copy">
+                  <div className="it-pricing-highlight-value">
+                    <strong>{displayValue}</strong>
+                    {item.suffix && <span>{item.suffix}</span>}
+                  </div>
+                  <h3 className="it-pricing-highlight-label">{item.label}</h3>
+                  <p className="it-pricing-highlight-desc">{item.desc}</p>
+                </div>
+              </article>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

@@ -16,7 +16,6 @@ import {
   TableRow,
 } from "@/components/admin/nextadmin/ui/table";
 import {
-  formatDate,
   formatTry,
   LICENSE_DURATION_OPTIONS,
   orderStatusClass,
@@ -76,6 +75,68 @@ export default function AdminOrdersPage() {
     setModalError("");
   }
 
+  async function orderAction(
+    order: Order,
+    action: "approve" | "cancel" | "delete" | "delete-force",
+  ) {
+    setBusyId(order.id);
+
+    try {
+      if (action === "delete" || action === "delete-force") {
+        const force = action === "delete-force";
+        if (
+          force &&
+          !window.confirm(
+            "Bu siparişe bağlı lisanslar da silinecek. Devam edilsin mi?",
+          )
+        ) {
+          setBusyId(null);
+          return;
+        }
+        if (
+          !force &&
+          !window.confirm(`Sipariş #${order.id} kalıcı olarak silinsin mi?`)
+        ) {
+          setBusyId(null);
+          return;
+        }
+
+        const res = await fetch(
+          `/api/admin/orders/${order.id}${force ? "?force=1" : ""}`,
+          { method: "DELETE" },
+        );
+        const json = (await res.json()) as { error?: string };
+        if (!res.ok) {
+          if (
+            !force &&
+            json.error?.includes("lisans var") &&
+            window.confirm(
+              "Bu siparişte lisans kaydı var. Lisanslarla birlikte silinsin mi?",
+            )
+          ) {
+            await orderAction(order, "delete-force");
+            return;
+          }
+          throw new Error(json.error || "Silinemedi.");
+        }
+      } else {
+        const res = await fetch(`/api/admin/orders/${order.id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action }),
+        });
+        const json = (await res.json()) as { error?: string };
+        if (!res.ok) throw new Error(json.error || "İşlem başarısız.");
+      }
+
+      await load();
+    } catch (err: unknown) {
+      alert(err instanceof Error ? err.message : "İşlem başarısız.");
+    } finally {
+      setBusyId(null);
+    }
+  }
+
   async function generateLicense() {
     if (!modalOrder) return;
     setBusyId(modalOrder.id);
@@ -130,7 +191,7 @@ export default function AdminOrdersPage() {
               <TableHead>Durum</TableHead>
               <TableHead>Lisans</TableHead>
               <TableHead>E-posta</TableHead>
-              <TableHead className="text-right!">İşlem</TableHead>
+              <TableHead className="text-right! min-w-[220px]">İşlem</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -139,6 +200,14 @@ export default function AdminOrdersPage() {
             ) : (
               rows.map((order) => {
                 const hasLicense = Number(order.license_count) > 0;
+                const isPending = order.status === "pending";
+                const isPaid = order.status === "paid";
+                const canDelete =
+                  order.status === "pending" ||
+                  order.status === "cancelled" ||
+                  order.status === "failed" ||
+                  isPaid;
+
                 return (
                   <TableRow
                     key={order.id}
@@ -146,13 +215,19 @@ export default function AdminOrdersPage() {
                   >
                     <TableCell className="text-left!">
                       <div>#{order.id}</div>
-                      <div className="text-xs text-dark-5 dark:text-dark-6">{order.merchant_oid}</div>
+                      <div className="text-xs text-dark-5 dark:text-dark-6">
+                        {order.merchant_oid}
+                      </div>
                     </TableCell>
                     <TableCell className="text-left!">
                       <div>{order.name}</div>
-                      <div className="text-sm text-dark-5 dark:text-dark-6">{order.email}</div>
+                      <div className="text-sm text-dark-5 dark:text-dark-6">
+                        {order.email}
+                      </div>
                     </TableCell>
-                    <TableCell>{planLabel(order.plan_id, order.billing_mode)}</TableCell>
+                    <TableCell>
+                      {planLabel(order.plan_id, order.billing_mode)}
+                    </TableCell>
                     <TableCell>{formatTry(order.amount_kurus)}</TableCell>
                     <TableCell>
                       <span
@@ -162,9 +237,11 @@ export default function AdminOrdersPage() {
                       </span>
                     </TableCell>
                     <TableCell>
-                      {order.status === "paid" ? (
+                      {isPaid ? (
                         hasLicense ? (
-                          <span className="text-green-dark">Verildi ({order.license_count})</span>
+                          <span className="text-green-dark">
+                            Verildi ({order.license_count})
+                          </span>
                         ) : (
                           <span className="text-yellow-dark-2">Bekliyor</span>
                         )
@@ -173,29 +250,65 @@ export default function AdminOrdersPage() {
                       )}
                     </TableCell>
                     <TableCell>
-                      {hasLicense ? (order.email_sent_at ? "Gönderildi" : "Bekliyor") : "—"}
+                      {hasLicense
+                        ? order.email_sent_at
+                          ? "Gönderildi"
+                          : "Bekliyor"
+                        : "—"}
                     </TableCell>
                     <TableCell className="text-right!">
-                      {order.status === "paid" && !hasLicense && (
-                        <button
-                          type="button"
-                          disabled={busyId === order.id}
-                          onClick={() => openGenerateModal(order)}
-                          className="rounded-lg bg-primary px-3 py-2 text-sm font-medium text-white transition hover:bg-opacity-90 disabled:opacity-60"
-                        >
-                          Lisans Üret
-                        </button>
-                      )}
-                      {order.status === "paid" && hasLicense && (
-                        <button
-                          type="button"
-                          disabled={busyId === order.id}
-                          onClick={() => resendEmail(order.id)}
-                          className="rounded-lg border border-primary px-3 py-2 text-sm font-medium text-primary transition hover:bg-primary hover:text-white disabled:opacity-60"
-                        >
-                          E-posta Gönder
-                        </button>
-                      )}
+                      <div className="admin-row-actions">
+                        {isPending && (
+                          <>
+                            <button
+                              type="button"
+                              disabled={busyId === order.id}
+                              onClick={() => orderAction(order, "approve")}
+                              className="admin-btn admin-btn-success"
+                            >
+                              Onayla
+                            </button>
+                            <button
+                              type="button"
+                              disabled={busyId === order.id}
+                              onClick={() => orderAction(order, "cancel")}
+                              className="admin-btn admin-btn-muted"
+                            >
+                              İptal
+                            </button>
+                          </>
+                        )}
+                        {isPaid && !hasLicense && (
+                          <button
+                            type="button"
+                            disabled={busyId === order.id}
+                            onClick={() => openGenerateModal(order)}
+                            className="admin-btn admin-btn-primary"
+                          >
+                            Lisans Üret
+                          </button>
+                        )}
+                        {isPaid && hasLicense && (
+                          <button
+                            type="button"
+                            disabled={busyId === order.id}
+                            onClick={() => resendEmail(order.id)}
+                            className="admin-btn admin-btn-outline"
+                          >
+                            E-posta
+                          </button>
+                        )}
+                        {canDelete && (
+                          <button
+                            type="button"
+                            disabled={busyId === order.id}
+                            onClick={() => orderAction(order, "delete")}
+                            className="admin-btn admin-btn-danger"
+                          >
+                            Sil
+                          </button>
+                        )}
+                      </div>
                     </TableCell>
                   </TableRow>
                 );
@@ -217,7 +330,8 @@ export default function AdminOrdersPage() {
               Lisans Üret — Sipariş #{modalOrder.id}
             </h3>
             <p className="admin-modal-sub">
-              {modalOrder.name} · {planLabel(modalOrder.plan_id, modalOrder.billing_mode)}
+              {modalOrder.name} ·{" "}
+              {planLabel(modalOrder.plan_id, modalOrder.billing_mode)}
             </p>
 
             <label className="admin-modal-field">
@@ -253,7 +367,7 @@ export default function AdminOrdersPage() {
 
             <div className="admin-modal-actions">
               <button type="button" className="admin-modal-cancel" onClick={closeModal}>
-                İptal
+                Vazgeç
               </button>
               <button
                 type="button"

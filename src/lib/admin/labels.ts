@@ -28,6 +28,7 @@ const ORDER_STATUS: Record<string, string> = {
   pending: "Ödeme Bekliyor",
   paid: "Ödeme Onaylandı",
   failed: "İptal / Başarısız",
+  cancelled: "İptal Edildi",
 };
 
 const LICENSE_STATUS: Record<string, string> = {
@@ -58,6 +59,8 @@ export function orderStatusClass(status: string) {
       return "bg-green-light-7 text-green-dark";
     case "failed":
       return "bg-red-light-5 text-red-dark";
+    case "cancelled":
+      return "bg-gray-2 text-dark-5";
     case "pending":
     default:
       return "bg-yellow-light-4 text-yellow-dark-2";
@@ -82,5 +85,12 @@ export const LICENSE_DURATION_OPTIONS = [
   { value: 365, label: "1 Yıl" },
   { value: null, label: "Süresiz" },
 ] as const;
+
+export const ADMIN_ASSIGN_PLAN_OPTIONS = Object.entries(CHECKOUT_PLANS).map(
+  ([value, plan]) => ({
+    value,
+    label: plan.label,
+  }),
+);
 
 export { formatDaysRemaining };
