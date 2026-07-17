@@ -278,10 +278,58 @@ export async function fulfillOrderLicenses(
   return createNewLicenses(order, plan, exec);
 }
 
+async function licenseKeyExists(licenseKey: string): Promise<boolean> {
+  if (useMysql()) {
+    const row = await mysqlGet<{ id: number }>(
+      "SELECT id FROM licenses WHERE license_key = ?",
+      [licenseKey],
+    );
+    return Boolean(row);
+  }
+  const row = getDb()
+    .prepare("SELECT id FROM licenses WHERE license_key = ?")
+    .get(licenseKey) as { id: number } | undefined;
+  return Boolean(row);
+}
+
+async function insertManualLicense(
+  order: OrderRow,
+  plan: CheckoutPlan,
+  licenseKey: string,
+  expiresAt: string | null,
+): Promise<FulfillResult> {
+  const params = [
+    order.user_id,
+    order.id,
+    licenseKey,
+    plan.id,
+    plan.billingMode,
+    plan.maxPcs,
+    expiresAt,
+  ];
+
+  if (useMysql()) {
+    await mysqlRun(
+      `INSERT INTO licenses (user_id, order_id, license_key, plan_id, billing_mode, max_pcs, expires_at, status)
+       VALUES (?, ?, ?, ?, ?, ?, ?, 'active')`,
+      params,
+    );
+  } else {
+    getDb()
+      .prepare(
+        `INSERT INTO licenses (user_id, order_id, license_key, plan_id, billing_mode, max_pcs, expires_at, status)
+         VALUES (?, ?, ?, ?, ?, ?, ?, 'active')`,
+      )
+      .run(...params);
+  }
+
+  return { licenseKeys: [licenseKey], expiresAt, isRenewal: false };
+}
+
 export async function adminGenerateLicensesForOrder(
   order: OrderRow,
   plan: CheckoutPlan,
-  input: { durationDays: number | null; sendEmail?: boolean },
+  input: { durationDays: number | null; sendEmail?: boolean; licenseKey?: string },
 ): Promise<FulfillResult> {
   const existing = useMysql()
     ? await mysqlAll<{ license_key: string; expires_at: string | null }>(
@@ -297,7 +345,20 @@ export async function adminGenerateLicensesForOrder(
   }
 
   const expiresAt = computeExpiryFromDays(input.durationDays);
-  const result = await createNewLicenses(order, plan, undefined, expiresAt);
+  const manualKey = String(input.licenseKey || "").trim();
+
+  if (manualKey) {
+    if (manualKey.length < 4 || manualKey.length > 64) {
+      throw new Error("Lisans anahtarı 4–64 karakter olmalı.");
+    }
+    if (await licenseKeyExists(manualKey)) {
+      throw new Error("Bu lisans anahtarı zaten kayıtlı.");
+    }
+  }
+
+  const result = manualKey
+    ? await insertManualLicense(order, plan, manualKey, expiresAt)
+    : await createNewLicenses(order, plan, undefined, expiresAt);
 
   if (plan.billingMode === "monthly" && expiresAt) {
     const user = useMysql()

@@ -935,12 +935,15 @@ body.admin-nextadmin-active #admin-nextadmin-root .col-span-12 {
   color: #374151;
 }
 
-.admin-modal-field select {
+.admin-modal-field select,
+.admin-modal-field input[type="text"] {
   border: 1px solid #d1d5db;
   border-radius: 0.5rem;
   padding: 0.65rem 0.75rem;
   font-size: 0.875rem;
   background: #fff;
+  font-weight: 400;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 .admin-modal-check {

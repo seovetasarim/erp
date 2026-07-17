@@ -39,6 +39,7 @@ export default function AdminCustomersPage() {
   const [busyId, setBusyId] = useState<number | null>(null);
   const [modalCustomer, setModalCustomer] = useState<Customer | null>(null);
   const [planKey, setPlanKey] = useState(ADMIN_ASSIGN_PLAN_OPTIONS[0]?.value ?? "");
+  const [licenseKey, setLicenseKey] = useState("");
   const [durationDays, setDurationDays] = useState<number | null>(30);
   const [sendEmail, setSendEmail] = useState(true);
   const [modalError, setModalError] = useState("");
@@ -61,6 +62,7 @@ export default function AdminCustomersPage() {
   function openAssignModal(customer: Customer) {
     setModalCustomer(customer);
     setPlanKey(ADMIN_ASSIGN_PLAN_OPTIONS[0]?.value ?? "");
+    setLicenseKey("");
     setDurationDays(30);
     setSendEmail(true);
     setModalError("");
@@ -73,6 +75,13 @@ export default function AdminCustomersPage() {
 
   async function assignProduct() {
     if (!modalCustomer) return;
+
+    const trimmedKey = licenseKey.trim();
+    if (!trimmedKey) {
+      setModalError("Lisans anahtarı girin.");
+      return;
+    }
+
     setBusyId(modalCustomer.id);
     setModalError("");
 
@@ -82,6 +91,7 @@ export default function AdminCustomersPage() {
       body: JSON.stringify({
         userId: modalCustomer.id,
         planKey,
+        licenseKey: trimmedKey,
         durationDays,
         sendEmail,
       }),
@@ -199,6 +209,18 @@ export default function AdminCustomersPage() {
             <p className="admin-modal-sub">
               {modalCustomer.name} · {modalCustomer.email}
             </p>
+
+            <label className="admin-modal-field">
+              <span>Lisans anahtarı</span>
+              <input
+                type="text"
+                value={licenseKey}
+                onChange={(event) => setLicenseKey(event.target.value)}
+                placeholder="Örn. DERP-XXXXXXXXXX-XXXXXXXXXX"
+                autoComplete="off"
+                spellCheck={false}
+              />
+            </label>
 
             <label className="admin-modal-field">
               <span>Paket</span>

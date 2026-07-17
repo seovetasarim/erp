@@ -941,6 +941,33 @@ main {
   background: #f4f0ea;
 }
 
+.admin-login-site-shell {
+  background: #f4f0ea;
+  color: #21212d;
+  font-family: var(--tp-ff-onest, "Onest", sans-serif);
+
+  #admin-nextadmin-root {
+    min-height: auto;
+    background: #f4f0ea;
+    color: #21212d;
+  }
+
+  .tp-login-title {
+    font-family: var(--tp-ff-onest, "Onest", sans-serif);
+  }
+}
+
+.admin-login-note {
+  margin: 0;
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(33, 33, 45, 0.72);
+  background: #f4faf8;
+  border: 1px solid rgba(12, 70, 66, 0.12);
+}
+
 .admin-login-area {
   min-height: 100vh;
   display: flex;

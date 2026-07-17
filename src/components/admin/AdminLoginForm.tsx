@@ -1,6 +1,6 @@
 "use client";
 
-import DijitalErpLogo from "@/components/brand/DijitalErpLogo";
+import { CloseEyeIcon, OpenEyeIcon } from "@/svg/EyeIcons";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -9,6 +9,7 @@ export default function AdminLoginForm() {
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -35,74 +36,88 @@ export default function AdminLoginForm() {
   }
 
   return (
-    <div className="admin-login-page">
-      <div className="admin-login-shell">
-        <aside className="admin-login-brand">
-          <DijitalErpLogo href="/" variant="light" size="lg" />
+    <form onSubmit={onSubmit}>
+      <div className="tp-login-wrapper admin-login-card">
+        <div className="tp-login-top text-center mb-30">
+          <span className="admin-login-badge">Yönetim Paneli</span>
+          <h3 className="tp-login-title">Yönetici Girişi</h3>
+          <p>
+            Müşteri hesabınız mı var?{" "}
+            <span>
+              <Link href="/giris">Müşteri girişi</Link>
+            </span>
+          </p>
+        </div>
 
-          <div className="admin-login-brand-copy">
-            <span className="admin-login-eyebrow">Yönetim Paneli</span>
-            <h1>Sipariş, lisans ve müşteri yönetimi tek yerde.</h1>
-            <p>
-              Manuel sipariş onayı, lisans üretimi ve destek talepleri için güvenli
-              yönetici girişi.
-            </p>
+        <div className="tp-login-option">
+          <div className="tp-login-input-wrapper">
+            <div className="tp-login-input-box">
+              <div className="tp-login-input-title">
+                <label htmlFor="admin_username">Yönetici kullanıcı adı</label>
+              </div>
+              <div className="tp-login-input">
+                <input
+                  id="admin_username"
+                  name="username"
+                  type="text"
+                  placeholder="admin"
+                  autoComplete="username"
+                  value={username}
+                  onChange={(event) => setUsername(event.target.value)}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="tp-login-input-box">
+              <div className="tp-login-input-title">
+                <label htmlFor="admin_password">Şifre</label>
+              </div>
+              <div className="tp-login-input p-relative">
+                <input
+                  id="admin_password"
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Yönetici şifreniz"
+                  autoComplete="current-password"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  required
+                />
+                <div
+                  className="tp-login-input-eye"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  role="button"
+                  aria-label="Şifreyi göster veya gizle"
+                >
+                  <span className="open-eye" style={{ display: showPassword ? "none" : "block" }}>
+                    <OpenEyeIcon />
+                  </span>
+                  <span className="open-close" style={{ display: showPassword ? "block" : "none" }}>
+                    <CloseEyeIcon />
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <ul className="admin-login-points">
-            <li>Sipariş onaylama ve lisans tanımlama</li>
-            <li>Müşteri ve abonelik takibi</li>
-            <li>Destek talebi yanıtlama</li>
-          </ul>
-        </aside>
+          <p className="admin-login-note mb-30">
+            Bu alan yalnızca yetkili yönetici hesapları içindir. Sipariş onayı, lisans tanımlama
+            ve destek yönetimi buradan yapılır.
+          </p>
 
-        <div className="admin-login-panel">
-          <div className="admin-login-panel-head">
-            <h2>Oturum aç</h2>
-            <p>Yönetici kullanıcı adı ve şifrenizle panele giriş yapın.</p>
-          </div>
-
-          <form className="admin-login-form" onSubmit={onSubmit}>
-            <label className="admin-login-field">
-              <span>Kullanıcı adı</span>
-              <input
-                id="admin_username"
-                name="username"
-                type="text"
-                placeholder="admin"
-                autoComplete="username"
-                value={username}
-                onChange={(event) => setUsername(event.target.value)}
-                required
-              />
-            </label>
-
-            <label className="admin-login-field">
-              <span>Şifre</span>
-              <input
-                id="admin_password"
-                name="password"
-                type="password"
-                placeholder="Yönetici şifreniz"
-                autoComplete="current-password"
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                required
-              />
-            </label>
-
-            {error && <p className="admin-login-error">{error}</p>}
-
-            <button type="submit" className="admin-login-submit" disabled={loading}>
-              {loading ? "Giriş yapılıyor…" : "Panele Giriş Yap"}
+          <div className="tp-login-bottom">
+            {error && <p className="text-danger mb-15">{error}</p>}
+            <button type="submit" className="tp-login-btn w-100" disabled={loading}>
+              {loading ? "Giriş yapılıyor…" : "Yönetim Paneline Giriş"}
             </button>
-          </form>
+          </div>
 
-          <div className="admin-login-footer">
+          <div className="admin-login-footer text-center mt-30">
             <Link href="/">← Ana siteye dön</Link>
           </div>
         </div>
       </div>
-    </div>
+    </form>
   );
 }

@@ -19,16 +19,23 @@ export async function POST(request: Request) {
     planKey?: string;
     durationDays?: number | null;
     sendEmail?: boolean;
+    licenseKey?: string;
   };
 
   const userId = Number(body.userId);
   const planKey = String(body.planKey || "").trim();
+
+  const licenseKey = String(body.licenseKey || "").trim();
 
   if (!userId || !planKey) {
     return NextResponse.json(
       { error: "Kullanıcı ve paket seçimi gerekli." },
       { status: 400 },
     );
+  }
+
+  if (!licenseKey) {
+    return NextResponse.json({ error: "Lisans anahtarı gerekli." }, { status: 400 });
   }
 
   const durationDays =
@@ -55,6 +62,7 @@ export async function POST(request: Request) {
     const result = await adminGenerateLicensesForOrder(order, plan, {
       durationDays,
       sendEmail: body.sendEmail !== false,
+      licenseKey,
     });
     await expireDueLicenses();
 
