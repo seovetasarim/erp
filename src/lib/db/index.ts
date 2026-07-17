@@ -8,7 +8,38 @@ declare global {
   var __dijitalerpDb: Database.Database | undefined;
 }
 
+export function isServerlessHost() {
+  return Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+}
+
+export function getMissingMysqlEnvKeys() {
+  const required = [
+    "MYSQL_HOST",
+    "MYSQL_USER",
+    "MYSQL_PASSWORD",
+    "MYSQL_DATABASE",
+  ] as const;
+  return required.filter((key) => !process.env[key]?.trim());
+}
+
+export function assertWritableSqlite() {
+  if (!isServerlessHost()) return;
+
+  const missing = getMissingMysqlEnvKeys();
+  if (missing.length === 0) {
+    throw new Error(
+      "Vercel ortamında SQLite kullanılamaz. DB_DRIVER=mysql olarak ayarlayıp redeploy edin.",
+    );
+  }
+
+  throw new Error(
+    `Vercel ortamında MySQL zorunludur. Production ortam değişkenlerine ekleyin: ${missing.join(", ")}`,
+  );
+}
+
 function getDbPath() {
+  assertWritableSqlite();
+
   const custom = process.env.DATABASE_PATH;
   if (custom) return custom;
   const dataDir = path.join(process.cwd(), "data");

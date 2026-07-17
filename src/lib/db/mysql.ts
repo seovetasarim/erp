@@ -5,6 +5,7 @@ import type {
   RowDataPacket,
 } from "mysql2/promise";
 import mysql from "mysql2/promise";
+import { getMissingMysqlEnvKeys, isServerlessHost } from "@/lib/db";
 import { MYSQL_SCHEMA_SQL } from "./mysql-schema";
 
 type SqlParam = string | number | boolean | null | Date | Buffer;
@@ -14,16 +15,30 @@ let pool: Pool | undefined;
 let schemaReady: Promise<void> | undefined;
 
 export function useMysql() {
-  return process.env.DB_DRIVER === "mysql" || Boolean(process.env.MYSQL_HOST);
+  const configured =
+    process.env.DB_DRIVER === "mysql" || Boolean(process.env.MYSQL_HOST?.trim());
+
+  if (isServerlessHost()) {
+    return configured;
+  }
+
+  return configured;
 }
 
 function getPoolConfig() {
+  const missing = getMissingMysqlEnvKeys();
+  if (missing.length > 0) {
+    throw new Error(
+      `MySQL yapılandırması eksik: ${missing.join(", ")}`,
+    );
+  }
+
   return {
-    host: process.env.MYSQL_HOST || "localhost",
+    host: process.env.MYSQL_HOST!.trim(),
     port: Number(process.env.MYSQL_PORT || 3306),
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE,
+    user: process.env.MYSQL_USER!.trim(),
+    password: process.env.MYSQL_PASSWORD!,
+    database: process.env.MYSQL_DATABASE!.trim(),
     waitForConnections: true,
     connectionLimit: 10,
     charset: "utf8mb4",

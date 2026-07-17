@@ -1,4 +1,25 @@
-# DijitalERP Canlı Kurulum (cPanel)
+# DijitalERP Canlı Kurulum (cPanel / Vercel)
+
+## Vercel (önemli)
+
+Vercel **serverless** ortamında SQLite çalışmaz. `ENOENT ... mkdir '/var/task/data'` hatası, MySQL ortam değişkenlerinin **Production** ortamında tanımlı olmadığını gösterir.
+
+Vercel → Project → Settings → Environment Variables:
+
+| Değişken | Production | Örnek |
+|----------|------------|-------|
+| `DB_DRIVER` | Evet | `mysql` |
+| `MYSQL_HOST` | Evet | `104.247.173.212` (cPanel sunucu IP — `localhost` değil) |
+| `MYSQL_PORT` | Evet | `3306` |
+| `MYSQL_USER` | Evet | cPanel DB kullanıcı adı |
+| `MYSQL_PASSWORD` | Evet | cPanel DB şifresi |
+| `MYSQL_DATABASE` | Evet | cPanel DB adı |
+| `AUTH_SECRET` | Evet | 32+ karakter rastgele |
+| `NEXT_PUBLIC_SITE_URL` | Evet | `https://www.dijitalerp.com.tr` |
+
+Değişkenleri yalnızca **Preview**'a değil, mutlaka **Production**'a da ekleyin. Kaydettikten sonra **Redeploy** yapın.
+
+cPanel → Remote MySQL bölümünde Vercel IP aralıklarına izin verin (veya geçici test için `%`).
 
 ## 1. MySQL tabloları
 
