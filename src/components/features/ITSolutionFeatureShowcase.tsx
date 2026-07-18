@@ -1,6 +1,6 @@
-import project1 from '../../../public/assets/img/home-11/project/project-1.jpg';
-import project2 from '../../../public/assets/img/home-11/project/project-2.jpg';
-import project3 from '../../../public/assets/img/home-11/project/project-3.jpg';
+import project1 from '../../../public/assets/img/home-11/project/project-1.png';
+import project2 from '../../../public/assets/img/home-11/project/project-2.png';
+import project3 from '../../../public/assets/img/home-11/project/project-3.png';
 import ProtectedDownloadLink from '@/components/download/ProtectedDownloadLink';
 import { ArrowNine } from '@/svg/ArrowIcons';
 import Image, { StaticImageData } from 'next/image';

@@ -48,12 +48,12 @@ import project32 from "../../public/assets/img/home-09/project/project-2.png";
 import project33 from "../../public/assets/img/home-09/project/project-3.png";
 import project34 from "../../public/assets/img/home-09/project/project-4.png";
 //home IT Solution project image
-import project35 from "../../public/assets/img/home-11/project/project-1.jpg";
-import project36 from "../../public/assets/img/home-11/project/project-2.jpg";
-import project37 from "../../public/assets/img/home-11/project/project-3.jpg";
-import project38 from "../../public/assets/img/home-11/project/project-4.jpg";
-import project39 from "../../public/assets/img/home-11/project/project-5.jpg";
-import project39b from "../../public/assets/img/home-11/project/project-6.jpg";
+import project35 from "../../public/assets/img/home-11/project/project-1.png";
+import project36 from "../../public/assets/img/home-11/project/project-2.png";
+import project37 from "../../public/assets/img/home-11/project/project-3.png";
+import project38 from "../../public/assets/img/home-11/project/project-4.png";
+import project39 from "../../public/assets/img/home-11/project/project-5.png";
+import project39b from "../../public/assets/img/home-11/project/project-6.png";
 
 // Home Personal Portfolio Project image
 import project40 from '../../public/assets/img/home-04/project/project-5.jpg';

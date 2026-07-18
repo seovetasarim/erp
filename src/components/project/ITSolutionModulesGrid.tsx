@@ -1,22 +1,14 @@
 "use client"
-import projectsData from '@/data/projectData';
+import { erpModules, erpModuleFilters } from '@/data/erpModules';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 
-const filters = [
-    { key: 'all', label: 'Tümü' },
-    { key: 'Stok Modülü', label: 'Stok' },
-    { key: 'Cari Modülü', label: 'Cari' },
-    { key: 'Fatura Modülü', label: 'Fatura' },
-    { key: 'Kasa Modülü', label: 'Kasa' },
-    { key: 'Raporlama', label: 'Rapor' },
-    { key: 'Ücretsiz ERP', label: 'Paket' },
-];
+const filters = erpModuleFilters;
 
 const ITSolutionModulesGrid = () => {
     const [active, setActive] = useState('all');
-    const modules = useMemo(() => projectsData.slice(37, 43), []);
+    const modules = erpModules;
 
     const filtered = useMemo(() => {
         if (active === 'all') return modules;
@@ -70,6 +62,7 @@ const ITSolutionModulesGrid = () => {
                                             {project.title}
                                         </Link>
                                     </h4>
+                                    <p className="it-modules-card-desc">{project.description}</p>
                                 </div>
                             </div>
                         </div>

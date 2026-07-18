@@ -1893,13 +1893,15 @@
             }
         }
         & .it-hero-app-wrap {
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 30px 80px rgba(33, 33, 45, 0.18);
-            margin-left: -10px;
+            margin-left: 0;
             max-width: 100%;
+            transform: translateY(-40px);
+            @media #{$lg} {
+                transform: translateY(-25px);
+            }
             @media #{$md,$xs} {
                 margin-left: 0;
+                transform: none;
             }
         }
         & .it-hero-app-shot {
@@ -1909,7 +1911,7 @@
             margin-left: 0 !important;
             margin-bottom: 0 !important;
             display: block;
-            border-radius: 24px;
+            border-radius: 0;
         }
     }
     &-shape{

@@ -1,8 +1,6 @@
 import aboutShape1 from '../../../public/assets/img/home-11/about/about-shape-1.png';
 import aboutShape2 from '../../../public/assets/img/home-11/about/about-shape-2.png';
-import aboutImg from '../../../public/assets/img/home-11/about/about-1.jpg';
-import aboutImg2 from '../../../public/assets/img/home-11/about/about-2.jpg';
-import aboutImg3 from '../../../public/assets/img/home-11/about/about-3.jpg';
+import aboutMockup from '../../../public/assets/img/home-11/project/project-1.png';
 import ProtectedDownloadLink from '@/components/download/ProtectedDownloadLink';
 import { ArrowNine } from '@/svg/ArrowIcons';
 import Image from 'next/image';
@@ -43,30 +41,21 @@ const ITSolutionAbout = () => {
                         </div>
                     </div>
                     <div className="col-xl-8 d-none d-xl-block">
-                        <div className="row align-items-end">
-                            <div className="col-lg-6">
-                                <div className="it-about-thumb">
-                                    <div className="p-relative">
-                                        <div className="it-about-thumb-inner mb-50">
-                                            <Image className="img-1" data-speed=".9" src={aboutImg} alt="about-image" />
-                                        </div>
-                                        <div className="it-about-info-wrap">
-                                            <div className="it-about-info-item d-inline-flex align-items-center" data-parallax='{"x": 50, "smoothness": 30}'>
-                                                <i><span>15</span>+</i>
-                                                <p>Yıllık <br /> Tecrübe</p>
-                                            </div>
-                                            <div className="it-about-info-item d-inline-flex align-items-center" style={{ backgroundColor: "#DACBFF" }} data-parallax='{"x": -50, "smoothness": 30}'>
-                                                <i><span>61</span>+</i>
-                                                <p>Mutlu <br /> İşletme</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <Image style={{ width: "100%", height: "auto" }} className="img-2 mb-100" src={aboutImg2} alt="about-image" />
+                        <div className="it-about-single p-relative">
+                            <Image
+                                className="it-about-single-shot"
+                                src={aboutMockup}
+                                alt="DijitalERP offline ERP kontrol paneli"
+                                priority
+                            />
+                            <div className="it-about-info-wrap">
+                                <div className="it-about-info-item d-inline-flex align-items-center">
+                                    <i><span>15</span>+</i>
+                                    <p>Yıllık <br /> Tecrübe</p>
                                 </div>
-                            </div>
-                            <div className="col-lg-6">
-                                <div className="it-about-thumb">
-                                    <Image className="img-3" data-speed="1.1" src={aboutImg3} alt="about-image" />
+                                <div className="it-about-info-item d-inline-flex align-items-center" style={{ backgroundColor: "#DACBFF" }}>
+                                    <i><span>61</span>+</i>
+                                    <p>Mutlu <br /> İşletme</p>
                                 </div>
                             </div>
                         </div>

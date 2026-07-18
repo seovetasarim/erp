@@ -1,6 +1,6 @@
 "use client"
 import { LeftArrowIcon, RightArrowIcon } from '@/svg';
-import projectsData from '@/data/projectData';
+import { erpModules } from '@/data/erpModules';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -41,7 +41,7 @@ const ITSolutionProject = ({ showTitle = true, sectionId = "moduller" }: ITSolut
                     className='it-project-active'
                     {...project_swiper_params}
                 >
-                    {projectsData.slice(37, 43).map((project) => (
+                    {erpModules.map((project) => (
                         <SwiperSlide key={project.id}>
                             <div className="it-project-item text-center">
                                 <div className="it-project-thumb fix">

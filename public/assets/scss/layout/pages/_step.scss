@@ -322,16 +322,15 @@
             }
         }
         & .it-step-login-shot{
-            border-radius: 30px;
-            width: auto !important;
+            border-radius: 0;
+            width: 100% !important;
             height: auto !important;
-            max-width: inherit !important;
-            object-fit: cover;
+            max-width: 100% !important;
+            object-fit: contain;
             display: block;
-            @media #{$md,$xs} {
-                width: 100% !important;
-                max-width: 100% !important;
-            }
+            filter: drop-shadow(0 28px 55px rgba(20, 20, 45, 0.18));
+            animation: itAboutFloat 4.5s ease-in-out infinite;
+            will-change: transform;
         }
         &-shape{
             &-1{

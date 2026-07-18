@@ -1,7 +1,7 @@
 "use client"
 import aboutShape from '../../../public/assets/img/home-11/step/about-shape-3.png';
 import aboutShapeTwo from '../../../public/assets/img/home-11/step/about-shape-4.png';
-import loginShot from '../../../public/assets/img/home-11/step/login-shot.png';
+import loginShot from '../../../public/assets/img/home-11/project/project-1.png';
 import { AccordionId, AccordionItemDT } from '@/types/custom-d-t';
 import { useState } from 'react';
 import Image from 'next/image';
@@ -70,9 +70,9 @@ const ITSolutionStep = () => {
                                 <Image
                                     className="it-step-login-shot"
                                     src={loginShot}
-                                    alt="DijitalERP giriş ekranı"
-                                    width={520}
-                                    height={680}
+                                    alt="DijitalERP kontrol paneli"
+                                    width={1448}
+                                    height={1086}
                                     style={{ width: '100%', height: 'auto' }}
                                     priority
                                 />

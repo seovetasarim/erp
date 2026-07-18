@@ -1,6 +1,7 @@
-import heroShot1 from '../../../public/assets/img/home-11/project/hero-shot-1.jpg';
-import heroShot2 from '../../../public/assets/img/home-11/project/hero-shot-2.jpg';
-import heroShot3 from '../../../public/assets/img/home-11/project/hero-shot-3.jpg';
+import heroShot1 from '../../../public/assets/img/home-11/project/project-3.png'; // Stok
+import heroShot2 from '../../../public/assets/img/home-11/project/project-2.png'; // Cari
+import heroShot3 from '../../../public/assets/img/home-11/project/project-5.png'; // Fatura / Finans
+import { erpModules } from '@/data/erpModules';
 import ProtectedDownloadLink from '@/components/download/ProtectedDownloadLink';
 import { ArrowNine } from '@/svg/ArrowIcons';
 import Image from 'next/image';
@@ -69,8 +70,8 @@ const ITSolutionModulesHero = () => {
                                         <Image
                                             src={shot.src}
                                             alt={shot.alt}
-                                            width={1400}
-                                            height={875}
+                                            width={1448}
+                                            height={1086}
                                             quality={95}
                                             priority
                                             sizes="(max-width: 991px) 90vw, 42vw"
@@ -79,7 +80,7 @@ const ITSolutionModulesHero = () => {
                                     </div>
                                 ))}
                                 <div className="it-modules-hero-badge">
-                                    <strong>6</strong>
+                                    <strong>{erpModules.length}</strong>
                                     <span>Modül</span>
                                 </div>
                             </div>

@@ -1,6 +1,5 @@
 import heroShapeThree from '../../../public/assets/img/home-11/hero/hero-shape-2.png';
 import heroShapeTwo from '../../../public/assets/img/home-11/hero/hero-shape-4.png';
-import heroShapeFour from '../../../public/assets/img/home-11/hero/hero-shape-3.png';
 import heroShape from '../../../public/assets/img/home-11/hero/hero-shape-1.png';
 import heroApp from '../../../public/assets/img/home-11/hero/hero-app.png';
 import DownloadCounter from '@/components/download/DownloadCounter';
@@ -79,9 +78,6 @@ const ITSolutionHero = () => {
                                     priority
                                     data-speed=".9"
                                 />
-                            </div>
-                            <div className="inner-img tp_fade_anim" data-delay=".7" data-fade-from="top" data-speed="1.1">
-                                <Image style={{ marginLeft: "-37px", marginBottom: "-78px", maxWidth: "inherit" }} src={heroShapeFour} alt="" aria-hidden="true" />
                             </div>
                         </div>
                     </div>

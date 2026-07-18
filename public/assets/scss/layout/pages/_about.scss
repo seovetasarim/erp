@@ -1212,6 +1212,27 @@
             }
         }
     }
+    &-single{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 500px;
+        & .it-about-single-shot{
+            width: 100%;
+            max-width: 660px;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 34px 60px rgba(20, 20, 45, 0.18));
+            animation: itAboutFloat 4.5s ease-in-out infinite;
+            will-change: transform;
+        }
+        & .it-about-info-wrap{
+            top: auto;
+            bottom: 6%;
+            right: -2%;
+            left: auto;
+        }
+    }
     &-thumb{
         & img{
             border-radius: 12px;
@@ -1304,6 +1325,12 @@
         }
     }
 }
+
+@keyframes itAboutFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-22px); }
+}
+
 .st-about{
     &-ptb{
         @media #{$xs} {
