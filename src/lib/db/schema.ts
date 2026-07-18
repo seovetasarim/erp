@@ -123,6 +123,11 @@ CREATE TABLE IF NOT EXISTS user_addresses (
 );
 
 CREATE INDEX IF NOT EXISTS idx_user_addresses_user ON user_addresses(user_id);
+
+CREATE TABLE IF NOT EXISTS site_counters (
+  counter_key TEXT PRIMARY KEY,
+  value INTEGER NOT NULL DEFAULT 0
+);
 `;
 
 export type UserRow = {

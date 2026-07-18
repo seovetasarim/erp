@@ -121,4 +121,9 @@ CREATE TABLE IF NOT EXISTS user_addresses (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE INDEX idx_user_addresses_user ON user_addresses(user_id);
+
+CREATE TABLE IF NOT EXISTS site_counters (
+  counter_key VARCHAR(64) PRIMARY KEY,
+  value INT NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 `;

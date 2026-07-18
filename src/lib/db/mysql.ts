@@ -39,18 +39,31 @@ export function useMysql() {
   return useMysqlDriver();
 }
 
+function createPool() {
+  return mysql.createPool({
+    ...resolveMysqlPoolConfig(),
+    waitForConnections: true,
+    connectionLimit: 10,
+    charset: "utf8mb4",
+    enableKeepAlive: true,
+    connectTimeout: 10_000,
+  });
+}
+
+function shouldRunAutoSchema() {
+  if (process.env.MYSQL_AUTO_SCHEMA === "1") return true;
+  if (process.env.NODE_ENV !== "production") return true;
+  return false;
+}
+
 export async function ensureMysqlSchema() {
   if (!useMysql()) return;
   if (!schemaReady) {
     schemaReady = (async () => {
       if (!pool) {
-        pool = mysql.createPool({
-          ...resolveMysqlPoolConfig(),
-          waitForConnections: true,
-          connectionLimit: 10,
-          charset: "utf8mb4",
-        });
+        pool = createPool();
       }
+      if (!shouldRunAutoSchema()) return;
       const statements = MYSQL_SCHEMA_SQL.split(";")
         .map((part) => part.trim())
         .filter(Boolean);
@@ -68,12 +81,7 @@ export async function getMysqlPool() {
   }
   await ensureMysqlSchema();
   if (!pool) {
-    pool = mysql.createPool({
-      ...resolveMysqlPoolConfig(),
-      waitForConnections: true,
-      connectionLimit: 10,
-      charset: "utf8mb4",
-    });
+    pool = createPool();
   }
   return pool;
 }

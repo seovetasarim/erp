@@ -98,21 +98,39 @@ const ITSolutionPricingPlans = () => {
                           </small>
                         )}
                       </div>
-                      <Link
-                        className="tp-btn-black-radius d-inline-flex align-items-center justify-content-between"
-                        href={isDownload ? downloadHref : billing.href}
-                      >
-                        <span>
-                          <span className="text-1">{billing.cta}</span>
-                          <span className="text-2">{billing.cta}</span>
-                        </span>
-                        <i>
+                      {isDownload ? (
+                        <a
+                          className="tp-btn-black-radius d-inline-flex align-items-center justify-content-between"
+                          href={downloadHref}
+                        >
                           <span>
-                            <ArrowNine />
-                            <ArrowNine />
+                            <span className="text-1">{billing.cta}</span>
+                            <span className="text-2">{billing.cta}</span>
                           </span>
-                        </i>
-                      </Link>
+                          <i>
+                            <span>
+                              <ArrowNine />
+                              <ArrowNine />
+                            </span>
+                          </i>
+                        </a>
+                      ) : (
+                        <Link
+                          className="tp-btn-black-radius d-inline-flex align-items-center justify-content-between"
+                          href={billing.href}
+                        >
+                          <span>
+                            <span className="text-1">{billing.cta}</span>
+                            <span className="text-2">{billing.cta}</span>
+                          </span>
+                          <i>
+                            <span>
+                              <ArrowNine />
+                              <ArrowNine />
+                            </span>
+                          </i>
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </div>

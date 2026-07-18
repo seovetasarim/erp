@@ -1,7 +1,11 @@
+import { getSiteDownloadCount } from "@/lib/downloads/repository";
+
 const GITHUB_API = "https://api.github.com";
 
 export const GITHUB_REPO = "seovetasarim/erp";
 export const GITHUB_ASSET_FILENAME = "kurulum.rar";
+/** Repoya push edilen guncel kurulum arsivi (master) */
+export const REPO_KURULUM_RAW_URL = `https://github.com/${GITHUB_REPO}/raw/master/public/downloads/${GITHUB_ASSET_FILENAME}`;
 
 export type GithubReleaseAsset = {
   name: string;
@@ -12,6 +16,7 @@ export type GithubReleaseAsset = {
 export type DownloadStats = {
   total: number;
   githubTotal: number;
+  siteTotal: number;
   offset: number;
   updatedAt: string;
   releaseTag: string;
@@ -59,19 +64,20 @@ export async function getDownloadStats(): Promise<DownloadStats> {
   }
 
   const githubTotal = asset.download_count ?? 0;
+  const siteTotal = await getSiteDownloadCount();
 
   return {
     githubTotal,
+    siteTotal,
     offset,
-    total: githubTotal + offset,
+    total: githubTotal + siteTotal + offset,
     updatedAt: new Date().toISOString(),
     releaseTag: release.tag_name,
     assetName: asset.name,
-    downloadUrl: asset.browser_download_url,
+    downloadUrl: REPO_KURULUM_RAW_URL,
   };
 }
 
 export async function getGithubDownloadUrl(): Promise<string> {
-  const stats = await getDownloadStats();
-  return stats.downloadUrl;
+  return REPO_KURULUM_RAW_URL;
 }

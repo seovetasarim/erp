@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { clearClientAuthUser, getClientAuthUser } from "@/lib/auth/clientSession";
 import {
   DIJITAL_ERP_DOWNLOAD_HREF,
 } from "@/constants/download";
@@ -30,6 +31,11 @@ const ProfileMain = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const cached = getClientAuthUser();
+    if (cached) {
+      setUser(cached);
+    }
+
     Promise.all([
       fetch("/api/auth/me").then((r) => r.json()),
       fetch("/api/licenses").then((r) => (r.ok ? r.json() : { licenses: [] })),
@@ -61,8 +67,8 @@ const ProfileMain = () => {
 
   async function handleLogout() {
     await fetch("/api/auth/logout", { method: "POST" });
-    router.replace("/giris");
-    router.refresh();
+    clearClientAuthUser();
+    window.location.href = "/giris";
   }
 
   const profileStats = [
@@ -152,9 +158,9 @@ const ProfileMain = () => {
       </div>
 
       <p className="profile__empty-hint mt-30">
-        <Link href={DIJITAL_ERP_DOWNLOAD_HREF}>
+        <a href={DIJITAL_ERP_DOWNLOAD_HREF}>
           DijitalERP kurulum dosyasını indir
-        </Link>
+        </a>
         {licenseCount === 0 && (
           <>
             {" "}
