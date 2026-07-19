@@ -22,7 +22,7 @@ type Order = {
   billing_mode: string;
   amount_kurus: number;
   status: string;
-  email_sent_at: string | null;
+  email_sent_at?: string | null;
   license_count: number;
   name: string;
   email: string;
@@ -30,10 +30,15 @@ type Order = {
   created_at: string;
 };
 
-export default function AdminOrdersPage() {
-  const [rows, setRows] = useState<Order[]>([]);
+export default function AdminOrdersPage({
+  initialOrders,
+}: {
+  initialOrders?: Order[];
+}) {
+  const hasInitial = initialOrders !== undefined;
+  const [rows, setRows] = useState<Order[]>(initialOrders ?? []);
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!hasInitial);
   const [busyId, setBusyId] = useState<number | null>(null);
   const [modalOrder, setModalOrder] = useState<Order | null>(null);
   const [durationDays, setDurationDays] = useState<number | null>(30);
@@ -48,12 +53,13 @@ export default function AdminOrdersPage() {
   }
 
   useEffect(() => {
+    if (hasInitial) return;
     load()
       .catch((err: unknown) => {
         setError(err instanceof Error ? err.message : "Veri yüklenemedi.");
       })
       .finally(() => setLoading(false));
-  }, []);
+  }, [hasInitial]);
 
   function openGenerateModal(order: Order) {
     setModalOrder(order);

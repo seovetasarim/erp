@@ -24,10 +24,15 @@ type Customer = {
   order_count: number;
 };
 
-export default function AdminCustomersPage() {
-  const [rows, setRows] = useState<Customer[]>([]);
+export default function AdminCustomersPage({
+  initialCustomers,
+}: {
+  initialCustomers?: Customer[];
+}) {
+  const hasInitial = initialCustomers !== undefined;
+  const [rows, setRows] = useState<Customer[]>(initialCustomers ?? []);
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!hasInitial);
   const [busyId, setBusyId] = useState<number | null>(null);
   const [modalCustomer, setModalCustomer] = useState<Customer | null>(null);
   const [planKey, setPlanKey] = useState(ADMIN_ASSIGN_PLAN_OPTIONS[0]?.value ?? "");
@@ -44,12 +49,13 @@ export default function AdminCustomersPage() {
   }
 
   useEffect(() => {
+    if (hasInitial) return;
     load()
       .catch((err: unknown) => {
         setError(err instanceof Error ? err.message : "Veri yüklenemedi.");
       })
       .finally(() => setLoading(false));
-  }, []);
+  }, [hasInitial]);
 
   function openAssignModal(customer: Customer) {
     setModalCustomer(customer);

@@ -25,10 +25,15 @@ type License = {
   customer_code: string;
 };
 
-export default function AdminLicensesPage() {
-  const [rows, setRows] = useState<License[]>([]);
+export default function AdminLicensesPage({
+  initialLicenses,
+}: {
+  initialLicenses?: License[];
+}) {
+  const hasInitial = initialLicenses !== undefined;
+  const [rows, setRows] = useState<License[]>(initialLicenses ?? []);
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!hasInitial);
   const [busyId, setBusyId] = useState<number | null>(null);
 
   async function load() {
@@ -39,12 +44,13 @@ export default function AdminLicensesPage() {
   }
 
   useEffect(() => {
+    if (hasInitial) return;
     load()
       .catch((err: unknown) => {
         setError(err instanceof Error ? err.message : "Veri yüklenemedi.");
       })
       .finally(() => setLoading(false));
-  }, []);
+  }, [hasInitial]);
 
   async function extendLicense(licenseId: number) {
     setBusyId(licenseId);

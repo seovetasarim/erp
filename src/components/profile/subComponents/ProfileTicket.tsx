@@ -3,6 +3,10 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { formatDate, ticketStatusLabel } from "@/lib/admin/labels";
+import {
+  accountFetchJson,
+  invalidateAccountCache,
+} from "@/lib/profile/accountFetch";
 
 type Ticket = {
   id: number;
@@ -47,17 +51,19 @@ const ProfileTicket = () => {
   const [subject, setSubject] = useState(topics[0]);
   const [message, setMessage] = useState("");
 
-  const loadTickets = useCallback(async () => {
+  const loadTickets = useCallback(async (force = false) => {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch("/api/support/tickets");
-      const data = (await res.json()) as { tickets?: Ticket[]; error?: string };
-      if (res.status === 401) {
+      const { ok, status, data } = await accountFetchJson<{
+        tickets?: Ticket[];
+        error?: string;
+      }>("/api/support/tickets", { force });
+      if (status === 401) {
         setTickets([]);
         return;
       }
-      if (!res.ok) throw new Error(data.error || "Talepler yüklenemedi.");
+      if (!ok) throw new Error(data.error || "Talepler yüklenemedi.");
       setTickets(data.tickets ?? []);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Talepler yüklenemedi.");
@@ -77,13 +83,15 @@ const ProfileTicket = () => {
     setSuccess("");
 
     try {
-      const res = await fetch("/api/support/tickets", {
+      const { ok, data } = await accountFetchJson<{
+        error?: string;
+        ticketCode?: string;
+      }>("/api/support/tickets", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ subject, message, source: "profile" }),
       });
-      const data = (await res.json()) as { error?: string; ticketCode?: string };
-      if (!res.ok) throw new Error(data.error || "Talep oluşturulamadı.");
+      if (!ok) throw new Error(data.error || "Talep oluşturulamadı.");
 
       setSuccess(
         data.ticketCode
@@ -93,7 +101,8 @@ const ProfileTicket = () => {
       setMessage("");
       setSubject(topics[0]);
       setShowForm(false);
-      await loadTickets();
+      invalidateAccountCache("/api/support/tickets");
+      await loadTickets(true);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Talep oluşturulamadı.");
     } finally {

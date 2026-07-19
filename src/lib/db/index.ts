@@ -67,6 +67,13 @@ function runMigrations(db: Database.Database) {
       FOREIGN KEY (user_id) REFERENCES users(id)
     )`,
     "CREATE INDEX IF NOT EXISTS idx_user_addresses_user ON user_addresses(user_id)",
+    "CREATE INDEX IF NOT EXISTS idx_orders_status ON orders(status)",
+    "CREATE INDEX IF NOT EXISTS idx_orders_created ON orders(created_at)",
+    "CREATE INDEX IF NOT EXISTS idx_licenses_order ON licenses(order_id)",
+    "CREATE INDEX IF NOT EXISTS idx_licenses_created ON licenses(created_at)",
+    "CREATE INDEX IF NOT EXISTS idx_users_created ON users(created_at)",
+    "CREATE INDEX IF NOT EXISTS idx_subscriptions_updated ON subscriptions(updated_at)",
+    "CREATE INDEX IF NOT EXISTS idx_support_tickets_created ON support_tickets(created_at)",
     `CREATE TABLE IF NOT EXISTS site_counters (
       counter_key TEXT PRIMARY KEY,
       value INTEGER NOT NULL DEFAULT 0

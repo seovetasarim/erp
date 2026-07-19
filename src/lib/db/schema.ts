@@ -43,8 +43,13 @@ CREATE TABLE IF NOT EXISTS licenses (
 
 CREATE INDEX IF NOT EXISTS idx_orders_user ON orders(user_id);
 CREATE INDEX IF NOT EXISTS idx_orders_oid ON orders(merchant_oid);
+CREATE INDEX IF NOT EXISTS idx_orders_status ON orders(status);
+CREATE INDEX IF NOT EXISTS idx_orders_created ON orders(created_at);
 CREATE INDEX IF NOT EXISTS idx_licenses_user ON licenses(user_id);
+CREATE INDEX IF NOT EXISTS idx_licenses_order ON licenses(order_id);
 CREATE INDEX IF NOT EXISTS idx_licenses_expires ON licenses(expires_at);
+CREATE INDEX IF NOT EXISTS idx_licenses_created ON licenses(created_at);
+CREATE INDEX IF NOT EXISTS idx_users_created ON users(created_at);
 
 CREATE TABLE IF NOT EXISTS subscriptions (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -75,6 +80,7 @@ CREATE TABLE IF NOT EXISTS email_logs (
 );
 
 CREATE INDEX IF NOT EXISTS idx_subscriptions_renewal ON subscriptions(next_renewal_at);
+CREATE INDEX IF NOT EXISTS idx_subscriptions_updated ON subscriptions(updated_at);
 
 CREATE TABLE IF NOT EXISTS admins (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -107,6 +113,7 @@ CREATE TABLE IF NOT EXISTS support_tickets (
 
 CREATE INDEX IF NOT EXISTS idx_support_tickets_status ON support_tickets(status);
 CREATE INDEX IF NOT EXISTS idx_support_tickets_email ON support_tickets(email);
+CREATE INDEX IF NOT EXISTS idx_support_tickets_created ON support_tickets(created_at);
 
 CREATE TABLE IF NOT EXISTS user_addresses (
   id INTEGER PRIMARY KEY AUTOINCREMENT,

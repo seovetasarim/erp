@@ -100,11 +100,18 @@ CREATE TABLE IF NOT EXISTS support_tickets (
 
 CREATE INDEX idx_orders_user ON orders(user_id);
 CREATE INDEX idx_orders_oid ON orders(merchant_oid);
+CREATE INDEX idx_orders_status ON orders(status);
+CREATE INDEX idx_orders_created ON orders(created_at);
 CREATE INDEX idx_licenses_user ON licenses(user_id);
+CREATE INDEX idx_licenses_order ON licenses(order_id);
 CREATE INDEX idx_licenses_expires ON licenses(expires_at);
+CREATE INDEX idx_licenses_created ON licenses(created_at);
+CREATE INDEX idx_users_created ON users(created_at);
 CREATE INDEX idx_subscriptions_renewal ON subscriptions(next_renewal_at);
+CREATE INDEX idx_subscriptions_updated ON subscriptions(updated_at);
 CREATE INDEX idx_support_tickets_status ON support_tickets(status);
 CREATE INDEX idx_support_tickets_email ON support_tickets(email);
+CREATE INDEX idx_support_tickets_created ON support_tickets(created_at);
 
 CREATE TABLE IF NOT EXISTS user_addresses (
   id INT AUTO_INCREMENT PRIMARY KEY,

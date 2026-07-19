@@ -20,12 +20,18 @@ type Ticket = {
   created_at: string;
 };
 
-export default function AdminTicketsPage() {
-  const [rows, setRows] = useState<Ticket[]>([]);
+export default function AdminTicketsPage({
+  initialTickets,
+}: {
+  initialTickets?: Ticket[];
+}) {
+  const hasInitial = initialTickets !== undefined;
+  const [rows, setRows] = useState<Ticket[]>(initialTickets ?? []);
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!hasInitial);
 
   useEffect(() => {
+    if (hasInitial) return;
     fetch("/api/admin/tickets")
       .then(async (res) => {
         const json = (await res.json()) as { tickets?: Ticket[]; error?: string };
@@ -36,7 +42,7 @@ export default function AdminTicketsPage() {
         setError(err instanceof Error ? err.message : "Veri yüklenemedi.");
       })
       .finally(() => setLoading(false));
-  }, []);
+  }, [hasInitial]);
 
   if (loading) return <AdminLoadingCard title="Destek Talepleri" />;
   if (error) return <AdminErrorCard message={error} />;

@@ -183,56 +183,94 @@ export async function getOrderById(orderId: number) {
 
 export async function listAdminOverview() {
   if (useMysql()) {
-    const stats = {
-      users: Number((await mysqlGet<{ c: number }>("SELECT COUNT(*) as c FROM users"))?.c || 0),
-      orders: Number(
-        (await mysqlGet<{ c: number }>(
-          "SELECT COUNT(*) as c FROM orders WHERE status = 'paid'",
-        ))?.c || 0,
+    const [
+      usersRow,
+      ordersRow,
+      licensesRow,
+      pendingRow,
+      openTickets,
+      recentOrders,
+      recentLicenses,
+    ] = await Promise.all([
+      mysqlGet<{ c: number }>("SELECT COUNT(*) as c FROM users"),
+      mysqlGet<{ c: number }>("SELECT COUNT(*) as c FROM orders WHERE status = 'paid'"),
+      mysqlGet<{ c: number }>("SELECT COUNT(*) as c FROM licenses WHERE status = 'active'"),
+      mysqlGet<{ c: number }>(
+        `SELECT COUNT(*) as c FROM orders o
+         WHERE o.status = 'paid'
+           AND NOT EXISTS (SELECT 1 FROM licenses l WHERE l.order_id = o.id)`,
       ),
-      licenses: Number(
-        (await mysqlGet<{ c: number }>("SELECT COUNT(*) as c FROM licenses"))?.c || 0,
+      countOpenSupportTickets(),
+      mysqlAll<OrderRow & { email: string; name: string; customer_code: string }>(
+        `SELECT o.id, o.merchant_oid, o.plan_id, o.billing_mode, o.amount_kurus,
+                o.status, o.email_sent_at, o.created_at,
+                u.email, u.name, u.customer_code
+         FROM orders o
+         JOIN users u ON u.id = o.user_id
+         ORDER BY o.created_at DESC
+         LIMIT 50`,
       ),
-      pendingLicense: Number(
-        (
-          await mysqlGet<{ c: number }>(
-            `SELECT COUNT(*) as c FROM orders o
-             WHERE o.status = 'paid'
-               AND NOT EXISTS (SELECT 1 FROM licenses l WHERE l.order_id = o.id)`,
-          )
-        )?.c || 0,
+      mysqlAll<LicenseRow & { email: string; customer_code: string }>(
+        `SELECT l.id, l.license_key, l.plan_id, l.billing_mode, l.expires_at,
+                l.status, l.created_at, u.email, u.customer_code
+         FROM licenses l
+         JOIN users u ON u.id = l.user_id
+         ORDER BY l.created_at DESC
+         LIMIT 50`,
       ),
-      openTickets: await countOpenSupportTickets(),
+    ]);
+
+    return {
+      stats: {
+        users: Number(usersRow?.c || 0),
+        orders: Number(ordersRow?.c || 0),
+        licenses: Number(licensesRow?.c || 0),
+        pendingLicense: Number(pendingRow?.c || 0),
+        openTickets,
+      },
+      recentOrders,
+      recentLicenses,
     };
-
-    const recentOrders = await mysqlAll<
-      OrderRow & { email: string; name: string; customer_code: string }
-    >(
-      `SELECT o.*, u.email, u.name, u.customer_code
-       FROM orders o
-       JOIN users u ON u.id = o.user_id
-       ORDER BY o.created_at DESC
-       LIMIT 50`,
-    );
-
-    const recentLicenses = await mysqlAll<
-      LicenseRow & { email: string; customer_code: string }
-    >(
-      `SELECT l.*, u.email, u.customer_code
-       FROM licenses l
-       JOIN users u ON u.id = l.user_id
-       ORDER BY l.created_at DESC
-       LIMIT 50`,
-    );
-
-    return { stats, recentOrders, recentLicenses };
   }
 
   const db = getDb();
+  const [openTickets, recentOrders, recentLicenses] = await Promise.all([
+    countOpenSupportTickets(),
+    Promise.resolve(
+      db
+        .prepare(
+          `SELECT o.id, o.merchant_oid, o.plan_id, o.billing_mode, o.amount_kurus,
+                  o.status, o.email_sent_at, o.created_at,
+                  u.email, u.name, u.customer_code
+           FROM orders o
+           JOIN users u ON u.id = o.user_id
+           ORDER BY o.created_at DESC
+           LIMIT 50`,
+        )
+        .all() as Array<OrderRow & { email: string; name: string; customer_code: string }>,
+    ),
+    Promise.resolve(
+      db
+        .prepare(
+          `SELECT l.id, l.license_key, l.plan_id, l.billing_mode, l.expires_at,
+                  l.status, l.created_at, u.email, u.customer_code
+           FROM licenses l
+           JOIN users u ON u.id = l.user_id
+           ORDER BY l.created_at DESC
+           LIMIT 50`,
+        )
+        .all() as Array<LicenseRow & { email: string; customer_code: string }>,
+    ),
+  ]);
+
   const stats = {
     users: (db.prepare("SELECT COUNT(*) as c FROM users").get() as { c: number }).c,
     orders: (db.prepare("SELECT COUNT(*) as c FROM orders WHERE status = 'paid'").get() as { c: number }).c,
-    licenses: (db.prepare("SELECT COUNT(*) as c FROM licenses").get() as { c: number }).c,
+    licenses: (
+      db.prepare("SELECT COUNT(*) as c FROM licenses WHERE status = 'active'").get() as {
+        c: number;
+      }
+    ).c,
     pendingLicense: (
       db
         .prepare(
@@ -242,28 +280,8 @@ export async function listAdminOverview() {
         )
         .get() as { c: number }
     ).c,
-    openTickets: await countOpenSupportTickets(),
+    openTickets,
   };
-
-  const recentOrders = db
-    .prepare(
-      `SELECT o.*, u.email, u.name, u.customer_code
-       FROM orders o
-       JOIN users u ON u.id = o.user_id
-       ORDER BY datetime(o.created_at) DESC
-       LIMIT 50`,
-    )
-    .all() as Array<OrderRow & { email: string; name: string; customer_code: string }>;
-
-  const recentLicenses = db
-    .prepare(
-      `SELECT l.*, u.email, u.customer_code
-       FROM licenses l
-       JOIN users u ON u.id = l.user_id
-       ORDER BY datetime(l.created_at) DESC
-       LIMIT 50`,
-    )
-    .all() as Array<LicenseRow & { email: string; customer_code: string }>;
 
   return { stats, recentOrders, recentLicenses };
 }
@@ -403,6 +421,18 @@ export async function buildRemoteLicensePayload() {
 }
 
 export async function expireDueLicenses() {
+  const nowMs = Date.now();
+  const globalStore = globalThis as typeof globalThis & {
+    __dijitalerpLastExpireAt?: number;
+  };
+  if (
+    globalStore.__dijitalerpLastExpireAt &&
+    nowMs - globalStore.__dijitalerpLastExpireAt < 60_000
+  ) {
+    return;
+  }
+  globalStore.__dijitalerpLastExpireAt = nowMs;
+
   const now = new Date().toISOString();
   const sql = `UPDATE licenses SET status = 'expired'
      WHERE status = 'active'

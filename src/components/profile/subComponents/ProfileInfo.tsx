@@ -7,6 +7,8 @@ import {
 } from "@/svg/ProfileIcons";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { getClientAuthUser } from "@/lib/auth/clientSession";
+import { accountFetchJson } from "@/lib/profile/accountFetch";
 
 type User = {
   name: string;
@@ -15,16 +17,24 @@ type User = {
 };
 
 const ProfileInfo = () => {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState<User | null>(() => getClientAuthUser());
+  const [loading, setLoading] = useState(() => !getClientAuthUser());
 
   useEffect(() => {
-    fetch("/api/auth/me")
-      .then(async (res) => {
-        const data = (await res.json()) as { user: User | null };
-        setUser(data.user);
+    let cancelled = false;
+    accountFetchJson<{ user: User | null }>("/api/auth/me")
+      .then(({ data }) => {
+        if (!cancelled) setUser(data.user);
       })
-      .finally(() => setLoading(false));
+      .catch(() => {
+        if (!cancelled && !getClientAuthUser()) setUser(null);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

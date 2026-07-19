@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { clearClientAuthUser, getClientAuthUser } from "@/lib/auth/clientSession";
+import { accountFetchJson } from "@/lib/profile/accountFetch";
 import {
   DIJITAL_ERP_DOWNLOAD_HREF,
 } from "@/constants/download";
@@ -24,45 +25,54 @@ type User = {
 
 const ProfileMain = () => {
   const router = useRouter();
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | null>(() => getClientAuthUser());
   const [licenseCount, setLicenseCount] = useState(0);
   const [ticketCount, setTicketCount] = useState(0);
   const [addressCount, setAddressCount] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(() => !getClientAuthUser());
 
   useEffect(() => {
-    const cached = getClientAuthUser();
-    if (cached) {
-      setUser(cached);
-    }
+    let cancelled = false;
 
-    Promise.all([
-      fetch("/api/auth/me").then((r) => r.json()),
-      fetch("/api/licenses").then((r) => (r.ok ? r.json() : { licenses: [] })),
-      fetch("/api/support/tickets").then((r) =>
-        r.ok ? r.json() : { tickets: [] },
-      ),
-      fetch("/api/profile/addresses").then((r) =>
-        r.ok ? r.json() : { addresses: [] },
-      ),
-    ])
-      .then(([meData, licenseData, ticketData, addressData]) => {
-        if (!meData.user) {
+    async function load() {
+      try {
+        const [me, licenses, tickets, addresses] = await Promise.all([
+          accountFetchJson<{ user?: User | null }>("/api/auth/me"),
+          accountFetchJson<{ licenses?: unknown[] }>("/api/licenses"),
+          accountFetchJson<{ tickets?: unknown[] }>("/api/support/tickets"),
+          accountFetchJson<{ addresses?: unknown[] }>("/api/profile/addresses"),
+        ]);
+
+        if (cancelled) return;
+
+        if (!me.data.user) {
           router.replace("/giris?next=/hesabim");
           return;
         }
-        setUser(meData.user);
+
+        setUser(me.data.user);
         setLicenseCount(
-          Array.isArray(licenseData.licenses) ? licenseData.licenses.length : 0,
+          Array.isArray(licenses.data.licenses) ? licenses.data.licenses.length : 0,
         );
         setTicketCount(
-          Array.isArray(ticketData.tickets) ? ticketData.tickets.length : 0,
+          Array.isArray(tickets.data.tickets) ? tickets.data.tickets.length : 0,
         );
         setAddressCount(
-          Array.isArray(addressData.addresses) ? addressData.addresses.length : 0,
+          Array.isArray(addresses.data.addresses) ? addresses.data.addresses.length : 0,
         );
-      })
-      .finally(() => setLoading(false));
+      } catch {
+        if (!cancelled && !getClientAuthUser()) {
+          router.replace("/giris?next=/hesabim");
+        }
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    }
+
+    load();
+    return () => {
+      cancelled = true;
+    };
   }, [router]);
 
   async function handleLogout() {
@@ -102,7 +112,7 @@ const ProfileMain = () => {
     },
   ];
 
-  if (loading) {
+  if (loading && !user) {
     return <div className="profile__main">Profil yükleniyor…</div>;
   }
 

@@ -33,7 +33,7 @@ type Overview = {
     billing_mode: string;
     amount_kurus: number;
     status: string;
-    email_sent_at: string | null;
+    email_sent_at?: string | null;
     email: string;
     name: string;
     customer_code: string;
@@ -52,14 +52,25 @@ type Overview = {
   }>;
 };
 
-export default function AdminDashboard() {
-  const [data, setData] = useState<Overview | null>(null);
+export default function AdminDashboard({
+  initialData = null,
+}: {
+  initialData?: Overview | null;
+}) {
+  const [data, setData] = useState<Overview | null>(initialData);
   const [error, setError] = useState("");
   const [busyId, setBusyId] = useState<number | null>(null);
 
   async function load() {
     const res = await fetch("/api/admin/overview");
-    const json = (await res.json()) as Overview & { error?: string };
+    const text = await res.text();
+    let json: Overview & { error?: string };
+    try {
+      json = text ? (JSON.parse(text) as Overview & { error?: string }) : ({} as Overview);
+    } catch {
+      setError("Veri yüklenemedi.");
+      return;
+    }
     if (!res.ok) {
       setError(json.error || "Veri yüklenemedi.");
       return;
@@ -68,8 +79,9 @@ export default function AdminDashboard() {
   }
 
   useEffect(() => {
+    if (initialData) return;
     load().catch(() => setError("Veri yüklenemedi."));
-  }, []);
+  }, [initialData]);
 
   async function resendEmail(orderId: number) {
     setBusyId(orderId);

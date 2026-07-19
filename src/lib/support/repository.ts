@@ -84,7 +84,8 @@ export async function countSupportTicketsByUser(userId: number) {
 }
 
 export async function listSupportTickets(limit = 100) {
-  const sql = `SELECT * FROM support_tickets ORDER BY created_at DESC LIMIT ?`;
+  const sql = `SELECT id, ticket_code, name, email, subject, status, created_at
+    FROM support_tickets ORDER BY created_at DESC LIMIT ?`;
 
   if (useMysql()) {
     return mysqlAll<SupportTicketRow>(sql, [limit]);

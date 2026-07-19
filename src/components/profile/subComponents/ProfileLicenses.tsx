@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { formatDaysRemaining } from "@/lib/license/duration";
+import { accountFetchJson } from "@/lib/profile/accountFetch";
 
 type LicenseItem = {
   id: number;
@@ -36,21 +37,29 @@ const ProfileLicenses = () => {
   const [licenses, setLicenses] = useState<LicenseItem[]>([]);
 
   useEffect(() => {
-    fetch("/api/licenses")
-      .then(async (res) => {
-        const data = (await res.json()) as {
-          customerCode?: string;
-          remoteUrl?: string;
-          licenses?: LicenseItem[];
-          error?: string;
-        };
-        if (!res.ok) throw new Error(data.error || "Lisanslar yüklenemedi.");
+    let cancelled = false;
+    accountFetchJson<{
+      customerCode?: string;
+      remoteUrl?: string;
+      licenses?: LicenseItem[];
+      error?: string;
+    }>("/api/licenses")
+      .then(({ ok, data }) => {
+        if (cancelled) return;
+        if (!ok) throw new Error(data.error || "Lisanslar yüklenemedi.");
         setCustomerCode(data.customerCode || "");
         setRemoteUrl(data.remoteUrl || "");
         setLicenses(data.licenses || []);
       })
-      .catch((err: Error) => setError(err.message))
-      .finally(() => setLoading(false));
+      .catch((err: Error) => {
+        if (!cancelled) setError(err.message);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   if (loading) {

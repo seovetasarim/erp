@@ -3,6 +3,10 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { ProfileLocationIcon } from "@/svg/ProfileIcons";
+import {
+  accountFetchJson,
+  invalidateAccountCache,
+} from "@/lib/profile/accountFetch";
 
 type Address = {
   id: number;
@@ -36,16 +40,15 @@ const ProfileAddress = () => {
   const [form, setForm] = useState(emptyForm);
   const [showForm, setShowForm] = useState(false);
 
-  const loadAddresses = useCallback(async () => {
+  const loadAddresses = useCallback(async (force = false) => {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch("/api/profile/addresses");
-      const data = (await res.json()) as {
+      const { ok, data } = await accountFetchJson<{
         addresses?: Address[];
         error?: string;
-      };
-      if (!res.ok) throw new Error(data.error || "Adresler yüklenemedi.");
+      }>("/api/profile/addresses", { force });
+      if (!ok) throw new Error(data.error || "Adresler yüklenemedi.");
       setAddresses(data.addresses ?? []);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Adresler yüklenemedi.");
@@ -106,7 +109,7 @@ const ProfileAddress = () => {
     };
 
     try {
-      const res = await fetch(
+      const { ok, data } = await accountFetchJson<{ error?: string }>(
         editingId ? `/api/profile/addresses/${editingId}` : "/api/profile/addresses",
         {
           method: editingId ? "PATCH" : "POST",
@@ -114,12 +117,12 @@ const ProfileAddress = () => {
           body: JSON.stringify(payload),
         },
       );
-      const data = (await res.json()) as { error?: string };
-      if (!res.ok) throw new Error(data.error || "Adres kaydedilemedi.");
+      if (!ok) throw new Error(data.error || "Adres kaydedilemedi.");
 
       setSuccess(editingId ? "Adres güncellendi." : "Adres kaydedildi.");
       resetForm();
-      await loadAddresses();
+      invalidateAccountCache("/api/profile/addresses");
+      await loadAddresses(true);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Adres kaydedilemedi.");
     } finally {
@@ -132,10 +135,13 @@ const ProfileAddress = () => {
 
     setError("");
     try {
-      const res = await fetch(`/api/profile/addresses/${id}`, { method: "DELETE" });
-      const data = (await res.json()) as { error?: string };
-      if (!res.ok) throw new Error(data.error || "Adres silinemedi.");
-      await loadAddresses();
+      const { ok, data } = await accountFetchJson<{ error?: string }>(
+        `/api/profile/addresses/${id}`,
+        { method: "DELETE" },
+      );
+      if (!ok) throw new Error(data.error || "Adres silinemedi.");
+      invalidateAccountCache("/api/profile/addresses");
+      await loadAddresses(true);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Adres silinemedi.");
     }

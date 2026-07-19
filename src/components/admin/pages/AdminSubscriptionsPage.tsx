@@ -26,12 +26,18 @@ type Subscription = {
   updated_at: string;
 };
 
-export default function AdminSubscriptionsPage() {
-  const [rows, setRows] = useState<Subscription[]>([]);
+export default function AdminSubscriptionsPage({
+  initialSubscriptions,
+}: {
+  initialSubscriptions?: Subscription[];
+}) {
+  const hasInitial = initialSubscriptions !== undefined;
+  const [rows, setRows] = useState<Subscription[]>(initialSubscriptions ?? []);
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!hasInitial);
 
   useEffect(() => {
+    if (hasInitial) return;
     fetch("/api/admin/subscriptions")
       .then(async (res) => {
         const json = (await res.json()) as {
@@ -45,7 +51,7 @@ export default function AdminSubscriptionsPage() {
         setError(err instanceof Error ? err.message : "Veri yüklenemedi.");
       })
       .finally(() => setLoading(false));
-  }, []);
+  }, [hasInitial]);
 
   if (loading) return <AdminLoadingCard title="Abonelikler" />;
   if (error) return <AdminErrorCard message={error} />;
