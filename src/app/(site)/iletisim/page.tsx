@@ -1,0 +1,32 @@
+import ITSolutionContactMain from '@/pages/homes/it-solution/ITSolutionContactMain';
+import JsonLd from '@/components/seo/JsonLd';
+import { breadcrumbJsonLd, buildPageMetadata } from '@/constants/seo';
+
+export const metadata = buildPageMetadata({
+    title: 'İletişim: Demo, Destek ve Pro Lisans',
+    description:
+        'DijitalERP iletişim: demo, kurulum desteği ve Pro lisans için yazın. 0216 606 17 46 · info@dijitalerp.com.tr · WhatsApp ile hızlı destek.',
+    path: '/iletisim',
+    keywords: [
+        'DijitalERP iletişim',
+        'ERP demo talep',
+        'ERP teknik destek',
+        'ERP lisans satın al',
+    ],
+});
+
+const page = () => {
+    return (
+        <>
+            <JsonLd
+                data={breadcrumbJsonLd([
+                    { name: 'Ana Sayfa', path: '/' },
+                    { name: 'İletişim', path: '/iletisim' },
+                ])}
+            />
+            <ITSolutionContactMain />
+        </>
+    );
+};
+
+export default page;

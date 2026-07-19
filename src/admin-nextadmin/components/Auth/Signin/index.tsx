@@ -1,0 +1,19 @@
+import Link from "next/link";
+import { Suspense } from "react";
+import SigninWithPassword from "../SigninWithPassword";
+
+export default function Signin() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <div>
+        <SigninWithPassword />
+      </div>
+
+      <div className="mt-6 text-center">
+        <Link href="/" className="text-primary hover:underline">
+          Siteye dön
+        </Link>
+      </div>
+    </Suspense>
+  );
+}

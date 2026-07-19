@@ -1,0 +1,256 @@
+/* Fila admin — DijitalERP overrides (no Tailwind/nextadmin) */
+
+body.bg-body-bg {
+  min-height: 100vh;
+}
+
+#admin-fila-root {
+  min-height: 100vh;
+}
+
+.admin-stats-row {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 1.75rem !important;
+}
+
+.admin-stats-row > [class*="col-"] {
+  display: flex;
+}
+
+.admin-stat-card {
+  margin-bottom: 0 !important;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+}
+
+.admin-stat-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.admin-stat-icon .material-symbols-outlined {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.admin-charts-row {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1.75rem !important;
+  align-items: stretch;
+}
+
+.admin-charts-row > [class*="col-"] {
+  display: flex;
+}
+
+.admin-chart-card {
+  width: 100%;
+  height: 100% !important;
+  min-height: 380px;
+  margin-bottom: 0 !important;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-chart-card > .d-flex {
+  flex-shrink: 0;
+}
+
+.admin-chart-body {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+.admin-chart-body .apexcharts-canvas,
+.admin-chart-body > div {
+  width: 100% !important;
+  max-width: 100%;
+}
+
+.admin-chart-card .apexcharts-legend {
+  padding: 0 !important;
+}
+
+.fila-nav-group > .menu-item {
+  list-style: none;
+}
+
+.fila-nav-group .menu-link.active {
+  color: var(--bs-primary, #0f79f3);
+  font-weight: 600;
+}
+
+.admin-row-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.admin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.admin-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.admin-btn-primary {
+  background: #0f79f3;
+  color: #fff;
+}
+
+.admin-btn-success {
+  background: #2ed47e;
+  color: #fff;
+}
+
+.admin-btn-outline {
+  background: transparent;
+  border-color: #0f79f3;
+  color: #0f79f3;
+}
+
+.admin-btn-muted {
+  background: #eff3f9;
+  color: #475569;
+}
+
+.admin-btn-danger {
+  background: #e74c3c;
+  color: #fff;
+}
+
+.admin-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(15, 23, 42, 0.45);
+}
+
+.admin-modal {
+  width: min(480px, 100%);
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #e7e2e2;
+  padding: 24px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+}
+
+.admin-modal-title {
+  margin: 0 0 6px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #2b2a3f;
+}
+
+.admin-modal-sub {
+  margin: 0 0 18px;
+  color: #697689;
+  font-size: 0.9rem;
+}
+
+.admin-modal-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.admin-modal-field select,
+.admin-modal-field input[type="text"],
+.admin-modal-field textarea {
+  border: 1px solid #e0e2ec;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+}
+
+.admin-modal-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.admin-modal-error {
+  color: #e74c3c;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+}
+
+.admin-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.admin-modal-cancel,
+.admin-modal-submit {
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.admin-modal-cancel {
+  background: #eff3f9;
+  color: #475569;
+}
+
+.admin-modal-submit {
+  background: #0f79f3;
+  color: #fff;
+}
+
+.admin-modal-submit:disabled {
+  opacity: 0.6;
+}
+
+.admin-login-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 12px;
+  background: #eff3f9;
+}
+
+.admin-login-wrap .card {
+  width: min(560px, 100%);
+}
+
+.admin-login-wrap .password-toggle-icon {
+  cursor: pointer;
+}
