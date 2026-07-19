@@ -48,6 +48,7 @@ type Overview = {
     status: string;
     email: string;
     customer_code: string;
+    created_at: string;
   }>;
 };
 

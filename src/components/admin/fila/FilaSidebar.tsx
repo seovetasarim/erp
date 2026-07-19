@@ -12,7 +12,7 @@ function isActive(pathname: string, url: string) {
 }
 
 export function FilaSidebar() {
-  const pathname = usePathname();
+  const pathname = usePathname() || "";
   const { toggle } = useFilaSidebar();
 
   return (
