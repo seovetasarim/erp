@@ -14,14 +14,15 @@ export const SITE = {
   twitterHandle: "@dijitalerp",
   tagline: "Offline Windows ERP — stok, cari, fatura ve kasa tek panelde",
   address: {
-    street: "Dumlıpınar Mah. Mandıra Cad. Çeşme Sok. No: 3, 14/A Blok, Kat: 17, Daire: 91",
+    street:
+      "Mandıra Cad. Dumlıpınar Mah. Çeşme Sok. No: 3, Emlak Konut Evleri 14/A, Kat: 17, Daire: 91",
     district: "Fikirtepe, Kadıköy",
     city: "İstanbul",
     country: "TR",
     /** Tek satır — footer / iletişim */
-    full: "Dumlıpınar Mah. Mandıra Cad. Çeşme Sok. No: 3, 14/A Blok, Kat: 17, Daire: 91, Fikirtepe, Kadıköy / İstanbul",
+    full: "Mandıra Cad. Dumlıpınar Mah. Çeşme Sok. No: 3, Emlak Konut Evleri 14/A, Kat: 17, Daire: 91, Fikirtepe, Kadıköy / İstanbul",
     mapsUrl:
-      "https://www.google.com/maps/search/?api=1&query=Dumlipinar+Mah.+Mandira+Cad.+Cesme+Sok.+No+3+Fikirtepe+Kadikoy+Istanbul",
+      "https://www.google.com/maps/search/?api=1&query=Mandira+Cad.+Dumlipinar+Mah.+Cesme+Sok.+No+3+Emlak+Konut+Evleri+14A+Fikirtepe+Kadikoy+Istanbul",
   },
 } as const;
 
