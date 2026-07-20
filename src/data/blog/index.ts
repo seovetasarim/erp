@@ -4,6 +4,12 @@ import { post as postLisans } from "./post-lisans";
 import { post as postCari } from "./post-cari";
 import { post as postBarkod } from "./post-barkod";
 import { post as postKasa } from "./post-kasa";
+import { post as postUcretsizErp } from "./post-ucretsiz-erp";
+import { post as postWindowsBulut } from "./post-windows-bulut";
+import { post as postMuhasebe } from "./post-muhasebe";
+import { post as postDepo } from "./post-depo";
+import { post as postSatisFatura } from "./post-satis-fatura";
+import { post as postNakitAkisi } from "./post-nakit-akisi";
 
 export type BlogSection = {
   id: string;
@@ -30,6 +36,12 @@ export type BlogPostContent = {
 };
 
 export const BLOG_POSTS: BlogPostContent[] = [
+  postUcretsizErp,
+  postWindowsBulut,
+  postMuhasebe,
+  postDepo,
+  postSatisFatura,
+  postNakitAkisi,
   postStok,
   postEfatura,
   postLisans,
