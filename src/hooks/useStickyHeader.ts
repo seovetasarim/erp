@@ -1,21 +1,45 @@
+"use client";
 
-'use client';
+import { useState, useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 
-import { useState, useEffect } from 'react';
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+const getScrollY = () => {
+  if (typeof window === "undefined") return 0;
+  try {
+    const smoother = ScrollSmoother.get();
+    if (smoother) return smoother.scrollTop();
+  } catch {
+    // ignore
+  }
+  return window.scrollY || document.documentElement.scrollTop || 0;
+};
 
 const useStickyHeader = (offset = 20) => {
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsSticky(window.scrollY > offset);
+    const sync = () => {
+      setIsSticky(getScrollY() > offset);
     };
 
-    // Initial check
-    handleScroll();
+    sync();
+    window.addEventListener("scroll", sync, { passive: true });
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const trigger = ScrollTrigger.create({
+      start: 0,
+      end: "max",
+      onUpdate: sync,
+      onRefresh: sync,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", sync);
+      trigger.kill();
+    };
   }, [offset]);
 
   return isSticky;

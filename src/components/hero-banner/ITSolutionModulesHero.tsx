@@ -1,6 +1,6 @@
-import heroShot1 from '../../../public/assets/img/home-11/project/project-3.png'; // Stok
-import heroShot2 from '../../../public/assets/img/home-11/project/project-2.png'; // Cari
-import heroShot3 from '../../../public/assets/img/home-11/project/project-5.png'; // Fatura / Finans
+import heroShot1 from '../../../public/assets/img/home-11/project/project-3.png';
+import heroShot2 from '../../../public/assets/img/home-11/project/project-2.png';
+import heroShot3 from '../../../public/assets/img/home-11/project/project-5.png';
 import { erpModules } from '@/data/erpModules';
 import ProtectedDownloadLink from '@/components/download/ProtectedDownloadLink';
 import { ArrowNine } from '@/svg/ArrowIcons';

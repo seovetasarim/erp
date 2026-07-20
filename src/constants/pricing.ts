@@ -276,7 +276,12 @@ export function getComparePlanDisplay(
 
   return {
     price: isMonthly ? plan.monthlyPrice : plan.lifetimePrice,
-    cta: isMonthly && plan.id !== "enterprise" ? "Kiralamaya Başla" : plan.cta,
+    cta:
+      plan.id === "enterprise"
+        ? "Teklif Al"
+        : isMonthly
+          ? "Kirala"
+          : "Satın Al",
     href:
       plan.id === "starter"
         ? isMonthly

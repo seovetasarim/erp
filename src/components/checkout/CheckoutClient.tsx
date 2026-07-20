@@ -27,11 +27,9 @@ export default function CheckoutClient() {
   );
 
   const [storeCard, setStoreCard] = useState(true);
-
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [iframeToken, setIframeToken] = useState("");
-  const [orderLabel, setOrderLabel] = useState("");
 
   useEffect(() => {
     if (!plan) {
@@ -45,6 +43,7 @@ export default function CheckoutClient() {
     async function initCheckout() {
       setLoading(true);
       setError("");
+      setIframeToken("");
 
       const meRes = await fetch("/api/auth/me");
       const meData = (await meRes.json()) as { user: unknown | null };
@@ -59,16 +58,15 @@ export default function CheckoutClient() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          planId: plan.id,
-          billingMode: plan.billingMode,
+          planId: plan!.id,
+          billingMode: plan!.billingMode,
           isRenewal,
-          storeCard: plan.billingMode === "monthly" ? storeCard : false,
+          storeCard: plan!.billingMode === "monthly" ? storeCard : false,
         }),
       });
 
       const data = (await res.json()) as {
         token?: string;
-        order?: { planLabel: string; amountLabel: string };
         error?: string;
       };
 
@@ -81,7 +79,6 @@ export default function CheckoutClient() {
       }
 
       setIframeToken(data.token);
-      setOrderLabel(`${data.order?.planLabel} — ${data.order?.amountLabel}`);
       setLoading(false);
     }
 
@@ -117,54 +114,132 @@ export default function CheckoutClient() {
     );
   }
 
+  const billingLabel =
+    plan?.billingMode === "monthly" ? "Aylık kiralama" : "Tek seferlik lisans";
+
   return (
     <div className="it-checkout-wrap">
-      <div className="it-checkout-summary tp_fade_anim" data-delay=".3">
-        <span className="tp-section-subtitle-platform platform-text-black mb-10 d-inline-block">
-          Güvenli Ödeme
-        </span>
+      <div className="it-checkout-head">
+        <span className="it-checkout-eyebrow">Güvenli ödeme</span>
         <h1 className="it-checkout-title">
-          {isRenewal ? "Lisans yenileme" : "PayTR ile ödeme"}
+          {isRenewal ? "Lisans yenileme" : "Siparişi tamamla"}
         </h1>
-        {plan && (
-          <p className="it-checkout-plan">
-            {plan.label} · <strong>{formatTryFromKurus(plan.amountKurus)}</strong>
-          </p>
-        )}
-        {orderLabel && <p className="it-checkout-order">{orderLabel}</p>}
-        <p className="it-checkout-note">
-          Ödemeniz onaylandıktan sonra lisansınız yönetici tarafından tanımlanır ve{" "}
-          <Link href="/hesabim">Hesabım → Lisanslarım</Link> bölümünde görünür
-          {isRenewal ? " (mevcut anahtarınızın süresi uzatılır)" : ""}. Süre, lisans
-          oluşturulduğu andan itibaren başlar.
+        <p className="it-checkout-lead">
+          Ödemeniz PayTR altyapısıyla şifreli işlenir. Onaydan sonra lisansınız
+          hesabınıza tanımlanır.
         </p>
-        {plan?.billingMode === "monthly" && (
-          <label className="it-checkout-store-card">
-            <input
-              type="checkbox"
-              checked={storeCard}
-              onChange={(e) => setStoreCard(e.target.checked)}
-            />
-            Kartımı kaydet (gelecekteki yenilemeler için — PayTR onayı gerekir)
-          </label>
-        )}
       </div>
 
-      {loading && <div className="it-checkout-loading">Ödeme ekranı hazırlanıyor…</div>}
-      {error && <div className="it-checkout-error">{error}</div>}
+      <div className="it-checkout-grid">
+        <aside className="it-checkout-summary">
+          <div className="it-checkout-summary-card">
+            <div className="it-checkout-summary-top">
+              <span className="it-checkout-badge">
+                {isRenewal ? "Yenileme" : "Sipariş özeti"}
+              </span>
+              <Link href="/fiyatlandirma" className="it-checkout-change">
+                Paketi değiştir
+              </Link>
+            </div>
 
-      {iframeToken && (
-        <div className="it-checkout-frame tp_fade_anim" data-delay=".4">
-          <iframe
-            id="paytriframe"
-            src={`https://www.paytr.com/odeme/guvenli/${iframeToken}`}
-            title="PayTR Ödeme"
-            frameBorder="0"
-            scrolling="no"
-            style={{ width: "100%", minHeight: "620px" }}
-          />
+            {plan && (
+              <div className="it-checkout-plan-block">
+                <div>
+                  <h2 className="it-checkout-plan-name">{plan.name}</h2>
+                  <p className="it-checkout-plan-meta">
+                    {billingLabel}
+                    <span>·</span>
+                    {plan.licenseCount} lisans / {plan.maxPcs} PC
+                  </p>
+                </div>
+                <div className="it-checkout-plan-price">
+                  <strong>{formatTryFromKurus(plan.amountKurus)}</strong>
+                  <em>
+                    {plan.billingMode === "monthly" ? "/ ay" : "tek sefer"}
+                  </em>
+                </div>
+              </div>
+            )}
+
+            <ul className="it-checkout-includes">
+              <li>Offline Windows ERP lisansı</li>
+              <li>Hesabım panelinden anahtar erişimi</li>
+              <li>
+                {plan?.billingMode === "monthly"
+                  ? "Taahhütsüz aylık kullanım"
+                  : "Ömür boyu kullanım hakkı"}
+              </li>
+            </ul>
+
+            <div className="it-checkout-note">
+              <i className="fa-solid fa-shield-halved" aria-hidden />
+              <p>
+                Ödeme onayından sonra lisans{" "}
+                <Link href="/hesabim">Hesabım → Lisanslarım</Link> bölümünde
+                görünür
+                {isRenewal
+                  ? " (mevcut anahtarınızın süresi uzatılır)"
+                  : ""}. Süre, lisans oluşturulduğu andan itibaren başlar.
+              </p>
+            </div>
+
+            {plan?.billingMode === "monthly" && (
+              <label className="it-checkout-store-card">
+                <input
+                  type="checkbox"
+                  checked={storeCard}
+                  onChange={(e) => setStoreCard(e.target.checked)}
+                />
+                <span>
+                  Kartımı kaydet
+                  <small>Gelecek yenilemeler için — PayTR onayı gerekir</small>
+                </span>
+              </label>
+            )}
+
+            <div className="it-checkout-trust">
+              <span>
+                <i className="fa-solid fa-lock" aria-hidden /> 256-bit SSL
+              </span>
+              <span>
+                <i className="fa-solid fa-credit-card" aria-hidden /> PayTR
+              </span>
+              <span>
+                <i className="fa-solid fa-check" aria-hidden /> 3D Secure
+              </span>
+            </div>
+          </div>
+        </aside>
+
+        <div className="it-checkout-pay">
+          <div className="it-checkout-pay-card">
+            <div className="it-checkout-pay-head">
+              <h3>Kart ile öde</h3>
+              <p>Kart bilgilerinizi aşağıdaki güvenli formda girin.</p>
+            </div>
+
+            {loading && (
+              <div className="it-checkout-loading">
+                Ödeme ekranı hazırlanıyor…
+              </div>
+            )}
+            {error && <div className="it-checkout-error">{error}</div>}
+
+            {iframeToken && (
+              <div className="it-checkout-frame">
+                <iframe
+                  id="paytriframe"
+                  src={`https://www.paytr.com/odeme/guvenli/${iframeToken}`}
+                  title="PayTR Ödeme"
+                  frameBorder="0"
+                  scrolling="no"
+                  style={{ width: "100%", minHeight: "620px" }}
+                />
+              </div>
+            )}
+          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }

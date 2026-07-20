@@ -1,7 +1,6 @@
 import { CareerShape } from '@/svg/HeroShape';
 import ProtectedDownloadLink from '@/components/download/ProtectedDownloadLink';
 import { ArrowNine } from '@/svg/ArrowIcons';
-import Link from 'next/link';
 
 const ITSolutionFeaturesHero = () => {
     return (
