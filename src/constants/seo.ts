@@ -13,6 +13,16 @@ export const SITE = {
   ogImage: "/og-image.png",
   twitterHandle: "@dijitalerp",
   tagline: "Offline Windows ERP — stok, cari, fatura ve kasa tek panelde",
+  address: {
+    street: "Dumlıpınar Mah. Mandıra Cad. Çeşme Sok. No: 3, 14/A Blok, Kat: 17, Daire: 91",
+    district: "Fikirtepe, Kadıköy",
+    city: "İstanbul",
+    country: "TR",
+    /** Tek satır — footer / iletişim */
+    full: "Dumlıpınar Mah. Mandıra Cad. Çeşme Sok. No: 3, 14/A Blok, Kat: 17, Daire: 91, Fikirtepe, Kadıköy / İstanbul",
+    mapsUrl:
+      "https://www.google.com/maps/search/?api=1&query=Dumlipinar+Mah.+Mandira+Cad.+Cesme+Sok.+No+3+Fikirtepe+Kadikoy+Istanbul",
+  },
 } as const;
 
 /** Anahtar kelimeler — ERP ürününden ve arama niyetinden */
@@ -111,6 +121,13 @@ export const organizationJsonLd = {
   logo: `${SITE.url}/icon.png`,
   email: SITE.email,
   telephone: SITE.phoneDisplay,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: SITE.address.street,
+    addressLocality: "Kadıköy",
+    addressRegion: "İstanbul",
+    addressCountry: SITE.address.country,
+  },
   contactPoint: [
     {
       "@type": "ContactPoint",

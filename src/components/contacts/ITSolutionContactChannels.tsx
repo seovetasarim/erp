@@ -1,27 +1,35 @@
 import contactShape from '../../../public/assets/img/contact/contact-us/contact-us-shape.png';
+import { SITE } from '@/constants/seo';
 import Link from 'next/link';
 
 const channels = [
     {
         title: 'Telefon',
-        value: '0216 606 17 46',
-        href: 'tel:+902166061746',
+        value: SITE.phoneDisplay,
+        href: `tel:${SITE.phone}`,
         note: 'Hafta içi hızlı dönüş',
         cta: 'Ara',
     },
     {
         title: 'WhatsApp',
-        value: '0216 606 17 46',
+        value: SITE.phoneDisplay,
         href: 'https://wa.me/902166061746',
         note: 'Anlık mesaj desteği',
         cta: 'Yaz',
     },
     {
         title: 'E-posta',
-        value: 'info@dijitalerp.com.tr',
-        href: 'mailto:info@dijitalerp.com.tr',
+        value: SITE.email,
+        href: `mailto:${SITE.email}`,
         note: 'Lisans ve kurumsal talepler',
         cta: 'Mail At',
+    },
+    {
+        title: 'Adres',
+        value: `${SITE.address.district} / ${SITE.address.city}`,
+        href: SITE.address.mapsUrl,
+        note: SITE.address.street,
+        cta: 'Haritada Aç',
     },
 ];
 
@@ -52,12 +60,18 @@ const ITSolutionContactChannels = () => {
                 <div className="container container-1230">
                     <div className="row">
                         {channels.map((item) => (
-                            <div key={item.title} className="col-lg-4 mb-30">
+                            <div key={item.title} className="col-lg-3 col-md-6 mb-30">
                                 <div className="it-contact-channel tp_fade_anim">
                                     <span className="it-contact-channel-label">{item.title}</span>
                                     <h4 className="it-contact-channel-title">{item.value}</h4>
                                     <p>{item.note}</p>
-                                    <Link className="tp-btn-yellow-green w-100" href={item.href}>
+                                    <Link
+                                        className="tp-btn-yellow-green w-100"
+                                        href={item.href}
+                                        {...(item.title === 'Adres'
+                                            ? { target: '_blank', rel: 'noopener noreferrer' }
+                                            : {})}
+                                    >
                                         <span>
                                             <span className="text-1">{item.cta}</span>
                                             <span className="text-2">{item.cta}</span>

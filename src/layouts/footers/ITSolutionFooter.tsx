@@ -2,6 +2,7 @@ import footerShape from '../../../public/assets/img/home-11/footer/footer-shape-
 import DijitalErpLogo from '@/components/brand/DijitalErpLogo';
 import ProtectedDownloadLink from '@/components/download/ProtectedDownloadLink';
 import { FooterSocialIcons } from './subComponents/FooterSocialIcons';
+import { SITE } from '@/constants/seo';
 import { getCurrentYear } from '@/utils/getCurrentYear';
 import { ArrowSeven } from '@/svg/ArrowIcons';
 import Image from 'next/image';
@@ -77,13 +78,28 @@ const ITSolutionFooter = () => {
                                         demo için bizi arayın
                                     </ProtectedDownloadLink>
                                 </div>
+                                <div className="crp-footer-widget-info mb-40">
+                                    <h4 className="crp-footer-widget-title">Adres</h4>
+                                    <div className="crp-footer-widget-contact">
+                                        <Link
+                                            className="tp-line-white cream-2"
+                                            href={SITE.address.mapsUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            {SITE.address.street}
+                                            <br />
+                                            {SITE.address.district} / {SITE.address.city}
+                                        </Link>
+                                    </div>
+                                </div>
                                 <div className="crp-footer-widget-info">
                                     <h4 className="crp-footer-widget-title">Bizi Arayın</h4>
                                     <div className="crp-footer-widget-contact">
-                                        <Link className="tp-line-white cream-2" href="mailto:info@dijitalerp.com.tr">info@dijitalerp.com.tr</Link>
+                                        <Link className="tp-line-white cream-2" href={`mailto:${SITE.email}`}>{SITE.email}</Link>
                                     </div>
                                     <div className="crp-footer-widget-contact">
-                                        <Link className="tel tp-line-white cream-2 d-inline-block" href="tel:+902166061746">0216 606 17 46</Link>
+                                        <Link className="tel tp-line-white cream-2 d-inline-block" href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</Link>
                                     </div>
                                 </div>
                             </div>
