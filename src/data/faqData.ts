@@ -1,3 +1,5 @@
+import { SITE } from "@/constants/seo";
+
 type FaqItem = {
   id: string;
   category: "genel" | "lisans" | "teknik" | "destek";
@@ -81,7 +83,7 @@ export const faqItems: FaqItem[] = [
     category: "lisans",
     question: "Kurumsal paket için nasıl teklif alırım?",
     answer:
-      "info@dijitalerp.com.tr adresine yazın veya 0216 606 17 46 numarasını arayın. Kullanıcı sayısı, destek ve eğitim kapsamını birlikte netleştiririz.",
+      `info@dijitalerp.com.tr adresine yazın veya ${SITE.phoneDisplay} numarasını arayın. Kullanıcı sayısı, destek ve eğitim kapsamını birlikte netleştiririz.`,
   },
   {
     id: "sss-12",
@@ -116,7 +118,7 @@ export const faqItems: FaqItem[] = [
     category: "destek",
     question: "Destek alabilir miyim?",
     answer:
-      "Evet. 0216 606 17 46 numaralı telefondan veya info@dijitalerp.com.tr adresinden destek alabilirsiniz.",
+      `Evet. ${SITE.phoneDisplay} numaralı telefondan veya info@dijitalerp.com.tr adresinden destek alabilirsiniz.`,
   },
   {
     id: "sss-17",
@@ -130,7 +132,7 @@ export const faqItems: FaqItem[] = [
     category: "destek",
     question: "WhatsApp üzerinden yazabilir miyim?",
     answer:
-      "Evet. 0216 606 17 46 numarası üzerinden WhatsApp ile hızlıca ulaşabilirsiniz.",
+      `Evet. ${SITE.whatsappDisplay} numarası üzerinden WhatsApp ile hızlıca ulaşabilirsiniz.`,
   },
 ];
 

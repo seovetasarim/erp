@@ -1,6 +1,7 @@
 import faqImg1 from '../../../public/assets/img/home-11/faq/faq-1.png';
 import faqImg2 from '../../../public/assets/img/home-11/faq/faq-2.png';
 import { FAQItemDT } from '@/types/custom-d-t';
+import { SITE } from '@/constants/seo';
 import Image from 'next/image';
 
 const ITSolutionFaq = () => {
@@ -30,7 +31,7 @@ const ITSolutionFaq = () => {
         {
             id: 'collapseFive5',
             question: 'Destek alabilir miyim?',
-            answer: 'Evet. 0216 606 17 46 numaralı telefondan veya info@dijitalerp.com.tr adresinden destek alabilirsiniz.'
+            answer: `Evet. ${SITE.phoneDisplay} numaralı telefondan veya ${SITE.email} adresinden destek alabilirsiniz.`
         },
         {
             id: 'collapseSix6',

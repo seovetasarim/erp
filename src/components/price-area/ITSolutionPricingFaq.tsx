@@ -1,4 +1,5 @@
 import { FAQItemDT } from '@/types/custom-d-t';
+import { SITE } from '@/constants/seo';
 
 const faqData: FAQItemDT[] = [
     {
@@ -36,7 +37,7 @@ const faqData: FAQItemDT[] = [
         id: 'priceFaq6',
         question: 'Kurumsal paket için nasıl teklif alırım?',
         answer:
-            'info@dijitalerp.com.tr adresine yazın veya 0216 606 17 46 numarasını arayın. İhtiyaçlarınıza göre kullanıcı sayısı, destek ve eğitim kapsamını netleştiririz.',
+            `info@dijitalerp.com.tr adresine yazın veya ${SITE.phoneDisplay} numarasını arayın. İhtiyaçlarınıza göre kullanıcı sayısı, destek ve eğitim kapsamını netleştiririz.`,
     },
 ];
 

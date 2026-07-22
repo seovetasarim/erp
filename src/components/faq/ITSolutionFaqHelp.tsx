@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { getWhatsAppUrl, SITE } from '@/constants/seo';
 
 const ITSolutionFaqHelp = () => {
     return (
@@ -14,17 +15,17 @@ const ITSolutionFaqHelp = () => {
                         </div>
                         <div className="col-lg-6">
                             <div className="it-sss-contact-links">
-                                <Link href="tel:+902166061746" className="it-sss-contact-link">
+                                <Link href={`tel:${SITE.phone}`} className="it-sss-contact-link">
                                     <em>Telefon</em>
-                                    <strong>0216 606 17 46</strong>
+                                    <strong>{SITE.phoneDisplay}</strong>
                                 </Link>
-                                <Link href="mailto:info@dijitalerp.com.tr" className="it-sss-contact-link">
+                                <Link href={`mailto:${SITE.email}`} className="it-sss-contact-link">
                                     <em>E-posta</em>
-                                    <strong>info@dijitalerp.com.tr</strong>
+                                    <strong>{SITE.email}</strong>
                                 </Link>
-                                <Link href="https://wa.me/902166061746" className="it-sss-contact-link">
+                                <Link href={getWhatsAppUrl()} className="it-sss-contact-link">
                                     <em>WhatsApp</em>
-                                    <strong>Hemen yaz</strong>
+                                    <strong>{SITE.whatsappDisplay}</strong>
                                 </Link>
                             </div>
                         </div>

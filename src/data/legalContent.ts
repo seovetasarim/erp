@@ -1,3 +1,5 @@
+import { SITE } from "@/constants/seo";
+
 export type LegalSection = {
   id: string;
   title: string;
@@ -135,7 +137,7 @@ export const TERMS_OF_SERVICE: LegalPageContent = {
       id: "iletisim",
       title: "11. İletişim",
       paragraphs: [
-        "Hizmet Şartları hakkında sorularınız için info@dijitalerp.com.tr adresine e-posta gönderebilir veya 0216 606 17 46 numarasından bize ulaşabilirsiniz.",
+        `Hizmet Şartları hakkında sorularınız için info@dijitalerp.com.tr adresine e-posta gönderebilir veya ${SITE.phoneDisplay} numarasından bize ulaşabilirsiniz.`,
       ],
     },
   ],
@@ -163,7 +165,7 @@ export const PRIVACY_POLICY: LegalPageContent = {
       title: "1. Veri Sorumlusu",
       paragraphs: [
         "6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) kapsamında veri sorumlusu sıfatıyla DijitalERP; dijitalerp.com.tr web sitesi, müşteri hesabı, destek süreçleri ve lisans hizmetleri aracılığıyla elde edilen kişisel verileri aşağıda açıklanan ilkelere uygun işler.",
-        "İletişim: info@dijitalerp.com.tr — 0216 606 17 46",
+        `İletişim: info@dijitalerp.com.tr — ${SITE.phoneDisplay} (telefon) · ${SITE.whatsappDisplay} (WhatsApp)`,
       ],
     },
     {

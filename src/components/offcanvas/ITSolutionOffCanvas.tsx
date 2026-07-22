@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import React, { useMemo } from 'react';
 import { useAuthUser } from '@/hooks/useAuthUser';
+import { getWhatsAppUrl, SITE } from '@/constants/seo';
 
 type IProps = {
     openOffcanvas: boolean;
@@ -123,9 +124,9 @@ const ITSolutionOffCanvas: React.FC<IProps> = ({ openOffcanvas, setOpenOffcanvas
 
                         <div className="it-offcanvas-mobile-info d-md-none">
                             <span className="it-offcanvas-label">İletişim</span>
-                            <Link href="tel:+902166061746">0216 606 17 46</Link>
-                            <Link href="mailto:info@dijitalerp.com.tr">info@dijitalerp.com.tr</Link>
-                            <Link href="https://wa.me/902166061746" target="_blank">WhatsApp</Link>
+                            <Link href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</Link>
+                            <Link href={`mailto:${SITE.email}`}>{SITE.email}</Link>
+                            <Link href={getWhatsAppUrl()} target="_blank">{SITE.whatsappDisplay}</Link>
                         </div>
                     </div>
 
@@ -147,16 +148,16 @@ const ITSolutionOffCanvas: React.FC<IProps> = ({ openOffcanvas, setOpenOffcanvas
                             <div className="it-offcanvas-info">
                                 <div className="it-offcanvas-info-item">
                                     <label>Telefon</label>
-                                    <Link href="tel:+902166061746">0216 606 17 46</Link>
+                                    <Link href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</Link>
                                 </div>
                                 <div className="it-offcanvas-info-item">
                                     <label>E-posta</label>
-                                    <Link href="mailto:info@dijitalerp.com.tr">info@dijitalerp.com.tr</Link>
+                                    <Link href={`mailto:${SITE.email}`}>{SITE.email}</Link>
                                 </div>
                                 <div className="it-offcanvas-info-item">
                                     <label>WhatsApp</label>
-                                    <Link href="https://wa.me/902166061746" target="_blank">
-                                        Mesaj gönder
+                                    <Link href={getWhatsAppUrl()} target="_blank">
+                                        {SITE.whatsappDisplay}
                                     </Link>
                                 </div>
                                 <div className="it-offcanvas-info-item">

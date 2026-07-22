@@ -1,5 +1,5 @@
 import contactShape from '../../../public/assets/img/contact/contact-us/contact-us-shape.png';
-import { SITE } from '@/constants/seo';
+import { getWhatsAppUrl, SITE } from '@/constants/seo';
 import Link from 'next/link';
 
 const channels = [
@@ -12,8 +12,8 @@ const channels = [
     },
     {
         title: 'WhatsApp',
-        value: SITE.phoneDisplay,
-        href: 'https://wa.me/902166061746',
+        value: SITE.whatsappDisplay,
+        href: getWhatsAppUrl(),
         note: 'Anlık mesaj desteği',
         cta: 'Yaz',
     },

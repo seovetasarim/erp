@@ -7,8 +7,12 @@ export const SITE = {
   locale: "tr_TR",
   language: "tr",
   email: "info@dijitalerp.com.tr",
+  /** Sabit hat — arama */
   phone: "+902166061746",
   phoneDisplay: "0216 606 17 46",
+  /** WhatsApp — cep hattı */
+  whatsapp: "905321667697",
+  whatsappDisplay: "0532 166 76 97",
   downloadPath: "/api/download",
   ogImage: "/og-image.png",
   twitterHandle: "@dijitalerp",
@@ -25,6 +29,12 @@ export const SITE = {
       "https://www.google.com/maps/search/?api=1&query=Mandira+Cad.+Dumlipinar+Mah.+Cesme+Sok.+No+3+Emlak+Konut+Evleri+14A+Fikirtepe+Kadikoy+Istanbul",
   },
 } as const;
+
+export function getWhatsAppUrl(message?: string) {
+  const base = `https://wa.me/${SITE.whatsapp}`;
+  if (!message) return base;
+  return `${base}?text=${encodeURIComponent(message)}`;
+}
 
 /** Anahtar kelimeler — ERP ürününden ve arama niyetinden */
 export const SITE_KEYWORDS = [

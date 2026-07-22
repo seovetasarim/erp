@@ -3,6 +3,7 @@ import shape from '../../../public/assets/img/about-us/about-us-4/about-us-4-sha
 import { ArrowTwenty, ArrowTwentySeven } from '@/svg/ArrowIcons';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { CareerShapeTwo } from '@/svg/HeroShape';
+import { SITE } from '@/constants/seo';
 import Image from 'next/image';
 import Link from 'next/link';
 import gsap from 'gsap';
@@ -76,7 +77,7 @@ const ITSolutionContactHero = () => {
                         </div>
                         <div className="col-md-6">
                             <div className="tp-contact-us-text d-none d-md-block text-md-end">
-                                <p>0216 606 17 46 · info@dijitalerp.com.tr</p>
+                                <p>{SITE.phoneDisplay} · WhatsApp {SITE.whatsappDisplay} · {SITE.email}</p>
                             </div>
                         </div>
                     </div>
