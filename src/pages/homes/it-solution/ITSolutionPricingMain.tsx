@@ -16,7 +16,7 @@ import SearchArea from '@/components/search-area/SearchArea';
 const ITSolutionPricingMain = () => {
     return (
         <ScrollSmoothProvider>
-            <CursorAndBackgroundProvider bgColor="#08041D">
+            <CursorAndBackgroundProvider bgColor="#FDF7F4">
                 <AnimationWrapper>
                     <PricingBillingProvider>
                         <div id="magic-cursor">

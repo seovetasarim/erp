@@ -867,157 +867,6 @@ main {
   line-height: 1.7;
 }
 
-.it-pricing-highlights {
-  position: relative;
-  z-index: 2;
-  margin-bottom: 36px;
-}
-
-.it-pricing-highlights-panel {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  background: #fff;
-  border: 1px solid rgba(12, 70, 66, 0.1);
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 2px 3px rgba(50, 41, 73, 0.08);
-
-  @media (max-width: 1199px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  @media (max-width: 767px) {
-    grid-template-columns: 1fr;
-  }
-}
-
-.it-pricing-highlight {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  height: 132px;
-  min-height: 132px;
-  padding: 22px 18px;
-  border-right: 1px solid rgba(12, 70, 66, 0.08);
-  background: #fff;
-  transition: background-color 0.25s ease;
-
-  &:last-child {
-    border-right: none;
-  }
-
-  &:hover {
-    background: #f8fbfa;
-  }
-
-  &.is-featured {
-    background: #f4faf8;
-    border-left: 3px solid #0c4642;
-    padding-left: 17px;
-
-    .it-pricing-highlight-icon {
-      background: #0c4642;
-      color: #a0ff27;
-    }
-
-    .it-pricing-highlight-value strong {
-      color: #0c4642;
-    }
-  }
-
-  @media (max-width: 1199px) {
-    border-right: none;
-    border-bottom: 1px solid rgba(12, 70, 66, 0.08);
-
-    &:nth-child(odd) {
-      border-right: 1px solid rgba(12, 70, 66, 0.08);
-    }
-
-    &:nth-last-child(-n + 2) {
-      border-bottom: none;
-    }
-
-    &:last-child:nth-child(odd) {
-      border-right: none;
-    }
-  }
-
-  @media (max-width: 767px) {
-    border-right: none !important;
-    border-bottom: 1px solid rgba(12, 70, 66, 0.08);
-
-    &:last-child {
-      border-bottom: none;
-    }
-  }
-}
-
-.it-pricing-highlight-icon {
-  flex: 0 0 42px;
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  color: #0c4642;
-  background: rgba(12, 70, 66, 0.08);
-}
-
-.it-pricing-highlight-copy {
-  min-width: 0;
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.it-pricing-highlight-value {
-  display: flex;
-  align-items: baseline;
-  gap: 4px;
-  margin-bottom: 6px;
-  white-space: nowrap;
-
-  strong {
-    font-family: var(--tp-ff-platform, inherit);
-    font-size: clamp(1.25rem, 1.6vw, 1.6rem);
-    font-weight: 500;
-    line-height: 1;
-    letter-spacing: -0.02em;
-    color: #21212d;
-  }
-
-  span {
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: rgba(12, 70, 66, 0.72);
-  }
-}
-
-.it-pricing-highlight-label {
-  margin: 0 0 4px;
-  font-family: var(--tp-ff-platform, inherit);
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 1.2;
-  color: rgba(33, 33, 45, 0.82);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.it-pricing-highlight-desc {
-  margin: 0;
-  font-size: 12px;
-  line-height: 1.2;
-  color: rgba(33, 33, 45, 0.58);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 .it-legal-page-area {
   scroll-behavior: smooth;
 }
@@ -1523,5 +1372,417 @@ main {
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
+}
+
+.footer-credit-bar {
+  background: #f3f3f3;
+  padding: 12px 16px;
+}
+
+.footer-credit {
+  display: flex;
+  justify-content: center;
+  color: #555;
+  text-decoration: none;
+}
+
+.footer-credit:hover,
+.footer-credit:focus-visible {
+  color: #111;
+}
+
+.footer-credit__slot {
+  position: relative;
+  display: block;
+  width: min(100%, 360px);
+  height: 20px;
+}
+
+.footer-credit__text,
+.footer-credit__logo {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  max-width: 100%;
+  max-height: 20px;
+  transition: opacity 0.2s ease;
+}
+
+.footer-credit__text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35em;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.footer-credit__brand {
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.04em;
+  text-transform: lowercase;
+  background: linear-gradient(90deg, #3b82f6 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.footer-credit__logo {
+  display: block;
+  width: auto;
+  height: 20px;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0;
+  pointer-events: none;
+  background: transparent;
+}
+
+.footer-credit.is-logo .footer-credit__text {
+  opacity: 0;
+}
+
+.footer-credit.is-logo .footer-credit__logo {
+  opacity: 1;
+}
+
+@media screen and (max-width: 575px) {
+  .footer-credit__slot {
+    height: 18px;
+  }
+
+  .footer-credit__text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .footer-credit__logo,
+  .footer-credit__text {
+    max-height: 18px;
+  }
+
+  .footer-credit__logo {
+    height: 18px;
+  }
+}
+
+.erp-inner-breadcrumb {
+  padding: 180px 0 36px;
+  text-align: center;
+  background: #0c4642;
+}
+
+.erp-inner-breadcrumb__title {
+  margin: 0 0 10px;
+  color: #fff;
+  font-family: var(--tp-ff-platform, inherit);
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.erp-inner-breadcrumb__nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.72);
+
+  a {
+    color: #a0ff27;
+    text-decoration: none;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  em {
+    font-style: normal;
+    color: #fff;
+  }
+}
+
+.erp-section-heading {
+  text-align: center;
+  margin-bottom: 40px;
+
+  h2 {
+    margin: 0;
+    font-family: var(--tp-ff-platform, inherit);
+    font-size: clamp(1.8rem, 3.4vw, 3rem);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    color: #0c4642;
+
+    span {
+      color: #0c4642;
+      background-image: linear-gradient(120deg, rgba(160, 255, 39, 0.55), rgba(160, 255, 39, 0.15));
+      background-repeat: no-repeat;
+      background-position: 0 78%;
+      background-size: 100% 0.38em;
+    }
+  }
+}
+
+.erp-contact-section,
+.erp-faq-section {
+  padding: 72px 0 110px;
+  background: #fdf7f4;
+}
+
+.erp-contact-card {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px;
+  border: 1px dashed #0c4642;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.erp-contact-card__icon {
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: rgba(12, 70, 66, 0.08);
+  color: #0c4642;
+
+  svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.erp-contact-card__body {
+  min-width: 0;
+
+  h3 {
+    margin: 0 0 4px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #0c4642;
+  }
+
+  p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(33, 33, 45, 0.72);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      color: #0c4642;
+    }
+  }
+}
+
+.erp-contact-map {
+  height: 100%;
+  min-height: 460px;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px dashed #0c4642;
+  background: #fff;
+
+  iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 460px;
+    border: 0;
+  }
+}
+
+.erp-contact-form {
+  height: 100%;
+  padding: 28px;
+  border: 1px dashed #0c4642;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.erp-contact-form__label {
+  display: block;
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0c4642;
+}
+
+.erp-contact-form input,
+.erp-contact-form textarea {
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  border: 1px solid rgba(12, 70, 66, 0.16);
+  border-radius: 12px;
+  background: #fdf7f4;
+  color: #21212d;
+  font-size: 14px;
+  outline: none;
+
+  &:focus {
+    border-color: #0c4642;
+    background: #fff;
+  }
+}
+
+.erp-contact-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.erp-contact-form__submit {
+  width: 100%;
+  margin-top: 4px;
+  padding: 14px 18px;
+  border: 0;
+  border-radius: 12px;
+  background: #0c4642;
+  color: #a0ff27;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+
+  &:hover {
+    background: #083834;
+    transform: translateY(-1px);
+  }
+}
+
+.erp-contact-form__success {
+  margin: 0;
+  padding: 24px 8px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0c4642;
+}
+
+.erp-faq-item {
+  margin-bottom: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(12, 70, 66, 0.12);
+  border-radius: 12px;
+  background: #fff;
+
+  &.is-open {
+    border-color: #0c4642;
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 18px;
+    border: 0;
+    background: transparent;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: #141414;
+    cursor: pointer;
+
+    &::after {
+      content: "+";
+      flex: 0 0 24px;
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(33, 33, 45, 0.45);
+      border-radius: 50%;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1;
+      color: #21212d;
+    }
+  }
+
+  &.is-open button {
+    color: #fff;
+    background: #0c4642;
+
+    &::after {
+      content: "+";
+      transform: rotate(45deg);
+      color: #0c4642;
+      border-color: #fff;
+      background: #fff;
+    }
+  }
+}
+
+.erp-faq-item__body {
+  padding: 0 18px 16px;
+
+  p {
+    margin: 0;
+    padding-top: 12px;
+    border-top: 1px solid rgba(12, 70, 66, 0.1);
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(33, 33, 45, 0.72);
+  }
+}
+
+@media (max-width: 991px) {
+  .erp-inner-breadcrumb {
+    padding: 150px 0 32px;
+  }
+
+  .erp-contact-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .erp-contact-map,
+  .erp-contact-map iframe {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 575px) {
+  .erp-inner-breadcrumb {
+    padding: 130px 0 28px;
+  }
+
+  .erp-contact-section,
+  .erp-faq-section {
+    padding: 48px 0 80px;
+  }
+
+  .erp-contact-form {
+    padding: 18px;
+  }
+
+  .erp-faq-item button {
+    font-size: 15px;
+    padding: 14px;
+  }
 }
 

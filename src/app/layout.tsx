@@ -143,6 +143,9 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+  verification: {
+    google: "28ltQ6S1cgEcBiyfmOnZjGhxvVOpPTFKU2QCY-CqtP4",
+  },
   icons: {
     icon: [
       { url: "/favicon.ico" },

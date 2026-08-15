@@ -1,6 +1,5 @@
 import { CareerShape } from '@/svg/HeroShape';
 import ProtectedDownloadLink from '@/components/download/ProtectedDownloadLink';
-import PricingHeroHighlights from '@/components/price-area/PricingHeroHighlights';
 import { ArrowNine } from '@/svg/ArrowIcons';
 import Link from 'next/link';
 
@@ -58,10 +57,6 @@ const ITSolutionPricingHero = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div className="it-pricing-hero-highlights-slot pb-20">
-                <PricingHeroHighlights />
             </div>
         </div>
     );

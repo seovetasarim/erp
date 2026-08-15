@@ -1,11 +1,10 @@
-import footerShape from '../../../public/assets/img/home-11/footer/footer-shape-1.png';
 import DijitalErpLogo from '@/components/brand/DijitalErpLogo';
 import ProtectedDownloadLink from '@/components/download/ProtectedDownloadLink';
 import { FooterSocialIcons } from './subComponents/FooterSocialIcons';
 import { SITE } from '@/constants/seo';
 import { getCurrentYear } from '@/utils/getCurrentYear';
 import { ArrowSeven } from '@/svg/ArrowIcons';
-import Image from 'next/image';
+import { FooterCredit } from './FooterCredit';
 import Link from 'next/link';
 
 const ITSolutionFooter = () => {
@@ -13,9 +12,6 @@ const ITSolutionFooter = () => {
         <footer>
             {/* -- footer area start -- */}
             <div className="crp-footer-area it-footer-style crp-footer-bg p-relative pt-120 z-index-1">
-                <div className="it-footer-shape">
-                    <Image data-speed="1.1" src={footerShape} alt="footer-shape" />
-                </div>
                 <div className="container container-1350">
                     <div className="row">
                         <div className="col-xxl-4 col-xl-4 col-lg-5 col-md-5">
@@ -131,6 +127,9 @@ const ITSolutionFooter = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="footer-credit-bar">
+                <FooterCredit />
             </div>
             {/* -- footer area end -- */}
 

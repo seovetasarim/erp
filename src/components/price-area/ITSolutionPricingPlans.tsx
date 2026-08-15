@@ -29,10 +29,10 @@ const ITSolutionPricingPlans = () => {
         <div className="row">
           <div className="col-lg-4">
             <div className="it-pricing-style4-content tp_fade_anim" data-delay=".3">
-              <span className="tp-section-subtitle-platform mb-15 d-inline-block">
+              <span className="tp-section-subtitle-platform platform-text-black mb-15 d-inline-block">
                 Paketler
               </span>
-              <h3 className="tp-section-title-platform fs-70 mb-25">
+              <h3 className="tp-section-title-platform platform-text-black fs-70 mb-25">
                 Sadece ihtiyacınız kadar ödeyin
               </h3>
               <p className="it-pricing-plans-intro">

@@ -1,7 +1,6 @@
 import CursorAndBackgroundProvider from '@/components/provider/CustomCursorProvider';
-import ITSolutionContactHero from '@/components/contacts/ITSolutionContactHero';
+import ITSolutionInnerBreadcrumb from '@/components/shared/ITSolutionInnerBreadcrumb';
 import ITSolutionContactForm from '@/components/contacts/ITSolutionContactForm';
-import ITSolutionContactChannels from '@/components/contacts/ITSolutionContactChannels';
 import ScrollSmoothProvider from '@/components/provider/ScrollSmoothProvider';
 import AnimationWrapper from '@/components/shared/Animation/AnimationWrapper';
 import ITSolutionFooter from '@/layouts/footers/ITSolutionFooter';
@@ -12,7 +11,7 @@ import SearchArea from '@/components/search-area/SearchArea';
 const ITSolutionContactMain = () => {
     return (
         <ScrollSmoothProvider>
-            <CursorAndBackgroundProvider bgColor="#FFFFFF">
+            <CursorAndBackgroundProvider bgColor="#FDF7F4">
                 <AnimationWrapper>
                     <div id="magic-cursor">
                         <div id="ball"></div>
@@ -22,12 +21,11 @@ const ITSolutionContactMain = () => {
                     <SearchArea />
                     <ITSolutionHeader />
 
-                    <div id="smooth-wrapper" style={{ backgroundColor: '#FFFFFF' }}>
+                    <div id="smooth-wrapper" style={{ backgroundColor: '#FDF7F4' }}>
                         <div id="smooth-content">
                             <main>
-                                <ITSolutionContactHero />
+                                <ITSolutionInnerBreadcrumb title="İletişim" current="İletişim" />
                                 <ITSolutionContactForm />
-                                <ITSolutionContactChannels />
                             </main>
                             <ITSolutionFooter />
                         </div>

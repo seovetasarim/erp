@@ -1,154 +1,120 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { CheckIcon } from "@/svg";
-import {
-  COMPARE_FEATURES,
-  COMPARE_PLANS,
-  getComparePlanDisplay,
-  type CompareCell,
-} from "@/constants/pricing";
+import { ArrowSvg } from "@/svg/ArrowIcons";
+import { useDownloadHref } from "@/hooks/useDownloadHref";
+import { DIJITAL_ERP_DOWNLOAD_HREF } from "@/constants/download";
+import { PRICING_PLANS, getPlanBilling } from "@/constants/pricing";
 import { usePricingBilling } from "@/provider/PricingBillingProvider";
-import { ArrowNine } from "@/svg/ArrowIcons";
 
-const PLAN_VISUAL: Record<
-  string,
-  {
-    variant: "default" | "featured" | "accent";
-    gradient: string;
-    gradientW: number;
-    gradientH: number;
-  }
-> = {
-  starter: {
-    variant: "default",
-    gradient: "/assets/img/layers/gradi.png",
-    gradientW: 70,
-    gradientH: 564,
-  },
-  pro: {
-    variant: "featured",
-    gradient: "/assets/img/layers/gradi2.png",
-    gradientW: 75,
-    gradientH: 564,
-  },
-  enterprise: {
-    variant: "accent",
-    gradient: "/assets/img/layers/gradi3.png",
-    gradientW: 75,
-    gradientH: 564,
-  },
+type CardTone = "default" | "soft" | "violet" | "teal" | "ink";
+
+const PLAN_TONE: Record<string, CardTone> = {
+  free: "default",
+  starter: "soft",
+  pro: "violet",
+  enterprise: "ink",
 };
 
-const renderValue = (value: CompareCell, dark: boolean) => {
-  if (typeof value === "boolean") {
-    return value ? (
-      <span className={`it-compare-check${dark ? " is-on-dark" : ""}`}>
-        <CheckIcon color="currentColor" />
-      </span>
-    ) : (
-      <span className={`it-compare-dash${dark ? " is-on-dark" : ""}`}>—</span>
-    );
+const splitPrice = (price: string, period: string) => {
+  if (/teklif/i.test(price)) {
+    return { label: "Teklif", suffix: undefined as string | undefined };
   }
-  return (
-    <span className={`it-compare-value${dark ? " is-on-dark" : ""}`}>
-      {value}
-    </span>
-  );
+
+  const label = price.replace(/[₺\s]/g, "").replace(/\/ay/i, "");
+  const suffix = /ay/i.test(period) ? "₺/ay" : "₺";
+  return { label, suffix };
 };
 
 const ITSolutionPricingCompare = () => {
   const { billingMode } = usePricingBilling();
+  const downloadHref = useDownloadHref();
 
   return (
-    <div className="it-compare-sec pt-120 pb-110">
-      <div className="container container-1230">
-        <div className="row justify-content-center mb-60">
-          <div className="col-xl-8 text-center">
-            <span
-              className="tp-section-subtitle-platform platform-text-black mb-15 d-inline-block tp_fade_anim"
-              data-delay=".3"
-            >
-              Karşılaştırma
-            </span>
-            <h3 className="tp-section-title-platform platform-text-black fs-84 tp-split-text tp-split-right">
-              Hangi pakette ne var?
-            </h3>
+    <section className="it-compare-sec">
+      <div className="container container-1460">
+        <div className="it-compare-head">
+          <div className="row align-items-end mb-0">
+            <div className="col-xl-8 col-lg-9">
+              <span className="tp-section-subtitle-platform platform-text-black mb-15 d-inline-block">
+                Karşılaştırma
+              </span>
+              <h3 className="tp-section-title-platform platform-text-black it-compare-title">
+                Hangi pakette ne var?
+              </h3>
+            </div>
+            <div className="col-xl-4 col-lg-3">
+              <div className="it-compare-head-btn">
+                <Link href="#paketler" className="it-compare-nav-btn">
+                  <span>Paketlere bak</span>
+                  <ArrowSvg />
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="row it-compare-cards tp_fade_anim" data-delay=".4">
-          {COMPARE_PLANS.map((plan) => {
-            const display = getComparePlanDisplay(plan, billingMode);
-            const visual = PLAN_VISUAL[plan.id] ?? PLAN_VISUAL.starter;
-            const isDark =
-              visual.variant === "featured" || visual.variant === "accent";
-            const cardClass = [
-              "it-compare-card",
-              visual.variant === "featured" ? "is-featured" : "",
-              visual.variant === "accent" ? "is-accent" : "",
-            ]
-              .filter(Boolean)
-              .join(" ");
+        <div className="it-compare-grid">
+          {PRICING_PLANS.map((plan) => {
+            const billing = getPlanBilling(plan, billingMode);
+            if (!billing) return null;
+
+            const tone = PLAN_TONE[plan.id] ?? "default";
+            const { label, suffix } = splitPrice(billing.price, billing.period);
+            const isDownload = billing.href === DIJITAL_ERP_DOWNLOAD_HREF;
+            const href = isDownload ? downloadHref : billing.href;
+            const btnClass =
+              tone === "soft" || tone === "violet"
+                ? "it-compare-btn it-compare-btn--dark"
+                : "it-compare-btn it-compare-btn--outline";
+
+            const cta = (
+              <>
+                <span>{billing.cta}</span>
+                <ArrowSvg />
+              </>
+            );
 
             return (
-              <div key={plan.id} className="col-xl-4 col-lg-6 d-flex">
-                <div className="it-compare-content">
-                  <div className={cardClass}>
-                    {plan.popular ? (
-                      <span className="it-compare-badge">Önerilen</span>
-                    ) : null}
-
-                    <div className="it-compare-head">
-                      <span className="it-compare-name">{plan.name}</span>
-                      <h4 className="it-compare-price">{display.price}</h4>
-                      {billingMode === "monthly" && plan.id !== "enterprise" ? (
-                        <em className="it-compare-period">/ ay kiralama</em>
-                      ) : null}
-                    </div>
-
-                    <ul className="it-compare-list">
-                      {COMPARE_FEATURES.map((feature, index) => (
-                        <li key={feature}>
-                          <em>{feature}</em>
-                          {renderValue(display.values[index], isDark)}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <Link
-                      className="tp-btn-black-radius d-inline-flex align-items-center justify-content-between w-100"
-                      href={display.href}
-                    >
-                      <span>
-                        <span className="text-1">{display.cta}</span>
-                        <span className="text-2">{display.cta}</span>
-                      </span>
-                      <i>
-                        <span>
-                          <ArrowNine />
-                          <ArrowNine />
-                        </span>
-                      </i>
-                    </Link>
-                  </div>
-
-                  <div className="it-compare-rail" aria-hidden>
-                    <Image
-                      src={visual.gradient}
-                      alt=""
-                      width={visual.gradientW}
-                      height={visual.gradientH}
-                    />
-                  </div>
+              <article
+                key={plan.id}
+                className={`it-compare-card it-compare-card--${tone}`}
+              >
+                {plan.popular ? (
+                  <span className="it-compare-card__badge">Popüler</span>
+                ) : null}
+                <div className="it-compare-card__head">
+                  <h4 className="it-compare-card__title">{plan.name}</h4>
+                  <p className="it-compare-card__subtitle">
+                    {billing.description}
+                  </p>
                 </div>
-              </div>
+                <ul className="it-compare-card__features">
+                  {plan.features.map((feature) => (
+                    <li key={feature}>{feature}</li>
+                  ))}
+                </ul>
+                <div className="it-compare-card__footer">
+                  <p className="it-compare-card__price">
+                    {label}
+                    {suffix ? <span>{suffix}</span> : null}
+                  </p>
+                  {isDownload ? (
+                    <a className={btnClass} href={href}>
+                      {cta}
+                    </a>
+                  ) : (
+                    <Link className={btnClass} href={href}>
+                      {cta}
+                    </Link>
+                  )}
+                </div>
+              </article>
             );
           })}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
