@@ -63,8 +63,8 @@ export const post = {
       id: "lisans-modelleri",
       title: "Lisans Modelleri: Ücretsiz, Kiralama ve Tek Seferlik",
       paragraphs: [
-        "DijitalERP üç lisans modeli sunar: ücretsiz sürüm, aylık kiralama ve tek seferlik lisans. Ücretsiz sürüm temel modüllerle tek bilgisayarda süresiz kullanılabilir; stok takip, cari yönetim ve temel fatura işlemleri bu kapsamdadır. KOBİ'ler yazılımı risk almadan deneyerek ihtiyaçlarını test edebilir.",
-        "Aylık kiralama modeli bütçe esnekliği sağlar. Başlangıç paketi 1.990₺/ay, Profesyonel paket 2.990₺/ay kiralama ile kullanılabilir; taahhüt yoktur. Tüm modüller, güncelleme süresi ve destek kapsamı lisanslı paketlerde genişler. Tek seferlik lisans (49.900₺ veya 79.900₺) uzun vadede kullanacak işletmeler için toplam maliyeti düşürür.",
+        "DijitalERP demo sürüm, yıllık lisans ve süresiz lisans sunar. Demo sürüm örnek verilerle incelenir; lisans girilmeden kayıt eklenemez, düzenlenemez veya silinemez. Lisans anahtarı girilince demo veriler temizlenir ve program tam kullanıma açılır.",
+        "Yıllık lisans 1 yıl geçerlidir: 1 bilgisayar 4.990 TL, 3 bilgisayar 9.990 TL, 5 bilgisayar 14.990 TL. Süresiz lisans tek seferliktir: 1 bilgisayar 12.900 TL, 3 bilgisayar 24.900 TL, 5 bilgisayar 34.900 TL. 3 ve 5 bilgisayar lisansında aynı anahtar aynı dükkandaki bilgisayarları birbirine bağlar.",
         "Güncelleme süresi bittiğinde yazılım çalışmaya devam eder; yalnızca yeni sürüm ve destek kapsamı sona erer. Bu model KOBİ'lerin kesinti yaşamadan yazılımı kullanmaya devam etmesini sağlar. [Fiyatlandırma](/fiyatlandirma) sayfasından paket karşılaştırması yapın; [SSS](/sss) bölümünden lisans sorularının yanıtlarına ulaşın.",
       ],
     },

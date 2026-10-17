@@ -7,8 +7,8 @@ const PricingBillingToggle = () => {
   const { billingMode, setBillingMode } = usePricingBilling();
 
   const options: { id: BillingMode; label: string; hint?: string }[] = [
-    { id: "monthly", label: "Aylık Kiralama", hint: "1.990₺'den başlayan" },
-    { id: "lifetime", label: "Tek Seferlik", hint: "Ömür boyu lisans" },
+    { id: "monthly", label: "Yıllık", hint: "4.990₺'den başlayan" },
+    { id: "lifetime", label: "Süresiz", hint: "Tek seferlik lisans" },
   ];
 
   return (
@@ -31,8 +31,8 @@ const PricingBillingToggle = () => {
       </div>
       <p className="it-pricing-billing-note">
         {billingMode === "monthly"
-          ? "Aylık kiralama taahhütsüzdür — istediğiniz zaman iptal edebilirsiniz."
-          : "Tek seferlik ödemede yazılım ömür boyu sizin; güncelleme süresi pakete göre değişir."}
+          ? "Yıllık lisans 1 yıl geçerlidir. Süre bitince yenileyerek kullanmaya devam edersiniz."
+          : "Süresiz lisans tek seferlik ödemedir. Program süre dolmadan kullanıma açık kalır."}
       </p>
     </div>
   );

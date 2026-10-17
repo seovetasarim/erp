@@ -55,14 +55,14 @@ export const faqItems: FaqItem[] = [
     category: "lisans",
     question: "Ücretsiz sürüm ile lisanslı sürüm farkı nedir?",
     answer:
-      "Ücretsiz sürüm temel modüllerle tek bilgisayarda süresiz kullanılır. Lisanslı paketlerde tüm modüller, güncelleme süresi ve destek kapsamı genişler.",
+      "Demo sürüm örnek verilerle incelenir; lisans girilmeden ekleme, düzenleme ve silme yapılamaz. Lisans anahtarı girilince program tam kullanıma açılır.",
   },
   {
     id: "sss-8",
     category: "lisans",
-    question: "Aylık kiralama var mı?",
+    question: "Yıllık ve süresiz lisans fiyatları nedir?",
     answer:
-      "Evet. Başlangıç paketi 1.990₺/ay, Profesyonel paket 2.990₺/ay kiralama ile kullanılabilir. Taahhüt yoktur. Tek seferlik lisans seçeneği de mevcuttur.",
+      "Yıllık: 1 bilgisayar 4.990 TL, 3 bilgisayar 9.990 TL, 5 bilgisayar 14.990 TL. Süresiz: 1 bilgisayar 12.900 TL, 3 bilgisayar 24.900 TL, 5 bilgisayar 34.900 TL.",
   },
   {
     id: "sss-9",
@@ -76,7 +76,7 @@ export const faqItems: FaqItem[] = [
     category: "lisans",
     question: "Tek seferlik mi aylık mı tercih etmeliyim?",
     answer:
-      "Bütçeniz kısıtlıysa aylık kiralama (1.990₺/ay'dan) daha erişilebilir. Uzun vadede kullanacaksanız tek seferlik lisans (49.900₺ veya 79.900₺) toplam maliyeti düşürür.",
+      "Kısa süre kullanacaksanız yıllık lisans (4.990 TL’den) daha erişilebilirdir. Uzun vadede süresiz lisans (12.900 TL’den) toplam maliyeti düşürür.",
   },
   {
     id: "sss-11",

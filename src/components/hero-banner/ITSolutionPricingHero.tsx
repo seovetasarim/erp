@@ -23,16 +23,16 @@ const ITSolutionPricingHero = () => {
                                     Fiyatlandırma
                                 </span>
                                 <h1 className="tp-section-title-platform platform-text-black it-pricing-hero-title">
-                                    Tek seferlik veya<br />
-                                    aylık kiralama.
+                                    Yıllık veya<br />
+                                    süresiz lisans.
                                 </h1>
                             </div>
                         </div>
                         <div className="col-lg-5">
                             <div className="it-pricing-hero-text tp_fade_anim z-index-1" data-delay=".5">
                                 <p>
-                                    Önce ücretsiz Windows sürümünü deneyin. Tek seferlik lisans
-                                    veya taahhütsüz aylık kiralama — bütçenize uygun modeli seçin.
+                                    Önce demo Windows sürümünü indirin. Yıllık lisans 4.990₺’den,
+                                    süresiz lisans 12.900₺’den başlar. 1, 3 veya 5 bilgisayar.
                                 </p>
                                 <div className="it-pricing-hero-actions d-flex flex-wrap align-items-center">
                                     <ProtectedDownloadLink

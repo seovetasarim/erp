@@ -14,6 +14,7 @@ const PLAN_TONE: Record<string, CardTone> = {
   starter: "soft",
   pro: "violet",
   enterprise: "ink",
+  team: "ink",
 };
 
 const splitPrice = (price: string, period: string) => {
@@ -22,7 +23,7 @@ const splitPrice = (price: string, period: string) => {
   }
 
   const label = price.replace(/[₺\s]/g, "").replace(/\/ay/i, "");
-  const suffix = /ay/i.test(period) ? "₺/ay" : "₺";
+  const suffix = /y[ıi]l/i.test(period) ? "₺/yıl" : /ay/i.test(period) ? "₺/ay" : "₺";
   return { label, suffix };
 };
 

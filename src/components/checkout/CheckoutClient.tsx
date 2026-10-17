@@ -115,7 +115,7 @@ export default function CheckoutClient() {
   }
 
   const billingLabel =
-    plan?.billingMode === "monthly" ? "Aylık kiralama" : "Tek seferlik lisans";
+    plan?.billingMode === "monthly" ? "Yıllık lisans" : "Süresiz lisans";
 
   return (
     <div className="it-checkout-wrap">

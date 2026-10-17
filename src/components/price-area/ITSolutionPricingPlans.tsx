@@ -16,7 +16,7 @@ import { ArrowNine } from "@/svg/ArrowIcons";
 const SIDE_BENEFITS = [
   "Tüm ana ERP modülleri",
   "Offline Windows kullanımı",
-  "Güncelleme & destek seçenekleri",
+  "1, 3 veya 5 bilgisayar",
 ];
 
 const ITSolutionPricingPlans = () => {
@@ -36,8 +36,8 @@ const ITSolutionPricingPlans = () => {
                 Sadece ihtiyacınız kadar ödeyin
               </h3>
               <p className="it-pricing-plans-intro">
-                Ücretsiz sürümle başlayın. Tek seferlik lisans veya aylık kiralama —
-                bütçenize uygun modeli seçin.
+                Demo sürümle başlayın. Yıllık veya süresiz lisansla 1, 3 veya 5
+                bilgisayarda kullanın.
               </p>
               <PricingBillingToggle />
               <ul className="it-pricing-style4-list">
@@ -124,8 +124,8 @@ const ITSolutionPricingPlans = () => {
 
             {isMonthly && (
               <p className="it-pricing-monthly-footnote tp_fade_anim" data-delay=".5">
-                Aylık kiralama aktif kullanım süresince geçerlidir. Ödeme yapılmadığında
-                lisans askıya alınır; tek seferlik lisansa geçiş için iletişime geçin.
+                Yıllık lisans 1 yıl geçerlidir. Süre bitince yenileme gerekir. Süresiz
+                lisans tek seferlik ödemedir.
               </p>
             )}
           </div>

@@ -6,20 +6,20 @@ const faqData: FAQItemDT[] = [
         id: 'priceFaq1',
         question: 'Ücretsiz sürüm ile lisanslı sürüm farkı nedir?',
         answer:
-            'Ücretsiz sürüm temel modüllerle tek bilgisayarda süresiz kullanılır. Lisanslı paketlerde tüm modüller, güncelleme süresi ve destek kapsamı genişler.',
+            'Demo sürüm örnek verilerle incelenir; lisans girilmeden ekleme, düzenleme ve silme yapılamaz. Lisans anahtarı girilince demo veriler temizlenir ve program tam kullanıma açılır.',
         isOpen: true,
     },
     {
         id: 'priceFaq2',
-        question: 'Aylık kiralama var mı?',
+        question: 'Yıllık lisans fiyatları nedir?',
         answer:
-            'Evet. Başlangıç paketi 1.990₺/ay, Profesyonel paket 2.990₺/ay kiralama ile kullanılabilir. Taahhüt yoktur; istediğiniz zaman iptal edebilirsiniz. Tek seferlik lisans seçeneği de mevcuttur.',
+            'Yıllık lisans: 1 bilgisayar 4.990 TL, 3 bilgisayar 9.990 TL, 5 bilgisayar 14.990 TL. Süre 1 yıldır.',
     },
     {
         id: 'priceFaq3',
-        question: 'Aylık kiralama mı, tek seferlik lisans mı daha mantıklı?',
+        question: 'Süresiz lisans fiyatları nedir?',
         answer:
-            'Başlangıç bütçeniz kısıtlıysa aylık kiralama daha erişilebilir. Uzun vadede kullanacaksanız tek seferlik lisans (Başlangıç 49.900₺, Profesyonel 79.900₺) toplam maliyeti düşürür. İstediğiniz zaman tek seferliğe geçiş için bize ulaşın.',
+            'Süresiz lisans tek seferliktir: 1 bilgisayar 12.900 TL, 3 bilgisayar 24.900 TL, 5 bilgisayar 34.900 TL.',
     },
     {
         id: 'priceFaq4',
@@ -31,7 +31,7 @@ const faqData: FAQItemDT[] = [
         id: 'priceFaq5',
         question: 'Fiyatlar neden erişilebilir tutuluyor?',
         answer:
-            'DijitalERP sunucusuz ve offline mimariyle çalıştığı için sürekli bulut altyapı maliyeti yansıtılmaz. Tek seferlik ve aylık kiralama seçenekleriyle farklı bütçelere uyum sağlanır.',
+            'DijitalERP sunucusuz ve offline mimariyle çalıştığı için sürekli bulut altyapı maliyeti yansıtılmaz. Yıllık ve süresiz lisans seçenekleri vardır.',
     },
     {
         id: 'priceFaq6',

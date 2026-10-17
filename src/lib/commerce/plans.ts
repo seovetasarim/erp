@@ -1,6 +1,6 @@
 import type { BillingMode } from "@/constants/pricing";
 
-export type CheckoutPlanId = "starter" | "pro";
+export type CheckoutPlanId = "starter" | "pro" | "team";
 
 export type CheckoutPlan = {
   id: CheckoutPlanId;
@@ -17,8 +17,8 @@ export const CHECKOUT_PLANS: Record<string, CheckoutPlan> = {
     id: "starter",
     name: "Başlangıç",
     billingMode: "monthly",
-    amountKurus: 199_000,
-    label: "Başlangıç — Aylık Kiralama",
+    amountKurus: 499_000,
+    label: "1 Bilgisayar — Yıllık Lisans",
     maxPcs: 1,
     licenseCount: 1,
   },
@@ -26,8 +26,8 @@ export const CHECKOUT_PLANS: Record<string, CheckoutPlan> = {
     id: "starter",
     name: "Başlangıç",
     billingMode: "lifetime",
-    amountKurus: 4_990_000,
-    label: "Başlangıç — Tek Seferlik",
+    amountKurus: 1_290_000,
+    label: "1 Bilgisayar — Süresiz Lisans",
     maxPcs: 1,
     licenseCount: 1,
   },
@@ -35,8 +35,8 @@ export const CHECKOUT_PLANS: Record<string, CheckoutPlan> = {
     id: "pro",
     name: "Profesyonel",
     billingMode: "monthly",
-    amountKurus: 299_000,
-    label: "Profesyonel — Aylık Kiralama",
+    amountKurus: 999_000,
+    label: "3 Bilgisayar — Yıllık Lisans",
     maxPcs: 3,
     licenseCount: 3,
   },
@@ -44,10 +44,28 @@ export const CHECKOUT_PLANS: Record<string, CheckoutPlan> = {
     id: "pro",
     name: "Profesyonel",
     billingMode: "lifetime",
-    amountKurus: 7_990_000,
-    label: "Profesyonel — Tek Seferlik",
+    amountKurus: 2_490_000,
+    label: "3 Bilgisayar — Süresiz Lisans",
     maxPcs: 3,
     licenseCount: 3,
+  },
+  "team-monthly": {
+    id: "team",
+    name: "5 Bilgisayar",
+    billingMode: "monthly",
+    amountKurus: 1_499_000,
+    label: "5 Bilgisayar — Yıllık Lisans",
+    maxPcs: 5,
+    licenseCount: 5,
+  },
+  "team-lifetime": {
+    id: "team",
+    name: "5 Bilgisayar",
+    billingMode: "lifetime",
+    amountKurus: 3_490_000,
+    label: "5 Bilgisayar — Süresiz Lisans",
+    maxPcs: 5,
+    licenseCount: 5,
   },
 };
 
@@ -57,9 +75,13 @@ export function resolveCheckoutPlan(planId: string, billingMode: string) {
       ? "starter"
       : planId === "profesyonel"
         ? "pro"
-        : planId;
+        : planId === "bes" || planId === "5"
+          ? "team"
+          : planId;
   const normalizedBilling =
-    billingMode === "aylik" || billingMode === "monthly" ? "monthly" : "lifetime";
+    billingMode === "aylik" || billingMode === "yillik" || billingMode === "monthly"
+      ? "monthly"
+      : "lifetime";
   const key = `${normalizedPlan}-${normalizedBilling}`;
   return CHECKOUT_PLANS[key] ?? null;
 }

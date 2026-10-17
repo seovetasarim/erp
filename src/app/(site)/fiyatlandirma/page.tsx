@@ -3,15 +3,15 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd, buildPageMetadata } from '@/constants/seo';
 
 export const metadata = buildPageMetadata({
-    title: 'ERP Fiyatları: Ücretsiz, Tek Seferlik ve Aylık Kiralama',
+    title: 'ERP Fiyatları: Yıllık ve Süresiz Lisans',
     description:
-        'DijitalERP fiyatlandırma: ücretsiz sürümle başlayın. Tek seferlik lisans (49.900₺) veya aylık kiralama (1.990₺/ay) seçenekleriyle tüm modüllere geçin.',
+        'DijitalERP fiyatlandırma: yıllık lisans 4.990₺’den, süresiz lisans 12.900₺’den başlar. 1, 3 veya 5 bilgisayar.',
     path: '/fiyatlandirma',
     keywords: [
         'ERP fiyatları',
         'ücretsiz ERP lisansı',
         'tek seferlik ERP',
-        'aylık ERP kiralama',
+        'yıllık ERP lisansı',
         'Pro ERP lisansı',
     ],
 });

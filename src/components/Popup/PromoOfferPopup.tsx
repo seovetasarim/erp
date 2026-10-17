@@ -92,10 +92,10 @@ export default function PromoOfferPopup() {
 
         <span className="it-promo-popup-badge">Kurumsal ERP paketleri</span>
 
-        <p className="it-promo-popup-kicker">Aylık kiralama ile hemen başlayın</p>
+        <p className="it-promo-popup-kicker">Yıllık lisansla hemen başlayın</p>
 
         <h2 id="it-promo-popup-title" className="it-promo-popup-price">
-          <span className="it-promo-popup-price-value">1.990 ₺</span>
+          <span className="it-promo-popup-price-value">4.990 ₺</span>
           <span className="it-promo-popup-price-suffix">&apos;den başlayan fiyatlar</span>
         </h2>
 
@@ -106,7 +106,7 @@ export default function PromoOfferPopup() {
 
         <ul className="it-promo-popup-points">
           <li>Tüm modüller dahil</li>
-          <li>Taahhütsüz aylık kiralama</li>
+          <li>Yıllık veya süresiz lisans</li>
           <li>Ücretsiz sürümle hemen deneyin</li>
         </ul>
 
@@ -128,8 +128,8 @@ export default function PromoOfferPopup() {
             </i>
           </Link>
 
-          <Link href="/fiyatlandirma?odeme=aylik" className="it-promo-popup-secondary" onClick={dismiss}>
-            1.990 ₺/ay Başlangıç paketi
+          <Link href="/fiyatlandirma?odeme=yillik" className="it-promo-popup-secondary" onClick={dismiss}>
+            4.990 ₺/yıl · 1 bilgisayar
           </Link>
         </div>
 

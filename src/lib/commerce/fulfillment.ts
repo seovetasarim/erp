@@ -495,13 +495,16 @@ export async function processSubscriptionReminders() {
       }>);
 
   const planLabels: Record<string, string> = {
-    starter: "Başlangıç — Aylık Kiralama",
-    pro: "Profesyonel — Aylık Kiralama",
+    starter: "1 Bilgisayar — Yıllık Lisans",
+    pro: "3 Bilgisayar — Yıllık Lisans",
+    team: "5 Bilgisayar — Yıllık Lisans",
   };
 
   let sent = 0;
   for (const sub of due) {
-    const renewUrl = `${siteUrl}/odeme?paket=${sub.plan_id === "starter" ? "baslangic" : "profesyonel"}&odeme=aylik&yenile=1`;
+    const paket =
+      sub.plan_id === "starter" ? "baslangic" : sub.plan_id === "team" ? "bes" : "profesyonel";
+    const renewUrl = `${siteUrl}/odeme?paket=${paket}&odeme=yillik&yenile=1`;
     try {
       await sendMail({
         to: sub.email,

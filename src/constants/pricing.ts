@@ -61,8 +61,8 @@ export const PRICING_PLANS: PricingPlan[] = [
     ],
     lifetime: {
       price: "0₺",
-      period: "Süresiz kullanım",
-      description: "Tek bilgisayar · Temel modüller",
+      period: "Demo sürüm",
+      description: "Örnek verilerle inceleme · lisansla tam kullanım",
       cta: "Ücretsiz İndir",
       href: "/api/download",
     },
@@ -78,20 +78,20 @@ export const PRICING_PLANS: PricingPlan[] = [
       "Offline Windows ERP",
     ],
     lifetime: {
-      price: "49.900₺",
+      price: "12.900₺",
       period: "Tek seferlik ödeme",
-      description: "1 bilgisayar · Ömür boyu kullanım",
+      description: "1 bilgisayar · Süresiz lisans",
       cta: "Satın Al",
       href: "/odeme?paket=baslangic&odeme=tek-seferlik",
-      altPriceNote: "veya 1.990₺/ay kiralama",
+      altPriceNote: "veya 4.990₺/yıl",
     },
     monthly: {
-      price: "1.990₺",
-      period: "/ ay · kiralama",
-      description: "1 bilgisayar · Taahhütsüz aylık",
-      cta: "Kiralamaya Başla",
-      href: "/odeme?paket=baslangic&odeme=aylik",
-      altPriceNote: "veya 49.900₺ tek seferlik",
+      price: "4.990₺",
+      period: "/ yıl",
+      description: "1 bilgisayar · Yıllık lisans",
+      cta: "Satın Al",
+      href: "/odeme?paket=baslangic&odeme=yillik",
+      altPriceNote: "veya 12.900₺ süresiz",
     },
   },
   {
@@ -105,44 +105,46 @@ export const PRICING_PLANS: PricingPlan[] = [
       "E-Fatura kurulum",
     ],
     lifetime: {
-      price: "79.900₺",
+      price: "24.900₺",
       period: "Tek seferlik ödeme",
-      description: "3 bilgisayar · Ömür boyu kullanım",
+      description: "3 bilgisayar · Süresiz lisans",
       cta: "Satın Al",
       href: "/odeme?paket=profesyonel&odeme=tek-seferlik",
-      altPriceNote: "veya 2.990₺/ay kiralama",
+      altPriceNote: "veya 9.990₺/yıl",
     },
     monthly: {
-      price: "2.990₺",
-      period: "/ ay · kiralama",
-      description: "3 bilgisayar · Taahhütsüz aylık",
-      cta: "Kiralamaya Başla",
-      href: "/odeme?paket=profesyonel&odeme=aylik",
-      altPriceNote: "veya 79.900₺ tek seferlik",
+      price: "9.990₺",
+      period: "/ yıl",
+      description: "3 bilgisayar · Yıllık lisans",
+      cta: "Satın Al",
+      href: "/odeme?paket=profesyonel&odeme=yillik",
+      altPriceNote: "veya 24.900₺ süresiz",
     },
   },
   {
-    id: "enterprise",
-    name: "Kurumsal",
+    id: "team",
+    name: "5 Bilgisayar",
     features: [
       "Tüm modüller dahil",
-      "Sınırsız bilgisayar",
-      "7/24 destek",
-      "E-Fatura + API + eğitim",
+      "5 bilgisayar lisansı",
+      "Öncelikli destek",
+      "E-Fatura kurulum",
     ],
     lifetime: {
-      price: "Teklif",
-      period: "Tek seferlik veya aylık",
-      description: "Sınırsız bilgisayar · Özel anlaşma",
-      cta: "Teklif Al",
-      href: "mailto:info@dijitalerp.com.tr?subject=Kurumsal%20Paket%20Teklifi",
+      price: "34.900₺",
+      period: "Tek seferlik ödeme",
+      description: "5 bilgisayar · Süresiz lisans",
+      cta: "Satın Al",
+      href: "/odeme?paket=bes&odeme=tek-seferlik",
+      altPriceNote: "veya 14.990₺/yıl",
     },
     monthly: {
-      price: "Teklif",
-      period: "Aylık kiralama",
-      description: "Sınırsız bilgisayar · Özel anlaşma",
-      cta: "Teklif Al",
-      href: "mailto:info@dijitalerp.com.tr?subject=Kurumsal%20Ayl%C4%B1k%20Kiralama",
+      price: "14.990₺",
+      period: "/ yıl",
+      description: "5 bilgisayar · Yıllık lisans",
+      cta: "Satın Al",
+      href: "/odeme?paket=bes&odeme=yillik",
+      altPriceNote: "veya 34.900₺ süresiz",
     },
   },
 ];
@@ -151,11 +153,27 @@ export const COMPARE_PLANS: ComparePlan[] = [
   {
     id: "starter",
     name: "Başlangıç",
-    lifetimePrice: "49.900₺",
-    monthlyPrice: "1.990₺/ay",
+    lifetimePrice: "12.900₺",
+    monthlyPrice: "4.990₺/yıl",
     cta: "Satın Al",
     href: "/iletisim?paket=baslangic&odeme=tek-seferlik",
     values: [
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      "1",
+      "Süresiz",
+      false,
+      false,
+      "E-posta",
+      false,
+      true,
+      true,
+    ],
+    monthlyValues: [
       true,
       true,
       true,
@@ -171,29 +189,13 @@ export const COMPARE_PLANS: ComparePlan[] = [
       true,
       true,
     ],
-    monthlyValues: [
-      true,
-      true,
-      true,
-      true,
-      true,
-      false,
-      "1",
-      "Aylık",
-      false,
-      false,
-      "E-posta",
-      false,
-      true,
-      true,
-    ],
   },
   {
     id: "pro",
     name: "Profesyonel",
     popular: true,
-    lifetimePrice: "79.900₺",
-    monthlyPrice: "2.990₺/ay",
+    lifetimePrice: "24.900₺",
+    monthlyPrice: "9.990₺/yıl",
     cta: "Satın Al",
     href: "/iletisim?paket=profesyonel&odeme=tek-seferlik",
     values: [
@@ -204,7 +206,7 @@ export const COMPARE_PLANS: ComparePlan[] = [
       true,
       true,
       "3",
-      "2 yıl",
+      "Süresiz",
       true,
       false,
       "Öncelikli",
@@ -220,7 +222,7 @@ export const COMPARE_PLANS: ComparePlan[] = [
       true,
       true,
       "3",
-      "Aylık",
+      "1 yıl",
       true,
       false,
       "Öncelikli",
@@ -230,12 +232,12 @@ export const COMPARE_PLANS: ComparePlan[] = [
     ],
   },
   {
-    id: "enterprise",
-    name: "Kurumsal",
-    lifetimePrice: "Teklif",
-    monthlyPrice: "Teklif",
-    cta: "Teklif Al",
-    href: "mailto:info@dijitalerp.com.tr",
+    id: "team",
+    name: "5 Bilgisayar",
+    lifetimePrice: "34.900₺",
+    monthlyPrice: "14.990₺/yıl",
+    cta: "Satın Al",
+    href: "/odeme?paket=bes&odeme=tek-seferlik",
     values: [
       true,
       true,
@@ -243,12 +245,12 @@ export const COMPARE_PLANS: ComparePlan[] = [
       true,
       true,
       true,
-      "Sınırsız",
+      "5",
       "Süresiz",
       true,
-      true,
-      "7/24",
-      true,
+      false,
+      "Öncelikli",
+      false,
       true,
       true,
     ],
@@ -276,22 +278,21 @@ export function getComparePlanDisplay(
 
   return {
     price: isMonthly ? plan.monthlyPrice : plan.lifetimePrice,
-    cta:
-      plan.id === "enterprise"
-        ? "Teklif Al"
-        : isMonthly
-          ? "Kirala"
-          : "Satın Al",
+    cta: plan.cta,
     href:
       plan.id === "starter"
         ? isMonthly
-          ? "/odeme?paket=baslangic&odeme=aylik"
+          ? "/odeme?paket=baslangic&odeme=yillik"
           : "/odeme?paket=baslangic&odeme=tek-seferlik"
         : plan.id === "pro"
           ? isMonthly
-            ? "/odeme?paket=profesyonel&odeme=aylik"
+            ? "/odeme?paket=profesyonel&odeme=yillik"
             : "/odeme?paket=profesyonel&odeme=tek-seferlik"
-          : plan.href,
+          : plan.id === "team"
+            ? isMonthly
+              ? "/odeme?paket=bes&odeme=yillik"
+              : "/odeme?paket=bes&odeme=tek-seferlik"
+            : plan.href,
     values:
       isMonthly && plan.monthlyValues ? plan.monthlyValues : plan.values,
   };

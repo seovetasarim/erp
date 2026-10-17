@@ -114,7 +114,7 @@ const ProfileLicenses = () => {
               <code className="it-license-key">{license.key}</code>
               <div className="it-license-meta">
                 <span>
-                  {license.billingMode === "monthly" ? "Aylık kiralama" : "Tek seferlik"}
+                  {license.billingMode === "monthly" ? "Yıllık lisans" : "Süresiz lisans"}
                 </span>
                 <span className="it-license-countdown">{formatDaysRemaining(license.expiresAt)}</span>
                 <span>Bitiş: {formatDate(license.expiresAt)}</span>
